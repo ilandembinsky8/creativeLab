@@ -117,6 +117,7 @@ body {
     padding: 0px;
     height: 100%;
     background: #272B38 0% 0% no-repeat padding-box;
+    font-family:Heebo-Regular;
 }
 
 
@@ -252,6 +253,15 @@ body {
             color: #E6E6E6;
         }
 
+        .category .superstarTitle{
+            float: right;
+            text-align: right;
+            font-family: Heebo-Regular;
+            font-size: 18px;
+            line-height: 27px;
+            color: #12FF9F;
+        }
+
         .category .split {
             float: right;
             text-align: right;
@@ -276,6 +286,8 @@ body {
 
         .pageSubCont .pageSubWrapper{
             margin:0px auto;
+            margin-left:auto;
+            margin-right:auto;
             width:90%;
         }
 
@@ -392,7 +404,8 @@ body {
             direction:rtl;
         }
         .categoryCont .categoryWrap{
-            margin:0px auto;
+            margin-right:auto;
+            margin-left:auto;
             width:90%;
             padding:0px;
             
@@ -421,5 +434,35 @@ body {
             height: 139px;
             background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
             background-size:contain;
+          }
+
+          .pageSubWrapper .frameRow{
+              float:right;
+              width:100%;
+              display:block;
+              margin-top:20px;
+          }
+
+          .frameRow .starFrame{
+              float:right;
+              display:inline-block;
+              width: 45%;
+              height: 125px;
+              background: #FCC05D 0% 0% no-repeat padding-box;
+              border: 1px solid #707070;
+          }
+          .frameRow .starFrame:nth-of-type(1){
+              margin-left:15px;
+          }
+
+          .starFrame  .frameTitle{
+              width:100%;
+              display:inline-block;
+              text-align:center;
+              line-height:230px;
+              font-family: 'Segoe UI';
+              font-size: 15px;
+              line-height: 20px;
+              color: #000000;
           }
 }
