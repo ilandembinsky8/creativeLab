@@ -388,30 +388,34 @@ body {
         .pageSubWrapper .categoryCont{
             margin-top:80px;
             float:right;
-            width:80%;
+            width:100%;
+            direction:rtl;
         }
         .categoryCont .categoryWrap{
             margin:0px auto;
             width:90%;
-            direction:rtl;
+            padding:0px;
+            
 
         }
-        .categoryCont .edu{
+        .categoryWrap .edu{
            display:inline-block;
            width: 30%;
            height: 139px;
            background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
            background-size:contain;
+           border-left:10px solid transparent;
         }
-          .categoryCont .career{
+          .categoryWrap .career{
            display:inline-block;
            width: 30%;
            height: 139px;
            background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
            background-size:contain;
+           border-left:10px solid transparent;
         }
 
-          .categoryCont .politics{
+          .categoryWrap .politics{
             display:inline-block;
             width: 30%;
             height: 139px;
