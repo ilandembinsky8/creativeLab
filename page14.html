@@ -22,12 +22,12 @@
         }
         $(function () {
              $('.catgItem').click(function () {
-                var idItm = this.id;
+                 var idItm = this.id;
+                
                 var parsedId = parseId(idItm);
                 var count = document.getElementById(idItm).childElementCount;
-                 for (i = 1; i <= count; i++) {
-                     $('#' + idItm + '_' + i).css("display", "block");
-                 }
+                 event.stopPropagation();
+                 $('#' + idItm).children('.subCat').toggle();
             });
         });
 
@@ -59,60 +59,60 @@
                         <ul>
                             <li id="c1" class="catgItem">
                                 אמנות ויצירה
-                                <span id="c1_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c1_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c1_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c1_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c1_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c1_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c1_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c1_4" class="subCat">בלה בלה בלה</div>
                             </li>
 
                             <li id="c2" class="catgItem">
                                 ספורט
-                                <span id="c2_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c2_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c2_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c2_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c2_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c2_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c2_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c2_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c3" class="catgItem">
                                 כלכלה ועסקים
-                                <span id="c3_1" class="subCat">כלכלנים ונגידי בנקים</span>
-                                <span id="c3_2" class="subCat">יזמים בנקאות</span>
-                                <span id="c3_3" class="subCat">יזמים הייטק</span>
+                                <div id="c3_1" class="subCat">כלכלנים ונגידי בנקים</div>
+                                <div id="c3_2" class="subCat">יזמים בנקאות</div>
+                                <div id="c3_3" class="subCat">יזמים הייטק</div>
                                 <span id="c3_4" class="subCat">יזמים אופנה</span>
                             </li>
                             <li id="c4" class="catgItem">
                                 תקשורת
-                                <span id="c4_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c4_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c4_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c4_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c4_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c4_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c4_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c4_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c5" class="catgItem">
                                 מדע והגות
-                                <span id="c5_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c5_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c5_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c5_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c5_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c5_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c5_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c5_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c6" class="catgItem">
                                 פוליטיקה
-                                <span id="c6_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c6_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c6_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c6_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c6_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c6_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c6_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c6_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c7" class="catgItem">
                                 צבא
-                                <span id="c7_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c7_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c7_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c7_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c7_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c7_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c7_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c7_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c8" class="catgItem">
                                 דמויות משפיעות
-                                <span id="c8_1" class="subCat">בלה בלה בלה</span>
-                                <span id="c8_2" class="subCat">בלה בלה בלה</span>
-                                <span id="c8_3" class="subCat">בלה בלה בלה</span>
-                                <span id="c8_4" class="subCat">בלה בלה בלה</span>
+                                <div id="c8_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c8_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c8_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c8_4" class="subCat">בלה בלה בלה</div>
                             </li>
                         </ul>
                     </div>
