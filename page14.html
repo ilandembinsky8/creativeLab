@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/script.js" charset="utf-8"></script>
+    <script>
+         function parseId(idString) {
+            console.log(idString);
+            var num = '';
+            var z = 0;
+            for (i = 0; i < idString.length; i++) {
+                if ("" + parseInt(idString[i]) !== "NaN")
+                    num = num + idString[i];
+            }
+            z = parseInt(num);
+            return z;
+        }
+        $(function () {
+             $('.catgItem').click(function () {
+                var idItm = this.id;
+                var parsedId = parseId(idItm);
+                var count = document.getElementById(idItm).childElementCount;
+                 for (i = 1; i <= count; i++) {
+                     $('#' + idItm + '_' + i).css("display", "block");
+                 }
+            });
+        });
+
+    </script>
+
+
 </head>
 <body>
     <div class="header">
@@ -31,17 +57,67 @@
                 <div class="pageSubWrapper">
                     <div class="catgList">
                         <ul>
-                            <li class="catgItem">אמנות ויצירה</li>
-                            <li class="catgItem">ספורט</li>
-                            <li class="catgItem">כלכלה ועסקים</li>
-                            <li class="catgItem">תקשורת</li>
-                            <li class="catgItem">מדע והגות</li>
-                            <li class="catgItem">פוליטיקה</li>
-                            <li class="catgItem">צבא</li>
-                            <li class="catgItem">דמויות משפיעות</li>
+                            <li id="c1" class="catgItem">
+                                אמנות ויצירה
+                                <span id="c1_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c1_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c1_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c1_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+
+                            <li id="c2" class="catgItem">
+                                ספורט
+                                <span id="c2_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c2_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c2_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c2_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+                            <li id="c3" class="catgItem">
+                                כלכלה ועסקים
+                                <span id="c3_1" class="subCat">כלכלנים ונגידי בנקים</span>
+                                <span id="c3_2" class="subCat">יזמים בנקאות</span>
+                                <span id="c3_3" class="subCat">יזמים הייטק</span>
+                                <span id="c3_4" class="subCat">יזמים אופנה</span>
+                            </li>
+                            <li id="c4" class="catgItem">
+                                תקשורת
+                                <span id="c4_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c4_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c4_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c4_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+                            <li id="c5" class="catgItem">
+                                מדע והגות
+                                <span id="c5_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c5_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c5_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c5_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+                            <li id="c6" class="catgItem">
+                                פוליטיקה
+                                <span id="c6_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c6_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c6_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c6_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+                            <li id="c7" class="catgItem">
+                                צבא
+                                <span id="c7_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c7_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c7_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c7_4" class="subCat">בלה בלה בלה</span>
+                            </li>
+                            <li id="c8" class="catgItem">
+                                דמויות משפיעות
+                                <span id="c8_1" class="subCat">בלה בלה בלה</span>
+                                <span id="c8_2" class="subCat">בלה בלה בלה</span>
+                                <span id="c8_3" class="subCat">בלה בלה בלה</span>
+                                <span id="c8_4" class="subCat">בלה בלה בלה</span>
+                            </li>
                         </ul>
                     </div>
-                </div>
+                </div>+
+
             </div>
         </div>
     </div>

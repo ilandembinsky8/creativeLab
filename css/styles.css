@@ -521,5 +521,13 @@ body {
         margin-bottom: 10px;
         letter-spacing: 0px;
         color: #C6C6C6;
+        cursor:pointer;
+    }
+    .catgItem .subCat {
+        display: none;
+        text-decoration: underline;
+        color: #4EA6FF;
+        border-right: 25px solid transparent;
+        cursor:pointer;
     }
 }
