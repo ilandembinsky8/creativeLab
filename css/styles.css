@@ -324,7 +324,7 @@ body {
     .shapeCont .imageShape {
         margin: 0px auto;
         width: 90%;
-        max-width: 345px;
+        max-width: 355px;
         height: 485px;
         background: #FCC05D 0% 0% no-repeat padding-box;
         border: 1px solid #707070;
@@ -523,6 +523,7 @@ body {
         color: #C6C6C6;
         cursor:pointer;
     }
+
     .catgItem .subCat {
         display: none;
         text-decoration: underline;
@@ -530,4 +531,29 @@ body {
         border-right: 25px solid transparent;
         cursor:pointer;
     }
+    .videoFrame{
+        float:right;
+        width: 100%;
+    }
+
+        .videoFrame .video {
+            margin: 0px auto;
+            width: 90%;
+            height: 200px;
+            max-width: 355px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #707070;
+        }
+
+        .video .artistName{
+          float: right;
+          margin-bottom: 15px;
+          text-align: right;
+          font-size: 18px;
+          line-height: 27px;
+          letter-spacing: 0px;
+          color: #C6C6C6;
+          display: block;
+          padding-top:190px;
+        }
 }
