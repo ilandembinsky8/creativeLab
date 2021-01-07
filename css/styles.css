@@ -257,7 +257,7 @@ body {
         color: #E6E6E6;
     }
 
-    .category .superstarTitle {
+    .category .greenTitle {
         float: right;
         text-align: right;
         font-size: 18px;
@@ -498,5 +498,28 @@ body {
 
     .fieldTxt {
         color: #E6E6E6;
+    }
+
+    .catgList{
+        float:right;
+        width:100%;
+    }
+
+    .catgList ul{
+        list-style:none;
+        text-decoration:none;
+        float:right;
+        display:block;
+    }
+
+    ul .catgItem {
+        display: block;
+        text-align: right;
+        text-decoration: underline;
+        font-size: 18px;
+        line-height: 35px;
+        margin-bottom: 10px;
+        letter-spacing: 0px;
+        color: #C6C6C6;
     }
 }
