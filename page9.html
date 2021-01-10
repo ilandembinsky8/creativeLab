@@ -7,15 +7,15 @@
     <title>page 9</title>
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="js/script.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon"></div>
-                <div class="titleCont"><div class="mainTitle">כוכבות</div></div>
-                <div class="homeIcon"></div>
+                <div class="langIcon" id="lang"></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">כוכבות</div></div>
+                <div class="homeIcon" onclick="goHomePg()"></div>
             </div>
         </div>
         <div class="borderBtm"></div>
@@ -23,21 +23,20 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="greenTitle">כוכבות</span>
-
+                <span class="greenTitle" id="title">כוכבות</span>
             </div>
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="frameRow">
-                        <div class="starFrame"><span class="frameTitle">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame1"><span class="frameTitle" id="imgTitle1">שם הכוכבת</span></div>
                         <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame"><span class="frameTitle">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame2"><span class="frameTitle" id="imgTitle2">שם הכוכבת</span></div>
                     </div>
                     <div class="frameRow">
-                        <div class="starFrame"><span class="frameTitle">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame3"><span class="frameTitle" id="imgTitle3">שם הכוכבת</span></div>
                         <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame"><span class="frameTitle">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame4"><span class="frameTitle" id="imgTitle4">שם הכוכבת</span></div>
                     </div>
                 </div>
             </div>

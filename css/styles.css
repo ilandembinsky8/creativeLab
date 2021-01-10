@@ -125,7 +125,8 @@ body {
 @media only screen and (max-width: 800px) {
 
     body {
-        font-size: 18px;
+        font-size: 20px;
+        line-height: 29px;
     }
 
 
@@ -174,7 +175,7 @@ body {
         text-align: center;
         margin: 0px auto;
         font-family: Heebo-Medium;
-        font-size: 27px;
+        font-size: 30px;
         line-height: 39px;
         color: #12FF9F;
     }
@@ -249,23 +250,18 @@ body {
         float: right;
         text-align: right;
         text-decoration: underline;
-        font-size: 18px;
-        line-height: 27px;
         color: #E6E6E6;
     }
 
     .category .categoryTitle {
         float: right;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #E6E6E6;
     }
 
     .category .greenTitle {
         float: right;
         text-align: right;
-        font-size: 18px;
         line-height: 27px;
         color: #12FF9F;
     }
@@ -273,8 +269,6 @@ body {
     .category .split {
         float: right;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #E6E6E6;
     }
 
@@ -282,8 +276,6 @@ body {
         float: right;
         text-align: right;
         font-family: Heebo-Medium;
-        font-size: 18px;
-        line-height: 27px;
         color: #12FF9F;
     }
 
@@ -302,8 +294,6 @@ body {
         float: right;
         margin-bottom: 15px;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         letter-spacing: 0px;
         color: #C6C6C6;
         display: block;
@@ -344,7 +334,7 @@ body {
         margin-top: 170px;
         float: right;
         width: 0px;
-        height: 281px;
+        height: 280px;
         border-right: 3px solid #12FF9F;
     }
 
@@ -360,8 +350,6 @@ body {
     .searchCont input[placeholder] {
         padding-right: 10px;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #979797;
     }
 
@@ -384,7 +372,6 @@ body {
         display: block;
         text-align: center;
         text-decoration: underline;
-        font-size: 18px;
         line-height: 35px;
         letter-spacing: 0px;
         color: #C6C6C6;
@@ -420,7 +407,7 @@ body {
     .categoryWrap .edu {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
         border-left: 10px solid transparent;
@@ -429,7 +416,7 @@ body {
     .categoryWrap .career {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
         border-left: 10px solid transparent;
@@ -438,7 +425,7 @@ body {
     .categoryWrap .politics {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
     }
@@ -469,7 +456,7 @@ body {
         text-align: center;
         line-height: 230px;
         font-family: 'Segoe UI';
-        font-size: 15px;
+        font-size: 17px;
         color: #000000;
     }
 
@@ -494,8 +481,6 @@ body {
         float: right;
         direction: rtl;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
     }
 
     .fieldTitle {
@@ -522,7 +507,6 @@ body {
         display: block;
         text-align: right;
         text-decoration: underline;
-        font-size: 18px;
         line-height: 35px;
         margin-bottom: 10px;
         letter-spacing: 0px;
@@ -556,8 +540,6 @@ body {
         float: right;
         margin-bottom: 15px;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         letter-spacing: 0px;
         color: #C6C6C6;
         display: block;
@@ -693,32 +675,24 @@ body {
         float: right;
         text-align: right;
         text-decoration: underline;
-        font-size: 18px;
-        line-height: 27px;
         color: #E6E6E6;
     }
 
     .category .categoryTitle {
         float: right;
         text-align: right;
-        font-size: 18px;
-        line-height: 57px;
         color: #E6E6E6;
     }
 
     .category .greenTitle {
         float: right;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #12FF9F;
     }
 
     .category .split {
         float: right;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #E6E6E6;
     }
 
@@ -726,8 +700,6 @@ body {
         float: right;
         text-align: right;
         font-family: Heebo-Medium;
-        font-size: 18px;
-        line-height: 57px;
         color: #12FF9F;
     }
 
@@ -746,8 +718,6 @@ body {
         float: right;
         margin-bottom: 15px;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         letter-spacing: 0px;
         color: #C6C6C6;
         display: block;
@@ -788,7 +758,7 @@ body {
         margin-top: 170px;
         float: right;
         width: 0px;
-        height: 281px;
+        height: 280px;
         border-right: 3px solid #12FF9F;
     }
 
@@ -804,8 +774,6 @@ body {
     .searchCont input[placeholder] {
         padding-right: 10px;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
         color: #979797;
     }
 
@@ -828,7 +796,6 @@ body {
         display: block;
         text-align: center;
         text-decoration: underline;
-        font-size: 18px;
         line-height: 35px;
         letter-spacing: 0px;
         color: #C6C6C6;
@@ -864,7 +831,7 @@ body {
     .categoryWrap .edu {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
         border-left: 10px solid transparent;
@@ -873,7 +840,7 @@ body {
     .categoryWrap .career {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
         border-left: 10px solid transparent;
@@ -882,7 +849,7 @@ body {
     .categoryWrap .politics {
         display: inline-block;
         width: 30%;
-        height: 139px;
+        height: 140px;
         background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
     }
@@ -937,8 +904,6 @@ body {
         float:right;
         direction:rtl;
         text-align: right;
-        font-size: 18px;
-        line-height: 27px;
     }
 
     .fieldTitle {
@@ -965,7 +930,6 @@ body {
         display: block;
         text-align: right;
         text-decoration: underline;
-        font-size: 18px;
         line-height: 35px;
         margin-bottom: 10px;
         letter-spacing: 0px;
@@ -998,16 +962,24 @@ body {
           float: right;
           margin-bottom: 15px;
           text-align: right;
-          font-size: 18px;
-          line-height: 27px;
           letter-spacing: 0px;
           color: #C6C6C6;
           display: block;
           padding-top:190px;
         }
 }
+@media only screen and (max-width: 800px) and (min-width: 641px) {
+    .headerCont .titleCont {
+        float: right;
+        width: 90%;
+    }
 
-@media only screen and (max-width: 800px) and (min-width: 470px) {
+    .headerCont .homeIcon {
+        float: none;
+    }
+
+}
+@media only screen and (max-width: 640px) and (min-width: 470px) {
     .headerCont .titleCont {
         float: right;
         width: 80%;
