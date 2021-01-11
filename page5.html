@@ -68,7 +68,6 @@
                  var name = $(this).text();
                  console.log(prData);
                  console.log(name);
-                 localStorage.setItem("prData", prData);
                  var my_object = { "main": main, "sub": sub, "name": name, "prData": prData}
                  localStorage.setItem('my_item', JSON.stringify(my_object)); 
                 location.href = "page10.html";

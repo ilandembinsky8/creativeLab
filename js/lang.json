@@ -132,6 +132,13 @@
         "language": "he"
       }
     },
+    "page7": {
+      "catg": {
+        "edu": "השכלה",
+        "career": "עבודה",
+        "politics": "פוליטיקה"
+      }
+    },
     "page14": {
       "title": "קטגוריות"
     }

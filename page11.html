@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page 2</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <script>
+        function loadNames() {
+
+        }
+
+        $(function () {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var subCatg = localStorage.getItem("sub");
+            $('#catgSub1').text(subCatg);
+            loadNames();
+            $('.colItem').click(function () {
+                var prData = '',
+                    name = $(this).text(); 
+                 var my_object = {"sub": subCatg, "name": name, "prData": prData}
+                 localStorage.setItem('my_item', JSON.stringify(my_object)); 
+                 location.href = "page4.html";
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="headerWrapper">
+            <div class="headerCont">
+                <div class="langIcon" id="lang"></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">פורצות דרך</div></div>
+                <div class="homeIcon" onclick="goHomePg()"></div>
+            </div>
+        </div>
+        <div class="borderBtm"></div>
+    </div>
+    <div class="pageCont">
+        <div class="pageWrapper">
+            <div class="category">
+                <span class="mainCat" id="catgMain">קטגוריות</span>
+                <span class="split">&ensp;/&ensp;</span>
+                <span class="greenTitle" id="catgSub1"></span>
+            </div>
+
+            <div class="pageSubCont">
+                <div class="pageSubWrapper">
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" /></div>
+                    <div class="table">
+                        <div class="fstCol">
+                            <div class="columnCont" id="col1">
+                                <span class="colItem">אירן</span>
+                               
+                            </div>
+                        </div>
+                        <div class="splitLine"></div>
+                        <div class="sndCol">
+                            <div class="columnCont" id="col2">
+                                <span class="colItem">אירן</span>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

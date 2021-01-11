@@ -406,6 +406,7 @@ body {
     }
 
     .categoryWrap .edu {
+        cursor:pointer;
         display: inline-block;
         width: 30%;
         height: 140px;
@@ -415,6 +416,7 @@ body {
     }
 
     .categoryWrap .career {
+        cursor: pointer;
         display: inline-block;
         width: 30%;
         height: 140px;
@@ -424,6 +426,7 @@ body {
     }
 
     .categoryWrap .politics {
+        cursor: pointer;
         display: inline-block;
         width: 30%;
         height: 140px;
@@ -439,6 +442,7 @@ body {
     }
 
     .frameRow .starFrame {
+        cursor:pointer;
         display: inline-block;
         width: 45%;
         height: 125px;

@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script>
+        function loadDetails(num){
 
+        }
+
+        $(function () {
+            var my_object = JSON.parse(localStorage.getItem('my_item'));
+            $('#catgSub1').text(my_object.sub);
+            $('#name').text(my_object.name);
+            var num = parseInt(my_object.prData);
+            loadDetails(num);
+        });
+    </script>
 </head>
 <body>
     <div class="header">
@@ -26,9 +38,9 @@
             <div class="category">
                 <span class="mainCat" id="catgMain"> קטגוריות</span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub1"> השכלה</span>
+                <span class="mainCat" id="catgSub1"></span>
                 <span class="split">&ensp;/&ensp;</span>  
-                <span class="subCat" id="catgSub2">שם אישה</span>
+                <span class="subCat" id="name"></span>
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>

@@ -8,6 +8,31 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script>
+
+        $(function () {
+             JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#edu', '#career', '#politics').click(function () {
+                var currId = this.id;
+                if (currId.localeCompare("edu") === 0) {
+                    localStorage.setItem('sub',lang.page10.edu);
+                    location.href = "page11.html";
+                        
+                } else if (currId.localeCompare("career") === 0) {
+                    localStorage.setItem('sub',  lang.page10.career);
+                    location.href = "page11.html";
+                        
+                } else if (currId.localeCompare("politics") === 0) {
+                    localStorage.setItem('sub', lang.page10.politics);
+                    location.href = "page11.html";       
+                }
+            });
+        });
+
+
+    </script>
+
 </head>
 <body>
     <div class="header">
