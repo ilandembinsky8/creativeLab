@@ -8,6 +8,52 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script>
+         function parseId(idString) {
+            console.log(idString);
+            var num = '';
+            var z = 0;
+            for (i = 0; i < idString.length; i++) {
+                if ("" + parseInt(idString[i]) !== "NaN")
+                    num = num + idString[i];
+            }
+            z = parseInt(num);
+            return z;
+        }
+
+        function loadPRData(searchValue, searchKey) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            var object = lang["data"];
+            for (var i in object) {
+                if (object[i][searchKey] === searchValue) {
+                    return object[i];
+                }
+            }
+        }
+        $(function () {
+            var my_object = JSON.parse(localStorage.getItem('my_item'));
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#years').text(lang.page10.years);
+            $('#country').text(lang.page10.country);
+            $('#occupation').text(lang.page10.occupation);
+            $('#catgMain').text(my_object.main);
+            $('#catgSub1').text(my_object.sub);
+            $('#catgSub2').text(my_object.name);
+            var num = my_object.prData;
+             val = parseInt(num, 10);
+            console.log(num);
+            console.log(typeof (num));
+            var res = loadPRData(val, "id");
+            $('#yearFill').text( res.death_year + " - " + res.birth_year);
+            $('#countryFill').text(res.country);
+            $('#occupFill').text(res.occupation);
+            $('#txt1').text(res.info);
+        });
+
+    </script>
 </head>
 <body>
     <div class="header">
@@ -23,13 +69,13 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"> קטגוריות</span>
+                <span class="mainCat">קטגוריות</span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub1"> אמנות ויצירה</span>
+                <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub2"> אמנות חזותית</span>
+                <span class="mainCat" id="catgSub1"></span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="subCat" id="catgSub3">שלום שלום </span>
+                <span class="subCat" id="catgSub2"></span>
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>
@@ -39,9 +85,9 @@
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="personDetails">
-                        <div class="detailItm"><span id="years" class="fieldTitle">שנים: &ensp;</span><span class="fieldTxt" id="yearsFill">1988 - 1948</span></div>
-                        <div class="detailItm"><span id="country" class="fieldTitle">מדינה: &ensp;</span><span class="fieldTxt" id="countryFill">ישראל</span></div>
-                        <div class="detailItm"><span id="occupation" class="fieldTitle">מקצוע: &ensp;</span><span class="fieldTxt" id="occupationFill">צייר</span></div>
+                        <div class="detailItm"><span id="years" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="yearFill"></span></div>
+                        <div class="detailItm"><span id="country" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="countryFill"></span></div>
+                        <div class="detailItm"><span id="occupation" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="occupFill"></span></div>
                     </div>
 
                     <div class="text" id="txt1">

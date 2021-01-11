@@ -7,9 +7,11 @@
     <title>page 14</title>
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="js/script.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+
     <script>
-         function parseId(idString) {
+        var pickLang = "";
+        function parseId(idString) {
             console.log(idString);
             var num = '';
             var z = 0;
@@ -20,14 +22,68 @@
             z = parseInt(num);
             return z;
         }
-        $(function () {
-             $('.catgItem').click(function () {
-                 var idItm = this.id;
+
+        function loadLang() {
+           var xmlhttp = new XMLHttpRequest();
+           xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
                 
+                console.log(myObj);
+              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
+
+                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
+            } else {
+
+                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
+            }
+             }
+           };
+          xmlhttp.open("GET", "js/lang.json", true);
+          xmlhttp.send();
+          
+        }
+        function goToSubCategory(num1, num2,catNum) {
+            JsonLang = localStorage.getItem("lang");
+            console.log(num1, num2, catNum);
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            console.log(typeof (lang));
+            curr = lang.categories;
+            console.log(curr);
+            var mainCat = curr[num1];        
+            console.log(mainCat);
+            var subCat2 = curr[catNum];
+            subCat2 = subCat2[num2]
+            console.log(subCat2);
+            localStorage.setItem("main", mainCat);
+            localStorage.setItem("sub", subCat2);
+            location.href = "page5.html";
+        }
+
+        $(function () {
+            loadLang();
+            $('.catgItem').click(function () {
+                var idItm = this.id;
+                var value =  $('#' + idItm)[0].childNodes[0].nodeValue;
+                $('#catgMain').addClass('mainCat');
+                $('#catgMain').removeClass('greenTitle');
+                $('#split').removeClass('invisible');
+                $('#catgSub1').html(value);
                 var parsedId = parseId(idItm);
                 var count = document.getElementById(idItm).childElementCount;
-                 event.stopPropagation();
-                 $('#' + idItm).children('.subCat').toggle();
+                event.stopPropagation();
+                $('#' + idItm).children('.subCat').toggle();
+            });
+
+            $('.subCat').click(function () {
+                var idItm = this.id;
+                var idParent = $(this).parent().attr('id')
+                console.log(idParent);
+                console.log(idItm);
+                var numIs = parseId(idParent);
+                var catNum = 's' + numIs;
+                goToSubCategory(idParent, idItm, catNum);
             });
         });
 
@@ -40,7 +96,7 @@
         <div class="headerWrapper">
             <div class="headerCont">
                 <div class="langIcon" id="lang"></div>
-                <div class="titleCont"><div class="mainTitle" id="hdTitle">מסע בין קהילות</div></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">מסע בין כוכבים</div></div>
                 <div class="homeIcon"></div>
             </div>
         </div>
@@ -49,8 +105,9 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="greenTitle" id="title">קטגוריות</span>
-
+                <span class="greenTitle" id="catgMain">קטגוריות</span>
+                <span class="split invisible" id="split">&ensp;/&ensp;</span>
+                <span class="greenTitle" id="catgSub1"></span>
             </div>
 
             <div class="pageSubCont">
@@ -59,12 +116,11 @@
                         <ul>
                             <li id="c1" class="catgItem">
                                 אמנות ויצירה
-                                <div id="c1_1" class="subCat">בלה בלה בלה</div>
-                                <div id="c1_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c1_1" class="subCat">אמנות ויזואלית</div>
+                                <div id="c1_2" class="subCat">אמנות חזותית</div>
                                 <div id="c1_3" class="subCat">בלה בלה בלה</div>
                                 <div id="c1_4" class="subCat">בלה בלה בלה</div>
                             </li>
-
                             <li id="c2" class="catgItem">
                                 ספורט
                                 <div id="c2_1" class="subCat">בלה בלה בלה</div>
@@ -77,7 +133,7 @@
                                 <div id="c3_1" class="subCat">כלכלנים ונגידי בנקים</div>
                                 <div id="c3_2" class="subCat">יזמים בנקאות</div>
                                 <div id="c3_3" class="subCat">יזמים הייטק</div>
-                                <span id="c3_4" class="subCat">יזמים אופנה</span>
+                                <div id="c3_4" class="subCat">יזמים אופנה</div>
                             </li>
                             <li id="c4" class="catgItem">
                                 תקשורת
@@ -87,32 +143,39 @@
                                 <div id="c4_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c5" class="catgItem">
-                                מדע והגות
+                                תקשורת
                                 <div id="c5_1" class="subCat">בלה בלה בלה</div>
                                 <div id="c5_2" class="subCat">בלה בלה בלה</div>
                                 <div id="c5_3" class="subCat">בלה בלה בלה</div>
                                 <div id="c5_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c6" class="catgItem">
-                                פוליטיקה
+                                מדע והגות
                                 <div id="c6_1" class="subCat">בלה בלה בלה</div>
                                 <div id="c6_2" class="subCat">בלה בלה בלה</div>
                                 <div id="c6_3" class="subCat">בלה בלה בלה</div>
                                 <div id="c6_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c7" class="catgItem">
-                                צבא
+                                פוליטיקה
                                 <div id="c7_1" class="subCat">בלה בלה בלה</div>
                                 <div id="c7_2" class="subCat">בלה בלה בלה</div>
                                 <div id="c7_3" class="subCat">בלה בלה בלה</div>
                                 <div id="c7_4" class="subCat">בלה בלה בלה</div>
                             </li>
                             <li id="c8" class="catgItem">
-                                דמויות משפיעות
+                                צבא
                                 <div id="c8_1" class="subCat">בלה בלה בלה</div>
                                 <div id="c8_2" class="subCat">בלה בלה בלה</div>
                                 <div id="c8_3" class="subCat">בלה בלה בלה</div>
                                 <div id="c8_4" class="subCat">בלה בלה בלה</div>
+                            </li>
+                            <li id="c9" class="catgItem">
+                                דמויות משפיעות
+                                <div id="c9_1" class="subCat">בלה בלה בלה</div>
+                                <div id="c9_2" class="subCat">בלה בלה בלה</div>
+                                <div id="c9_3" class="subCat">בלה בלה בלה</div>
+                                <div id="c9_4" class="subCat">בלה בלה בלה</div>
                             </li>
                         </ul>
                     </div>
