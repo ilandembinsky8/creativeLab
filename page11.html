@@ -9,8 +9,62 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-        function loadNames() {
+      
+           function parseId(idString) {
+            console.log(idString);
+            var num = '';
+            var z = 0;
+            for (i = 0; i < idString.length; i++) {
+                if ("" + parseInt(idString[i]) !== "NaN")
+                    num = num + idString[i];
+            }
+            z = parseInt(num);
+            return z;
+        }
 
+        function addToColumn() {
+            var c1 = document.getElementById("col1").childElementCount;
+            var c2 = document.getElementById("col2").childElementCount;
+            if (c1 > c2) {
+                return 'col2';
+            } else {
+                return 'col1';
+            }
+        }
+
+        function findMatches(searchValue) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var object = lang["gbreaking"];
+            console.log(object);
+            counter = 0;
+            for (var i in object) {
+                if (object[i][searchKey].indexOf(searchValue) > -1) {
+                    counter++;
+                    var col = addToColumn();
+                    console.log(col);
+                    console.log(object[i].first_name);
+                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
+                    document.getElementById(col).innerHTML += elem;
+                }
+            }
+        }
+
+
+        function loadDetails(){
+           JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var object = lang["gbreaking"];
+            console.log(object);
+            counter = 0;
+            for (var i in object) {
+                    var col = addToColumn();
+                    console.log(col);
+                    console.log(object[i].first_name);
+                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
+                    document.getElementById(col).innerHTML += elem;
+                
+            }
         }
 
         $(function () {
@@ -18,14 +72,17 @@
             var lang = JSON.parse(JsonLang);
             var subCatg = localStorage.getItem("sub");
             $('#catgSub1').text(subCatg);
-            loadNames();
+            loadDetails();
             $('.colItem').click(function () {
-                var prData = '',
-                    name = $(this).text(); 
-                 var my_object = {"sub": subCatg, "name": name, "prData": prData}
-                 localStorage.setItem('my_item', JSON.stringify(my_object)); 
-                 location.href = "page4.html";
-            }
+                var prData = "" + $(this).attr("data");
+                val = parseInt(prData, 10);
+               var name = $(this).text();
+               console.log(prData);
+               console.log(name);
+                var my_object = { "sub": subCatg, "name": name, "prData": val }
+                localStorage.setItem('my_item', JSON.stringify(my_object));
+                location.href = "page4.html";
+            });
         });
     </script>
 </head>
@@ -55,14 +112,14 @@
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">
-                                <span class="colItem">אירן</span>
+                               
                                
                             </div>
                         </div>
                         <div class="splitLine"></div>
                         <div class="sndCol">
                             <div class="columnCont" id="col2">
-                                <span class="colItem">אירן</span>
+                              
                                
                             </div>
                         </div>

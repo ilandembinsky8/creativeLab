@@ -9,24 +9,56 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-
-        $(function () {
-             JsonLang = localStorage.getItem("lang");
+         var pickLang = "";
+          function loadLang() {
+           var xmlhttp = new XMLHttpRequest();
+           xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                console.log(myObj);
+              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
+                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
+            } else {
+                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
+            }
+             }
+           };
+          xmlhttp.open("GET", "js/lang.json", true);
+          xmlhttp.send();
+          
+        }
+        function clickedItm(idNum) {
+            console.log('clicked');
+          JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            $('#edu', '#career', '#politics').click(function () {
-                var currId = this.id;
-                if (currId.localeCompare("edu") === 0) {
-                    localStorage.setItem('sub',lang.page10.edu);
+            console.log(lang);
+            var currId = idNum
+            var currSec = lang.page7.catg;
+            console.log(currSec);
+            var subCat = "";
+            if (currId.localeCompare("edu") === 0) {
+                subCat = currSec.edu;
+                localStorage.setItem('sub', subCat);
                     location.href = "page11.html";
                         
-                } else if (currId.localeCompare("career") === 0) {
-                    localStorage.setItem('sub',  lang.page10.career);
+            } else if (currId.localeCompare("career") === 0) {
+                subCat = currSec.career;
+                localStorage.setItem('sub', subCat);
                     location.href = "page11.html";
                         
-                } else if (currId.localeCompare("politics") === 0) {
-                    localStorage.setItem('sub', lang.page10.politics);
+            } else if (currId.localeCompare("politics") === 0) {
+                subCat = currSec.politics;
+                localStorage.setItem('sub', subCat);
                     location.href = "page11.html";       
                 }
+          
+        }
+        $(function () {
+            loadLang();
+            $('#edu, #career, #politics').click(function () {
+                var x = this.id;
+                console.log(x);
+                clickedItm(x);
             });
         });
 

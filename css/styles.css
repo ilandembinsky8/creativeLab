@@ -206,6 +206,7 @@ body {
     }
 
     .sharingIcons .mailIcon {
+        cursor:pointer;
         float: left;
         width: 39px;
         height: 39px;
@@ -216,7 +217,12 @@ body {
         margin-left: 10px;
     }
 
+    a{
+        text-decoration:none;
+    }
+
     .sharingIcons .shareIcon {
+        cursor:pointer;
         float: left;
         width: 39px;
         height: 39px;
@@ -640,6 +646,7 @@ body {
     }
 
     .sharingIcons .mailIcon {
+        cursor:pointer;
         float: left;
         width: 39px;
         height: 39px;
@@ -651,6 +658,7 @@ body {
     }
 
     .sharingIcons .shareIcon {
+        cursor:pointer;
         float: left;
         width: 39px;
         height: 39px;

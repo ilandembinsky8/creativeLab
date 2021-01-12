@@ -9,16 +9,33 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-        function loadDetails(num){
 
+        
+        function loadPRData(searchValue, searchKey) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            var object = lang["gbreaking"];
+            for (var i in object) {
+                if (object[i][searchKey] === searchValue) {
+                    return object[i];
+                }
+            }
         }
 
         $(function () {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             $('#catgSub1').text(my_object.sub);
             $('#name').text(my_object.name);
-            var num = parseInt(my_object.prData);
-            loadDetails(num);
+            var num = my_object.prData;
+             val = parseInt(num, 10);
+            console.log(num);
+            console.log(typeof (num));
+            var res = loadPRData(val, "id");
+            $('#titleTxt1').text(res.death_year + " - " + res.birth_year);
+            $('#txt1').text(res.info);
         });
     </script>
 </head>
@@ -44,7 +61,7 @@
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>
-                <span class="mailIcon"></span>
+                <span class="mailIcon" onclick="mail()"></span>
             </div>
 
             <div class="pageSubCont">

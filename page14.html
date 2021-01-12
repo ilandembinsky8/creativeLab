@@ -44,11 +44,10 @@
           
         }
         function goToSubCategory(num1, num2,catNum) {
-            JsonLang = localStorage.getItem("lang");
-            console.log(num1, num2, catNum);
+            JsonLang = localStorage.getItem("lang");     
             var lang = JSON.parse(JsonLang);
+            console.log("here");
             console.log(lang);
-            console.log(typeof (lang));
             curr = lang.categories;
             console.log(curr);
             var mainCat = curr[num1];        

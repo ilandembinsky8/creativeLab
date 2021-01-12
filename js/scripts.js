@@ -2,6 +2,10 @@ function goHomePg() {
     location.href = 'page14.html';
 }
 
+function mail() {
+    window.location = "mailto:";
+}
+
 function getLangJSON(lang) {
     $.getJSON('js/lang.json', function (response) {
         localStorage.clear();

@@ -32,6 +32,8 @@
                 }
             }
         }
+       
+
         $(function () {
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");
@@ -79,7 +81,7 @@
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>
-                <span class="mailIcon"></span>
+                <span class="mailIcon" onclick="mail()"></span>
             </div>
 
             <div class="pageSubCont">

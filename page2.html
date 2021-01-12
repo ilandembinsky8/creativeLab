@@ -9,8 +9,60 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+        var pickLang = "";
+        var currLang = "";
+          function loadLang() {
+           var xmlhttp = new XMLHttpRequest();
+           xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                console.log(myObj);
+              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
+                  localStorage.setItem("lang", JSON.stringify(myObj.HE));
+            } else {
+                  localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                }
+                loadCountry();
+             }
+           };
+          xmlhttp.open("GET", "js/lang.json", true);
+          xmlhttp.send();     
+        }
+        
+        function loadCountry() {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            var object = lang["country"];
+            console.log(object);
+            counter = 0;
+            for (var i in object) {
+                    var col = addToColumn();
+                    console.log(col);
+                    console.log(object[i].first_name);
+                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].name +  '</span>';
+                    document.getElementById(col).innerHTML += elem;
+                
+            }
+        }
+
+        function goTo() {
+            location.href = "page1.html";
+        }
+
         $(function () {
-      
+            loadLang();
+
+            $('.colItem').click(function () {
+                var prData = "" + $(this).attr("data");
+                var subCatg = this.text();
+                val = parseInt(prData, 10);
+               var name = $(this).text();
+               console.log(prData);
+               console.log(name);
+                var my_object = { "sub": subCatg, "prData": val }
+                localStorage.setItem('my_item', JSON.stringify(my_object));
+            });
         });
 
     </script>
@@ -30,9 +82,9 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"> שאר הקהילות</span>
-                <span class="split">&ensp;/&ensp;</span>
-                <span class="subCat" id="catgSub1"> </span>
+                <span class="greenTitle" id="catgMain"> שאר הקהילות</span>
+                <span class="split invisible">&ensp;/&ensp;</span>
+                <span class="subCat" id="catgSub1"></span>
             </div>
 
             <div class="pageSubCont">
@@ -41,41 +93,13 @@
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
+               
                             </div>
                         </div>
                         <div class="splitLine"></div>
                         <div class="sndCol">
                             <div class="columnCont" id="col2">
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">אירן</span>
-                                <span class="colItem">מיצרים</span>
-                                <span class="colItem">אירן</span>
+                            
                             </div>
                         </div>
                     </div>

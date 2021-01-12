@@ -46,7 +46,6 @@
                     var col = addToColumn();
                     console.log(col);
                     console.log(object[i].first_name);
-                    console.log("type num of: " + typeof (object[i].idNum));
                     var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
                     document.getElementById(col).innerHTML += elem;
                 }
