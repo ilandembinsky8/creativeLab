@@ -28,7 +28,16 @@
           xmlhttp.open("GET", "js/lang.json", true);
           xmlhttp.send();     
         }
-        
+         function addToColumn() {
+            var c1 = document.getElementById("col1").childElementCount;
+            var c2 = document.getElementById("col2").childElementCount;
+            if (c1 > c2) {
+                return 'col2';
+            } else {
+                return 'col1';
+            }
+        }
+
         function loadCountry() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -37,10 +46,11 @@
             console.log(object);
             counter = 0;
             for (var i in object) {
+                    counter++;
                     var col = addToColumn();
                     console.log(col);
-                    console.log(object[i].first_name);
-                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].name +  '</span>';
+                    console.log(object[i].name);
+                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + ' >' + object[i].name +  '</span>';
                     document.getElementById(col).innerHTML += elem;
                 
             }
@@ -52,16 +62,18 @@
 
         $(function () {
             loadLang();
-
-            $('.colItem').click(function () {
+            console.log("before Clicked");
+         
+             $('body').delegate('.colItem', 'click', function () {
+                console.log("Clicked");
                 var prData = "" + $(this).attr("data");
-                var subCatg = this.text();
+                var subCatg = $(this).text();
                 val = parseInt(prData, 10);
-               var name = $(this).text();
                console.log(prData);
                console.log(name);
                 var my_object = { "sub": subCatg, "prData": val }
                 localStorage.setItem('my_item', JSON.stringify(my_object));
+                location.href = "page1.html";
             });
         });
 

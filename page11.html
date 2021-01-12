@@ -51,19 +51,21 @@
         }
 
 
-        function loadDetails(){
+        function loadDetails(searchValue){
            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var object = lang["gbreaking"];
+            var searchKey = "area";
             console.log(object);
             counter = 0;
             for (var i in object) {
+                if (object[i][searchKey].indexOf(searchValue) > -1) {
                     var col = addToColumn();
                     console.log(col);
                     console.log(object[i].first_name);
                     var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
                     document.getElementById(col).innerHTML += elem;
-                
+                }
             }
         }
 
@@ -72,7 +74,7 @@
             var lang = JSON.parse(JsonLang);
             var subCatg = localStorage.getItem("sub");
             $('#catgSub1').text(subCatg);
-            loadDetails();
+            loadDetails(subCatg);
             $('.colItem').click(function () {
                 var prData = "" + $(this).attr("data");
                 val = parseInt(prData, 10);

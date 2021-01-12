@@ -9,9 +9,20 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-        function loadDetials(name) {
-             JsonLang = localStorage.getItem("lang");
-             var lang = JSON.parse(JsonLang);
+      function findMatches(searchValue) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var object = lang["stars"];
+            console.log(object);
+            var searchKey = "id";
+            counter = 0;
+            for (var i in object) {
+                if (object[i][searchKey] === searchValue) {
+                    $('#titleTxt1').text(object[i].country + ", "+ object[i].birth_year +"-"+object[i].death_year);
+                    $('#txt1').text(object[i].info);
+                    $('#videoTitle').text(lang.singer + ": " + object[i].video.name);
+                }
+            }
         }
 
          $(function () {
@@ -19,7 +30,9 @@
              var lang = JSON.parse(JsonLang);
              var name = localStorage.getItem("name");
              $('#catgSub1').text(name);
-             loadDetails(name);
+             var prData = localStorage.getItem("prData");
+             prData = parseInt(prData, 10);
+             findMatches(prData);
 
         });
     </script>
@@ -50,9 +63,11 @@
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="shapeCont" style="margin-top:25px;"><div id="img" style="height: 240px;" class="imageShape"></div></div>
-                    <div class="text" id="txt1">
+                    <div class="text">
                         <div class="textSubTitle" style="color: #C6C6C6;" id="titleTxt1">אלג'יריה, 1980 - 1940</div>
-                        בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                        <div id="txt1">
+                            בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                        </div>
                     </div>
                     <div class="videoFrame">
                         <div class="video" id="video">

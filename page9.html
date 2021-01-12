@@ -9,6 +9,7 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+            var pickLang = "";
             function parseId(idString) {
             console.log(idString);
             var num = '';
@@ -20,13 +21,55 @@
             z = parseInt(num);
             return z;
         }
+
+        
+        function loadLang() {
+           var xmlhttp = new XMLHttpRequest();
+           xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                
+                console.log(myObj);
+              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
+
+                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
+            } else {
+
+                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
+                }
+                loadData();
+             }
+           };
+          xmlhttp.open("GET", "js/lang.json", true);
+          xmlhttp.send();
+          
+        }
+
+        function loadData() {
+            JsonLang = localStorage.getItem("lang");
+            lang = JSON.parse(JsonLang);
+            console.log(lang);
+            object = lang["stars"];
+            console.log(object);
+            counter = 0;
+            for (var i in object) {
+                counter++;
+                $('#imgTitle' + counter).text(object[i].name);
+                $('#imgTitle' + counter).attr("data", object[i].id);
+            }
+        }
+
         $(function () {
 
-            $('.starFrame').click(function () {
+            loadLang();   
+             $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
                 idNum = parseId(currId);
                 name = $('#imgTitle' + idNum).text();
+                var prData = "" + $('#imgTitle' + idNum).attr("data");
+                val = parseInt(prData, 10);
                 localStorage.setItem("name", name);
+                localStorage.setItem("prData", val)
                 location.href = "page8.html";
             });
 
@@ -53,14 +96,14 @@
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="frameRow">
-                        <div class="starFrame" id="imgFrame1"><span class="frameTitle" id="imgTitle1">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame1"><span class="frameTitle" id="imgTitle1" data=""></span></div>
                         <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame" id="imgFrame2"><span class="frameTitle" id="imgTitle2">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame2"><span class="frameTitle" id="imgTitle2" data=""></span></div>
                     </div>
                     <div class="frameRow">
-                        <div class="starFrame" id="imgFrame3"><span class="frameTitle" id="imgTitle3">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame3"><span class="frameTitle" id="imgTitle3" data=""></span></div>
                         <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame" id="imgFrame4"><span class="frameTitle" id="imgTitle4">שם הכוכבת</span></div>
+                        <div class="starFrame" id="imgFrame4"><span class="frameTitle" id="imgTitle4" data=""></span></div>
                     </div>
                 </div>
             </div>
