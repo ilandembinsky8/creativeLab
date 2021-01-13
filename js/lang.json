@@ -15,62 +15,73 @@
     },
     "categories": {
       "c1": "אמנות ויצירה",
+      "c2": "ספורט",
+      "c3": "כלכלה ועסקים",
+      "c4": "שואה וכבורה",
+      "c5": "תקשורת",
+      "c6": "מדע והגות",
+      "c7": "פוליטיקה",
+      "c8": "צבא",
+      "c9": "דמויות משפיעות"
+    },
+    "subcategories": {
+
       "s1": {
         "c1_1": "אמנות ויזואלית",
         "c1_2": "אמנות חזותית",
         "c1_3": "בלה בלה",
         "c1_4": "בלה בלה"
       },
-      "c2": "ספורט",
+     
       "s2": {
         "c2_1": "בלה בלה",
         "c2_2": "בלה בלה",
         "c2_3": "בלה בלה",
         "c2_4": "בלה בלה"
       },
-      "c3": "כלכלה ועסקים",
+     
       "s3": {
         "c3_1": "כלכלנים ונגידי בנקים",
         "c3_2": "יזמים בנקאות",
         "c3_3": "יזמים הייטק",
         "c3_4": "יזמים אופנה"
       },
-      "c4": "שואה וכבורה",
+      
       "s4": {
         "c4_1": "בלה בלה1",
         "c4_2": "2בלה בלה",
         "c4_3": "3בלה בלה",
         "c4_4": "4בלה בלה"
       },
-      "c5": "תקשורת",
+      
       "s5": {
         "c5_1": "1בלה בלה",
         "c5_2": "2בלה בלה",
         "c5_3": "בלה בלה3",
         "c5_4": "בלה בלה4"
       },
-      "c6": "מדע והגות",
+      
       "s6": {
         "c6_1": "1בלה בלה",
         "c6_2": "בלה בלה2",
         "c6_3": "בלה בלה3",
         "c6_4": "בלה בלה4"
       },
-      "c7": "פוליטיקה",
+    
       "s7": {
         "c7_1": "1בלה בלה",
         "c7_2": "2בלה בלה",
         "c7_3": "בלה בלה3",
         "c7_4": "בלה בלה4"
       },
-      "c8": "צבא",
+    
       "s8": {
         "c8_1": "1בלה בלה",
         "c8_2": "2בלה בלה",
         "c8_3": "3בלה בלה",
         "c8_4": "4בלה בלה"
       },
-      "c9": "דמויות משפיעות",
+     
       "s9": {
         "c9_1": "1בלה בלה",
         "c9_2": "2בלה בלה",
@@ -260,6 +271,281 @@
         "video": {
           "url": "https://www.youtube.com/",
           "name": "כוכבת4"
+        }
+      }
+    },
+    "page7": {
+      "catg": {
+        "edu": "השכלה",
+        "career": "עבודה",
+        "politics": "פוליטיקה"
+      }
+    },
+    "page14": {
+
+    }
+  },
+
+  "EN": {
+    "title": "blah",
+    "singer": "blah",
+    "hdTitles": {
+      "communities": "blah blah",
+      "starts": "blah blah",
+      "groundbreaking": "blah blah",
+      "starsJour": "blah blah"
+    },
+    "communities": {
+      "iran": "blah",
+      "egypt": "blah"
+    },
+    "categories": {
+      "c1": "category1",
+      "s1": {
+        "c1_1": "sub1 category1",
+        "c1_2": "sub1 category2",
+        "c1_3": "sub1 category3",
+        "c1_4": "sub1 category4"
+      },
+      "c2": "category2",
+      "s2": {
+        "c2_1": "sub2 category1",
+        "c2_2": "sub2 category2",
+        "c2_3": "sub2 category3",
+        "c2_4": "sub2 category4"
+      },
+      "c3": "category3",
+      "s3": {
+        "c3_1": "sub3 category1",
+        "c3_2": "sub3 category2",
+        "c3_3": "sub3 category3",
+        "c3_4": "sub3 category4"
+      },
+      "c4": "category4",
+      "s4": {
+        "c4_1": "sub4 category1",
+        "c4_2": "sub4 category2",
+        "c4_3": "sub4 category3",
+        "c4_4": "sub4 category4"
+      },
+      "c5": "category5",
+      "s5": {
+        "c5_1": "sub5 category1",
+        "c5_2": "sub5 category2",
+        "c5_3": "sub5 category3",
+        "c5_4": "sub5 category4"
+      },
+      "c6": "category6",
+      "s6": {
+        "c6_1": "sub6 category1",
+        "c6_2": "sub6 category2",
+        "c6_3": "sub6 category3",
+        "c6_4": "sub6 category4"
+      },
+      "c7": "category7",
+      "s7": {
+        "c7_1": "sub7 category1",
+        "c7_2": "sub7 category2",
+        "c7_3": "sub7 category3",
+        "c7_4": "sub7 category4"
+      },
+      "c8": "category8",
+      "s8": {
+        "c8_1": "sub8 category1",
+        "c8_2": "sub8 category2",
+        "c8_3": "sub8 category3",
+        "c8_4": "sub8 category4"
+      },
+      "c9": "category9",
+      "s9": {
+        "c9_1": "sub9 category1",
+        "c9_2": "sub9 category2",
+        "c9_3": "sub9 category3",
+        "c9_4": "sub9 category4"
+      }
+    },
+
+    "page10": {
+      "years": "blah:",
+      "country": "blah:",
+      "occupation": "blah"
+    },
+    "data": {
+      "p1": {
+        "id": 1,
+        "birth_year": 1922,
+        "death_year": 1989,
+        "personality_id": 1,
+        "first_name": "blah1'",
+        "last_name": "blah2",
+        "writer": "blah",
+        "category": "blah",
+        "sub_category": "sub1 category2",
+        "occupation": "blah",
+        "country": "blah",
+        "info": "blah...blah",
+        "video": null,
+        "language": "he"
+      },
+      "p2": {
+        "id": 2,
+        "birth_year": 1922,
+        "death_year": 1989,
+        "personality_id": 1,
+        "first_name": "blah1",
+        "last_name": "blah1",
+        "writer": "blah1",
+        "category": "blah1",
+        "sub_category": "sub1 category1",
+        "occupation": "blah1",
+        "country": "blah1",
+        "info": "blah1 blah1 blah1 blah1 blah1",
+        "video": null,
+        "language": "he"
+      },
+      "p3": {
+        "id": 3,
+        "birth_year": 1922,
+        "death_year": 1989,
+        "personality_id": 1,
+        "first_name": "blah1",
+        "last_name": "blah1",
+        "writer": "blah1",
+        "category": "blah1",
+        "sub_category": "sub1 category2",
+        "occupation": "blah1",
+        "country": "blah1",
+        "info": "blah1",
+        "video": null,
+        "language": "he"
+      }
+    },
+    "country": {
+      "c1": {
+        "id": 1,
+        "name": "country1",
+        "info1": {
+          "title": "country1 country1",
+          "txt": "country1 country1 country1 country1 country1"
+        },
+        "info2": {
+          "titl": "country11 country11",
+          "txt": "country11 country11 country11 country11"
+        },
+        "info3": {
+          "title": "country111 country111",
+          "txt": "country111 country111 country111 country111"
+        }
+      },
+      "c2": {
+        "id": 2,
+        "name": "country2",
+        "info1": {
+          "title": "country2country2",
+          "txt": "country2  country2 country2 country2 country2"
+        },
+        "info2": {
+          "titl": "country2 country2",
+          "txt": "country2  country2 country2 country2 country2"
+        },
+        "info3": {
+          "title": "country2country22",
+          "txt": "country2  country2 country2 country2 country2"
+        }
+      },
+      "c3": {
+        "id": 3,
+        "name": "country3",
+        "info1": {
+          "title": "country3country3",
+          "txt": "country3 country3 country3 country3 country3"
+        },
+        "info2": {
+          "title": "country3country3",
+          "txt": "country3 country3 country3 country3 country3"
+        },
+        "info3": {
+          "title": "country3country3",
+          "txt": "country3 country3 country3 country3 country3"
+        }
+      }
+    },
+    "gbreaking": {
+      "gb1": {
+        "id": 1,
+        "first_name": "שםפ1",
+        "last_name": "שםמ1",
+        "birth_year": "1930",
+        "death_year": "1980",
+        "area": "פוליטיקה",
+        "info": "gb11 gb1 gb1 gb1 gb1 gb1 gb1 gb1"
+      },
+      "gb2": {
+        "id": 2,
+        "first_name": "שםמ2",
+        "last_name": "שםפ2",
+        "birth_year": "1925",
+        "death_year": "2001",
+        "area": "השכלה",
+        "info": "gb22 gb2 gb2 gb2 gb2 gb2 gb2"
+      },
+      "gb3": {
+        "id": 3,
+        "first_name": "שםמ3",
+        "last_name": "שםפ3",
+        "birth_year": "1928",
+        "death_year": "1998",
+        "area": "עבודה",
+        "info": "gb3 gb3 gb3 gb3 gb3 gb3 gb33"
+      }
+    },
+    "stars": {
+      "s1": {
+        "id": 1,
+        "name": "כוכבת1",
+        "country": "אלג'יריה",
+        "birth_year": "1918",
+        "death_year": "1999",
+        "info": "כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1",
+        "video": {
+          "url": "https://www.youtube.com/",
+          "name": "כוכבת4"
+        }
+      },
+      "s2": {
+        "id": 2,
+        "name": "כוכבת2",
+        "country": "מרוקו",
+        "birth_year": "1922",
+        "death_year": "1997",
+        "info": "כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2",
+        "video": {
+          "url": "https://www.youtube.com/",
+          "name": "כוכבת4"
+        }
+      },
+      "s3": {
+        "id": 3,
+        "name": "blah3",
+        "country": "Yemen",
+        "birth_year": "1945",
+        "death_year": "2010",
+        "info": "כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 blah",
+        "video": {
+          "url": "https://www.youtube.com/",
+          "name": "כוכבת4"
+        }
+      },
+      "s4": {
+        "id": 4,
+        "name": "blah4",
+        "country": "Egypt",
+        "birth_year": "1950",
+        "death_year": "2019",
+        "info": "blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4",
+        "video": {
+          "url": "https://www.youtube.com/",
+          "name": "blah4"
         }
       }
     },
