@@ -62,6 +62,7 @@
             var searchKey = "sub_category";
             console.log(typeof (searchKey));
             counter = 0;
+              $('#col1, #col2').empty();
             for (var i in object) {
                 if (object[i][searchKey].indexOf(searchValue) > -1) {
                     counter++;
@@ -75,6 +76,7 @@
         }
 
         $(function () {
+            pickCSS();
              JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);

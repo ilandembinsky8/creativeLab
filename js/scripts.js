@@ -19,6 +19,27 @@ function getLangJSON(lang) {
     });
 }
 
+function pickCSS() {
+    var pickLang = localStorage.getItem("langID");
+    if (typeof pickLang !== 'undefined' && pickLang !== null) {
+        if (pickLang.localeCompare("he") === 0) {
+            pickLang = "en";
+            swapStyleSheet('css/styles.css');
+            localStorage.setItem("langID", "he");
+            loadLang();
+        } else if (pickLang.localeCompare("en") === 0) {
+            pickLang = "he";
+            localStorage.setItem("langID", "en");
+            swapStyleSheet('css/styles-eng.css');
+            loadLang();
+        }
+    } else {
+        pickLang = "he";
+        localStorage.setItem("langID", "he");
+        swapStyleSheet('css/styles.css');
+        loadLang();
+    }
+}
 
 function loadLang() {
     var xmlhttp = new XMLHttpRequest();
@@ -29,11 +50,9 @@ function loadLang() {
             console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    console.log("to hebrew");
                     localStorage.setItem("langID", "he");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
-                    console.log("to english");
                     localStorage.setItem("langID", "en");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }

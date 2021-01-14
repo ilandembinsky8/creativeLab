@@ -81,6 +81,7 @@
             var searchKey = "area";
             console.log(object);
             counter = 0;
+              $('#col1, #col2').empty();
             for (var i in object) {
                 if (object[i][searchKey].indexOf(searchValue) > -1) {
                     var col = addToColumn();
@@ -93,6 +94,7 @@
         }
 
         $(function () {
+            pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var subCatg = localStorage.getItem("sub");

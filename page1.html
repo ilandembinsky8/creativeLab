@@ -10,6 +10,8 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
         
+      
+
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -43,7 +45,8 @@
                 }
             }
         }
-         $(function () {
+        $(function () {
+            pickCSS();
             JsonLang = localStorage.getItem("lang");
              var lang = JSON.parse(JsonLang);
              $('#catgMain').text(lang.countries)
@@ -88,19 +91,19 @@
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="text" id="txt1">
-                        בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                       
                     </div>
                     <div class="shapeCont"><div id="img" class="imageShape"></div></div>
                     <div class="text">
                         <div class="textSubTitle" id="titleTxt2">המאה החמישית</div>
                         <div id="txt2">
-                            בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+        
                         </div>
                         </div>
                         <div class="text">
-                            <div class="textSubTitle" id="titleTxt3">המאה החמישית</div>
+                            <div class="textSubTitle" id="titleTxt3"></div>
                             <div id="txt3">
-                                בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
+                              
                             </div>
                         </div>
 

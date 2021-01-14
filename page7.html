@@ -10,6 +10,27 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
+          function pickCSS() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles.css');
+                    localStorage.setItem("langID", "he");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "en");
+                    swapStyleSheet('css/styles-eng.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
     
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
@@ -95,7 +116,7 @@
           
         }
         $(function () {
-            loadLang();
+            pickCSS();
             $('#edu, #career, #politics').click(function () {
                 var x = this.id;
                 console.log(x);

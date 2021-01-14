@@ -278,6 +278,7 @@ a {
 
 .pageWrapper .pageSubCont {
     width: 100%;
+    float:left;
 }
 
 .pageSubCont .pageSubWrapper {
@@ -290,7 +291,7 @@ a {
 .pageSubWrapper .text {
     float: left;
     margin-bottom: 15px;
-    text-align: right;
+    text-align: left;
     letter-spacing: 0px;
     color: #C6C6C6;
     display: block;
@@ -324,10 +325,10 @@ a {
 
 .pageSubWrapper .searchCont {
     margin-top: 65px;
-    width: 80%;
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
-    float: left;
+
 }
 
 .pageWrapper .rightBorder {
@@ -724,6 +725,7 @@ ul .catgItem {
 
     .pageWrapper .pageSubCont {
         width: 100%;
+        float:none;
     }
 
     .pageSubCont .pageSubWrapper {
@@ -1160,6 +1162,7 @@ ul .catgItem {
 
     .pageWrapper .pageSubCont {
         width: 100%;
+        float:none;
     }
 
     .pageSubCont .pageSubWrapper {

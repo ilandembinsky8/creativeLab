@@ -49,7 +49,8 @@
             }
         }
 
-         $(function () {
+        $(function () {
+             pickCSS();
              JsonLang = localStorage.getItem("lang");
              var lang = JSON.parse(JsonLang);
              $('#catgTitle').text(lang.starsTitle);
