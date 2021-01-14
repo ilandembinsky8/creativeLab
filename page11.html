@@ -5,11 +5,33 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page 2</title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-      
+        
+        function pickLanguage() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
+
            function parseId(idString) {
             console.log(idString);
             var num = '';
@@ -54,6 +76,7 @@
         function loadDetails(searchValue){
            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            $('#catgMain').text(lang.catgTitle);
             var object = lang["gbreaking"];
             var searchKey = "area";
             console.log(object);
@@ -93,7 +116,7 @@
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon" id="lang"></div>
+                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
                 <div class="titleCont"><div class="mainTitle" id="hdTitle">פורצות דרך</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>
@@ -103,7 +126,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain">קטגוריות</span>
+                <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>

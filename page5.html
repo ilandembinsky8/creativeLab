@@ -5,10 +5,32 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page 5</title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+        
+        function pickLanguage() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
 
            function parseId(idString) {
             console.log(idString);
@@ -56,12 +78,14 @@
              JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
+            $('#catgMain').text(lang.catgTitle);
             var main = localStorage.getItem("main");
             var sub = localStorage.getItem("sub");
-            $('#catgMain').html(main);
-            $('#catgSub').html(sub);
-            console.log(sub);
-            findMatches(sub);
+            catg = lang.categories[main];
+            subCatg = catg["subCat"][sub];
+            $('#catgMain').html(catg.title);
+            $('#catgSub').html(subCatg);
+            findMatches(curr2);
             $('.colItem').click(function () {
                  var prData =""+ $(this).attr("data");
                  var name = $(this).text();
@@ -81,7 +105,7 @@
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon" id="lang"></div>
+                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
                 <div class="titleCont"><div class="mainTitle" id="hdTitle">מסע בין כוכבים</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>

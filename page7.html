@@ -5,34 +5,75 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page 7</title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-         var pickLang = "";
-          function loadLang() {
+
+    
+        function pickLanguage() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
+
+     function loadLang() {
            var xmlhttp = new XMLHttpRequest();
            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                console.log(myObj);
-              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
-                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
-            } else {
-                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
-            }
-             }
+               if (this.readyState == 4 && this.status == 200) {
+                   var myObj = JSON.parse(this.responseText);
+                   var pickLang = localStorage.getItem("langID");
+                   console.log(myObj);
+                   if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                       if (pickLang.localeCompare("he") === 0) {
+                           console.log("to hebrew");
+                           localStorage.setItem("langID", "he");
+                           localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                       } else {
+                           console.log("to english");
+                           localStorage.setItem("langID", "en");
+                           localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                       }
+                   } else {
+                       localStorage.setItem("langID", "he");
+                       localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                   }
+                   loadData();
+               }
            };
           xmlhttp.open("GET", "js/lang.json", true);
-          xmlhttp.send();
-          
+          xmlhttp.send();       
         }
+
+        function loadData() {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#catgMain').text(lang.catgTitle);
+        }
+
         function clickedItm(idNum) {
             console.log('clicked');
           JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
-            var currId = idNum
+
+            var currId = idNum;
             var currSec = lang.page7.catg;
             console.log(currSec);
             var subCat = "";
@@ -70,7 +111,7 @@
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon" id="lang"></div>
+                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
                 <div class="titleCont"><div class="mainTitle" id="hdTitle">פורצות דרך</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>
@@ -80,7 +121,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="categoryTitle" id="title">קטגוריות</span>
+                <span class="categoryTitle" id="catgMain">קטגוריות</span>
 
             </div>
 

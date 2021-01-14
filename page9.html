@@ -5,10 +5,33 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page 9</title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+        
+        function pickLanguage() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
+
             var pickLang = "";
             function parseId(idString) {
             console.log(idString);
@@ -22,27 +45,33 @@
             return z;
         }
 
-        
         function loadLang() {
            var xmlhttp = new XMLHttpRequest();
            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                
-                console.log(myObj);
-              if (pickLang.localeCompare("") === 0 || pickLang.localeCompare(" ") === 0) {
-
-                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
-            } else {
-
-                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
-                }
-                loadData();
-             }
+               if (this.readyState == 4 && this.status == 200) {
+                   var myObj = JSON.parse(this.responseText);
+                   var pickLang = localStorage.getItem("langID");
+                   console.log(myObj);
+                   if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                       if (pickLang.localeCompare("he") === 0) {
+                           console.log("to hebrew");
+                           localStorage.setItem("langID", "he");
+                           localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                       } else {
+                           console.log("to english");
+                           localStorage.setItem("langID", "en");
+                           localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                       }
+                   } else {
+                       localStorage.setItem("langID", "he");
+                       localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                   }
+                   loadData();
+               }
            };
           xmlhttp.open("GET", "js/lang.json", true);
           xmlhttp.send();
-          
+         
         }
 
         function loadData() {
@@ -60,7 +89,6 @@
         }
 
         $(function () {
-
             loadLang();   
              $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
@@ -72,15 +100,15 @@
                 localStorage.setItem("prData", val)
                 location.href = "page8.html";
             });
-
         });
+
     </script>
 </head>
 <body>
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon" id="lang"></div>
+                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
                 <div class="titleCont"><div class="mainTitle" id="hdTitle">כוכבות</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>

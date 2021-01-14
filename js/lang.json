@@ -1,7 +1,7 @@
 
 {
   "HE": {
-    "title": "קטגוריות",
+    "catgTitle": "קטגוריות",
     "singer": "זמרת",
     "hdTitles": {
       "communities": "מסע בין קהילות",
@@ -14,81 +14,92 @@
       "egypt": "קהילת מיצרים"
     },
     "categories": {
-      "c1": "אמנות ויצירה",
-      "c2": "ספורט",
-      "c3": "כלכלה ועסקים",
-      "c4": "שואה וכבורה",
-      "c5": "תקשורת",
-      "c6": "מדע והגות",
-      "c7": "פוליטיקה",
-      "c8": "צבא",
-      "c9": "דמויות משפיעות"
-    },
-    "subcategories": {
+      "c1": {
+        "title": "אמנות ויצירה",
+        "subCat": {
+         "s1": "אמנות ויזואלית",
+         "s2": "אמנות חזותית",
+         "s3": "בלה בלה",
+         "s4": "בלה בלה"
+        }
+      },
+      "c2": {
+        "title": "ספורט",
+        "subCat": {
+         "s1": "בלה בלה1",
+         "s2": "2בלה בלה",
+         "s3": "3בלה בלה",
+         "s4": "4בלה בלה"
+        }
+      },
+      "c3": {
+        "title": "כלכלה ועסקים",
+        "subCat": {
+         "s1":  "כלכלנים ונגידי בנקים",
+         "s2":  "יזמים בנקאות",
+         "s3":  "יזמים הייטק",
+         "s4":  "יזמים אופנה"
+        }
 
-      "s1": {
-        "c1_1": "אמנות ויזואלית",
-        "c1_2": "אמנות חזותית",
-        "c1_3": "בלה בלה",
-        "c1_4": "בלה בלה"
       },
-     
-      "s2": {
-        "c2_1": "בלה בלה",
-        "c2_2": "בלה בלה",
-        "c2_3": "בלה בלה",
-        "c2_4": "בלה בלה"
+      "c4": {
+        "title": "שואה וכבורה",
+        "subCat": {
+         "s1": "בלה בלה1",
+         "s2": "2בלה בלה",
+         "s3": "3בלה בלה",
+         "s4": "4בלה בלה"
+        }
       },
-     
-      "s3": {
-        "c3_1": "כלכלנים ונגידי בנקים",
-        "c3_2": "יזמים בנקאות",
-        "c3_3": "יזמים הייטק",
-        "c3_4": "יזמים אופנה"
+
+      "c5": {
+        "title": "תקשורת",
+        "subCat": {
+         "s1": "1בלה בלה",
+         "s2": "2בלה בלה",
+         "s3": "בלה בלה3",
+         "s4":  "בלה בלה4"
+        }
       },
-      
-      "s4": {
-        "c4_1": "בלה בלה1",
-        "c4_2": "2בלה בלה",
-        "c4_3": "3בלה בלה",
-        "c4_4": "4בלה בלה"
+
+      "c6": {
+        "title": "מדע והגות",
+        "subCat": {
+         "s1": "1בלה בלה",
+         "s2": "בלה בלה2",
+         "s3": "בלה בלה3",
+         "s4": "בלה בלה4"
+        }
       },
-      
-      "s5": {
-        "c5_1": "1בלה בלה",
-        "c5_2": "2בלה בלה",
-        "c5_3": "בלה בלה3",
-        "c5_4": "בלה בלה4"
+
+      "c7": {
+        "title": "פוליטיקה",
+        "subCat": {
+         "s1": "1בלה בלה",
+         "s2": "2בלה בלה",
+         "s3": "בלה בלה3",
+         "s4": "בלה בלה4"
+        }
       },
-      
-      "s6": {
-        "c6_1": "1בלה בלה",
-        "c6_2": "בלה בלה2",
-        "c6_3": "בלה בלה3",
-        "c6_4": "בלה בלה4"
+      "c8": {
+        "title": "צבא",
+        "subCat": {
+         "s1": "1בלה בלה",
+         "s2": "2בלה בלה",
+         "s3": "בלה בלה3",
+         "s4": "בלה בלה4"
+        }
       },
-    
-      "s7": {
-        "c7_1": "1בלה בלה",
-        "c7_2": "2בלה בלה",
-        "c7_3": "בלה בלה3",
-        "c7_4": "בלה בלה4"
-      },
-    
-      "s8": {
-        "c8_1": "1בלה בלה",
-        "c8_2": "2בלה בלה",
-        "c8_3": "3בלה בלה",
-        "c8_4": "4בלה בלה"
-      },
-     
-      "s9": {
-        "c9_1": "1בלה בלה",
-        "c9_2": "2בלה בלה",
-        "c9_3": "3בלה בלה",
-        "c9_4": "בלה בלה4"
+      "c9": {
+        "title": "דמויות משפיעות",
+        "subCat": {
+          "s1": "1בלה בלה",
+          "s2": "2בלה בלה",
+          "s3": "בלה בלה3",
+          "s4": "בלה בלה4"
+        }
       }
-    },
+     },
 
     "page10": {
       "years": "שנים:",
@@ -287,7 +298,7 @@
   },
 
   "EN": {
-    "title": "blah",
+    "catgTitle": "Categories",
     "singer": "blah",
     "hdTitles": {
       "communities": "blah blah",
@@ -300,70 +311,92 @@
       "egypt": "blah"
     },
     "categories": {
-      "c1": "category1",
-      "s1": {
-        "c1_1": "sub1 category1",
-        "c1_2": "sub1 category2",
-        "c1_3": "sub1 category3",
-        "c1_4": "sub1 category4"
+      "c1": {
+        "title": "category1",
+        "subCat": {
+          "s1": "sub1 category1",
+          "s2": "sub1 category2",
+          "s3": "sub1 category3",
+          "s4": "sub1 category4"
+          }
+        },
+      "c2": {
+        "title": "category2",
+        "subCat": {
+         "s1": "sub2 category1",
+         "s2": "sub2 category2",
+         "s3": "sub2 category3",
+         "s4": "sub2 category4"
+        }
       },
-      "c2": "category2",
-      "s2": {
-        "c2_1": "sub2 category1",
-        "c2_2": "sub2 category2",
-        "c2_3": "sub2 category3",
-        "c2_4": "sub2 category4"
+      "c3": {
+        "title": "category2",
+        "subCat": {
+         "s1": "sub3 category1",
+         "s2": "sub3 category2",
+         "s3": "sub3 category3",
+         "s4": "sub3 category4"
+        }
       },
-      "c3": "category3",
-      "s3": {
-        "c3_1": "sub3 category1",
-        "c3_2": "sub3 category2",
-        "c3_3": "sub3 category3",
-        "c3_4": "sub3 category4"
+      "c4": {
+        "title": "category3",
+        "subCat": {
+         "s1": "sub4 category1",
+         "s2": "sub4 category2",
+         "s3": "sub4 category3",
+         "s4": "sub4 category4"
+        }
       },
-      "c4": "category4",
-      "s4": {
-        "c4_1": "sub4 category1",
-        "c4_2": "sub4 category2",
-        "c4_3": "sub4 category3",
-        "c4_4": "sub4 category4"
+
+      "c5": {
+        "title": "category4",
+        "subCat": {
+         "s1": "sub5 category1",
+         "s2": "sub5 category2",
+         "s3": "sub5 category3",
+         "s4": "sub5 category4"
+        }
       },
-      "c5": "category5",
-      "s5": {
-        "c5_1": "sub5 category1",
-        "c5_2": "sub5 category2",
-        "c5_3": "sub5 category3",
-        "c5_4": "sub5 category4"
+
+      "c6": {
+        "title": "category5",
+        "subCat": {
+         "s1": "sub6 category1",
+         "s2": "sub6 category2",
+         "s3": "sub6 category3",
+         "s4": "sub6 category4"
+        }
       },
-      "c6": "category6",
-      "s6": {
-        "c6_1": "sub6 category1",
-        "c6_2": "sub6 category2",
-        "c6_3": "sub6 category3",
-        "c6_4": "sub6 category4"
+
+      "c7": {
+        "title": "category6",
+        "subCat": {
+         "s1": "sub7 category1",
+         "s2": "sub7 category2",
+         "s3": "sub7 category3",
+         "s4": "sub7 category4"
+        }
       },
-      "c7": "category7",
-      "s7": {
-        "c7_1": "sub7 category1",
-        "c7_2": "sub7 category2",
-        "c7_3": "sub7 category3",
-        "c7_4": "sub7 category4"
+      "c8": {
+        "title": "category7",
+        "subCat": {
+         "s1": "sub8 category1",
+         "s2": "sub8 category2",
+         "s3": "sub8 category3",
+         "s4": "sub8 category4"
+        }
       },
-      "c8": "category8",
-      "s8": {
-        "c8_1": "sub8 category1",
-        "c8_2": "sub8 category2",
-        "c8_3": "sub8 category3",
-        "c8_4": "sub8 category4"
-      },
-      "c9": "category9",
-      "s9": {
-        "c9_1": "sub9 category1",
-        "c9_2": "sub9 category2",
-        "c9_3": "sub9 category3",
-        "c9_4": "sub9 category4"
+      "c9": {
+        "title": "category8",
+        "subCat": {
+         "s1": "sub9 category1",
+         "s2": "sub9 category2",
+         "s3": "sub9 category3",
+         "s4": "sub9 category4"
+        }
       }
     },
+
 
     "page10": {
       "years": "blah:",
@@ -555,9 +588,6 @@
         "career": "עבודה",
         "politics": "פוליטיקה"
       }
-    },
-    "page14": {
-
     }
   }
 }

@@ -10,7 +10,7 @@
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
-        var pickLang = "";
+
         function parseId(idString) {
             console.log(idString);
             var num = '';
@@ -24,13 +24,22 @@
         }
 
         function pickLanguage() {
-            console.log(pickLang);
-            if (pickLang.localeCompare("") === 0 || pickLang.localeCompare("he") === 0) {
-                pickLang = "en";
-                swapStyleSheet('css/styles-eng.css');
-                loadLang();
-            } else if (pickLang.localeCompare("en") === 0) {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
                 pickLang = "he";
+                localStorage.setItem("langID", "he");
                 swapStyleSheet('css/styles.css');
                 loadLang();
             }
@@ -39,43 +48,75 @@
         function loadLang() {
            var xmlhttp = new XMLHttpRequest();
            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                
-                console.log(myObj);
-                if (pickLang.localeCompare("") === 0 || pickLang.localeCompare("he") === 0) {
-                    console.log("to hebrew");
-                  localStorage.setItem("lang",  JSON.stringify(myObj.HE));
-            } else {
-                     console.log("to english");
-                  localStorage.setItem("lang",  JSON.stringify(myObj.EN));
-            }
-             }
+               if (this.readyState == 4 && this.status == 200) {
+                   var myObj = JSON.parse(this.responseText);
+                   var pickLang = localStorage.getItem("langID");
+                   console.log(myObj);
+                   if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                       if (pickLang.localeCompare("he") === 0) {
+                           console.log("to hebrew");
+                           localStorage.setItem("langID", "he");
+                           localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                       } else {
+                           console.log("to english");
+                           localStorage.setItem("langID", "en");
+                           localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                       }
+                   } else {
+                       localStorage.setItem("langID", "he");
+                       localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                   }
+                   loadData();
+               }
            };
           xmlhttp.open("GET", "js/lang.json", true);
           xmlhttp.send();
           
         }
-        function goToSubCategory(num1, num2,catNum) {
+        function goToSubCategory(num1,subCat) {
             JsonLang = localStorage.getItem("lang");     
             var lang = JSON.parse(JsonLang);
             console.log("here");
             console.log(lang);
             curr = lang.categories;
-            console.log(curr);
-            var mainCat = curr[num1];        
-            console.log(mainCat);
-            var subCat2 = curr[catNum];
-            subCat2 = subCat2[num2]
-            console.log(subCat2);
+  
             localStorage.setItem("main", mainCat);
             localStorage.setItem("sub", subCat2);
             location.href = "page5.html";
         }
 
+        function loadData() {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#catgMain').text(lang.catgTitle);
+            var categ = lang["categories"];
+            counter = 0;
+            for (var i in categ) {
+                subCount = 0;
+                counter++;
+                currId = 'c' + counter;
+                $('#' + currId).empty();
+                var cache = $('#' + currId).children();
+                $('#'+currId).text(categ[i].title).append(cache);
+                var sub = categ[i].subCat;
+                for (j in sub) {
+                    subCount++;
+                    var elem = '<div id=' + 's' + subCount + '  class="subCat">'+sub[j]+'</div>';
+                    document.getElementById(currId).innerHTML += elem;
+                }
+            }
+        }
+
+        function loadSubCatg() {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var categ = lang["subCategories"];
+        }
+
         $(function () {
             loadLang();
-            $('.catgItem').click(function () {
+            
+             $('body').delegate('.catgItem', 'click', function () {
                 var idItm = this.id;
                 var value =  $('#' + idItm)[0].childNodes[0].nodeValue;
                 $('#catgMain').addClass('mainCat');
@@ -88,14 +129,14 @@
                 $('#' + idItm).children('.subCat').toggle();
             });
 
-            $('.subCat').click(function () {
+            $('body').delegate('.subCat', 'click', function () {
                 var idItm = this.id;
-                var idParent = $(this).parent().attr('id')
-                console.log(idParent);
-                console.log(idItm);
-                var numIs = parseId(idParent);
-                var catNum = 's' + numIs;
-                goToSubCategory(idParent, idItm, catNum);
+                var idPr = ($(this).parent().attr('id'));
+                var prTxt = $(this).parent()[0].childNodes[0].nodeValue;
+                console.log(idItm + "______" + idPr);
+                localStorage.setItem("main", idPr);
+                localStorage.setItem("sub", idItm);
+                location.href = "page5.html";
             });
         });
 
@@ -126,67 +167,40 @@
                 <div class="pageSubWrapper">
                     <div class="catgList">
                         <ul>
-                            <li id="c1" class="catgItem">                              
-                                <div id="c1_1" class="subCat"></div>
-                                <div id="c1_2" class="subCat"></div>
-                                <div id="c1_3" class="subCat"></div>
-                                <div id="c1_4" class="subCat"></div>
+                            <li id="c1" class="catgItem">                            
+                          
                             </li>
                             <li id="c2" class="catgItem">
                                 
-                                <div id="c2_1" class="subCat"></div>
-                                <div id="c2_2" class="subCat"></div>
-                                <div id="c2_3" class="subCat"></div>
-                                <div id="c2_4" class="subCat"></div>
+                         
                             </li>
                             <li id="c3" class="catgItem">
                                 
-                                <div id="c3_1" class="subCat"></div>
-                                <div id="c3_2" class="subCat"></div>
-                                <div id="c3_3" class="subCat"></div>
-                                <div id="c3_4" class="subCat"></div>
+                         
                             </li>
                             <li id="c4" class="catgItem">
                                 
-                                <div id="c4_1" class="subCat"></div>
-                                <div id="c4_2" class="subCat"></div>
-                                <div id="c4_3" class="subCat"></div>
-                                <div id="c4_4" class="subCat"></div>
+                               
                             </li>
                             <li id="c5" class="catgItem">
                                 
-                                <div id="c5_1" class="subCat"></div>
-                                <div id="c5_2" class="subCat"></div>
-                                <div id="c5_3" class="subCat"></div>
-                                <div id="c5_4" class="subCat"></div>
+
                             </li>
                             <li id="c6" class="catgItem">
                                
-                                <div id="c6_1" class="subCat"></div>
-                                <div id="c6_2" class="subCat"></div>
-                                <div id="c6_3" class="subCat"></div>
-                                <div id="c6_4" class="subCat"></div>
+
                             </li>
                             <li id="c7" class="catgItem">
-                                
-                                <div id="c7_1" class="subCat"></div>
-                                <div id="c7_2" class="subCat"></div>
-                                <div id="c7_3" class="subCat"></div>
-                                <div id="c7_4" class="subCat"></div>
+
+ 
                             </li>
                             <li id="c8" class="catgItem">
                                 
-                                <div id="c8_1" class="subCat"></div>
-                                <div id="c8_2" class="subCat"></div>
-                                <div id="c8_3" class="subCat"></div>
-                                <div id="c8_4" class="subCat"></div>
+                            
                             </li>
                             <li id="c9" class="catgItem">
                                 
-                                <div id="c9_1" class="subCat"></div>
-                                <div id="c9_2" class="subCat"></div>
-                                <div id="c9_3" class="subCat"></div>
-                                <div id="c9_4" class="subCat"></div>
+
                             </li>
                         </ul>
                     </div>
