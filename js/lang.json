@@ -294,6 +294,11 @@
         "politics": "פוליטיקה"
       }
     },
+    "search": {
+      "sj": "חפשו כוכבים",
+      "cj": "חפשו פורצות דרך",
+      "gb": "חפשו פורצות דרך"
+    },
     "page14": {
 
     }
@@ -302,7 +307,7 @@
   "EN": {
     "catgTitle": "Categories",
     "countries": "Blah blah",
-     "starsTitle": "Blah blah",
+    "starsTitle": "Blah blah",
     "singer": "blah",
     "hdTitles": {
       "communities": "blah blah",
@@ -592,6 +597,11 @@
         "career": "עבודה",
         "politics": "פוליטיקה"
       }
+    },
+    "search": {
+      "sj": "Search blah blah",
+      "cj": "Search blah blah",
+      "gb": "Search blah blah"
     }
   }
 }

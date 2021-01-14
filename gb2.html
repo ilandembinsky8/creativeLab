@@ -98,8 +98,9 @@
         $(function () {
             pickCSS();
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
+            var lang = JSON.parse(JsonLang); 
+            $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
+            $('#search').attr("placeholder", lang["search"]["gb"]);
             var subCatgIs = localStorage.getItem("sub");
             subCatg = lang["page7"]["catg"][subCatgIs];
             console.log(subCatg);

@@ -10,7 +10,7 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
         function goHomePg() {
-        location.href = 'cj1.html';
+          location.href = 'cj1.html';
          }
         function pickCSS() {
             var pickLang = localStorage.getItem("langID");
@@ -99,6 +99,7 @@
             var lang = JSON.parse(JsonLang);
             console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
+            $('#search').attr("placeholder", lang["search"]["cj"]);
             $('#catgMain').text(lang.countries)
             var object = lang["country"];
             console.log(object);
