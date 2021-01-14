@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page 4</title>
+    <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <script>
+        function goHomePg() {
+        location.href = 'sj1.html';
+         }
+        function pickLanguage() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    pickLang = "en";
+                    swapStyleSheet('css/styles-eng.css');
+                    localStorage.setItem("langID", "en");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    pickLang = "he";
+                    localStorage.setItem("langID", "he");
+                    swapStyleSheet('css/styles.css');
+                    loadLang();
+                }
+            } else {
+                pickLang = "he";
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
+
+         function parseId(idString) {
+            console.log(idString);
+            var num = '';
+            var z = 0;
+            for (i = 0; i < idString.length; i++) {
+                if ("" + parseInt(idString[i]) !== "NaN")
+                    num = num + idString[i];
+            }
+            z = parseInt(num);
+            return z;
+        }
+
+        function loadPRData(searchValue, searchKey) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            var object = lang["data"];
+            for (var i in object) {
+                if (object[i][searchKey] === searchValue) {
+                    return object[i];
+                }
+            }
+        }
+       
+
+        $(function () {
+            pickCSS();
+            var my_object = JSON.parse(localStorage.getItem('my_item'));
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
+            $('#catgTitle').text(lang.catgTitle);
+            $('#years').text(lang.page10.years);
+            $('#country').text(lang.page10.country);
+            $('#occupation').text(lang.page10.occupation);
+            main = my_object.main;
+            sub = my_object.sub;
+            catg = lang.categories[main];
+            $('#catgMain').html(catg.title);
+            subCatg = catg["subCat"][sub];
+            $('#catgSub1').html(subCatg);
+            var num = my_object.prData;
+             val = parseInt(num, 10);
+            console.log(num);
+            console.log(typeof (num));
+            var res = loadPRData(val, "id");
+             $('#catgSub2').text(res.first_name + " " + res.last_name);
+            $('#yearFill').text( res.death_year + " - " + res.birth_year);
+            $('#countryFill').text(res.country);
+            $('#occupFill').text(res.occupation);
+            $('#txt1').text(res.info);
+        });
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="headerWrapper">
+            <div class="headerCont">
+                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">מסע בין כוכבים</div></div>
+                <div class="homeIcon" onclick="goHomePg()"></div>
+            </div>
+        </div>
+        <div class="borderBtm"></div>
+    </div>
+    <div class="pageCont">
+        <div class="pageWrapper">
+            <div class="category">
+                <span class="mainCat" id="catgTitle"></span>
+                <span class="split">&ensp;/&ensp;</span>
+                <span class="mainCat" id="catgMain"></span>
+                <span class="split">&ensp;/&ensp;</span>
+                <span class="mainCat" id="catgSub1"></span>
+                <span class="split">&ensp;/&ensp;</span>
+                <span class="subCat" id="catgSub2"></span>
+            </div>
+            <div class="sharingIcons">
+                <span class="shareIcon"></span>
+                <span class="mailIcon" onclick="mail()"></span>
+            </div>
+
+            <div class="pageSubCont">
+                <div class="pageSubWrapper">
+                    <div class="personDetails">
+                        <div class="detailItm"><span id="years" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="yearFill"></span></div>
+                        <div class="detailItm"><span id="country" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="countryFill"></span></div>
+                        <div class="detailItm"><span id="occupation" class="fieldTitle"></span><span>&ensp;</span><span class="fieldTxt" id="occupFill"></span></div>
+                    </div>
+
+                    <div class="text" id="txt1">
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

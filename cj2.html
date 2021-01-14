@@ -1,15 +1,19 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 4</title>
+    <title>page 1</title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
         
+        function goHomePg() {
+        location.href = 'cj1.html';
+         }
+
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -31,59 +35,56 @@
                 loadLang();
             }
         }
-        
-        function loadPRData(searchValue, searchKey) {
+
+         function loadPRData(searchValue, searchKey) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
-            var object = lang["gbreaking"];
+            var object = lang["country"];
             for (var i in object) {
                 if (object[i][searchKey] === searchValue) {
                     return object[i];
                 }
             }
         }
-
-
         $(function () {
             pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
-            var my_object = JSON.parse(localStorage.getItem('my_item'));
-            $('#catgTitle').text(lang.catgTitle);
-            subCatg = lang["page7"]["catg"][my_object.sub];
-            $('#catgSub1').text(subCatg);
-            var num = my_object.prData;
+             $('#hdTitle').text(lang["hdTitles"]["communities"]);
+             $('#catgMain').text(lang.countries)
+             var prData = localStorage.getItem('prData');
+             var num = prData;
              val = parseInt(num, 10);
-            console.log(num);
-            console.log(typeof (num));
-            var res = loadPRData(val, "id");
-            $('#name').text(res.first_name + " " + res.last_name);
-            $('#titleTxt1').text(res.birth_year + " - " + res.death_year);
-            $('#txt1').text(res.info);
+             var res = loadPRData(val, "id");
+             console.log(res);
+             $('#catgSub1').text(res.name);
+             $('#txt1').text(res.info1.txt);
+             $('#titleTxt2').text(res.info2.title);
+             $('#txt2').text(res.info2.txt);
+             $('#titleTxt3').text(res.info3.title);
+             $('#txt3').text(res.info3.txt);
         });
     </script>
 </head>
+
 <body>
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
-                <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
-                <div class="titleCont"><div class="mainTitle" id="hdTitle">פורצות דרך</div></div>
+                <div class="langIcon" id="lang"  onclick="pickLanguage()"></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">מסע בין קהילות</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>
         </div>
         <div class="borderBtm"></div>
-    </div> 
+    </div>
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgTitle"></span>
+                <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub1"></span>
-                <span class="split">&ensp;/&ensp;</span>  
-                <span class="subCat" id="name"></span>
+                <span class="subCat" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>
@@ -92,16 +93,27 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
+                    <div class="text" id="txt1">
                        
-                    <div class="text">
-                        <div class="textSubTitle" id="titleTxt1" style="color: #C6C6C6;">1940 - 1980</div>
-                        <div id="txt1">
-                            בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה
-                        </div>
                     </div>
-                </div>
+                    <div class="shapeCont"><div id="img" class="imageShape"></div></div>
+                    <div class="text">
+                        <div class="textSubTitle" id="titleTxt2"></div>
+                        <div id="txt2">
+        
+                        </div>
+                        </div>
+                        <div class="text">
+                            <div class="textSubTitle" id="titleTxt3"></div>
+                            <div id="txt3">
+                              
+                            </div>
+                        </div>
+
+                    </div>
             </div>
         </div>
-        </div>
+    </div>
+
 </body>
 </html>

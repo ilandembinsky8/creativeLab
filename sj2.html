@@ -9,7 +9,10 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-        
+       function goHomePg() {
+        location.href = 'sj1.html';
+        }
+
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -96,7 +99,7 @@
                  console.log(name);
                  var my_object = { "main": main, "sub": sub, "prData": prData}
                  localStorage.setItem('my_item', JSON.stringify(my_object)); 
-                location.href = "page10.html";
+                location.href = "sj3.html";
             });
          
         });

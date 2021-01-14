@@ -1,6 +1,4 @@
-function goHomePg() {
-    location.href = 'page14.html';
-}
+
 
 function mail() {
     window.location = "mailto:";

@@ -10,6 +10,10 @@
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
+        function goHomePg() {
+          location.href = 'sj1.html';
+         }
+
           function pickCSS() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -152,7 +156,7 @@
                 var prTxt = $(this).parent()[0].childNodes[0].nodeValue;
                 localStorage.setItem("main", idPr);
                 localStorage.setItem("sub", idItm);
-                location.href = "page5.html";
+                location.href = "sj2.html";
             });
         });
 

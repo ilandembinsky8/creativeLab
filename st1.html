@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 
-<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 7</title>
+    <title>page 9</title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-
+        function goHomePg() {
+        location.href = 'st1.html';
+         }
           function pickCSS() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -31,7 +33,6 @@
                 loadLang();
             }
         }
-    
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -54,7 +55,20 @@
             }
         }
 
-     function loadLang() {
+            var pickLang = "";
+            function parseId(idString) {
+            console.log(idString);
+            var num = '';
+            var z = 0;
+            for (i = 0; i < idString.length; i++) {
+                if ("" + parseInt(idString[i]) !== "NaN")
+                    num = num + idString[i];
+            }
+            z = parseInt(num);
+            return z;
+        }
+
+        function loadLang() {
            var xmlhttp = new XMLHttpRequest();
            xmlhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
@@ -79,62 +93,48 @@
                }
            };
           xmlhttp.open("GET", "js/lang.json", true);
-          xmlhttp.send();       
+          xmlhttp.send();
+         
         }
 
         function loadData() {
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
-            $('#catgTitle').text(lang.catgTitle);
-        }
-
-        function clickedItm(idNum) {
-            console.log('clicked');
-          JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
+            lang = JSON.parse(JsonLang);
             console.log(lang);
-
-            var currId = idNum;
-            var currSec = lang.page7.catg;
-            console.log(currSec);
-            var subCat = "";
-            if (currId.localeCompare("edu") === 0) {
-                subCat = currSec.edu;
-                localStorage.setItem('sub', "edu");
-                    location.href = "page11.html";
-                        
-            } else if (currId.localeCompare("career") === 0) {
-                subCat = currSec.career;
-                localStorage.setItem('sub',"career");
-                    location.href = "page11.html";
-                        
-            } else if (currId.localeCompare("politics") === 0) {
-                subCat = currSec.politics;
-                localStorage.setItem('sub', "politics");
-                    location.href = "page11.html";       
-                }
-          
+             $('#hdTitle').text(lang["hdTitles"]["starts"]);
+            $('#catgTitle').text(lang.starsTitle);
+            object = lang["stars"];
+            console.log(object);
+            counter = 0;
+            for (var i in object) {
+                counter++;
+                $('#imgTitle' + counter).text(object[i].name);
+                $('#imgTitle' + counter).attr("data", object[i].id);
+            }
         }
+
         $(function () {
-            pickCSS();
-            $('#edu, #career, #politics').click(function () {
-                var x = this.id;
-                console.log(x);
-                clickedItm(x);
+            pickCSS();   
+
+             $('body').delegate('.starFrame', 'click', function () {
+                currId = this.id;
+                idNum = parseId(currId);
+                name = $('#imgTitle' + idNum).text();
+                var prData = "" + $('#imgTitle' + idNum).attr("data");
+                val = parseInt(prData, 10);
+                localStorage.setItem("prData", val)
+                location.href = "st2.html";
             });
         });
 
-
     </script>
-
 </head>
 <body>
     <div class="header">
         <div class="headerWrapper">
             <div class="headerCont">
                 <div class="langIcon" id="lang" onclick="pickLanguage()"></div>
-                <div class="titleCont"><div class="mainTitle" id="hdTitle">פורצות דרך</div></div>
+                <div class="titleCont"><div class="mainTitle" id="hdTitle">כוכבות</div></div>
                 <div class="homeIcon" onclick="goHomePg()"></div>
             </div>
         </div>
@@ -143,25 +143,24 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="categoryTitle" id="catgTitle">קטגוריות</span>
-
+                <span class="greenTitle" id="catgTitle"></span>
             </div>
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="categoryCont">
-                        <div class="categoryWrap">
-                            <span class="edu" id="edu"></span>
-                            <span class="career" id="career"></span>
-                            <span class="politics" id="politics"></span>
-                        </div>
+                    <div class="frameRow">
+                        <div class="starFrame" id="imgFrame1"><span class="frameTitle" id="imgTitle1" data=""></span></div>
+                        <span style="border-left:10px solid transparent;"></span>
+                        <div class="starFrame" id="imgFrame2"><span class="frameTitle" id="imgTitle2" data=""></span></div>
                     </div>
+                    <div class="frameRow">
+                        <div class="starFrame" id="imgFrame3"><span class="frameTitle" id="imgTitle3" data=""></span></div>
+                        <span style="border-left:10px solid transparent;"></span>
+                        <div class="starFrame" id="imgFrame4"><span class="frameTitle" id="imgTitle4" data=""></span></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
+    </div>
 </body>
 </html>
