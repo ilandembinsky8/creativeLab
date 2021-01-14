@@ -23,7 +23,7 @@ function getLangJSON(lang) {
 function loadLang() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             console.log(myObj);

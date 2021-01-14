@@ -78,6 +78,7 @@
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
             console.log(lang);
+            $('#catgTitle').text(lang.starsTitle);
             object = lang["stars"];
             console.log(object);
             counter = 0;
@@ -90,13 +91,13 @@
 
         $(function () {
             loadLang();   
+
              $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
                 idNum = parseId(currId);
                 name = $('#imgTitle' + idNum).text();
                 var prData = "" + $('#imgTitle' + idNum).attr("data");
                 val = parseInt(prData, 10);
-                localStorage.setItem("name", name);
                 localStorage.setItem("prData", val)
                 location.href = "page8.html";
             });
@@ -118,7 +119,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="greenTitle" id="title">כוכבות</span>
+                <span class="greenTitle" id="catgTitle"></span>
             </div>
 
             <div class="pageSubCont">

@@ -45,20 +45,19 @@
         }
          $(function () {
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            var my_object = JSON.parse(localStorage.getItem('my_item'));
-            $('#catgSub1').text(my_object.sub);
-            var num = my_object.prData;
+             var lang = JSON.parse(JsonLang);
+             $('#catgMain').text(lang.countries)
+             var prData = localStorage.getItem('prData');
+             var num = prData;
              val = parseInt(num, 10);
-            console.log(num);
-            console.log(typeof (num));
              var res = loadPRData(val, "id");
              console.log(res);
+             $('#catgSub1').text(res.name);
              $('#txt1').text(res.info1.txt);
              $('#titleTxt2').text(res.info2.title);
              $('#txt2').text(res.info2.txt);
-              $('#titleTxt3').text(res.info3.title);
-              $('#txt3').text(res.info3.txt);
+             $('#titleTxt3').text(res.info3.title);
+             $('#txt3').text(res.info3.txt);
         });
     </script>
 </head>

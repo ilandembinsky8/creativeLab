@@ -74,9 +74,11 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
+            $('#catgMain').text(lang.countries)
             var object = lang["country"];
             console.log(object);
             counter = 0;
+             $('#col1, #col2').empty();
             for (var i in object) {
                     counter++;
                     var col = addToColumn();
@@ -88,23 +90,17 @@
             }
         }
 
-        function goTo() {
-            location.href = "page1.html";
-        }
 
         $(function () {
             loadLang();
-            console.log("before Clicked");
-         
+    
              $('body').delegate('.colItem', 'click', function () {
                 console.log("Clicked");
                 var prData = "" + $(this).attr("data");
-                var subCatg = $(this).text();
                 val = parseInt(prData, 10);
                console.log(prData);
                console.log(name);
-                var my_object = { "sub": subCatg, "prData": val }
-                localStorage.setItem('my_item', JSON.stringify(my_object));
+                localStorage.setItem('prData', val);
                 location.href = "page1.html";
             });
         });
@@ -126,7 +122,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="greenTitle" id="catgMain"> שאר הקהילות</span>
+                <span class="greenTitle" id="catgMain"></span>
                 <span class="split invisible">&ensp;/&ensp;</span>
                 <span class="subCat" id="catgSub1"></span>
             </div>

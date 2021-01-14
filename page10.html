@@ -61,18 +61,22 @@
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            $('#catgMain').text(lang.catgTitle);
+             $('#catgTitle').text(lang.catgTitle);
             $('#years').text(lang.page10.years);
             $('#country').text(lang.page10.country);
             $('#occupation').text(lang.page10.occupation);
-            $('#catgMain').text(my_object.main);
-            $('#catgSub1').text(my_object.sub);
-            $('#catgSub2').text(my_object.name);
+            main = my_object.main;
+            sub = my_object.sub;
+            catg = lang.categories[main];
+            $('#catgMain').html(catg.title);
+            subCatg = catg["subCat"][sub];
+            $('#catgSub1').html(subCatg);
             var num = my_object.prData;
              val = parseInt(num, 10);
             console.log(num);
             console.log(typeof (num));
             var res = loadPRData(val, "id");
+             $('#catgSub2').text(res.first_name + " " + res.last_name);
             $('#yearFill').text( res.death_year + " - " + res.birth_year);
             $('#countryFill').text(res.country);
             $('#occupFill').text(res.occupation);
@@ -95,7 +99,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat">קטגוריות</span>
+                <span class="mainCat" id="catgTitle"></span>
                 <span class="split">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>

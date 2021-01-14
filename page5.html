@@ -78,20 +78,20 @@
              JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
-            $('#catgMain').text(lang.catgTitle);
+            $('#catgTitle').text(lang.catgTitle);
             var main = localStorage.getItem("main");
             var sub = localStorage.getItem("sub");
             catg = lang.categories[main];
             subCatg = catg["subCat"][sub];
             $('#catgMain').html(catg.title);
             $('#catgSub').html(subCatg);
-            findMatches(curr2);
+            findMatches(subCatg);
             $('.colItem').click(function () {
                  var prData =""+ $(this).attr("data");
                  var name = $(this).text();
                  console.log(prData);
                  console.log(name);
-                 var my_object = { "main": main, "sub": sub, "name": name, "prData": prData}
+                 var my_object = { "main": main, "sub": sub, "prData": prData}
                  localStorage.setItem('my_item', JSON.stringify(my_object)); 
                 location.href = "page10.html";
             });
@@ -115,7 +115,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat">קטגוריות</span>
+                <span class="mainCat" id="catgTitle">קטגוריות</span>
                 <span class="split">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>

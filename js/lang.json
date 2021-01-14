@@ -2,6 +2,8 @@
 {
   "HE": {
     "catgTitle": "קטגוריות",
+    "countries": "שאר הקהילות",
+    "starsTitle": "כוכבות",
     "singer": "זמרת",
     "hdTitles": {
       "communities": "מסע בין קהילות",
@@ -299,6 +301,8 @@
 
   "EN": {
     "catgTitle": "Categories",
+    "countries": "Blah blah",
+     "starsTitle": "Blah blah",
     "singer": "blah",
     "hdTitles": {
       "communities": "blah blah",
@@ -318,81 +322,81 @@
           "s2": "sub1 category2",
           "s3": "sub1 category3",
           "s4": "sub1 category4"
-          }
-        },
+        }
+      },
       "c2": {
         "title": "category2",
         "subCat": {
-         "s1": "sub2 category1",
-         "s2": "sub2 category2",
-         "s3": "sub2 category3",
-         "s4": "sub2 category4"
+          "s1": "sub2 category1",
+          "s2": "sub2 category2",
+          "s3": "sub2 category3",
+          "s4": "sub2 category4"
         }
       },
       "c3": {
         "title": "category2",
         "subCat": {
-         "s1": "sub3 category1",
-         "s2": "sub3 category2",
-         "s3": "sub3 category3",
-         "s4": "sub3 category4"
+          "s1": "sub3 category1",
+          "s2": "sub3 category2",
+          "s3": "sub3 category3",
+          "s4": "sub3 category4"
         }
       },
       "c4": {
         "title": "category3",
         "subCat": {
-         "s1": "sub4 category1",
-         "s2": "sub4 category2",
-         "s3": "sub4 category3",
-         "s4": "sub4 category4"
+          "s1": "sub4 category1",
+          "s2": "sub4 category2",
+          "s3": "sub4 category3",
+          "s4": "sub4 category4"
         }
       },
 
       "c5": {
         "title": "category4",
         "subCat": {
-         "s1": "sub5 category1",
-         "s2": "sub5 category2",
-         "s3": "sub5 category3",
-         "s4": "sub5 category4"
+          "s1": "sub5 category1",
+          "s2": "sub5 category2",
+          "s3": "sub5 category3",
+          "s4": "sub5 category4"
         }
       },
 
       "c6": {
         "title": "category5",
         "subCat": {
-         "s1": "sub6 category1",
-         "s2": "sub6 category2",
-         "s3": "sub6 category3",
-         "s4": "sub6 category4"
+          "s1": "sub6 category1",
+          "s2": "sub6 category2",
+          "s3": "sub6 category3",
+          "s4": "sub6 category4"
         }
       },
 
       "c7": {
         "title": "category6",
         "subCat": {
-         "s1": "sub7 category1",
-         "s2": "sub7 category2",
-         "s3": "sub7 category3",
-         "s4": "sub7 category4"
+          "s1": "sub7 category1",
+          "s2": "sub7 category2",
+          "s3": "sub7 category3",
+          "s4": "sub7 category4"
         }
       },
       "c8": {
         "title": "category7",
         "subCat": {
-         "s1": "sub8 category1",
-         "s2": "sub8 category2",
-         "s3": "sub8 category3",
-         "s4": "sub8 category4"
+          "s1": "sub8 category1",
+          "s2": "sub8 category2",
+          "s3": "sub8 category3",
+          "s4": "sub8 category4"
         }
       },
       "c9": {
         "title": "category8",
         "subCat": {
-         "s1": "sub9 category1",
-         "s2": "sub9 category2",
-         "s3": "sub9 category3",
-         "s4": "sub9 category4"
+          "s1": "sub9 category1",
+          "s2": "sub9 category2",
+          "s3": "sub9 category3",
+          "s4": "sub9 category4"
         }
       }
     },
@@ -535,7 +539,7 @@
     "stars": {
       "s1": {
         "id": 1,
-        "name": "כוכבת1",
+        "name": "blah1",
         "country": "אלג'יריה",
         "birth_year": "1918",
         "death_year": "1999",
@@ -547,7 +551,7 @@
       },
       "s2": {
         "id": 2,
-        "name": "כוכבת2",
+        "name": "blah2",
         "country": "מרוקו",
         "birth_year": "1922",
         "death_year": "1997",

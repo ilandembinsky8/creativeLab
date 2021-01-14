@@ -41,6 +41,7 @@
             counter = 0;
             for (var i in object) {
                 if (object[i][searchKey] === searchValue) {
+                    $('#catgSub1').text(object[i].name);
                     $('#titleTxt1').text(object[i].country + ", "+ object[i].birth_year +"-"+object[i].death_year);
                     $('#txt1').text(object[i].info);
                     $('#videoTitle').text(lang.singer + ": " + object[i].video.name);
@@ -51,8 +52,7 @@
          $(function () {
              JsonLang = localStorage.getItem("lang");
              var lang = JSON.parse(JsonLang);
-             var name = localStorage.getItem("name");
-             $('#catgSub1').text(name);
+             $('#catgTitle').text(lang.starsTitle);
              var prData = localStorage.getItem("prData");
              prData = parseInt(prData, 10);
              findMatches(prData);
@@ -74,9 +74,9 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"> כוכבות</span>
+                <span class="mainCat" id="catgTitle"></span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="greenTitle" id="catgSub1">שם האישה</span>
+                <span class="greenTitle" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon"></span>

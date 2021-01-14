@@ -96,7 +96,10 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var subCatg = localStorage.getItem("sub");
+            subCatg = lang["page7"]["catg"][subCatg];
+            console.log(subCatg);
             $('#catgSub1').text(subCatg);
+            $('#catgTitle').text(lang.catgTitle);
             loadDetails(subCatg);
             $('.colItem').click(function () {
                 var prData = "" + $(this).attr("data");
@@ -126,7 +129,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"></span>
+                <span class="mainCat" id="catgTitle"></span>
                 <span class="split">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>

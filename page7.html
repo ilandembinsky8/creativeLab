@@ -64,7 +64,7 @@
         function loadData() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            $('#catgMain').text(lang.catgTitle);
+            $('#catgTitle').text(lang.catgTitle);
         }
 
         function clickedItm(idNum) {
@@ -79,17 +79,17 @@
             var subCat = "";
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
-                localStorage.setItem('sub', subCat);
+                localStorage.setItem('sub', "edu");
                     location.href = "page11.html";
                         
             } else if (currId.localeCompare("career") === 0) {
                 subCat = currSec.career;
-                localStorage.setItem('sub', subCat);
+                localStorage.setItem('sub',"career");
                     location.href = "page11.html";
                         
             } else if (currId.localeCompare("politics") === 0) {
                 subCat = currSec.politics;
-                localStorage.setItem('sub', subCat);
+                localStorage.setItem('sub', "politics");
                     location.href = "page11.html";       
                 }
           
@@ -121,7 +121,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="categoryTitle" id="catgMain">קטגוריות</span>
+                <span class="categoryTitle" id="catgTitle">קטגוריות</span>
 
             </div>
 
