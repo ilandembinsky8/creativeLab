@@ -108,6 +108,7 @@
         function loadData() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
             $('#catgMain').text(lang.catgTitle);
             var categ = lang["categories"];
             counter = 0;

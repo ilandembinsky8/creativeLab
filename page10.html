@@ -62,7 +62,8 @@
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             $('#catgTitle').text(lang.catgTitle);
+            $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
+            $('#catgTitle').text(lang.catgTitle);
             $('#years').text(lang.page10.years);
             $('#country').text(lang.page10.country);
             $('#occupation').text(lang.page10.occupation);

@@ -96,6 +96,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
+            $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#catgMain').text(lang.countries)
             var object = lang["country"];
             console.log(object);

@@ -49,15 +49,17 @@
             pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             var my_object = JSON.parse(localStorage.getItem('my_item'));
-            $('#catgMain').text(lang.catgTitle);
-            $('#catgSub1').text(my_object.sub);
-            $('#name').text(my_object.name);
+            $('#catgTitle').text(lang.catgTitle);
+            subCatg = lang["page7"]["catg"][my_object.sub];
+            $('#catgSub1').text(subCatg);
             var num = my_object.prData;
              val = parseInt(num, 10);
             console.log(num);
             console.log(typeof (num));
             var res = loadPRData(val, "id");
+            $('#name').text(res.first_name + " " + res.last_name);
             $('#titleTxt1').text(res.birth_year + " - " + res.death_year);
             $('#txt1').text(res.info);
         });
@@ -77,7 +79,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"> קטגוריות</span>
+                <span class="mainCat" id="catgTitle"></span>
                 <span class="split">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgSub1"></span>
                 <span class="split">&ensp;/&ensp;</span>  

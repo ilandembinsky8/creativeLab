@@ -97,8 +97,9 @@
             pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            var subCatg = localStorage.getItem("sub");
-            subCatg = lang["page7"]["catg"][subCatg];
+             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
+            var subCatgIs = localStorage.getItem("sub");
+            subCatg = lang["page7"]["catg"][subCatgIs];
             console.log(subCatg);
             $('#catgSub1').text(subCatg);
             $('#catgTitle').text(lang.catgTitle);
@@ -109,7 +110,7 @@
                var name = $(this).text();
                console.log(prData);
                console.log(name);
-                var my_object = { "sub": subCatg, "name": name, "prData": val }
+                var my_object = { "sub": subCatgIs, "prData": val }
                 localStorage.setItem('my_item', JSON.stringify(my_object));
                 location.href = "page4.html";
             });
