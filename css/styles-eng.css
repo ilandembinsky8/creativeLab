@@ -1,4 +1,6 @@
-﻿/* heebo-100 - hebrew */
+﻿
+
+/* heebo-100 - hebrew */
 @font-face {
     font-family: 'Heebo-Thin';
     font-style: normal;
@@ -248,6 +250,7 @@ a {
     text-align: left;
     text-decoration: underline;
     color: #E6E6E6;
+    cursor:pointer;
 }
 
 .category .categoryTitle {
@@ -261,6 +264,7 @@ a {
     text-align: left;
     line-height: 27px;
     color: #12FF9F;
+    cursor:pointer;
 }
 
 .category .split {
@@ -274,6 +278,8 @@ a {
     text-align: left;
     font-family: Heebo-Medium;
     color: #12FF9F;
+    display:none;
+    cursor:pointer;
 }
 
 .pageWrapper .pageSubCont {

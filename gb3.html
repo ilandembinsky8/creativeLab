@@ -46,7 +46,14 @@
             }
         }
 
-
+        function breadCrumbs() {
+            $('body').delegate('#catgMain', 'click', function () {
+                var my_object1 = JSON.parse(localStorage.getItem('my_item'));
+                var my_object_ = my_object1.sub;
+                localStorage.setItem('sub', my_object_);
+                location.href = 'gb2.html';
+            });
+        }
         $(function () {
             pickCSS();
             JsonLang = localStorage.getItem("lang");
@@ -55,7 +62,7 @@
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             $('#catgTitle').text(lang.catgTitle);
             subCatg = lang["page7"]["catg"][my_object.sub];
-            $('#catgSub1').text(subCatg);
+            $('#catgMain').text(subCatg);
             var num = my_object.prData;
              val = parseInt(num, 10);
             console.log(num);
@@ -64,6 +71,7 @@
             $('#name').text(res.first_name + " " + res.last_name);
             $('#titleTxt1').text(res.birth_year + " - " + res.death_year);
             $('#txt1').text(res.info);
+            breadCrumbs();
         });
     </script>
 </head>
@@ -83,7 +91,7 @@
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
                 <span class="split">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub1"></span>
+                <span class="mainCat" id="catgMain"></span>
                 <span class="split">&ensp;/&ensp;</span>  
                 <span class="subCat" id="name"></span>
             </div>

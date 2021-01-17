@@ -57,8 +57,26 @@
                 }
             }
         }
-       
+        function breadCrumbs() {
+            $('body').delegate('#catgTitle', 'click', function () {
+                location.href = "sj1.html";
+            });
 
+            $('body').delegate('#catgMain', 'click', function () {
+                var my_object = JSON.parse(localStorage.getItem('my_item'));
+                var my_object_ = { "main": my_object.main, "sub": "" }
+                localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                location.href = "sj2.html";
+            });
+
+            $('body').delegate('#catgSub1', 'click', function () {
+                var my_object = JSON.parse(localStorage.getItem('my_item'));
+                var my_object_ = { "main": my_object.main, "sub": my_object.sub }
+                localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                location.href = "sj2.html";
+
+            });
+        }
         $(function () {
             pickCSS();
             var my_object = JSON.parse(localStorage.getItem('my_item'));
@@ -85,6 +103,7 @@
             $('#countryFill').text(res.country);
             $('#occupFill').text(res.occupation);
             $('#txt1').text(res.info);
+            breadCrumbs();
         });
 
     </script>

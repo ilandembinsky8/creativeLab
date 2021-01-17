@@ -117,6 +117,10 @@
                 localStorage.setItem('my_item', JSON.stringify(my_object));
                 location.href = "gb3.html";
             });
+            
+         $('body').delegate('#catgTitle', 'click', function () {
+             location.href = "gb1.html";
+         });
         });
     </script>
 </head>

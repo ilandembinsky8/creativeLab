@@ -35,7 +35,7 @@
                 loadLang();
             }
         }
-
+         
          function loadPRData(searchValue, searchKey) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -63,7 +63,11 @@
              $('#titleTxt2').text(res.info2.title);
              $('#txt2').text(res.info2.txt);
              $('#titleTxt3').text(res.info3.title);
-             $('#txt3').text(res.info3.txt);
+            $('#txt3').text(res.info3.txt);
+            $('body').delegate('#catgMain', 'click', function () {
+                location.href = "cj1.html";
+          });
+
         });
     </script>
 </head>

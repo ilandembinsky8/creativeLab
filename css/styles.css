@@ -243,11 +243,12 @@ a {
     display: table;
 }
 
-.category .mainCat {
+.category .mainCat {  
     float: right;
     text-align: right;
     text-decoration: underline;
     color: #E6E6E6;
+    cursor:pointer;
 }
 
 .category .categoryTitle {
@@ -261,6 +262,7 @@ a {
     text-align: right;
     line-height: 27px;
     color: #12FF9F;
+    cursor:pointer;
 }
 
 .category .split {
@@ -274,6 +276,8 @@ a {
     text-align: right;
     font-family: Heebo-Medium;
     color: #12FF9F;
+    display:none;
+    cursor:pointer;
 }
 
 .pageWrapper .pageSubCont {
