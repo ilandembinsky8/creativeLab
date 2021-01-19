@@ -581,11 +581,10 @@ ul .catgItem {
     margin: 0px auto;
     width: 865px;
     height: 300px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #272B38 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 15px #00000029;
     border-radius: 18px;
     opacity: 1;
-    font-family: Assistant-Regular;
 }
 
 .txtModal {
@@ -601,7 +600,7 @@ ul .catgItem {
     margin-left: 35px;
     width: 85px;
     height: 45px;
-    background: #233A4F 0% 0% no-repeat padding-box;
+    background: #12FF9F 0% 0% no-repeat padding-box;
     border-radius: 22px;
     opacity: 1;
     font-size: 18px;
@@ -618,6 +617,8 @@ ul .catgItem {
 }
 a{
     text-decoration:none;
+    float:left;
+
 }
     .fa:hover {
         opacity: 0.7;
@@ -732,7 +733,10 @@ a{
     background: #25D366;
     color: white
 }
-
+.fa-telegram {
+    background: #0088cc;
+    color: white
+}
 @media only screen and (max-width: 800px) {
 
     body {
