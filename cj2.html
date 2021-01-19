@@ -8,11 +8,13 @@
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
-        
+
         function goHomePg() {
-        location.href = 'cj1.html';
-         }
+            location.href = 'cj1.html';
+        }
 
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
@@ -35,8 +37,8 @@
                 loadLang();
             }
         }
-         
-         function loadPRData(searchValue, searchKey) {
+
+        function loadPRData(searchValue, searchKey) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang);
@@ -51,23 +53,46 @@
             pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             $('#hdTitle').text(lang["hdTitles"]["communities"]);
-             $('#catgMain').text(lang.countries)
-             var prData = localStorage.getItem('prData');
-             var num = prData;
-             val = parseInt(num, 10);
-             var res = loadPRData(val, "id");
-             console.log(res);
-             $('#catgSub1').text(res.name);
-             $('#txt1').text(res.info1.txt);
-             $('#titleTxt2').text(res.info2.title);
-             $('#txt2').text(res.info2.txt);
-             $('#titleTxt3').text(res.info3.title);
+            $('#hdTitle').text(lang["hdTitles"]["communities"]);
+            $('#catgMain').text(lang.countries)
+            var prData = localStorage.getItem('prData');
+            var num = prData;
+            val = parseInt(num, 10);
+            var res = loadPRData(val, "id");
+            console.log(res);
+            $('#catgSub1').text(res.name);
+            $('#txt1').text(res.info1.txt);
+            $('#titleTxt2').text(res.info2.title);
+            $('#txt2').text(res.info2.txt);
+            $('#titleTxt3').text(res.info3.title);
             $('#txt3').text(res.info3.txt);
             $('body').delegate('#catgMain', 'click', function () {
                 location.href = "cj1.html";
-          });
+            });
+            currUrl = document.URL;
 
+            var modal = document.getElementById("shareModal");
+
+            var btn = document.getElementById("shareBtn");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            $('a', $('#share')).each(function () {
+                $(this).attr('data-url', currUrl);
+            });
         });
     </script>
 </head>
@@ -91,30 +116,44 @@
                 <span class="subCat" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
-                <span class="shareIcon"></span>
+                <span class="shareIcon" id="shareBtn"></span>
                 <span class="mailIcon" onclick="mail()"></span>
             </div>
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
                     <div class="text" id="txt1">
-                       
+
                     </div>
                     <div class="shapeCont"><div id="img" class="imageShape"></div></div>
                     <div class="text">
                         <div class="textSubTitle" id="titleTxt2"></div>
                         <div id="txt2">
-        
-                        </div>
-                        </div>
-                        <div class="text">
-                            <div class="textSubTitle" id="titleTxt3"></div>
-                            <div id="txt3">
-                              
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
+                    <div class="text">
+                        <div class="textSubTitle" id="titleTxt3"></div>
+                        <div id="txt3">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal" id="shareModal">
+                <div class="shareModalCont">
+
+                    <div class='txtModal' id="share">
+                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
+                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
+                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
+                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
+                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
+                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                    </div>
+                    <input class="close" type="button" value="סגור" style="margin-top:-25px" />
+                </div>
             </div>
         </div>
     </div>

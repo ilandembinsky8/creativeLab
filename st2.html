@@ -8,10 +8,12 @@
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
         function goHomePg() {
-        location.href = 'st1.html';
-         }
+            location.href = 'st1.html';
+        }
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -34,7 +36,7 @@
             }
         }
 
-      function findMatches(searchValue) {
+        function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var object = lang["stars"];
@@ -44,26 +46,51 @@
             for (var i in object) {
                 if (object[i][searchKey] === searchValue) {
                     $('#catgSub1').text(object[i].name);
-                    $('#titleTxt1').text(object[i].country + ", "+ object[i].birth_year +"-"+object[i].death_year);
+                    $('#titleTxt1').text(object[i].country + ", " + object[i].birth_year + "-" + object[i].death_year);
                     $('#txt1').text(object[i].info);
                     $('#videoTitle').text(lang.singer + ": " + object[i].video.name);
                 }
             }
         }
-        
+
 
         $(function () {
-             pickCSS();
-             JsonLang = localStorage.getItem("lang");
+            pickCSS();
+            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             $('#hdTitle').text(lang["hdTitles"]["starts"]);
-             $('#catgTitle').text(lang.starsTitle);
-             var prData = localStorage.getItem("prData");
-             prData = parseInt(prData, 10);
-             findMatches(prData);
+            $('#hdTitle').text(lang["hdTitles"]["starts"]);
+            $('#catgTitle').text(lang.starsTitle);
+            var prData = localStorage.getItem("prData");
+            prData = parseInt(prData, 10);
+            findMatches(prData);
             $('body').delegate('#catgTitle', 'click', function () {
                 location.href = "st1.html";
-          });
+            });
+
+            currUrl = document.URL;
+
+            var modal = document.getElementById("shareModal");
+
+            var btn = document.getElementById("shareBtn");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            $('a', $('#share')).each(function () {
+                $(this).attr('data-url', currUrl);
+            });
         });
     </script>
 </head>
@@ -86,7 +113,7 @@
                 <span class="greenTitle" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
-                <span class="shareIcon"></span>
+                <span class="shareIcon" id="shareBtn"></span>
                 <span class="mailIcon" onclick="mail()"></span>
             </div>
 
@@ -104,6 +131,20 @@
                             <p id="videoTitle" class="artistName"></p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="modal" id="shareModal">
+                <div class="shareModalCont">
+
+                    <div class='txtModal' id="share">
+                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
+                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
+                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
+                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
+                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
+                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                    </div>
+                    <input class="close" type="button" value="סגור" style="margin-top:-25px" />
                 </div>
             </div>
         </div>
