@@ -8,10 +8,13 @@
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
+        var currUrl = document.URL;
         function goHomePg() {
-        location.href = 'sj1.html';
-         }
+            location.href = 'sj1.html';
+        }
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -34,7 +37,7 @@
             }
         }
 
-         function parseId(idString) {
+        function parseId(idString) {
             console.log(idString);
             var num = '';
             var z = 0;
@@ -77,6 +80,7 @@
 
             });
         }
+
         $(function () {
             pickCSS();
             var my_object = JSON.parse(localStorage.getItem('my_item'));
@@ -94,16 +98,40 @@
             subCatg = catg["subCat"][sub];
             $('#catgSub1').html(subCatg);
             var num = my_object.prData;
-             val = parseInt(num, 10);
+            val = parseInt(num, 10);
             console.log(num);
             console.log(typeof (num));
             var res = loadPRData(val, "id");
-             $('#catgSub2').text(res.first_name + " " + res.last_name);
-            $('#yearFill').text( res.death_year + " - " + res.birth_year);
+            $('#catgSub2').text(res.first_name + " " + res.last_name);
+            $('#yearFill').text(res.death_year + " - " + res.birth_year);
             $('#countryFill').text(res.country);
             $('#occupFill').text(res.occupation);
             $('#txt1').text(res.info);
             breadCrumbs();
+            currUrl = document.URL;
+
+            var modal = document.getElementById("shareModal");
+
+            var btn = document.getElementById("shareBtn");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            $('a', $('#share')).each(function () {
+                $(this).attr('data-url', currUrl); //log every element found to console output
+          });
         });
 
     </script>
@@ -131,7 +159,7 @@
                 <span class="subCat" id="catgSub2"></span>
             </div>
             <div class="sharingIcons">
-                <span class="shareIcon"></span>
+                <span class="shareIcon" id="shareBtn"></span>
                 <span class="mailIcon" onclick="mail()"></span>
             </div>
 
@@ -144,7 +172,21 @@
                     </div>
 
                     <div class="text" id="txt1">
-                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="shareModal">
+                <div class="shareModalCont">
+
+                    <div class='txtModal' id="share">
+                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
+                        <a data-sharer="twitter"  data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
+                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
+                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
+                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
+                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                    </div>
+                    <input class="close" type="button" value="סגור" style="margin-top:-25px" />
                 </div>
             </div>
         </div>
