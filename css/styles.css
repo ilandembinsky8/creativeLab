@@ -328,10 +328,11 @@ a {
 
 .pageSubWrapper .searchCont {
     margin-top: 65px;
-    width: 70%;
+    width: 65%;
     margin-right: auto;
     margin-left: auto;
     float:right;
+    margin-bottom:35px;
 }
 
 .pageWrapper .rightBorder {
@@ -360,15 +361,15 @@ a {
     color: #979797;
 }
 
+
 .pageSubWrapper .table {
-    margin-top: 35px;
-    float: right;
-    width: 100%;
+    width: 1000px;
 }
+
 
 .table .fstCol {
     float: right;
-    width: 40%;
+    width: 45%;
 }
 
 .fstCol .columnCont, .sndCol .columnCont {
@@ -388,14 +389,14 @@ a {
 .table .splitLine {
     float: right;
     height: 700px;
-    margin-right: 40px;
+    margin-right: 20px;
     width: 0px;
     border-right: 2px solid #707070;
 }
 
 .table .sndCol {
     float: right;
-    width: 40%;
+    width: 45%;
 }
 
 .pageSubWrapper .categoryCont {
@@ -415,7 +416,7 @@ a {
 .categoryWrap .edu {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 28%;
     height: 140px;
     background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -425,7 +426,7 @@ a {
 .categoryWrap .career {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 28%;
     height: 140px;
     background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -435,7 +436,7 @@ a {
 .categoryWrap .politics {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 28%;
     height: 140px;
     background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -589,8 +590,8 @@ ul .catgItem {
 
 .txtModal {
     margin-top: 55px;
-    float: right;
-    text-align: right;
+    float: left;
+    text-align: left;
     border-right: 35px solid transparent;
 }
 
@@ -612,7 +613,7 @@ ul .catgItem {
     width: 30px;
     text-align: center;
     text-decoration: none;
-    margin: 5px 2px;
+    margin: 5px 20px;
     border-radius: 50%;
 }
 a{
@@ -948,7 +949,8 @@ a{
 
     .pageSubWrapper .searchCont {
         margin-top: 65px;
-        width: 85%;
+        margin-bottom: 0px;
+        width: 65%;
     }
 
     .pageWrapper .rightBorder {
@@ -1383,6 +1385,7 @@ a{
 
     .pageSubWrapper .searchCont {
         margin-top: 65px;
+        margin-bottom: 0px;
         width: 85%;
         float: none;
     }
