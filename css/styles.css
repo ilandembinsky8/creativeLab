@@ -467,7 +467,7 @@ a {
     width: 100%;
     display: inline-block;
     text-align: center;
-    line-height: 700px;
+    margin-top: 280px;
     font-family: 'Segoe UI';
     font-size: 17px;
     color: #000000;
@@ -1082,7 +1082,7 @@ a{
         width: 100%;
         display: inline-block;
         text-align: center;
-        line-height: 230px;
+        margin-top: 80px;
         font-family: 'Segoe UI';
         font-size: 17px;
         color: #000000;
@@ -1514,7 +1514,7 @@ a{
         width: 100%;
         display: inline-block;
         text-align: center;
-        line-height: 230px;
+        margin-top: 80px;
         font-family: 'Segoe UI';
         font-size: 15px;
         color: #000000;

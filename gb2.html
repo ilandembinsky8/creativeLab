@@ -56,41 +56,45 @@
             }
         }
 
-        function findMatches(searchValue) {
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            var object = lang["gbreaking"];
-            console.log(object);
-            counter = 0;
-            for (var i in object) {
-                if (object[i][searchKey].indexOf(searchValue) > -1) {
-                    counter++;
-                    var col = addToColumn();
-                    console.log(col);
-                    console.log(object[i].first_name);
-                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
-                    document.getElementById(col).innerHTML += elem;
-                }
-            }
-        }
+        //function findMatches(searchValue) {
+        //    counter = 0;
+        //    getPersonalities().then(value => {
+        //        object = value["data"];
+        //        for (var i in object) {
+        //            if (object[i]["translations"][searchKey].indexOf(searchValue) > -1) {
+        //                counter++;
+        //                console.log("here");
+        //                console.log(object);
+        //                var col = addToColumn();
+        //                console.log(col);
+        //                console.log(object[i].first_name);
+        //                var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
+        //                document.getElementById(col).innerHTML += elem;
+        //            }
+        //        }
+        //    })
+        //}
 
 
-        function loadDetails(searchValue){
+      async function loadDetails(searchValue){
            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
+           var lang = JSON.parse(JsonLang);
+           langIs = localStorage.getItem("langID");
             $('#catgMain').text(lang.catgTitle);
-            var object = lang["gbreaking"];
-            var searchKey = "area";
+            counter = 0;
+            $('#col1, #col2').empty();
+            object = await getCategory(searchValue);
             console.log(object);
             counter = 0;
-              $('#col1, #col2').empty();
             for (var i in object) {
-                if (object[i][searchKey].indexOf(searchValue) > -1) {
-                    var col = addToColumn();
-                    console.log(col);
-                    console.log(object[i].first_name);
-                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
-                    document.getElementById(col).innerHTML += elem;
+                 subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        var col = addToColumn();
+                        console.log(col);
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        document.getElementById(col).innerHTML += elem;
+                    }
                 }
             }
         }

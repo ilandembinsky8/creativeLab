@@ -57,28 +57,44 @@
             }
         }
 
-        function findMatches(searchValue) {
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            var object = lang["data"];
-            console.log(object);
-            var searchKey = "sub_category";
-            console.log(typeof (searchKey));
+       async function findMatchesSub(searchValue) {
             counter = 0;
-              $('#col1, #col2').empty();
+            $('#col1, #col2').empty();
+            object = await getSubCategory(searchValue);
+             console.log(object);
+             counter = 0;
+            $('#col1, #col2').empty();
             for (var i in object) {
-                if (object[i][searchKey].indexOf(searchValue) > -1) {
-                    counter++;
-                    var col = addToColumn();
-                    console.log(col);
-                    console.log(object[i].first_name);
-                    var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + object[i].first_name + " " + object[i].last_name + '</span>';
-                    document.getElementById(col).innerHTML += elem;
+                 subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        var col = addToColumn();
+                        console.log(col);
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        document.getElementById(col).innerHTML += elem;
+                    }
                 }
             }
         }
 
-      
+        async function findMatchesCatg(searchValue) {
+            counter = 0;
+            $('#col1, #col2').empty();
+            object = await getCategory(searchValue);
+             console.log(object);
+             counter = 0;
+            for (var i in object) {
+                 subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        var col = addToColumn();
+                        console.log(col);
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        document.getElementById(col).innerHTML += elem;
+                    }
+                }
+            }
+        }
 
         $(function () {
             pickCSS();
@@ -98,6 +114,9 @@
                     subCatg = catg["subCat"][sub];
                     $('#catgSub').css("display", "inline-block");
                     $('#catgSub').html(subCatg);
+
+                } else {
+                    findMatchesCatg(catg.title)
                 }
  
             } else {
@@ -105,12 +124,13 @@
                var sub = localStorage.getItem("sub");
                catg = lang.categories[main];
                 subCatg = catg["subCat"][sub];
+                console.log('sub catg is: ' +subCatg);
                 $('#catgSub').css("display", "inline-block");
                $('#catgMain').html(catg.title);
                $('#catgSub').html(subCatg);
             }
          
-            findMatches(subCatg);
+            findMatchesSub(subCatg);
             $('.colItem').click(function () {
                  var prData =""+ $(this).attr("data");
                  var name = $(this).text();

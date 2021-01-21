@@ -49,33 +49,51 @@
             return z;
         }
 
-        function loadPRData(searchValue, searchKey) {
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            console.log(lang);
-            var object = lang["data"];
-            for (var i in object) {
-                if (object[i][searchKey] === searchValue) {
-                    return object[i];
+
+       async function loadPRData(searchValue) {
+            langIs = localStorage.getItem("langID");
+            json = await getPersonalities();
+            var filtered = $(json.data).filter(function (i, n) {
+            var bool = false;
+                for (j = 0; j < n.translations.length; j++) {
+                    if (n.id === searchValue && n.translations[j].language === langIs) {
+                          $('#catgSub2').text(n.translations[j].first_name + " " + n.translations[j].last_name);
+                          $('#yearFill').text(n.death_year + " - " + n.birth_year);
+                          $('#countryFill').text(n.translations[j].country);
+                          $('#occupFill').text(n.translations[j].occupation);
+                          $('#txt1').text(n.translations[j].info);
+                bool = true;
+               }
                 }
-            }
+            return bool;
+            });
+         console.log(filtered);
+         return filtered;
         }
+
         function breadCrumbs() {
             $('body').delegate('#catgTitle', 'click', function () {
                 location.href = "sj1.html";
             });
 
             $('body').delegate('#catgMain', 'click', function () {
+                console.log('main 1');
                 var my_object = JSON.parse(localStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": "" }
+                  console.log('main 2');
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                  console.log('main 3');
                 location.href = "sj2.html";
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
+                  console.log('sub 1');
                 var my_object = JSON.parse(localStorage.getItem('my_item'));
+                  console.log('sub 2');
                 var my_object_ = { "main": my_object.main, "sub": my_object.sub }
+                  console.log('sub 3');
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                  console.log('sub 4');
                 location.href = "sj2.html";
 
             });
@@ -101,12 +119,8 @@
             val = parseInt(num, 10);
             console.log(num);
             console.log(typeof (num));
-            var res = loadPRData(val, "id");
-            $('#catgSub2').text(res.first_name + " " + res.last_name);
-            $('#yearFill').text(res.death_year + " - " + res.birth_year);
-            $('#countryFill').text(res.country);
-            $('#occupFill').text(res.occupation);
-            $('#txt1').text(res.info);
+            loadPRData(val);
+          
             breadCrumbs();
             currUrl = document.URL;
 

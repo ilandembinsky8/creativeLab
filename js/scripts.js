@@ -64,3 +64,86 @@ function loadLang() {
     xmlhttp.send();
 
 }
+
+//Json methods
+function getToken() {
+    var d = $.Deferred();
+    $.post("https://headless-cms.bh.org.il/beit-hatfutsot/auth/authenticate",
+        { email: "rfid-app@bh.org.il", password: "sMM8V69JmQw!9!1" },
+        function (data, status) {
+            console.log(data.data.token);
+            d.resolve(data.data.token);
+        }
+    );
+    return d.promise();
+}
+
+async function getPersonalities() {
+    var d = $.Deferred();
+    var token = await getToken();
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token;
+    $.ajax({
+        url: url,
+        type: "GET",
+        crossDomain: true,
+        async: true,
+        success: function (result) {
+            console.log(result);
+            d.resolve(result);
+        },
+        error: function (jqXHR, status) {
+            console.log(status);
+        }
+    });
+    return d.promise();
+}
+
+async function getCountries() {
+    var d = $.Deferred();
+    var token = await getToken();
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_countries?fields=*,translations.*,translations.timeline.*&access_token=" + token;
+    $.ajax({
+        url: url,
+        type: "GET",
+        crossDomain: true,
+        async: true,
+        success: function (result) {
+            console.log(result);
+            d.resolve(result);
+        },
+        error: function (jqXHR, status) {
+            console.log(status);
+        }
+    });
+    return d.promise();
+}
+
+
+async function getCategory(category) {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].category === category) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function getSubCategory(sub_category) {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].sub_category === sub_category) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+

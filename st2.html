@@ -39,16 +39,21 @@
         function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            var object = lang["stars"];
+             langIs = localStorage.getItem("langID");
+            var object = await getCategory('Art');
             console.log(object);
             var searchKey = "id";
             counter = 0;
             for (var i in object) {
                 if (object[i][searchKey] === searchValue) {
-                    $('#catgSub1').text(object[i].name);
-                    $('#titleTxt1').text(object[i].country + ", " + object[i].birth_year + "-" + object[i].death_year);
-                    $('#txt1').text(object[i].info);
-                    $('#videoTitle').text(lang.singer + ": " + object[i].video.name);
+                    subObj = object[i].translations;
+                    for (var j in subObj) {
+                        if (subObj[j]["language"].indexOf(langIs) > -1)
+                        $('#catgSub1').text(subObj[j].first_name + ' ' +subObj[j].last_name);
+                        $('#titleTxt1').text(subObj[j].country + ", " + object[i].birth_year + "-" + object[i].death_year);
+                        $('#txt1').text(subObj[j].info);
+                        $('#videoTitle').text(lang.singer + ": " + subObj[j].video);
+                    }
                 }
             }
         }

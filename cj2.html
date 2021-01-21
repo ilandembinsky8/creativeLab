@@ -37,18 +37,37 @@
                 loadLang();
             }
         }
-
-        function loadPRData(searchValue, searchKey) {
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            console.log(lang);
-            var object = lang["country"];
-            for (var i in object) {
-                if (object[i][searchKey] === searchValue) {
-                    return object[i];
-                }
-            }
+         function loadCountryInfo(res) {
+              $('#catgSub1').text(res.name);
+              $('#txt1').text(res.timeline[0].info);
+              $('#titleTxt2').text(res.timeline[0].timeframe);
+              $('#txt2').text(res.timeline[0].info);
+              $('#titleTxt3').text(res.timeline[1].timeframe);
+              $('#txt3').text(res.timeline[1].info);
+            
         }
+
+        function loadPRData(searchKey) {
+          
+            console.log(lang);
+            getCountries().then(value => {
+                object = value["data"];
+                var langIs = localStorage.getItem('langID'); 
+                var result = object.find(obj => {
+                    return obj.id === searchKey;
+            })
+                subObj = getCountry(result["translations"], langIs);
+                loadCountryInfo(subObj);
+            });
+        }
+        function getCountry(object, langIs) {   
+            var result = object.find(obj => {
+                return obj.language.indexOf(langIs) !== -1
+            })
+            return result;
+  
+        }
+
         $(function () {
             pickCSS();
             JsonLang = localStorage.getItem("lang");
@@ -58,14 +77,8 @@
             var prData = localStorage.getItem('prData');
             var num = prData;
             val = parseInt(num, 10);
-            var res = loadPRData(val, "id");
-            console.log(res);
-            $('#catgSub1').text(res.name);
-            $('#txt1').text(res.info1.txt);
-            $('#titleTxt2').text(res.info2.title);
-            $('#txt2').text(res.info2.txt);
-            $('#titleTxt3').text(res.info3.title);
-            $('#txt3').text(res.info3.txt);
+            var res = loadPRData(val);
+            
             $('body').delegate('#catgMain', 'click', function () {
                 location.href = "cj1.html";
             });
@@ -93,6 +106,8 @@
             $('a', $('#share')).each(function () {
                 $(this).attr('data-url', currUrl);
             });
+
+           
         });
     </script>
 </head>

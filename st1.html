@@ -97,19 +97,25 @@
          
         }
 
-        function loadData() {
+        async function loadData() {
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
+            langIs = localStorage.getItem("langID");
             console.log(lang);
              $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
-            object = lang["stars"];
+            object = await getCategory('Art');
             console.log(object);
             counter = 0;
             for (var i in object) {
-                counter++;
-                $('#imgTitle' + counter).text(object[i].name);
-                $('#imgTitle' + counter).attr("data", object[i].id);
+                subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        counter++;
+                        $('#imgTitle' + counter).text(subObj[j].first_name + ' '+ subObj[j].last_name );
+                        $('#imgTitle' + counter).attr("data", object[i].id);
+                    }
+                }
             }
         }
 
