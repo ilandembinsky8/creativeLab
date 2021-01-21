@@ -94,35 +94,31 @@
             }
         }
 
-      async function loadCountry() {
+        async function loadCountry() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
             console.log('here');
-            res = await getCategory('Art');
-            console.log(res);
-            console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#search').attr("placeholder", lang["search"]["cj"]);
             $('#catgMain').text(lang.countries);
-            counter = 0;    
-             $('#col1, #col2').empty();
-            object = await getCountries();
-            console.log(object);
             counter = 0;
-            for (var i in object) {
-                 subObj = object[i].translations;
-                for (var j in subObj) {
-                    if (subObj[j]["language"].indexOf(langIs) > -1) {
-                          var col = addToColumn();
-                          counter++;           
-                          var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].name +  '</span>';
-                          document.getElementById(col).innerHTML += elem;
-                      }
-                    
+            $('#col1, #col2').empty();
+            json = await getCountries();
+            console.log(json);
+            counter = 0;
+            var filtered = $(json.data).filter(function (i, n) {
+                var bool = false;
+                for (j = 0; j < n.translations.length; j++) {
+                    if (n.translations[j].language === langIs) {
+                        console.log("ddd");
+                        var col = addToColumn();
+                        counter++;
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + n.id + '>' + n.translations[j].name + '</span>';
+                        document.getElementById(col).innerHTML += elem;
+                    }
                 }
-            }
-          
+            })
         }
 
 

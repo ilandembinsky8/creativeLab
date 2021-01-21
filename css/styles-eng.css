@@ -310,9 +310,13 @@ a {
 .textSubTitle {
     float: left;
     color: #12FF9F;
-    display: block;
+    display: table-row;
     width: 100%;
 }
+    .textSubTitle:after {
+        content: "\00a0 \00a0 \00a0";
+        display: table;
+    }
 
 .pageSubWrapper .shapeCont {
     float: left;
@@ -757,10 +761,13 @@ ul .catgItem {
     .textSubTitle {
         float: left;
         color: #12FF9F;
-        display: block;
+        display: table-row;
         width: 100%;
     }
-
+        .textSubTitle:after {
+            content: "\00a0 \00a0 \00a0";
+            display: table;
+        }
     .pageSubWrapper .shapeCont {
         float: left;
         width: 100%;
@@ -1194,10 +1201,13 @@ ul .catgItem {
     .textSubTitle {
         float: left;
         color: #12FF9F;
-        display: block;
+        display: table-row;
         width: 100%;
     }
-
+        .textSubTitle:after {
+            content: "\00a0 \00a0 \00a0";
+            display: table;
+        }
     .pageSubWrapper .shapeCont {
         float: left;
         width: 100%;
