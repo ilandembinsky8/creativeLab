@@ -21,11 +21,13 @@
                 if (pickLang.localeCompare("he") === 0) {
                     pickLang = "en";
                     swapStyleSheet('css/styles-eng.css');
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                     localStorage.setItem("langID", "en");
                     loadLang();
                 } else if (pickLang.localeCompare("en") === 0) {
                     pickLang = "he";
                     localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
                     swapStyleSheet('css/styles.css');
                     loadLang();
                 }

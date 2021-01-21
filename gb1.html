@@ -67,10 +67,14 @@
                        if (pickLang.localeCompare("he") === 0) {
                            console.log("to hebrew");
                            localStorage.setItem("langID", "he");
+                           $('#lang').css("background-image", "url('../cut/Group 128.png')");     
+                           changeIcons(0);
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
                            console.log("to english");
                            localStorage.setItem("langID", "en");
+                           $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                           changeIcons(1);
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {

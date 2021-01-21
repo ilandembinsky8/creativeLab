@@ -18,6 +18,7 @@
                 if (pickLang.localeCompare("he") === 0) {
                     pickLang = "en";
                     swapStyleSheet('css/styles.css');
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
                     localStorage.setItem("langID", "he");
                     loadLang();
                 } else if (pickLang.localeCompare("en") === 0) {
@@ -79,10 +80,12 @@
                        if (pickLang.localeCompare("he") === 0) {
                            console.log("to hebrew");
                            localStorage.setItem("langID", "he");
+                           $('#lang').css("background-image", "url('../cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
                            console.log("to english");
                            localStorage.setItem("langID", "en");
+                           $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {

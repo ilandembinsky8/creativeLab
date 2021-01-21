@@ -301,6 +301,7 @@ a {
     letter-spacing: 0px;
     color: #C6C6C6;
     display: block;
+    width:100%;
 }
 
     .pageSubWrapper .text:nth-of-type(1) {
@@ -313,10 +314,6 @@ a {
     display: table-row;
     width: 100%;
 }
-    .textSubTitle:after {
-        content: "\00a0 \00a0 \00a0";
-        display: table;
-    }
 
 .pageSubWrapper .shapeCont {
     float: left;
@@ -754,7 +751,7 @@ ul .catgItem {
         display: block;
     }
 
-        .pageSubWrapper .text:nth-of-type(1) {
+        .text:nth-of-type(1) {
             margin-top: 30px;
         }
 
@@ -764,10 +761,7 @@ ul .catgItem {
         display: table-row;
         width: 100%;
     }
-        .textSubTitle:after {
-            content: "\00a0 \00a0 \00a0";
-            display: table;
-        }
+  
     .pageSubWrapper .shapeCont {
         float: left;
         width: 100%;
@@ -1204,10 +1198,7 @@ ul .catgItem {
         display: table-row;
         width: 100%;
     }
-        .textSubTitle:after {
-            content: "\00a0 \00a0 \00a0";
-            display: table;
-        }
+  
     .pageSubWrapper .shapeCont {
         float: left;
         width: 100%;

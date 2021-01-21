@@ -23,11 +23,13 @@ function pickCSS() {
         if (pickLang.localeCompare("he") === 0) {
             pickLang = "en";
             swapStyleSheet('css/styles.css');
+          
             localStorage.setItem("langID", "he");
             loadLang();
         } else if (pickLang.localeCompare("en") === 0) {
             pickLang = "he";
             localStorage.setItem("langID", "en");
+          
             swapStyleSheet('css/styles-eng.css');
             loadLang();
         }
@@ -49,9 +51,11 @@ function loadLang() {
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
                     localStorage.setItem("langID", "en");
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
@@ -96,6 +100,18 @@ async function getPersonalities() {
         }
     });
     return d.promise();
+}
+
+function changeIcons(num) {
+    if (num === 0) {
+        $('#edu').css("background-image", "url('../cut/Group 232.png')");
+        $('#career').css("background-image", "url('../cut/Group 233.png')");
+        $('#politics').css("background-image", "url('../cut/Group 234.png')");
+    } else {
+        $('#edu').css("background-image", "url('../cut/Group 232 - eng.png')");
+        $('#career').css("background-image", "url('../cut/Group 233 - eng.png')");
+        $('#politics').css("background-image", "url('../cut/Group 234 - eng.png')");
+    }
 }
 
 async function getCountries() {
