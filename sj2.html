@@ -9,33 +9,58 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+
        function goHomePg() {
         location.href = 'sj1.html';
         }
 
-        function pickLanguage() {
+        function loadLang() {
+        clearTXT('sj2');
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var myObj = JSON.parse(this.responseText);
+            var pickLang = localStorage.getItem("langID");
+            console.log(myObj);
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                console.log('load lang, lang id is: ' + pickLang);
+                if (pickLang.localeCompare("he") === 0) {
+                    localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                } else {
+                    localStorage.setItem("langID", "en");
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                localStorage.setItem("lang", JSON.stringify(myObj.HE));
+            }
+             fillTitles();
+        }
+    };
+    xmlhttp.open("GET", "js/lang.json", true);
+    xmlhttp.send();
+ }
+
+     function pickLanguage() {
+            clearTXT('sj2');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "en");
-                    loadLang();
-                } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
-                    localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
-                }
-            } else {
-                pickLang = "he";
-                localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
-            }
-            fillTitles();
-        }
+                    pickCSS();
 
+                } else if (pickLang.localeCompare("en") === 0) {
+                    localStorage.setItem("langID", "he");
+                    pickCSS();
+                  }
+            } else {
+                localStorage.setItem("langID", "he");
+                pickCSS();
+            }
+        }
            function parseId(idString) {
             console.log(idString);
             var num = '';
@@ -47,14 +72,20 @@
             z = parseInt(num);
             return z;
         }
+
         function fillTitles() {
+            var pickLang = localStorage.getItem("langID");
+            console.log('lang id:  ' + pickLang);
               JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            console.log("fill titles: ");
             console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
              $('#search').attr("placeholder", lang["search"]["sj"]);
             $('#catgTitle').text(lang.catgTitle);
+            fillColumns();
         }
+
         function addToColumn() {
             var c1 = document.getElementById("col1").childElementCount;
             var c2 = document.getElementById("col2").childElementCount;
@@ -65,10 +96,50 @@
             }
         }
 
+        function fillColumns() {
+
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang); 
+            var item = JSON.parse(localStorage.getItem('my_item_back'));
+            if (typeof item !== 'undefined' && item !== null) {
+               var main = item.main
+               var sub = item.sub;
+                catg = lang.categories[main];
+                  $('#catgMain').html(catg.title);
+                if (sub.localeCompare("") !== 0) {
+                    subCatg = catg["subCat"][sub];
+                    $('#catgSub').css("display", "inline-block");
+                    $('#catgSub').html(subCatg);
+                     findMatchesSub(subCatg);
+
+                } else {
+                    findMatchesCatg(catg.title)
+                }
+ 
+            } else {
+               var main = localStorage.getItem("main");
+                var sub = localStorage.getItem("sub");
+                console.log(lang.categories);
+                console.log(lang["categories"]["c1"]);
+                catg = lang.categories[main];
+                subCatg = catg["subCat"][sub];
+                console.log('catg is: ' + catg.title);
+                console.log('sub catg is: ' +subCatg);
+                $('#catgSub').css("display", "inline-block");
+                $('#catgMain').html(catg.title);
+                $('#catgSub').html(subCatg);
+                findMatchesSub(subCatg);
+            }
+         
+           
+        }
+
        async function findMatchesSub(searchValue) {
-            counter = 0;
+           counter = 0;
+            langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
-            object = await getSubCategory(searchValue);
+           object = await getSubCategory(searchValue);
+           console.log("find matches sub: ");
              console.log(object);
              counter = 0;
             $('#col1, #col2').empty();
@@ -87,6 +158,7 @@
 
         async function findMatchesCatg(searchValue) {
             counter = 0;
+             langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
             object = await getCategory(searchValue);
              console.log(object);
@@ -109,40 +181,13 @@
             fillTitles();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            var item = JSON.parse(localStorage.getItem('my_item_back'));
-            if (typeof item !== 'undefined' && item !== null) {
-               var main = item.main
-               var sub = item.sub;
-                catg = lang.categories[main];
-                  $('#catgMain').html(catg.title);
-                if (sub.localeCompare("") !== 0) {
-                    subCatg = catg["subCat"][sub];
-                    $('#catgSub').css("display", "inline-block");
-                    $('#catgSub').html(subCatg);
-
-                } else {
-                    findMatchesCatg(catg.title)
-                }
- 
-            } else {
-               var main = localStorage.getItem("main");
-                var sub = localStorage.getItem("sub");
-                console.log(lang.categories);
-                console.log(lang["categories"]["c1"]);
-                catg = lang.categories[main];
-                subCatg = catg["subCat"][sub];
-                console.log('sub catg is: ' +subCatg);
-                $('#catgSub').css("display", "inline-block");
-               $('#catgMain').html(catg.title);
-               $('#catgSub').html(subCatg);
-            }
-         
-            findMatchesSub(subCatg);
-            $('.colItem').click(function () {
+            
+           $('body').delegate('.colItem', 'click', function () {
+                console.log("clicked");
                  var prData =""+ $(this).attr("data");
                  var name = $(this).text();
-                 console.log(prData);
-                 console.log(name);
+                 var main = localStorage.getItem("main");
+                 var sub = localStorage.getItem("sub");
                  var my_object = { "main": main, "sub": sub, "prData": prData}
                  localStorage.setItem('my_item', JSON.stringify(my_object)); 
                 location.href = "sj3.html";
@@ -167,7 +212,7 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="sj2">
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>

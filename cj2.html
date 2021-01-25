@@ -15,6 +15,37 @@
         function goHomePg() {
             location.href = 'cj1.html';
         }
+        
+       function loadLang() {
+        clearTXT('sj3');
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var myObj = JSON.parse(this.responseText);
+            var pickLang = localStorage.getItem("langID");
+            console.log(myObj);
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                console.log('load lang, lang id is: ' + pickLang);
+                if (pickLang.localeCompare("he") === 0) {
+                    localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                } else {
+                    localStorage.setItem("langID", "en");
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                localStorage.setItem("lang", JSON.stringify(myObj.HE));
+            }
+            loadAndFill();
+        }
+    };
+    xmlhttp.open("GET", "js/lang.json", true);
+    xmlhttp.send();
+  }
+
 
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
@@ -37,13 +68,34 @@
                 loadLang();
             }
         }
-         function loadCountryInfo(res) {
-              $('#catgSub1').text(res.name);
-              $('#txt1').text(res.timeline[0].info);
-              $('#titleTxt2').text(res.timeline[0].timeframe);
-              $('#txt2').text(res.timeline[0].info);
-              $('#titleTxt3').text(res.timeline[1].timeframe);
-              $('#txt3').text(res.timeline[1].info);
+        function loadCountryInfo(res) {
+            if (typeof res !== 'undefined' && res !== null) {
+                $('#catgSub1').text(res["name"]);
+                $('#catgSub1').css("display", "inline-block");
+                $('#txt1').text(res.timeline[0].info);
+                $('#titleTxt2').text(res.timeline[0].timeframe);
+                $('#txt2').text(res.timeline[0].info);
+                $('#titleTxt3').text(res.timeline[1].timeframe);
+                $('#txt3').text(res.timeline[1].info);
+            } else {
+                $('#catgSub1').text("");            
+                $('#txt1').text("");   
+                $('#titleTxt2').text("");   
+                $('#txt2').text("");   
+                $('#titleTxt3').text("");   
+                $('#txt3').text("");   
+            }
+        }
+
+        function loadAndFill() {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            $('#hdTitle').text(lang["hdTitles"]["communities"]);
+            $('#catgMain').text(lang.countries)
+            var prData = localStorage.getItem('prData');
+            var num = prData;
+            val = parseInt(num, 10);
+            loadPRData(val);
             
         }
 
@@ -72,13 +124,7 @@
             pickCSS();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            $('#hdTitle').text(lang["hdTitles"]["communities"]);
-            $('#catgMain').text(lang.countries)
-            var prData = localStorage.getItem('prData');
-            var num = prData;
-            val = parseInt(num, 10);
-            var res = loadPRData(val);
-            
+            loadAndFill();
             $('body').delegate('#catgMain', 'click', function () {
                 location.href = "cj1.html";
             });

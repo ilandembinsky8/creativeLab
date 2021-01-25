@@ -14,32 +14,61 @@
         function goHomePg() {
             location.href = 'st1.html';
         }
+
+        function loadLang() {
+         var xmlhttp = new XMLHttpRequest();
+         xmlhttp.onreadystatechange = function () {
+         if (this.readyState === 4 && this.status === 200) {
+            var myObj = JSON.parse(this.responseText);
+            var pickLang = localStorage.getItem("langID");
+            console.log(myObj);
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                console.log('load lang, lang id is: ' + pickLang);
+                if (pickLang.localeCompare("he") === 0) {
+                    localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                } else {
+                    localStorage.setItem("langID", "en");
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                localStorage.setItem("lang", JSON.stringify(myObj.HE));
+            }
+            fillAndLoad();
+        }
+    };
+    xmlhttp.open("GET", "js/lang.json", true);
+    xmlhttp.send();
+
+        }
+
         function pickLanguage() {
+            clearTXT('st2');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    pickCSS();
+
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
-                }
+                    pickCSS();
+                  }
             } else {
-                pickLang = "he";
                 localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         }
+        
 
         async function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             langIs = localStorage.getItem("langID");
+            langIs = localStorage.getItem("langID");
+            console.log("find matches: " + langIs);
             var object = await getCategory('Art');
             console.log(object);
             var searchKey = "id";
@@ -48,26 +77,50 @@
                 if (object[i][searchKey] === searchValue) {
                     subObj = object[i].translations;
                     for (var j in subObj) {
-                        if (subObj[j]["language"].indexOf(langIs) > -1)
-                        $('#catgSub1').text(subObj[j].first_name + ' ' +subObj[j].last_name);
-                        $('#titleTxt1').text(subObj[j].country + ", " + object[i].birth_year + "-" + object[i].death_year);
-                        $('#txt1').text(subObj[j].info);
-                        $('#videoTitle').text(lang.singer + ": " + subObj[j].video);
+                        if (subObj[j]["language"].indexOf(langIs) > -1) {
+                            console.log("same lang: " + langIs);
+                            console.log("same lang: " + subObj[j]["language"]);
+                            $('#catgSub1').text(subObj[j].first_name + ' ' + subObj[j].last_name);
+                            $('#titleTxt1').text(subObj[j].country + ", " + object[i].birth_year + "-" + object[i].death_year);
+                            $('#txt1').text(subObj[j].info);
+                            $('#videoTitle').text(lang.singer + ": " + subObj[j].video);
+                            return;
+                        } else {
+                            console.log('empty text: find matches');
+                            console.log("diff lang: " + langIs);
+                            console.log("diff lang: " + subObj[j]["language"]);
+                            $('#catgSub1').empty();
+                            $('#titleTxt1').empty();
+                            $('#txt1').empty();
+                            $('#videoTitle').empty();
+                        }
                     }
+                } else {
+                    $('#catgSub1').empty();
+                    $('#titleTxt1').empty();
+                    $('#txt1').empty();
+                    $('#videoTitle').empty();
                 }
             }
         }
 
-
-        $(function () {
-            pickCSS();
+        function fillAndLoad() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            langIs = localStorage.getItem("langID");
+            console.log('fillAndLoad method; lang id is: ' + langIs);
+            console.log('fillAndLoad method; lang is: ');
+            console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             var prData = localStorage.getItem("prData");
             prData = parseInt(prData, 10);
             findMatches(prData);
+        }
+
+        $(function () {
+            pickCSS();
+            fillAndLoad();
             $('body').delegate('#catgTitle', 'click', function () {
                 location.href = "st1.html";
             });
@@ -96,6 +149,11 @@
             $('a', $('#share')).each(function () {
                 $(this).attr('data-url', currUrl);
             });
+
+        
+
+
+
         });
     </script>
 </head>
@@ -110,7 +168,7 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="st2">
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>

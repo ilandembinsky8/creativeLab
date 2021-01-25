@@ -11,10 +11,10 @@
 
     <script>
         function goHomePg() {
-          location.href = 'sj1.html';
-         }
+            location.href = 'sj1.html';
+        }
 
-          function pickCSS() {
+        function pickCSS() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -48,70 +48,68 @@
         }
 
         function pickLanguage() {
+            clearTXT('sj1');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    pickCSS();
+
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
+                    pickCSS();
                 }
             } else {
-                pickLang = "he";
                 localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         }
 
         function loadLang() {
-           var xmlhttp = new XMLHttpRequest();
-           xmlhttp.onreadystatechange = function() {
-               if (this.readyState == 4 && this.status == 200) {
-                   var myObj = JSON.parse(this.responseText);
-                   var pickLang = localStorage.getItem("langID");
-                   console.log(myObj);
-                   if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                       if (pickLang.localeCompare("he") === 0) {
-                           console.log("to hebrew");
-                           localStorage.setItem("langID", "he");
-                           $('#lang').css("background-image", "url('../cut/Group 128.png')");                  
-                           localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                       } else {
-                           console.log("to english");
-                           localStorage.setItem("langID", "en");
-                           $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
-                           localStorage.setItem("lang", JSON.stringify(myObj.EN));
-                       }
-                   } else {
-                       localStorage.setItem("langID", "he");
-                       localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                   }
-                   loadData();
-               }
-           };
-          xmlhttp.open("GET", "js/lang.json", true);
-          xmlhttp.send();
-          
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    var pickLang = localStorage.getItem("langID");
+                    console.log(myObj);
+                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                        if (pickLang.localeCompare("he") === 0) {
+                            console.log("to hebrew");
+                            localStorage.setItem("langID", "he");
+                            $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                        } else {
+                            console.log("to english");
+                            localStorage.setItem("langID", "en");
+                            $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                        }
+                    } else {
+                        localStorage.setItem("langID", "he");
+                        localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                    }
+                    loadData();
+                }
+            };
+            xmlhttp.open("GET", "js/lang.json", true);
+            xmlhttp.send();
+
         }
-        function goToSubCategory(num1,subCat) {
-            JsonLang = localStorage.getItem("lang");     
+
+        function goToSubCategory(num1, subCat) {
+            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log("here");
             console.log(lang);
             curr = lang.categories;
-  
+
             localStorage.setItem("main", mainCat);
             localStorage.setItem("sub", subCat2);
             location.href = "page5.html";
         }
 
         function loadData() {
+            clearTXT('sj1');
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
@@ -124,23 +122,21 @@
                 currId = 'c' + counter;
                 $('#' + currId).empty();
                 var cache = $('#' + currId).children();
-                $('#'+currId).text(categ[i].title).append(cache);
+                $('#' + currId).text(categ[i].title).append(cache);
                 var sub = categ[i].subCat;
                 for (j in sub) {
                     subCount++;
-                    var elem = '<div id=' + 's' + subCount + '  class="subCat">'+sub[j]+'</div>';
+                    var elem = '<div id=' + 's' + subCount + '  class="subCat">' + sub[j] + '</div>';
                     document.getElementById(currId).innerHTML += elem;
                 }
             }
         }
 
-       
-
         $(function () {
             pickCSS();
-             $('body').delegate('.catgItem', 'click', function () {
+            $('body').delegate('.catgItem', 'click', function () {
                 var idItm = this.id;
-                var value =  $('#' + idItm)[0].childNodes[0].nodeValue;
+                var value = $('#' + idItm)[0].childNodes[0].nodeValue;
                 $('#catgTitle').addClass('mainCat');
                 $('#catgMain').removeClass('greenTitle');
                 $('#split').removeClass('invisible');
@@ -152,11 +148,10 @@
             });
 
             $('body').delegate('.subCat', 'click', function () {
-                var idItm = this.id;
-                var idPr = ($(this).parent().attr('id'));
+                var idItm = (this).id;
+                var idPr = $(this).parent().attr('id');
                 var prTxt = $(this).parent()[0].childNodes[0].nodeValue;
                 localStorage.setItem("main", idPr);
-                console.log(idPr);
                 localStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
@@ -177,7 +172,7 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="sj1">
         <div class="pageWrapper">
             <div class="category">
                 <span class="greenTitle" id="catgTitle">קטגוריות</span>
@@ -189,39 +184,39 @@
                 <div class="pageSubWrapper">
                     <div class="catgList">
                         <ul>
-                            <li id="c1" class="catgItem">                            
-                          
+                            <li id="c1" class="catgItem">
+
                             </li>
                             <li id="c2" class="catgItem">
-                                
-                         
+
+
                             </li>
                             <li id="c3" class="catgItem">
-                                
-                         
+
+
                             </li>
                             <li id="c4" class="catgItem">
-                                
-                               
+
+
                             </li>
                             <li id="c5" class="catgItem">
-                                
+
 
                             </li>
                             <li id="c6" class="catgItem">
-                               
+
 
                             </li>
                             <li id="c7" class="catgItem">
 
- 
+
                             </li>
                             <li id="c8" class="catgItem">
-                                
-                            
+
+
                             </li>
                             <li id="c9" class="catgItem">
-                                
+
 
                             </li>
                         </ul>

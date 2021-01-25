@@ -11,41 +11,20 @@
     <script>
         function goHomePg() {
         location.href = 'st1.html';
-         }
+        }
+
           function pickCSS() {
-            var pickLang = localStorage.getItem("langID");
+              var pickLang = localStorage.getItem("langID");
+              localStorage.clear();
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
                     swapStyleSheet('css/styles.css');
                     $('#lang').css("background-image", "url('../cut/Group 128.png')");
                     localStorage.setItem("langID", "he");
                     loadLang();
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "en");
                     swapStyleSheet('css/styles-eng.css');
-                    loadLang();
-                }
-            } else {
-                pickLang = "he";
-                localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
-            }
-        }
-        function pickLanguage() {
-            var pickLang = localStorage.getItem("langID");
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
-                    localStorage.setItem("langID", "en");
-                    loadLang();
-                } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
-                    localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
                     loadLang();
                 }
             } else {
@@ -56,7 +35,23 @@
             }
         }
 
-            var pickLang = "";
+        function pickLanguage() {
+            clearTXT('st1');
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                     localStorage.setItem("langID", "en");
+                     pickCSS(); 
+                } else if (pickLang.localeCompare("en") === 0) {
+                    localStorage.setItem("langID", "he");
+                    pickCSS();
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                pickCSS();
+            }
+        }
+
             function parseId(idString) {
             console.log(idString);
             var num = '';
@@ -76,14 +71,13 @@
                    var myObj = JSON.parse(this.responseText);
                    var pickLang = localStorage.getItem("langID");
                    console.log(myObj);
+                   localStorage.clear();
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
-                           console.log("to hebrew");
                            localStorage.setItem("langID", "he");
                            $('#lang').css("background-image", "url('../cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
-                           console.log("to english");
                            localStorage.setItem("langID", "en");
                            $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
@@ -113,10 +107,13 @@
             for (var i in object) {
                 subObj = object[i].translations;
                 for (var j in subObj) {
+                     counter++;
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                        counter++;
-                        $('#imgTitle' + counter).text(subObj[j].first_name + ' '+ subObj[j].last_name );
+                        $('#imgTitle' + counter).text(subObj[j].first_name + ' ' + subObj[j].last_name);
                         $('#imgTitle' + counter).attr("data", object[i].id);
+                    } else {
+                         $('#imgTitle' + counter).text("");
+                         $('#imgTitle' + counter).attr("data", "");
                     }
                 }
             }
@@ -124,7 +121,6 @@
 
         $(function () {
             pickCSS();   
-
              $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
                 idNum = parseId(currId);
@@ -149,9 +145,9 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="st1">
         <div class="pageWrapper">
-            <div class="category">
+            <div class="categoryST">
                 <span class="greenTitle" id="catgTitle"></span>
             </div>
 

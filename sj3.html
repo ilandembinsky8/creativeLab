@@ -15,27 +15,52 @@
         function goHomePg() {
             location.href = 'sj1.html';
         }
-        function pickLanguage() {
+
+       function loadLang() {
+        clearTXT('sj3');
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var myObj = JSON.parse(this.responseText);
+            var pickLang = localStorage.getItem("langID");
+            console.log(myObj);
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                console.log('load lang, lang id is: ' + pickLang);
+                if (pickLang.localeCompare("he") === 0) {
+                    localStorage.setItem("langID", "he");
+                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
+                } else {
+                    localStorage.setItem("langID", "en");
+                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                localStorage.setItem("lang", JSON.stringify(myObj.HE));
+            }
+            fillAndLoad();
+        }
+    };
+    xmlhttp.open("GET", "js/lang.json", true);
+    xmlhttp.send();
+        }
+
+  function pickLanguage() {
+            clearTXT('sj3');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
-                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    pickCSS();
+
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
-                }
+                    pickCSS();
+                  }
             } else {
-                pickLang = "he";
                 localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         }
 
@@ -54,9 +79,13 @@
 
        async function loadPRData(searchValue) {
             langIs = localStorage.getItem("langID");
-            json = await getPersonalities();
+           json = await getPersonalities();
+           $('.fieldTxt').each(function (index, obj) {
+                $(obj).text("");
+           });
+           $('.text').text("");
             var filtered = $(json.data).filter(function (i, n) {
-            var bool = false;
+                var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
                     if (n.id === searchValue && n.translations[j].language === langIs) {
                           $('#catgSub2').text(n.translations[j].first_name + " " + n.translations[j].last_name);
@@ -101,8 +130,8 @@
             });
         }
 
-        $(function () {
-            pickCSS();
+
+        function fillAndLoad() {
             var my_object = JSON.parse(localStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -123,6 +152,11 @@
             console.log(typeof (num));
             loadPRData(val);
           
+        }
+
+        $(function () {
+            pickCSS();
+            fillAndLoad();
             breadCrumbs();
             currUrl = document.URL;
 
@@ -163,7 +197,7 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="sj3">
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>

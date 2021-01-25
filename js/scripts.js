@@ -21,15 +21,9 @@ function pickCSS() {
     var pickLang = localStorage.getItem("langID");
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
         if (pickLang.localeCompare("he") === 0) {
-            pickLang = "en";
             swapStyleSheet('css/styles.css');
-          
-            localStorage.setItem("langID", "he");
             loadLang();
-        } else if (pickLang.localeCompare("en") === 0) {
-            pickLang = "he";
-            localStorage.setItem("langID", "en");
-          
+        } else if (pickLang.localeCompare("en") === 0) {     
             swapStyleSheet('css/styles-eng.css');
             loadLang();
         }
@@ -49,6 +43,7 @@ function loadLang() {
             var pickLang = localStorage.getItem("langID");
             console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
                     $('#lang').css("background-image", "url('../cut/Group 128.png')");
@@ -163,3 +158,15 @@ async function getSubCategory(sub_category) {
     return filtered;
 }
 
+function clearTXT(idElem) {
+    console.log("clearing txts" + idElem);
+    //$(function () {
+    //    $("#" + idElem).contents();
+    //    return this.nodeType === Node.TEXT_NODE;
+    //}).remove();
+    $("*").each(function (i, e) {
+        if (e.nodeType === Node.TEXT_NODE) {
+            e.nodeValue='';
+        }
+    });
+}

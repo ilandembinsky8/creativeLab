@@ -222,6 +222,13 @@ a {
     background-position: left;
     background-repeat: no-repeat;
 }
+.categoryST {
+    width: 91%;
+    margin-top: 15px;
+    text-align: right;
+    line-height: 27px;
+    color: #12FF9F;
+}
 
 .category {
     width: 100%;
@@ -510,6 +517,7 @@ a {
 .catgList {
     float: right;
     width: 100%;
+    margin-top:30px;
 }
 
     .catgList ul {
@@ -848,6 +856,14 @@ a{
         background-image: url('../cut/Group 41.svg');
         background-position: left;
         background-repeat: no-repeat;
+    }
+
+    .categoryST {
+        width: 88%;
+        margin-top: 15px;
+        text-align: right;
+        line-height: 27px;
+        color: #12FF9F;
     }
 
     .category {
@@ -1285,6 +1301,14 @@ a{
         background-image: url('../cut/Group 41.svg');
         background-position: left;
         background-repeat: no-repeat;
+    }
+
+    .categoryST {
+        width: 89%;
+        margin-top: 15px;
+        text-align: right;
+        line-height: 27px;
+        color: #12FF9F;
     }
 
     .category {

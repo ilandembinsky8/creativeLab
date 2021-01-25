@@ -33,26 +33,24 @@
                 loadLang();
             }
         }
-    
-        function pickLanguage() {
+
+
+
+     function pickLanguage() {
+            clearTXT('gb1');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    pickCSS();
+
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
-                }
+                    pickCSS();
+                  }
             } else {
-                pickLang = "he";
                 localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         }
 
@@ -146,7 +144,7 @@
         </div>
         <div class="borderBtm"></div>
     </div>
-    <div class="pageCont">
+    <div class="pageCont" id="gb1">
         <div class="pageWrapper">
             <div class="category">
                 <span class="categoryTitle" id="catgTitle">קטגוריות</span>

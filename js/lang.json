@@ -321,9 +321,9 @@
     },
     "categories": {
       "c1": {
-        "title": "category1",
+        "title": "Art",
         "subCat": {
-          "s1": "sub1 category1",
+          "s1": "Visual Art",
           "s2": "sub1 category2",
           "s3": "sub1 category3",
           "s4": "sub1 category4"
