@@ -33,6 +33,7 @@
                 swapStyleSheet('css/styles.css');
                 loadLang();
             }
+            fillTitles();
         }
 
            function parseId(idString) {
@@ -46,7 +47,14 @@
             z = parseInt(num);
             return z;
         }
-
+        function fillTitles() {
+              JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            console.log(lang);
+            $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
+             $('#search').attr("placeholder", lang["search"]["sj"]);
+            $('#catgTitle').text(lang.catgTitle);
+        }
         function addToColumn() {
             var c1 = document.getElementById("col1").childElementCount;
             var c2 = document.getElementById("col2").childElementCount;
@@ -98,12 +106,9 @@
 
         $(function () {
             pickCSS();
-             JsonLang = localStorage.getItem("lang");
+            fillTitles();
+            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            console.log(lang);
-            $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
-             $('#search').attr("placeholder", lang["search"]["sj"]);
-            $('#catgTitle').text(lang.catgTitle);
             var item = JSON.parse(localStorage.getItem('my_item_back'));
             if (typeof item !== 'undefined' && item !== null) {
                var main = item.main
@@ -121,8 +126,10 @@
  
             } else {
                var main = localStorage.getItem("main");
-               var sub = localStorage.getItem("sub");
-               catg = lang.categories[main];
+                var sub = localStorage.getItem("sub");
+                console.log(lang.categories);
+                console.log(lang["categories"]["c1"]);
+                catg = lang.categories[main];
                 subCatg = catg["subCat"][sub];
                 console.log('sub catg is: ' +subCatg);
                 $('#catgSub').css("display", "inline-block");

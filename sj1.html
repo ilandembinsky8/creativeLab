@@ -115,7 +115,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
-            $('#catgMain').text(lang.catgTitle);
+            $('#catgTitle').text(lang.catgTitle);
             var categ = lang["categories"];
             counter = 0;
             for (var i in categ) {
@@ -138,7 +138,6 @@
 
         $(function () {
             pickCSS();
-            
              $('body').delegate('.catgItem', 'click', function () {
                 var idItm = this.id;
                 var value =  $('#' + idItm)[0].childNodes[0].nodeValue;
@@ -157,6 +156,7 @@
                 var idPr = ($(this).parent().attr('id'));
                 var prTxt = $(this).parent()[0].childNodes[0].nodeValue;
                 localStorage.setItem("main", idPr);
+                console.log(idPr);
                 localStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
