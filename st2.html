@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
+
+
         function goHomePg() {
             location.href = 'st1.html';
         }
@@ -113,6 +115,7 @@
             console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
+            $("#close").val(lang.close);
             var prData = localStorage.getItem("prData");
             prData = parseInt(prData, 10);
             findMatches(prData);
@@ -172,7 +175,7 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
@@ -206,7 +209,7 @@
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value="סגור" style="margin-top:240px" />
+                    <input class="close" type="button" value="" style="margin-top:240px" id="close" />
                 </div>
             </div>
         </div>

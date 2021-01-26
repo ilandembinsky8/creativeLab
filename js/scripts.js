@@ -1,7 +1,7 @@
 
 
 function mail() {
-    window.location = "mailto:";
+    window.location = "mailto:?subject=Anu – Museum of the jewish people";
 }
 
 function swapStyleSheet(sheet) {

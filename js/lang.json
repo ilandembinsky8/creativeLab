@@ -5,9 +5,10 @@
     "countries": "שאר הקהילות",
     "starsTitle": "כוכבות",
     "singer": "זמרת",
+    "close": "סגור",
     "hdTitles": {
       "communities": "מסע בין קהילות",
-      "starts": "כוכבים",
+      "starts": "כוכבות",
       "groundbreaking": "פורצות דרך",
       "starsJour": "מסע בין כוכבים"
     },
@@ -28,10 +29,7 @@
       "c2": {
         "title": "ספורט",
         "subCat": {
-         "s1": "בלה בלה1",
-         "s2": "2בלה בלה",
-         "s3": "3בלה בלה",
-         "s4": "4בלה בלה"
+        
         }
       },
       "c3": {
@@ -45,22 +43,16 @@
 
       },
       "c4": {
-        "title": "שואה וכבורה",
+        "title": "שואה וגבורה",
         "subCat": {
-         "s1": "בלה בלה1",
-         "s2": "2בלה בלה",
-         "s3": "3בלה בלה",
-         "s4": "4בלה בלה"
+         
         }
       },
 
       "c5": {
         "title": "תקשורת",
         "subCat": {
-         "s1": "1בלה בלה",
-         "s2": "2בלה בלה",
-         "s3": "בלה בלה3",
-         "s4":  "בלה בלה4"
+       
         }
       },
 
@@ -77,28 +69,19 @@
       "c7": {
         "title": "פוליטיקה",
         "subCat": {
-         "s1": "1בלה בלה",
-         "s2": "2בלה בלה",
-         "s3": "בלה בלה3",
-         "s4": "בלה בלה4"
+       
         }
       },
       "c8": {
         "title": "צבא",
         "subCat": {
-         "s1": "1בלה בלה",
-         "s2": "2בלה בלה",
-         "s3": "בלה בלה3",
-         "s4": "בלה בלה4"
+         
         }
       },
       "c9": {
         "title": "דמויות משפיעות",
         "subCat": {
-          "s1": "1בלה בלה",
-          "s2": "2בלה בלה",
-          "s3": "בלה בלה3",
-          "s4": "בלה בלה4"
+        
         }
       }
      },
@@ -309,11 +292,12 @@
     "countries": "Blah blah",
     "starsTitle": "Blah blah",
     "singer": "blah",
+    "close": "close",
     "hdTitles": {
       "communities": "blah blah",
-      "starts": "blah blah",
-      "groundbreaking": "blah blah",
-      "starsJour": "blah blah"
+      "starts": "Shining Stars",
+      "groundbreaking": "Trailblazing Women",
+      "starsJour": "Star Track"
     },
     "communities": {
       "iran": "blah",
@@ -599,9 +583,9 @@
       }
     },
     "search": {
-      "sj": "Search blah blah",
+      "sj": " Search jewish stars",
       "cj": "Search blah blah",
-      "gb": "Search blah blah"
+      "gb": "Search trailblazing women"
     }
   }
 }

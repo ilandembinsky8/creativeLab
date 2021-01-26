@@ -155,6 +155,13 @@
                 localStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
+              $('body').delegate('.singleCat', 'click', function () {
+                var idItm = "";
+                var idPr = (this).id;
+                localStorage.setItem("main", idPr);
+                localStorage.setItem("sub", idItm);
+                location.href = "sj2.html";
+            });
         });
 
     </script>
@@ -176,7 +183,7 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="greenTitle" id="catgTitle">קטגוריות</span>
-                <span class="split invisible" id="split">&ensp;/&ensp;</span>
+                <span class="split invisible" id="split1">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>
 
@@ -187,7 +194,7 @@
                             <li id="c1" class="catgItem">
 
                             </li>
-                            <li id="c2" class="catgItem">
+                            <li id="c2" class="catgItem singleCat">
 
 
                             </li>
@@ -195,11 +202,11 @@
 
 
                             </li>
-                            <li id="c4" class="catgItem">
+                            <li id="c4" class="catgItem singleCat">
 
 
                             </li>
-                            <li id="c5" class="catgItem">
+                            <li id="c5" class="catgItem singleCat">
 
 
                             </li>
@@ -207,15 +214,15 @@
 
 
                             </li>
-                            <li id="c7" class="catgItem">
+                            <li id="c7" class="catgItem singleCat">
 
 
                             </li>
-                            <li id="c8" class="catgItem">
+                            <li id="c8" class="catgItem singleCat">
 
 
                             </li>
-                            <li id="c9" class="catgItem">
+                            <li id="c9" class="catgItem singleCat">
 
 
                             </li>

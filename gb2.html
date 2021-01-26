@@ -113,6 +113,7 @@
             console.log(subCatg);
             $('#catgSub1').text(subCatg);
             $('#catgTitle').text(lang.catgTitle);
+            $('#split1').css("display", "inline-block");
             loadDetails(subCatg);
         }
 
@@ -178,7 +179,7 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>
 

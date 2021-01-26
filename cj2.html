@@ -71,7 +71,7 @@
         function loadCountryInfo(res) {
             if (typeof res !== 'undefined' && res !== null) {
                 $('#catgSub1').text(res["name"]);
-                $('#catgSub1').css("display", "inline-block");
+                $('#catgSub1,#split1').css("display", "inline-block");
                 $('#txt1').text(res.timeline[0].info);
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
@@ -92,6 +92,7 @@
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#catgMain').text(lang.countries)
+            $("#close").val(lang.close);
             var prData = localStorage.getItem('prData');
             var num = prData;
             val = parseInt(num, 10);
@@ -173,7 +174,7 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgMain"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="subCat" id="catgSub1"></span>
             </div>
             <div class="sharingIcons">
@@ -213,7 +214,7 @@
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value="סגור" style="margin-top:240px" />
+                    <input class="close" type="button" value="סגור" style="margin-top:240px" id="close"/>
                 </div>
             </div>
         </div>

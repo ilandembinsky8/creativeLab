@@ -235,7 +235,7 @@ a {
     margin-bottom: 15px;
 }
 
-    .category::after {
+    .category ::after {
         content: "\a \a \a";
         display: table;
     }
@@ -276,6 +276,7 @@ a {
     float: right;
     text-align: right;
     color: #E6E6E6;
+    display:none;
 }
 
 .category .subCat {
@@ -425,30 +426,33 @@ a {
 .categoryWrap .edu {
     cursor: pointer;
     display: inline-block;
-    width: 28%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
-    border-left: 10px solid transparent;
+    /*border-left: 10px solid transparent;*/
+    background-position: center;
 }
 
 .categoryWrap .career {
     cursor: pointer;
     display: inline-block;
-    width: 28%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
-    border-left: 10px solid transparent;
+    /*border-left: 10px solid transparent;*/
+    background-position: center;
 }
 
 .categoryWrap .politics {
     cursor: pointer;
     display: inline-block;
-    width: 28%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
+    background-position: center;
 }
 
 .pageSubWrapper .frameRow {
@@ -573,6 +577,7 @@ ul .catgItem {
 .invisible {
     display: none;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -1047,13 +1052,13 @@ a{
     }
 
     .categoryWrap .edu {
-        cursor:pointer;
+        cursor: pointer;
         display: inline-block;
         width: 30%;
         height: 140px;
         background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        border-left: 10px solid transparent;
+        background-position: center;
     }
 
     .categoryWrap .career {
@@ -1063,7 +1068,7 @@ a{
         height: 140px;
         background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        border-left: 10px solid transparent;
+        background-position: center;
     }
 
     .categoryWrap .politics {
@@ -1073,6 +1078,7 @@ a{
         height: 140px;
         background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
+        background-position: center;
     }
 
     .pageSubWrapper .frameRow {
@@ -1486,35 +1492,39 @@ a{
     .categoryCont .categoryWrap {
         margin-right: auto;
         margin-left: auto;
-        width: 90%;
+        width: 100%;
         padding: 0px;
     }
 
     .categoryWrap .edu {
-        display: inline-block;
-        width: 30%;
+        display: block;
+        width: 100%;
         height: 140px;
         background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        border-left: 10px solid transparent;
+        margin-bottom: 20px;
+        background-position: center;
     }
 
     .categoryWrap .career {
-        display: inline-block;
-        width: 30%;
+        display: block;
+        width: 100%;
         height: 140px;
         background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        border-left: 10px solid transparent;
+        margin-bottom: 20px;
+        background-position: center;
     }
 
     .categoryWrap .politics {
-        display: inline-block;
-        width: 30%;
+        display: block;
+        width: 100%;
         height: 140px;
         background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
+        background-position: center;
     }
+ 
 
     .pageSubWrapper .frameRow {
         float: right;

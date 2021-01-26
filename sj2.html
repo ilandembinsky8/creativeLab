@@ -61,7 +61,8 @@
                 pickCSS();
             }
         }
-           function parseId(idString) {
+
+        function parseId(idString) {
             console.log(idString);
             var num = '';
             var z = 0;
@@ -76,7 +77,7 @@
         function fillTitles() {
             var pickLang = localStorage.getItem("langID");
             console.log('lang id:  ' + pickLang);
-              JsonLang = localStorage.getItem("lang");
+            JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log("fill titles: ");
             console.log(lang);
@@ -97,41 +98,43 @@
         }
 
         function fillColumns() {
-
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang); 
+            var lang = JSON.parse(JsonLang);
             var item = JSON.parse(localStorage.getItem('my_item_back'));
             if (typeof item !== 'undefined' && item !== null) {
-               var main = item.main
-               var sub = item.sub;
+                var main = item.main
+                var sub = item.sub;
                 catg = lang.categories[main];
-                  $('#catgMain').html(catg.title);
+                $('#catgMain').html(catg.title);
                 if (sub.localeCompare("") !== 0) {
                     subCatg = catg["subCat"][sub];
-                    $('#catgSub').css("display", "inline-block");
+                    $('#catgSub,#split1,#split2').css("display", "inline-block");
                     $('#catgSub').html(subCatg);
-                     findMatchesSub(subCatg);
-
+                    findMatchesSub(subCatg);
                 } else {
-                    findMatchesCatg(catg.title)
+                    $('#split1').css("display", "inline-block");
+                    $('#split2').css("display", "none");
+                    $('#catgMain').addClass('greenTitle');
+                    findMatchesCatg(catg.title);
                 }
- 
             } else {
-               var main = localStorage.getItem("main");
+                var main = localStorage.getItem("main");
                 var sub = localStorage.getItem("sub");
-                console.log(lang.categories);
-                console.log(lang["categories"]["c1"]);
                 catg = lang.categories[main];
-                subCatg = catg["subCat"][sub];
-                console.log('catg is: ' + catg.title);
-                console.log('sub catg is: ' +subCatg);
-                $('#catgSub').css("display", "inline-block");
                 $('#catgMain').html(catg.title);
-                $('#catgSub').html(subCatg);
-                findMatchesSub(subCatg);
+                if (sub.localeCompare("") !== 0) {
+                    subCatg = catg["subCat"][sub];
+                    $('#catgSub,#split1,#split2').css("display", "inline-block");
+                    $('#catgMain').html(catg.title);
+                    $('#catgSub').html(subCatg);
+                    findMatchesSub(subCatg);
+                } else {
+                    $('#split1').css("display", "inline-block");
+                    $('#split2').css("display", "none");
+                    $('#catgMain').addClass('greenTitle');
+                    findMatchesCatg(catg.title);
+                }
             }
-         
-           
         }
 
        async function findMatchesSub(searchValue) {
@@ -176,9 +179,27 @@
             }
         }
 
+        function breadCrumbs() {
+            $('body').delegate('#catgTitle', 'click', function () {
+                location.href = "sj1.html";
+            });
+
+            $('body').delegate('#catgMain', 'click', function () {
+                console.log('main 1');
+                var main = localStorage.getItem("main");
+                var my_object_ = { "main":main, "sub": "" }
+                console.log('main 2');
+                localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                console.log('main 3');
+                location.href = "sj2.html";
+            });
+
+        }
+
         $(function () {
             pickCSS();
             fillTitles();
+            breadCrumbs()
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             
@@ -193,9 +214,6 @@
                 location.href = "sj3.html";
             });
            
-          $('body').delegate('#catgTitle', 'click', function () {
-            location.href = "sj1.html";
-         });
         });
 
     </script>
@@ -216,9 +234,9 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgMain"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split2">&ensp;/&ensp;</span>
                 <span class="subCat" id="catgSub"></span>
             </div>
 

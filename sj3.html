@@ -92,7 +92,8 @@
                           $('#yearFill').text(n.death_year + " - " + n.birth_year);
                           $('#countryFill').text(n.translations[j].country);
                           $('#occupFill').text(n.translations[j].occupation);
-                          $('#txt1').text(n.translations[j].info);
+                        $('#txt1').text(n.translations[j].info);
+
                 bool = true;
                }
                 }
@@ -111,20 +112,20 @@
                 console.log('main 1');
                 var my_object = JSON.parse(localStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": "" }
-                  console.log('main 2');
+                console.log('main 2');
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                  console.log('main 3');
+                console.log('main 3');
                 location.href = "sj2.html";
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
-                  console.log('sub 1');
+                console.log('sub 1');
                 var my_object = JSON.parse(localStorage.getItem('my_item'));
-                  console.log('sub 2');
+                console.log('sub 2');
                 var my_object_ = { "main": my_object.main, "sub": my_object.sub }
-                  console.log('sub 3');
+                console.log('sub 3');
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                  console.log('sub 4');
+                console.log('sub 4');
                 location.href = "sj2.html";
 
             });
@@ -140,16 +141,16 @@
             $('#years').text(lang.page10.years);
             $('#country').text(lang.page10.country);
             $('#occupation').text(lang.page10.occupation);
+            $("#close").val(lang.close);
             main = my_object.main;
             sub = my_object.sub;
             catg = lang.categories[main];
             $('#catgMain').html(catg.title);
             subCatg = catg["subCat"][sub];
             $('#catgSub1').html(subCatg);
+            $('#catgSub1,#catgSub2,#split1,#split2,#split3').css("display", "inline-block");
             var num = my_object.prData;
             val = parseInt(num, 10);
-            console.log(num);
-            console.log(typeof (num));
             loadPRData(val);
           
         }
@@ -201,11 +202,11 @@
         <div class="pageWrapper">
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgMain"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split2">&ensp;/&ensp;</span>
                 <span class="mainCat" id="catgSub1"></span>
-                <span class="split">&ensp;/&ensp;</span>
+                <span class="split" id="split3">&ensp;/&ensp;</span>
                 <span class="subCat" id="catgSub2"></span>
             </div>
             <div class="sharingIcons">
@@ -236,7 +237,7 @@
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value="סגור" style="margin-top:240px" />
+                    <input class="close" type="button" value="סגור" style="margin-top:240px" id="close" />
                 </div>
             </div>
         </div>
