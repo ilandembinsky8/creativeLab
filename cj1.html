@@ -64,15 +64,12 @@
                if (this.readyState == 4 && this.status == 200) {
                    var myObj = JSON.parse(this.responseText);
                    var pickLang = localStorage.getItem("langID");
-                   console.log(myObj);
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
-                           console.log("to hebrew");
                            localStorage.setItem("langID", "he");
                             $('#lang').css("background-image", "url('../cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
-                           console.log("to english");
                            localStorage.setItem("langID", "en");
                             $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
@@ -81,7 +78,7 @@
                        localStorage.setItem("langID", "he");
                        localStorage.setItem("lang", JSON.stringify(myObj.HE));
                    }
-                   loadCountry();
+                   loadData();
                }
            };
           xmlhttp.open("GET", "js/lang.json", true);
@@ -98,24 +95,20 @@
             }
         }
 
-        async function loadCountry() {
+        async function loadData() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            console.log('here');
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#search').attr("placeholder", lang["search"]["cj"]);
             $('#catgMain').text(lang.countries);
-            counter = 0;
             $('#col1, #col2').empty();
             json = await getCountries();
-            console.log(json);
             counter = 0;
             var filtered = $(json.data).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
                     if (n.translations[j].language === langIs) {
-                        console.log("ddd");
                         var col = addToColumn();
                         counter++;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + n.id + '>' + n.translations[j].name + '</span>';
@@ -128,14 +121,9 @@
 
         $(function () {
             pickCSS();
-            //console.log('Personalities');
-            //getPersonalities().then(value => console.log(value));
              $('body').delegate('.colItem', 'click', function () {
-                console.log("Clicked");
                 var prData = "" + $(this).attr("data");
                 val = parseInt(prData, 10);
-               console.log(prData);
-               console.log(name);
                 localStorage.setItem('prData', val);
                 location.href = "cj2.html";
             });

@@ -9,19 +9,19 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+
         function goHomePg() {
         location.href = 'gb1.html';
-         }
+        }
+
           function pickCSS() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
                     swapStyleSheet('css/styles.css');
                     localStorage.setItem("langID", "he");
                     loadLang();
                 } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
                     localStorage.setItem("langID", "en");
                     swapStyleSheet('css/styles-eng.css');
                     loadLang();
@@ -37,7 +37,6 @@
 
 
      function pickLanguage() {
-            clearTXT('gb1');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -60,16 +59,14 @@
                if (this.readyState == 4 && this.status == 200) {
                    var myObj = JSON.parse(this.responseText);
                    var pickLang = localStorage.getItem("langID");
-                   console.log(myObj);
+                  
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
-                           console.log("to hebrew");
                            localStorage.setItem("langID", "he");
                            $('#lang').css("background-image", "url('../cut/Group 128.png')");     
                            changeIcons(0);
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
-                           console.log("to english");
                            localStorage.setItem("langID", "en");
                            $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
                            changeIcons(1);
@@ -94,14 +91,10 @@
         }
 
         function clickedItm(idNum) {
-            console.log('clicked');
           JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            console.log(lang);
-
             var currId = idNum;
             var currSec = lang.page7.catg;
-            console.log(currSec);
             var subCat = "";
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
@@ -124,7 +117,6 @@
             pickCSS();
             $('#edu, #career, #politics').click(function () {
                 var x = this.id;
-                console.log(x);
                 clickedItm(x);
             });
         });

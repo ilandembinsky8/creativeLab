@@ -1,11 +1,22 @@
 
 
 function mail() {
-    window.location = "mailto:?subject=Anu – Museum of the jewish people";
+    window.location = "mailto:?subject=Anu - Museum of the jewish people";
 }
 
 function swapStyleSheet(sheet) {
     document.getElementById("pagestyle").setAttribute("href", sheet);
+}
+
+function parseId(idString) {
+    var num = '';
+    var z = 0;
+    for (i = 0; i < idString.length; i++) {
+        if ("" + parseInt(idString[i]) !== "NaN")
+            num = num + idString[i];
+    }
+    z = parseInt(num);
+    return z;
 }
 
 function getLangJSON(lang) {
@@ -19,21 +30,41 @@ function getLangJSON(lang) {
 
 function pickCSS() {
     var pickLang = localStorage.getItem("langID");
+    localStorage.clear();
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
         if (pickLang.localeCompare("he") === 0) {
             swapStyleSheet('css/styles.css');
+            $('#lang').css("background-image", "url('../cut/Group 128.png')");
+            localStorage.setItem("langID", "he");
             loadLang();
-        } else if (pickLang.localeCompare("en") === 0) {     
+        } else if (pickLang.localeCompare("en") === 0) {
+            localStorage.setItem("langID", "en");
             swapStyleSheet('css/styles-eng.css');
             loadLang();
         }
     } else {
-        pickLang = "he";
         localStorage.setItem("langID", "he");
         swapStyleSheet('css/styles.css');
         loadLang();
     }
 }
+
+function pickLanguage() {
+    var pickLang = localStorage.getItem("langID");
+    if (typeof pickLang !== 'undefined' && pickLang !== null) {
+        if (pickLang.localeCompare("he") === 0) {
+            localStorage.setItem("langID", "en");
+            pickCSS();
+        } else if (pickLang.localeCompare("en") === 0) {
+            localStorage.setItem("langID", "he");
+            pickCSS();
+        }
+    } else {
+        localStorage.setItem("langID", "he");
+        pickCSS();
+    }
+}
+
 
 function loadLang() {
     var xmlhttp = new XMLHttpRequest();
@@ -41,7 +72,6 @@ function loadLang() {
         if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
-            console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
@@ -57,6 +87,7 @@ function loadLang() {
                 localStorage.setItem("langID", "he");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
+            
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);

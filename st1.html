@@ -9,6 +9,7 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
+
         function goHomePg() {
         location.href = 'st1.html';
         }
@@ -36,7 +37,6 @@
         }
 
         function pickLanguage() {
-            clearTXT('st1');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -52,17 +52,6 @@
             }
         }
 
-            function parseId(idString) {
-            console.log(idString);
-            var num = '';
-            var z = 0;
-            for (i = 0; i < idString.length; i++) {
-                if ("" + parseInt(idString[i]) !== "NaN")
-                    num = num + idString[i];
-            }
-            z = parseInt(num);
-            return z;
-        }
 
         function loadLang() {
            var xmlhttp = new XMLHttpRequest();
@@ -70,7 +59,6 @@
                if (this.readyState == 4 && this.status == 200) {
                    var myObj = JSON.parse(this.responseText);
                    var pickLang = localStorage.getItem("langID");
-                   console.log(myObj);
                    localStorage.clear();
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
@@ -98,11 +86,9 @@
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            console.log(lang);
-             $('#hdTitle').text(lang["hdTitles"]["starts"]);
+            $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             object = await getCategory('Art');
-            console.log(object);
             counter = 0;
             for (var i in object) {
                 subObj = object[i].translations;

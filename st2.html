@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
-
         function goHomePg() {
             location.href = 'st1.html';
         }
@@ -23,9 +22,7 @@
          if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
-            console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
                     $('#lang').css("background-image", "url('../cut/Group 128.png')");
@@ -39,7 +36,7 @@
                 localStorage.setItem("langID", "he");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
-            fillAndLoad();
+             loadAndFill();
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);
@@ -48,7 +45,6 @@
         }
 
         function pickLanguage() {
-            clearTXT('st2');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -70,9 +66,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            console.log("find matches: " + langIs);
             var object = await getCategory('Art');
-            console.log(object);
             var searchKey = "id";
             counter = 0;
             for (var i in object) {
@@ -80,39 +74,31 @@
                     subObj = object[i].translations;
                     for (var j in subObj) {
                         if (subObj[j]["language"].indexOf(langIs) > -1) {
-                            console.log("same lang: " + langIs);
-                            console.log("same lang: " + subObj[j]["language"]);
                             $('#catgSub1').text(subObj[j].first_name + ' ' + subObj[j].last_name);
                             $('#titleTxt1').text(subObj[j].country + ", " + object[i].birth_year + "-" + object[i].death_year);
                             $('#txt1').text(subObj[j].info);
                             $('#videoTitle').text(lang.singer + ": " + subObj[j].video);
                             return;
                         } else {
-                            console.log('empty text: find matches');
-                            console.log("diff lang: " + langIs);
-                            console.log("diff lang: " + subObj[j]["language"]);
-                            $('#catgSub1').empty();
-                            $('#titleTxt1').empty();
-                            $('#txt1').empty();
-                            $('#videoTitle').empty();
+                            $('#catgSub1').text("");
+                            $('#titleTxt1').text("");
+                            $('#txt1').text("");
+                            $('#videoTitle').text("");
                         }
                     }
                 } else {
-                    $('#catgSub1').empty();
-                    $('#titleTxt1').empty();
-                    $('#txt1').empty();
-                    $('#videoTitle').empty();
+                    $('#catgSub1').text("");
+                    $('#titleTxt1').text("");
+                    $('#txt1').text("");
+                    $('#videoTitle').text("");
                 }
             }
         }
 
-        function fillAndLoad() {
+        function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            console.log('fillAndLoad method; lang id is: ' + langIs);
-            console.log('fillAndLoad method; lang is: ');
-            console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             $("#close").val(lang.close);
@@ -123,15 +109,13 @@
 
         $(function () {
             pickCSS();
-            fillAndLoad();
+            loadAndFill();
             $('body').delegate('#catgTitle', 'click', function () {
                 location.href = "st1.html";
             });
 
             currUrl = document.URL;
-
             var modal = document.getElementById("shareModal");
-
             var btn = document.getElementById("shareBtn");
             var span = document.getElementsByClassName("close")[0];
             btn.onclick = function () {
@@ -142,7 +126,6 @@
                 modal.style.display = "none";
             }
 
-
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
@@ -152,12 +135,8 @@
             $('a', $('#share')).each(function () {
                 $(this).attr('data-url', currUrl);
             });
-
-        
-
-
-
         });
+
     </script>
 </head>
 <body>

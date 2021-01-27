@@ -15,16 +15,14 @@
             location.href = 'gb1.html';
         }
 
-          function loadLang() {
-        clearTXT('sj3');
+       function loadLang() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             console.log(myObj);
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                console.log('load lang, lang id is: ' + pickLang);
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {     
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
                     $('#lang').css("background-image", "url('../cut/Group 128.png')");
@@ -46,7 +44,6 @@
   }
 
        function pickLanguage() {
-            clearTXT('gb3');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -64,8 +61,6 @@
         }
 
        async function loadPRData(searchValue) {
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
             json = await getPersonalities();
             var filtered = $(json.data).filter(function (i, n) {
@@ -86,7 +81,6 @@
                 }
             return bool;
             });
-         console.log(filtered);
          return filtered;
         }
         function loadAndFill() {
@@ -101,8 +95,6 @@
             $('#split1').css("display", "inline-block");
             var num = my_object.prData;
             val = parseInt(num, 10);
-            console.log(num);
-            console.log(typeof (num));
             loadPRData(val);
         }
 
@@ -128,22 +120,19 @@
             btn.onclick = function () {
                 modal.style.display = "block";
             }
-
             span.onclick = function () {
                 modal.style.display = "none";
             }
-
-
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
             }
-
             $('a', $('#share')).each(function () {
                 $(this).attr('data-url', currUrl); 
           });
         });
+
     </script>
 </head>
 <body>
@@ -192,7 +181,7 @@
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value="סגור" style="margin-top:240px" id="close"/>
+                    <input class="close" type="button" value="" style="margin-top:240px" id="close"/>
                 </div>
             </div>
         </div>

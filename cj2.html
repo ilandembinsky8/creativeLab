@@ -17,13 +17,11 @@
         }
         
        function loadLang() {
-        clearTXT('sj3');
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
-            console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
@@ -101,8 +99,6 @@
         }
 
         function loadPRData(searchKey) {
-          
-            console.log(lang);
             getCountries().then(value => {
                 object = value["data"];
                 var langIs = localStorage.getItem('langID'); 
@@ -123,8 +119,6 @@
 
         $(function () {
             pickCSS();
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
             loadAndFill();
             $('body').delegate('#catgMain', 'click', function () {
                 location.href = "cj1.html";
@@ -208,13 +202,13 @@
 
                     <div class='txtModal' id="share">
                         <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
-                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
+                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url=''  class="fa fa-twitter"></a>
                         <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
                         <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value="סגור" style="margin-top:240px" id="close"/>
+                    <input class="close" type="button" value="" style="margin-top:240px" id="close"/>
                 </div>
             </div>
         </div>

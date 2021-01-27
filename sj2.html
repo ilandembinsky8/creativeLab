@@ -13,17 +13,31 @@
        function goHomePg() {
         location.href = 'sj1.html';
         }
-
+          function pickCSS() {
+            var pickLang = localStorage.getItem("langID");
+            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+                if (pickLang.localeCompare("he") === 0) {
+                    swapStyleSheet('css/styles.css');
+                    localStorage.setItem("langID", "he");
+                    loadLang();
+                } else if (pickLang.localeCompare("en") === 0) {
+                    localStorage.setItem("langID", "en");
+                    swapStyleSheet('css/styles-eng.css');
+                    loadLang();
+                }
+            } else {
+                localStorage.setItem("langID", "he");
+                swapStyleSheet('css/styles.css');
+                loadLang();
+            }
+        }
         function loadLang() {
-        clearTXT('sj2');
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
-            console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
                     $('#lang').css("background-image", "url('../cut/Group 128.png')");
@@ -37,7 +51,7 @@
                 localStorage.setItem("langID", "he");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
-             fillTitles();
+             loadAndFill();
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);
@@ -45,7 +59,6 @@
  }
 
      function pickLanguage() {
-            clearTXT('sj2');
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
@@ -62,27 +75,11 @@
             }
         }
 
-        function parseId(idString) {
-            console.log(idString);
-            var num = '';
-            var z = 0;
-            for (i = 0; i < idString.length; i++) {
-                if ("" + parseInt(idString[i]) !== "NaN")
-                    num = num + idString[i];
-            }
-            z = parseInt(num);
-            return z;
-        }
-
-        function fillTitles() {
-            var pickLang = localStorage.getItem("langID");
-            console.log('lang id:  ' + pickLang);
+        function loadAndFill(){
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            console.log("fill titles: ");
-            console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
-             $('#search').attr("placeholder", lang["search"]["sj"]);
+            $('#search').attr("placeholder", lang["search"]["sj"]);
             $('#catgTitle').text(lang.catgTitle);
             fillColumns();
         }
@@ -138,12 +135,9 @@
         }
 
        async function findMatchesSub(searchValue) {
-           counter = 0;
             langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
            object = await getSubCategory(searchValue);
-           console.log("find matches sub: ");
-             console.log(object);
              counter = 0;
             $('#col1, #col2').empty();
             for (var i in object) {
@@ -151,7 +145,6 @@
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
-                        console.log(col);
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
@@ -160,18 +153,15 @@
         }
 
         async function findMatchesCatg(searchValue) {
-            counter = 0;
              langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
             object = await getCategory(searchValue);
-             console.log(object);
              counter = 0;
             for (var i in object) {
                  subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
-                        console.log(col);
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
@@ -185,12 +175,9 @@
             });
 
             $('body').delegate('#catgMain', 'click', function () {
-                console.log('main 1');
                 var main = localStorage.getItem("main");
                 var my_object_ = { "main":main, "sub": "" }
-                console.log('main 2');
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                console.log('main 3');
                 location.href = "sj2.html";
             });
 
@@ -198,15 +185,11 @@
 
         $(function () {
             pickCSS();
-            fillTitles();
-            breadCrumbs()
-            JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang);
-            
+            loadAndFill();
+            breadCrumbs();
+
            $('body').delegate('.colItem', 'click', function () {
-                console.log("clicked");
                  var prData =""+ $(this).attr("data");
-                 var name = $(this).text();
                  var main = localStorage.getItem("main");
                  var sub = localStorage.getItem("sub");
                  var my_object = { "main": main, "sub": sub, "prData": prData}
