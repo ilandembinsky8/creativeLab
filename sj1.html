@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
+﻿<title>page 14</title>
+<!DOCTYPE html>
 
 <html lang="he" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 14</title>
+
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
-        function goHomePg() {
-            location.href = 'sj1.html';
-        }
+  
 
         function pickCSS() {
             var pickLang = localStorage.getItem("langID");
@@ -59,11 +58,11 @@
                     if (typeof pickLang !== 'undefined' && pickLang !== null) {
                         if (pickLang.localeCompare("he") === 0) {
                             localStorage.setItem("langID", "he");
-                            $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                            $('#lang').css("background-image", "url('cut/Group 128.png')");
                             localStorage.setItem("lang", JSON.stringify(myObj.HE));
                         } else {
                             localStorage.setItem("langID", "en");
-                            $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                            $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                             localStorage.setItem("lang", JSON.stringify(myObj.EN));
                         }
                     } else {
@@ -122,7 +121,7 @@
                 localStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
-              $('body').delegate('.singleCat', 'click', function () {
+            $('body').delegate('.singleCat', 'click', function () {
                 var idItm = "";
                 var idPr = (this).id;
                 localStorage.setItem("main", idPr);

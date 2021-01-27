@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
-
-        function goHomePg() {
-            location.href = 'cj1.html';
-        }
         
        function loadLang() {
         var xmlhttp = new XMLHttpRequest();
@@ -26,11 +22,11 @@
                 console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
-                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
                     localStorage.setItem("langID", "en");
-                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
@@ -167,7 +163,7 @@
     <div class="pageCont">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgMain"></span>
+                <span class="mainCat" id="catgMain" onclick="location.href = 'cj1.html';"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="subCat" id="catgSub1"></span>
             </div>

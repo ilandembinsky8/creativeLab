@@ -10,21 +10,16 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-        function goHomePg() {
-        location.href = 'st1.html';
-        }
-
           function pickCSS() {
               var pickLang = localStorage.getItem("langID");
               localStorage.clear();
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     swapStyleSheet('css/styles.css');
-                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
                     localStorage.setItem("langID", "he");
                     loadLang();
                 } else if (pickLang.localeCompare("en") === 0) {
-                    localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "en");          
                     swapStyleSheet('css/styles-eng.css');
                     loadLang();
                 }
@@ -63,11 +58,11 @@
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
                            localStorage.setItem("langID", "he");
-                           $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                           $('#lang').css("background-image", "url('cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
                            localStorage.setItem("langID", "en");
-                           $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                           $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {
@@ -133,7 +128,7 @@
     </div>
     <div class="pageCont" id="st1">
         <div class="pageWrapper">
-            <div class="categoryST">
+            <div class="categoryST"> 
                 <span class="greenTitle" id="catgTitle"></span>
             </div>
 

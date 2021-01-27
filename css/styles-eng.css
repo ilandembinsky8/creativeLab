@@ -145,7 +145,7 @@ body {
     height: 42px;
     background-size: contain;
     background-image: url('../cut/Group 128@2x.png');
-    background-position: right;
+    background-position: right center;
     background-repeat: no-repeat;
 }
 
@@ -155,7 +155,7 @@ body {
     height: 42px;
     background-size: contain;
     background-image: url('../cut/Group 156@2x.png');
-    background-position: left;
+    background-position: left center;
     background-repeat: no-repeat;
 }
 

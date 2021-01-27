@@ -12,10 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
-        function goHomePg() {
-            location.href = 'st1.html';
-        }
-
         function loadLang() {
          var xmlhttp = new XMLHttpRequest();
          xmlhttp.onreadystatechange = function () {
@@ -25,11 +21,11 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
-                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
                     localStorage.setItem("langID", "en");
-                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
@@ -153,7 +149,7 @@
     <div class="pageCont" id="st2">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgTitle"></span>
+                <span class="mainCat" id="catgTitle" onclick="location.href = 'st1.html'"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="catgSub1"></span>
             </div>

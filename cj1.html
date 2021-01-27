@@ -10,9 +10,7 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-        function goHomePg() {
-          location.href = 'cj1.html';
-        }
+     
 
         function pickCSS() {
             var pickLang = localStorage.getItem("langID");
@@ -67,11 +65,11 @@
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("he") === 0) {
                            localStorage.setItem("langID", "he");
-                            $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                            $('#lang').css("background-image", "url('cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
                            localStorage.setItem("langID", "en");
-                            $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                            $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {

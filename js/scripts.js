@@ -1,4 +1,6 @@
-
+function goHomePg() {
+    location.href = 'https://rfid.anumuseum.org.il/?rfid=10007605ED';
+}
 
 function mail() {
     window.location = "mailto:?subject=Anu - Museum of the jewish people";
@@ -34,7 +36,7 @@ function pickCSS() {
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
         if (pickLang.localeCompare("he") === 0) {
             swapStyleSheet('css/styles.css');
-            $('#lang').css("background-image", "url('../cut/Group 128.png')");
+            $('#lang').css("background-image", "url('cut/Group 128.png')");
             localStorage.setItem("langID", "he");
             loadLang();
         } else if (pickLang.localeCompare("en") === 0) {
@@ -76,11 +78,11 @@ function loadLang() {
                 console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "he");
-                    $('#lang').css("background-image", "url('../cut/Group 128.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
                     localStorage.setItem("langID", "en");
-                    $('#lang').css("background-image", "url('../cut/Group 128 - eng.png')");
+                    $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
@@ -130,13 +132,13 @@ async function getPersonalities() {
 
 function changeIcons(num) {
     if (num === 0) {
-        $('#edu').css("background-image", "url('../cut/Group 232.png')");
-        $('#career').css("background-image", "url('../cut/Group 233.png')");
-        $('#politics').css("background-image", "url('../cut/Group 234.png')");
+        $('#edu').css("background-image", "url('cut/Group 232.png')");
+        $('#career').css("background-image", "url('cut/Group 233.png')");
+        $('#politics').css("background-image", "url('cut/Group 234.png')");
     } else {
-        $('#edu').css("background-image", "url('../cut/Group 232 - eng.png')");
-        $('#career').css("background-image", "url('../cut/Group 233 - eng.png')");
-        $('#politics').css("background-image", "url('../cut/Group 234 - eng.png')");
+        $('#edu').css("background-image", "url('cut/Group 232 - eng.png')");
+        $('#career').css("background-image", "url('cut/Group 233 - eng.png')");
+        $('#politics').css("background-image", "url('cut/Group 234 - eng.png')");
     }
 }
 
