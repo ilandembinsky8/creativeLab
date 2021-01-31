@@ -90,6 +90,14 @@
             loadDetails(subCatg);
         }
 
+        function getMoreInfo(idIs) {
+            var prData = "" + $('#' + idIs).attr("data");
+            val = parseInt(prData, 10);
+            var my_object = { "sub": subCatgIs, "prData": val }
+            localStorage.setItem('my_item', JSON.stringify(my_object));
+            location.href = "gb3.html";
+        }
+
       async function loadDetails(searchValue){
            langIs = localStorage.getItem("langID");
             counter = 0;
@@ -100,7 +108,7 @@
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -110,15 +118,7 @@
         $(function () {
             pickCSS();
 
-           $('body').delegate('.colItem', 'click', function () {
-                var prData = "" + $(this).attr("data");
-                val = parseInt(prData, 10);
-                var my_object = { "sub": subCatgIs, "prData": val }
-                localStorage.setItem('my_item', JSON.stringify(my_object));
-                location.href = "gb3.html";
-            });
-            
-         $('body').delegate('#catgTitle', 'click', function () {
+          $('body').delegate('#catgTitle', 'click', function () {
              location.href = "gb1.html";
          });
         });

@@ -89,66 +89,39 @@
             $("#close").val(lang.close);
            // var prData = JSON.parse(localStorage.getItem('country'));
             var prData = window.sessionStorage.getItem('country');
-            console.log(prData);
             var num = prData;
             val = parseInt(num, 10);
-            console.log(val +'   '+typeof val);
             loadPRData(val);
             
         }
 
         function loadPRData(searchKey) {
-            console.log(searchKey + " " + typeof searchKey);
             getCountries().then(value => {
                 object = value["data"];
                 var langIs = localStorage.getItem('langID'); 
                 var result = object.find(obj => {
-                    console.log(`search key ${searchKey} curr id ${obj.id}`);                  
                     return obj.id === searchKey;
                 })
-                console.log(result);
                 subObj = getCountry(result["translations"], langIs);
                 loadCountryInfo(subObj);
             });
         }
+
         function getCountry(object, langIs) {   
             var result = object.find(obj => {
                 return obj.language.indexOf(langIs) !== -1
             })
             return result;
-  
         }
 
+  
         $(function () {
             pickCSS();
-
+            addModalbox();
             $('body').delegate('#catgMain', 'click', function () {
                 location.href = "cj1.html";
             });
-            currUrl = document.URL;
-
-            var modal = document.getElementById("shareModal");
-
-            var btn = document.getElementById("shareBtn");
-            var span = document.getElementsByClassName("close")[0];
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            $('a', $('#share')).each(function () {
-                $(this).attr('data-url', currUrl);
-            });
+           
 
            
         });

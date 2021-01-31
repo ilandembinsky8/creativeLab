@@ -94,12 +94,7 @@
         }
         function goToCountry(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
-            console.log(prData);
-            val = parseInt(prData,10);
-            console.log(val)
-            sessionStorage.setItem('country', prData);
-            var x = localStorage.getItem('country');
-            console.log(`x is: ${x}`);
+            sessionStorage.setItem('country', prData); 
             location.href = "cj2.html";
         }
 

@@ -149,6 +149,15 @@
             }
         }
 
+        function getMoreInfo(idIs) {
+            var prData = "" + $('#' + idIs).attr("data");
+            var main = localStorage.getItem("main");
+            var sub = localStorage.getItem("sub");
+            var my_object = { "main": main, "sub": sub, "prData": prData}
+            localStorage.setItem('my_item', JSON.stringify(my_object)); 
+            location.href = "sj3.html";
+        }
+
         async function findMatchesCatg(searchValue) {
              langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
@@ -159,7 +168,7 @@
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -182,17 +191,7 @@
 
         $(function () {
             pickCSS();
-            breadCrumbs();
-
-           $('body').delegate('.colItem', 'click', function () {
-                 var prData =""+ $(this).attr("data");
-                 var main = localStorage.getItem("main");
-                 var sub = localStorage.getItem("sub");
-                 var my_object = { "main": main, "sub": sub, "prData": prData}
-                 localStorage.setItem('my_item', JSON.stringify(my_object)); 
-                location.href = "sj3.html";
-            });
-           
+            breadCrumbs();    
         });
 
     </script>
