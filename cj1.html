@@ -92,6 +92,16 @@
                 return 'col1';
             }
         }
+        function goToCountry(idIs) {
+            var prData = "" + $('#' + idIs).attr("data");
+            console.log(prData);
+            val = parseInt(prData,10);
+            console.log(val)
+            sessionStorage.setItem('country', prData);
+            var x = localStorage.getItem('country');
+            console.log(`x is: ${x}`);
+            location.href = "cj2.html";
+        }
 
         async function loadData() {
             JsonLang = localStorage.getItem("lang");
@@ -109,7 +119,7 @@
                     if (n.translations[j].language === langIs) {
                         var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + n.id + '>' + n.translations[j].name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + n.id + '>' + n.translations[j].name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -119,12 +129,6 @@
 
         $(function () {
             pickCSS();
-             $('body').delegate('.colItem', 'click', function () {
-                var prData = "" + $(this).attr("data");
-                val = parseInt(prData, 10);
-                localStorage.setItem('prData', val);
-                location.href = "cj2.html";
-            });
         });
 
     </script>
