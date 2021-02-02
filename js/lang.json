@@ -15,6 +15,11 @@
       "iran": "קהילת אירן",
       "egypt": "קהילת מיצרים"
     },
+    "occupations": {
+      "edu": "Work",
+      "career": "Education",
+      "politics": "Politic"
+    },
     "categories": {
       "c1": {
         "title": "אמנות ויצירה",
@@ -577,9 +582,9 @@
     },
     "page7": {
       "catg": {
-        "edu": "השכלה",
-        "career": "עבודה",
-        "politics": "פוליטיקה"
+        "edu": "Work",
+        "career": "Education",
+        "politics": "Politic"
       }
     },
     "search": {

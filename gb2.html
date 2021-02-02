@@ -101,36 +101,47 @@
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
-            var subCatgIs = localStorage.getItem("sub");
+            var subCatgIs = sessionStorage.getItem("sub");
+            console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
+            subIs = lang["occupations"][subCatgIs];
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
             $('#catgMain').text(lang.catgTitle);
             $('#catgSub1').text(subCatg);
             $('#catgTitle').text(lang.catgTitle);
             $('#catgSub1,#split1').css("display", "inline-block");
-            loadDetails(subCatg);
+            console.log(`subCat is: ${subCatg}`);
+            loadDetails(subIs);
         }
 
         function getMoreInfo(idIs) {
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang); 
+            var subCatgIs = sessionStorage.getItem("sub");
+            console.log(subCatgIs);
+            subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
-            val = parseInt(prData, 10);
-            var my_object = { "sub": subCatgIs, "prData": val }
-            localStorage.setItem('my_item', JSON.stringify(my_object));
+            console.log(prData);
+            var my_object = { "sub": subCatgIs, "prData": prData }
+            sessionStorage.setItem('my_item', JSON.stringify(my_object));
             location.href = "gb3.html";
         }
 
       async function loadDetails(searchValue){
            langIs = localStorage.getItem("langID");
-            counter = 0;
-            $('#col1, #col2').empty();
-            object = await getCategory(searchValue);
+           counter = 0;
+           $('#col1, #col2').empty();
+          //json = await getTrailWomen();
+           json = await getPersonalities();
+           object = await getOccupation(json,searchValue);
             for (var i in object) {
                  subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        counter++;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -168,7 +179,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" /></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" onchange="personSearh()" /></div>
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">

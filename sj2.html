@@ -155,36 +155,45 @@
 
        async function findMatchesSub(searchValue) {
             langIs = localStorage.getItem("langID");
-            $('#col1, #col2').empty();
-           object = await getSubCategory(searchValue);
-             counter = 0;
-            $('#col1, #col2').empty();
-            for (var i in object) {
-                 subObj = object[i].translations;
+           $('#col1, #col2').empty();
+           object = await getPersonalities();
+           // json = await getJewishStars();
+         //  object = await getSubCategory(json, searchValue);
+           //object = await getBirthYear(json, searchValue)
+           var counter = 0;
+           $('#col1, #col2').empty();
+           for (i = 0; i < 12; i++)
+            for (var i in object.data) {
+                 subObj = object.data[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        counter++;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
-            }
+                }
         }
+        
 
         function getMoreInfo(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
             var main = localStorage.getItem("main");
             var sub = localStorage.getItem("sub");
             var my_object = { "main": main, "sub": sub, "prData": prData}
-            localStorage.setItem('my_item', JSON.stringify(my_object)); 
+            sessionStorage.setItem('my_item', JSON.stringify(my_object)); 
             location.href = "sj3.html";
         }
 
         async function findMatchesCatg(searchValue) {
-             langIs = localStorage.getItem("langID");
+            langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
-            object = await getCategory(searchValue);
-             counter = 0;
+            json = await getPersonalities();
+          //  json = await getJewishStars();
+            object = await getBirthYear(json, catIs);
+            //object = await getCategory(json, searchValue);
+            counter = 0;
             for (var i in object) {
                  subObj = object[i].translations;
                 for (var j in subObj) {

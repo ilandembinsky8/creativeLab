@@ -163,8 +163,8 @@ async function getCountries() {
 }
 
 
-async function getCategory(category) {
-    var json = await getPersonalities();
+async function getCategory(json, category) {
+   // var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
@@ -177,8 +177,8 @@ async function getCategory(category) {
     return filtered;
 }
 
-async function getSubCategory(sub_category) {
-    var json = await getPersonalities();
+async function getSubCategory(json,sub_category) {
+    //var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
@@ -191,13 +191,99 @@ async function getSubCategory(sub_category) {
     return filtered;
 }
 
+async function getOccupation(json, occupationIs) {
+    //var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].occupation === occupationIs) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function getBirthYear(json, catIs) {
+    //var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        var x= Math.floor(Math.random() * 1960); 
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.birth_year <= x && n.birth_year >1905) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+
+
+async function getJewishStars() {
+    var json = await getPersonalities();
+    console.log(json);
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        str = n.id.toString();
+        if (str.length >= 2) {
+            if (n.id.substring(0, 2).localeCompare('30') === 0) {
+
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function getStars() {
+    var json = await getPersonalities();
+    console.log(json);
+    var filtered = $(json.data).filter(function (i, n) {
+        bool = false;
+        str = n.id.toString();
+        if (str.length >= 2) {
+            if (n.id.substring(0, 2).localeCompare('80') === 0) {
+               
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function getTrailWomen() {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        str = n.id.toString();
+        if (str.length >= 2) {
+            if (n.id.substring(0, 2).localeCompare('29') === 0) {
+               
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+function countOccurences(string, word) {
+    string = string.toLowerCase();
+    word = word.toLowerCase();
+    return string.split(word).length - 1;
+}
 
 async function searchCountry(country) {
     var json = await getCountries();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].name.toLowerCase().localeCompare(country.toLowerCase()) === 0) {
+            if (countOccurences(n.translations[j].name, country) > 0) {
                 bool = true;
             }
         }
@@ -211,7 +297,7 @@ async function searchPerson(person) {
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].first_name.indexOf(person) > 0 || n.translations[j].lastName.indexOf(person) > 0) {
+            if (countOccurences(n.translations[j].first_name, country) > 0 || countOccurences(n.translations[j].lastName,country) > 0) {
                 bool = true;
             }
         }

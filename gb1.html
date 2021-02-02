@@ -90,26 +90,27 @@
         function clickedItm(idNum) {
           JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+
             var currId = idNum;
             var currSec = lang.page7.catg;
             var subCat = "";
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
-                localStorage.setItem('sub', "edu");
+                sessionStorage.setItem('sub', "edu");
                     location.href = "gb2.html";
                         
             } else if (currId.localeCompare("career") === 0) {
                 subCat = currSec.career;
-                localStorage.setItem('sub',"career");
+                sessionStorage.setItem('sub',"career");
                     location.href = "gb2.html";
                         
             } else if (currId.localeCompare("politics") === 0) {
                 subCat = currSec.politics;
-                localStorage.setItem('sub', "politics");
+                sessionStorage.setItem('sub', "politics");
                     location.href = "gb2.html";       
                 }
-          
         }
+
         $(function () {
             pickCSS();
             $('#edu, #career, #politics').click(function () {
