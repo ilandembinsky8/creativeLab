@@ -89,7 +89,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -144,7 +144,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         counter++;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }

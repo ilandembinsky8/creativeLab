@@ -32,9 +32,9 @@ function getLangJSON(lang) {
 
 function pickCSS() {
     var pickLang = localStorage.getItem("langID");
-    localStorage.clear();
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
         if (pickLang.localeCompare("he") === 0) {
+            console.log("pick lang is :     "+pickLang);
             swapStyleSheet('css/styles.css');
             $('#lang').css("background-image", "url('cut/Group 128.png')");
             localStorage.setItem("langID", "he");
@@ -162,6 +162,18 @@ async function getCountries() {
     return d.promise();
 }
 
+async function getCategoryTR2(json, category) {
+    // var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+            if (n.id > 27) {
+                bool = true;
+            
+        }
+        return bool;
+    });
+    return filtered;
+}
 
 async function getCategory(json, category) {
    // var json = await getPersonalities();
@@ -196,7 +208,7 @@ async function getOccupation(json, occupationIs) {
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].occupation === occupationIs) {
+            if (n.translations[j].occupation === occupationIs && n.id >= 27) {
                 bool = true;
             }
         }
