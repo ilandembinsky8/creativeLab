@@ -301,6 +301,7 @@ a {
 
 .pageSubWrapper .text {
     float: right;
+    direction:rtl;
     margin-bottom: 15px;
     text-align: right;
     letter-spacing: 0px;

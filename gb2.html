@@ -94,7 +94,10 @@
                         
                     }
                 }
-            }
+              }
+            var table = document.getElementById("col1");
+            height=table.offsetHeight +30;
+            $('#splitCol').css("height", height);
         }
 
 
@@ -145,7 +148,10 @@
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
-            }
+          }
+            var table = document.getElementById("col1");
+            height=table.offsetHeight +30;
+            $('#splitCol').css("height", height);
         }
 
         $(function () {

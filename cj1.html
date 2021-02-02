@@ -102,6 +102,9 @@
                     }
                 }
             }
+             var table = document.getElementById("col1");
+            height=table.offsetHeight +30;
+            $('#splitCol').css("height", height);
         }
 
          function addToColumn() {
@@ -144,6 +147,9 @@
                     }
                 }
             })
+            var table = document.getElementById("col1");
+            height=table.offsetHeight +30;
+            $('#splitCol').css("height", height);
         }
 
 
@@ -170,7 +176,6 @@
    
         $(function () {
             pickCSS();
-
         });
 
     </script>
@@ -199,13 +204,13 @@
                 <div class="pageSubWrapper">
                     <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו קהילה" onchange="countrySearh()"/></div>
                    
-                        <div class="table">
+                        <div class="table" id="table">
                             <div class="fstCol">
                                 <div class="columnCont" id="col1">
 
                                 </div>
                             </div>
-                            <div class="splitLine"></div>
+                            <div class="splitLine" id="splitCol"></div>
                             <div class="sndCol">
                                 <div class="columnCont" id="col2">
 
