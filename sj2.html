@@ -85,7 +85,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -134,8 +134,8 @@
                     findMatchesCatg(catg.title);
                 }
             } else {
-                var main = localStorage.getItem("main");
-                var sub = localStorage.getItem("sub");
+                var main =  sessionStorage.getItem("main");
+                var sub =  sessionStorage.getItem("sub");
                 catg = lang.categories[main];
                 $('#catgMain').html(catg.title);
                 if (sub.localeCompare("") !== 0) {
@@ -179,8 +179,8 @@
 
         function getMoreInfo(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
-            var main = localStorage.getItem("main");
-            var sub = localStorage.getItem("sub");
+            var main = sessionStorage.getItem("main");
+            var sub = sessionStorage.getItem("sub");
             var my_object = { "main": main, "sub": sub, "prData": prData}
             sessionStorage.setItem('my_item', JSON.stringify(my_object)); 
             location.href = "sj3.html";
@@ -189,17 +189,17 @@
         async function findMatchesCatg(searchValue) {
             langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
-            json = await getPersonalities();
+            object = await getPersonalities();
           //  json = await getJewishStars();
-            object = await getBirthYear(json, catIs);
+           // object = await getBirthYear(json,searchValue);
             //object = await getCategory(json, searchValue);
             counter = 0;
-            for (var i in object) {
-                 subObj = object[i].translations;
+            for (var i in object.data) {
+                 subObj = object.data[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -212,7 +212,7 @@
             });
 
             $('body').delegate('#catgMain', 'click', function () {
-                var main = localStorage.getItem("main");
+                var main =  sessionStorage.getItem("main");
                 var my_object_ = { "main":main, "sub": "" }
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
                 location.href = "sj2.html";

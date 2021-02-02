@@ -119,15 +119,15 @@
             $('body').delegate('.subCat', 'click', function () {
                 var idItm = (this).id;
                 var idPr = $(this).parent().attr('id');
-                localStorage.setItem("main", idPr);
-                localStorage.setItem("sub", idItm);
+                sessionStorage.setItem("main", idPr);
+                sessionStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
             $('body').delegate('.singleCat', 'click', function () {
                 var idItm = "";
                 var idPr = (this).id;
-                localStorage.setItem("main", idPr);
-                localStorage.setItem("sub", idItm);
+                sessionStorage.setItem("main", idPr);
+                sessionStorage.setItem("sub", idItm);
                 location.href = "sj2.html";
             });
         });

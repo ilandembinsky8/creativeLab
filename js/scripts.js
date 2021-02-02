@@ -244,11 +244,15 @@ async function getStars() {
     console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         bool = false;
-        str = n.id.toString();
-        if (str.length >= 2) {
-            if (n.id.substring(0, 2).localeCompare('80') === 0) {
-               
+        counter = 0;    
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].id > 58 && n.translations[j].id < 108) {
+                console.log(n.translations[j].first_name);
                 bool = true;
+                counter++;
+                if (counter === 3) {
+                    return bool;
+                }
             }
         }
         return bool;
@@ -272,10 +276,10 @@ async function getTrailWomen() {
     return filtered;
 }
 
-function countOccurences(string, word) {
-    string = string.toLowerCase();
+function countOccurences(str, word) {
+    str = str.toLowerCase();
     word = word.toLowerCase();
-    return string.split(word).length - 1;
+    return str.split(word).length - 1;
 }
 
 async function searchCountry(country) {
@@ -297,7 +301,7 @@ async function searchPerson(person) {
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (countOccurences(n.translations[j].first_name, country) > 0 || countOccurences(n.translations[j].lastName,country) > 0) {
+            if (countOccurences(n.translations[j].first_name, person) > 0 || countOccurences(n.translations[j].last_name,person) > 0) {
                 bool = true;
             }
         }

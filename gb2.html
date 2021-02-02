@@ -76,7 +76,7 @@
             }
         }
 
-          async function personSearh() {
+          async function personSearch() {
             var valueIs = $('#search').val();
             console.log(valueIs);
             var object = await searchPerson(valueIs);
@@ -89,7 +89,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + subObj[j].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -179,7 +179,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" onchange="personSearh()" /></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" onchange="personSearch()" /></div>
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">

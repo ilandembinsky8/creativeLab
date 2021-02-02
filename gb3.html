@@ -67,12 +67,19 @@
             var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
                     if (n.translations[j].id === searchValue && n.translations[j].language === langIs) {
-                        console.log("here itt is");
                         console.log(n.translations[j].first_name + " " + n.translations[j].last_name);
                         $('#name').text(n.translations[j].first_name + " " + n.translations[j].last_name);
                         $('#name,#split2').css("display", "inline-block");
                         $('#name').addClass('greenTitle');
-                        $('#titleTxt1').text(n.birth_year + " - " + n.death_year);
+                        console.log(n.death_year);
+                        console.log(n.death_year === null);
+                        if (n.birth_year !== null && n.death_year === null) {
+                            $('#titleTxt1').text(n.birth_year + " - " + "");
+                        } if (n.birth_year === null && n.death_year !== null) {
+                            $('#titleTxt1').text("" + " - " + n.death_year);
+                        } else if(n.death_year !== null && n.birth_year !== null){
+                             $('#titleTxt1').text(n.birth_year + " - " + n.death_year);
+                        }
                         $('#txt1').text(n.translations[j].info);
                         bool = true;
                     }
@@ -108,7 +115,7 @@
 
         function breadCrumbs() {
             $('body').delegate('#catgMain', 'click', function () {
-                var my_object1 = JSON.parse(localStorage.getItem('my_item'));
+                var my_object1 = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = my_object1.sub;
                 localStorage.setItem('sub', my_object_);
                 location.href = 'gb2.html';
