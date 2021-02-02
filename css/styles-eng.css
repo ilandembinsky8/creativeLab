@@ -369,6 +369,7 @@ a {
     margin-left: auto;
     padding-left: 10px;
     text-align: left;
+    direction: ltr;
     color: #979797;
 }
 

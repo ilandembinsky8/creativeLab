@@ -71,6 +71,28 @@
                 pickCSS();
             }
         }
+        
+        async function personSearh() {
+            var valueIs = $('#search').val();
+            console.log(valueIs);
+            var object = await searchPerson(valueIs);
+            console.log(object);
+            counter = 0;
+             $('#col1, #col2').empty();
+            for (var i in object) {
+                subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                            var col = addToColumn();
+                        counter++;
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                            document.getElementById(col).innerHTML += elem;
+                        
+                    }
+                }
+            }
+        }
+
 
         function loadAndFill(){
             JsonLang = localStorage.getItem("lang");
@@ -220,7 +242,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו" /></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו"  onchange="personSearh()"/></div>
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">

@@ -191,6 +191,38 @@ async function getSubCategory(sub_category) {
     return filtered;
 }
 
+
+async function searchCountry(country) {
+    var json = await getCountries();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].name.toLowerCase().localeCompare(country.toLowerCase()) === 0) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function searchPerson(person) {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.translations[j].first_name.indexOf(person) > 0 || n.translations[j].lastName.indexOf(person) > 0) {
+                bool = true;
+            }
+        }
+        return bool;
+    });
+    return filtered;
+
+}
+
+
+
 function clearTXT(idElem) {
     console.log("clearing txts" + idElem);
     //$(function () {
@@ -221,7 +253,7 @@ function addModalbox() {
 
 
     window.onclick = function (event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = "none";
         }
     };

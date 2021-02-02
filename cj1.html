@@ -83,6 +83,29 @@
           xmlhttp.send();
           
         }
+
+
+        async function countrySearh() {
+            var valueIs = $('#search').val();
+            console.log(valueIs);
+            var object = await searchCountry(valueIs);
+            console.log(object);
+            counter = 0;
+             $('#col1, #col2').empty();
+            for (var i in object) {
+                subObj = object[i].translations;
+                for (var j in subObj) {
+                    if (subObj[j]["language"].indexOf(langIs) > -1) {
+                            var col = addToColumn();
+                        counter++;
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + object[i].id + '>' + subObj[j].name + '</span>';
+                            document.getElementById(col).innerHTML += elem;
+                        
+                    }
+                }
+            }
+        }
+
          function addToColumn() {
             var c1 = document.getElementById("col1").childElementCount;
             var c2 = document.getElementById("col2").childElementCount;
@@ -150,7 +173,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו קהילה" /></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו קהילה" onchange="countrySearh()"/></div>
                    
                         <div class="table">
                             <div class="fstCol">
