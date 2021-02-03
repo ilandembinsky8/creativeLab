@@ -341,10 +341,11 @@ a {
 
 .pageSubWrapper .searchCont {
     margin-top: 65px;
-    width: 70%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
-
+    float: none;
+    margin-bottom: 35px;
 }
 
 .pageWrapper .rightBorder {
@@ -375,14 +376,12 @@ a {
 }
 
 .pageSubWrapper .table {
-    margin-top: 35px;
-    float: right;
-    width: 100%;
+    width: 1000px;
 }
 
 .table .fstCol {
     float: left;
-    width: 40%;
+    width: 45%;
 }
 
 .fstCol .columnCont, .sndCol .columnCont {
@@ -402,7 +401,7 @@ a {
 .table .splitLine {
     float: left;
     height: 700px;
-    margin-left: 40px;
+    margin-left: 20px;
     width: 0px;
     border-left: 2px solid #707070;
 }
@@ -429,7 +428,7 @@ a {
 .categoryWrap .edu {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -440,7 +439,7 @@ a {
 .categoryWrap .career {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -451,7 +450,7 @@ a {
 .categoryWrap .politics {
     cursor: pointer;
     display: inline-block;
-    width: 30%;
+    width: 33%;
     height: 140px;
     background: transparent url('../cut/Group 234@2x.png') 0% 0% no-repeat padding-box;
     background-size: contain;
@@ -483,7 +482,7 @@ a {
     width: 100%;
     display: inline-block;
     text-align: center;
-    margin-top: 280px;
+    margin-top: 330px;
     font-family: 'Segoe UI';
     font-size: 17px;
     color: #000000;
@@ -932,7 +931,7 @@ a {
 
     .pageWrapper .pageSubCont {
         width: 100%;
-        float:none;
+        /*float:none;*/
     }
 
     .pageSubCont .pageSubWrapper {
@@ -979,6 +978,7 @@ a {
 
     .pageSubWrapper .searchCont {
         margin-top: 65px;
+        margin-bottom: 0px;
         width: 85%;
     }
 
@@ -1378,7 +1378,7 @@ a {
 
     .pageWrapper .pageSubCont {
         width: 100%;
-        float:none;
+        /*float:none;*/
     }
 
     .pageSubCont .pageSubWrapper {
@@ -1425,7 +1425,7 @@ a {
 
     .pageSubWrapper .searchCont {
         margin-top: 65px;
-        width: 85%;
+        width: 60%;
     }
 
     .pageWrapper .rightBorder {
@@ -1498,7 +1498,7 @@ a {
     .categoryCont .categoryWrap {
         margin-right: auto;
         margin-left: auto;
-        width: 90%;
+        width: 100%;
         padding: 0px;
     }
 
@@ -1661,6 +1661,10 @@ a {
     .headerCont .homeIcon {
         float: none;
     }
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 75%;
+    }
 }
 
 @media only screen and (max-width: 640px) and (min-width: 470px) {
@@ -1688,5 +1692,25 @@ a {
     .headerCont .titleCont {
         float: left;
         width: 65%;
+    }
+}
+@media only screen and (max-width: 640px) and (min-width: 570px) {
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 569px) and (min-width: 420px) {
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 419px) {
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 100%;
     }
 }

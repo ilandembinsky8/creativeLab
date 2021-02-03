@@ -339,7 +339,7 @@ a {
 
 .pageSubWrapper .searchCont {
     margin-top: 65px;
-    width: 65%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
     float:right;
@@ -1420,7 +1420,7 @@ a{
     .pageSubWrapper .searchCont {
         margin-top: 65px;
         margin-bottom: 0px;
-        width: 85%;
+        width: 60%;
         float: none;
     }
 
@@ -1656,6 +1656,10 @@ a{
         float: none;
     }
 
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 75%;
+    }
 }
 @media only screen and (max-width: 640px) and (min-width: 470px) {
     .headerCont .titleCont {
@@ -1684,3 +1688,22 @@ a{
     }
 
 }
+@media only screen and (max-width: 640px) and (min-width: 570px) {
+    .pageSubWrapper .searchCont {
+        margin-top: 65px;
+        width: 65%;
+    }
+}
+    @media only screen and (max-width: 569px) and (min-width: 420px) {
+        .pageSubWrapper .searchCont {
+            margin-top: 65px;
+            width: 70%;
+        }
+    }
+
+    @media only screen and (max-width: 419px) {
+        .pageSubWrapper .searchCont {
+            margin-top: 65px;
+            width: 100%;
+        }
+    }
