@@ -289,6 +289,7 @@ a {
 }
 
 .pageWrapper .pageSubCont {
+    float:right;
     width: 100%;
 }
 
@@ -339,7 +340,7 @@ a {
 
 .pageSubWrapper .searchCont {
     margin-top: 65px;
-    width: 65%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
     float:right;
@@ -1658,7 +1659,7 @@ a{
 
     .pageSubWrapper .searchCont {
         margin-top: 65px;
-        width: 55%;
+        width: 80%;
     }
 }
 @media only screen and (max-width: 640px) and (min-width: 470px) {
