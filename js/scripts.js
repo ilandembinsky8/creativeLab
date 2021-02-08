@@ -256,7 +256,7 @@ async function getStarsTemp() {
         bool = false;
         counter = 0;    
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].id > 58 && n.translations[j].id < 108) {
+            if (n.translations[j].id > 40 && n.translations[j].id < 45) {
                 console.log(n.translations[j].first_name);
                 bool = true;
                 counter++;

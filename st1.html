@@ -83,7 +83,7 @@
             langIs = localStorage.getItem("langID");
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
-            object = await getStars();
+            object = await getStarsTemp();
             counter = 0;
             for (var i in object) {
                 subObj = object[i].translations;
