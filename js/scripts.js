@@ -251,7 +251,7 @@ async function getJewishStars() {
     return filtered;
 }
 
-async function getStars() {
+async function getStarsTemp() {
     var json = await getPersonalities();
     console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
@@ -265,6 +265,22 @@ async function getStars() {
                 if (counter === 3) {
                     return bool;
                 }
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
+
+async function getStars() {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        str = n.id.toString();
+        if (str.length >= 2) {
+            if (n.id.substring(0, 2).localeCompare('80') === 0) {
+
+                bool = true;
             }
         }
         return bool;
