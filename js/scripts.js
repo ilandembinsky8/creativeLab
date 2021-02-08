@@ -205,10 +205,10 @@ async function getSubCategory(json,sub_category) {
 
 async function getOccupation(json, occupationIs) {
     //var json = await getPersonalities();
-    var filtered = $(json.data).filter(function (i, n) {
+    var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].occupation === occupationIs && n.id >= 27) {
+            if (n.translations[j].occupation === occupationIs) {
                 bool = true;
             }
         }
@@ -292,10 +292,13 @@ async function getTrailWomen() {
     var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
-        str = n.id.toString();
-        if (str.length >= 2) {
-            if (n.id.substring(0, 2).localeCompare('29') === 0) {
-               
+        
+        if (n.ext_id.length >= 2) {
+            console.log(typeof n.ext_id);
+            str = n.ext_id.substring(0, 2);
+            console.log(str);
+            if (str.indexOf("29") > -1) {
+                console.log('true');
                 bool = true;
             }
         }
