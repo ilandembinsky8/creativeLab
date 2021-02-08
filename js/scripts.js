@@ -204,7 +204,6 @@ async function getSubCategory(json,sub_category) {
 }
 
 async function getOccupation(json, occupationIs) {
-    //var json = await getPersonalities();
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
@@ -218,7 +217,6 @@ async function getOccupation(json, occupationIs) {
 }
 
 async function getBirthYear(json, catIs) {
-    //var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         var x= Math.floor(Math.random() * 1960); 
