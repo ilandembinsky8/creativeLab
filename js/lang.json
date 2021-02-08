@@ -308,6 +308,11 @@
       "iran": "blah",
       "egypt": "blah"
     },
+    "occupations": {
+      "edu": "Work",
+      "career": "Education",
+      "politics": "Politic"
+    },
     "categories": {
       "c1": {
         "title": "Art",
