@@ -113,7 +113,7 @@ function getToken() {
 async function getPersonalities() {
     var d = $.Deferred();
     var token = await getToken();
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token;
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token+"&limit=-1";
     $.ajax({
         url: url,
         type: "GET",
@@ -145,7 +145,7 @@ function changeIcons(num) {
 async function getCountries() {
     var d = $.Deferred();
     var token = await getToken();
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_countries?fields=*,translations.*,translations.timeline.*&access_token=" + token;
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_countries?fields=*,translations.*,translations.timeline.*&access_token=" + token + "&limit=-1";
     $.ajax({
         url: url,
         type: "GET",
@@ -175,9 +175,9 @@ async function getCategoryTR2(json, category) {
     return filtered;
 }
 
-async function getCategory(json, category) {
-   // var json = await getPersonalities();
-    var filtered = $(json.data).filter(function (i, n) {
+async function getCategory(category) {
+    var json = await getJewishStars();
+    var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
             if (n.translations[j].category === category) {
@@ -189,9 +189,9 @@ async function getCategory(json, category) {
     return filtered;
 }
 
-async function getSubCategory(json,sub_category) {
-    //var json = await getPersonalities();
-    var filtered = $(json.data).filter(function (i, n) {
+async function getSubCategory(sub_category) {
+    var json = await getJewishStars();
+    var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
             if (n.translations[j].sub_category === sub_category) {
@@ -203,7 +203,8 @@ async function getSubCategory(json,sub_category) {
     return filtered;
 }
 
-async function getOccupation(json, occupationIs) {
+async function getOccupation(occupationIs) {
+    json = await getTrailWomen();
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
@@ -237,13 +238,12 @@ async function getJewishStars() {
     console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
-        str = n.id.toString();
-        if (str.length >= 2) {
-            if (n.id.substring(0, 2).localeCompare('30') === 0) {
-
+        str = n.ext_id.substring(0, 2);
+        if (str.indexOf("30") > -1) {
+            console.log("category:       "+ n.translations[0].category + "----------> sub:         " + n.translations[0].sub_category);
                 bool = true;
             }
-        }
+        
         return bool;
     });
     return filtered;
@@ -274,13 +274,12 @@ async function getStars() {
     var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
-        str = n.id.toString();
-        if (str.length >= 2) {
-            if (n.id.substring(0, 2).localeCompare('80') === 0) {
+        str = n.ext_id.substring(0, 2);
+            if (str.indexOf("80") > -1) {
 
                 bool = true;
             }
-        }
+        
         return bool;
     });
     return filtered;
@@ -290,16 +289,12 @@ async function getTrailWomen() {
     var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
-        
-        if (n.ext_id.length >= 2) {
-            console.log(typeof n.ext_id);
-            str = n.ext_id.substring(0, 2);
-            console.log(str);
+        var str = n.ext_id.substring(0, 2);
             if (str.indexOf("29") > -1) {
-                console.log('true');
+                
                 bool = true;
             }
-        }
+        
         return bool;
     });
     return filtered;

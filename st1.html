@@ -87,9 +87,11 @@
             counter = 0;
             for (var i in object) {
                 subObj = object[i].translations;
-                for (var j in subObj) {
+                for (var j in subObj) {''
                      counter++;
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        $('#imgFrame' + counter).css("margin-top", "50px");
+                        $('#imgTitle' + counter).css("display", "inline-block");
                         $('#imgTitle' + counter).text(subObj[j].first_name + ' ' + subObj[j].last_name);
                         $('#imgTitle' + counter).attr("data", object[i].id);
                     } else {

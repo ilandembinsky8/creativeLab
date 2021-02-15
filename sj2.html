@@ -124,34 +124,38 @@
                 var main = item.main
                 var sub = item.sub;
                 catg = lang.categories[main];
+                catgFilter = lang.filterCatg[main];
                 $('#catgMain').html(catg.title);
                 if (sub.localeCompare("") !== 0) {
                     subCatg = catg["subCat"][sub];
+                    subCatgFilter = catgFilter["subCat"][sub];
                     $('#catgSub,#split1,#split2').css("display", "inline-block");
                     $('#catgSub').html(subCatg);
-                    findMatchesSub(subCatg);
+                    findMatchesSub(subCatgFilter);
                 } else {
                     $('#split1').css("display", "inline-block");
                     $('#split2').css("display", "none");
                     $('#catgMain').addClass('greenTitle');
-                    findMatchesCatg(catg.title);
+                    findMatchesCatg(catgFilter.title);
                 }
             } else {
                 var main =  sessionStorage.getItem("main");
                 var sub =  sessionStorage.getItem("sub");
                 catg = lang.categories[main];
+                catgFilter = lang.filterCatg[main];
                 $('#catgMain').html(catg.title);
                 if (sub.localeCompare("") !== 0) {
                     subCatg = catg["subCat"][sub];
+                    subCatgFilter = catgFilter["subCat"][sub];
                     $('#catgSub,#split1,#split2').css("display", "inline-block");
                     $('#catgMain').html(catg.title);
                     $('#catgSub').html(subCatg);
-                    findMatchesSub(subCatg);
+                    findMatchesSub(subCatgFilter);
                 } else {
                     $('#split1').css("display", "inline-block");
                     $('#split2').css("display", "none");
                     $('#catgMain').addClass('greenTitle');
-                    findMatchesCatg(catg.title);
+                    findMatchesCatg(catgFilter.title);
                 }
             }
         }
@@ -159,12 +163,8 @@
        async function findMatchesSub(searchValue) {
             langIs = localStorage.getItem("langID");
            $('#col1, #col2').empty();
-           json = await getPersonalities();
-           object = await getCategoryTR2(json, searchValue);
+           object = await getSubCategory(searchValue);
            console.log(object);
-           // json = await getJewishStars();
-         //  object = await getSubCategory(json, searchValue);
-           //object = await getBirthYear(json, searchValue)
            var counter = 0;
            $('#col1, #col2').empty();
            for (i = 0; i < 12; i++)
@@ -197,11 +197,7 @@
         async function findMatchesCatg(searchValue) {
             langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
-          json = await getPersonalities();
-           object = await getCategoryTR2(json, searchValue);
-          //  json = await getJewishStars();
-           // object = await getBirthYear(json,searchValue);
-            //object = await getCategory(json, searchValue);
+            object = await getCategory(searchValue);
             counter = 0;
             for (var i in object) {
                  subObj = object[i].translations;

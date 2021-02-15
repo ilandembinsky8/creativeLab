@@ -16,18 +16,23 @@
       "egypt": "קהילת מיצרים"
     },
     "occupations": {
-      "edu": "Work",
-      "career": "Education",
+      "edu": "Education",
+      "career": "Work",
       "politics": "Politic"
     },
     "categories": {
       "c1": {
         "title": "אמנות ויצירה",
         "subCat": {
-          "s1": "אמנות ויזואלית",
-          "s2": "אמנות חזותית",
-          "s3": "בלה בלה",
-          "s4": "בלה בלה"
+          "s1": "אמנות חזותית",
+          "s2": "מוזיקה קלאסית",
+          "s3": "מוזיקה פופולרית",
+          "s4": "סטנד אפ",
+          "s5": "קולנוע וטלןןיזיה",
+          "s6": "תיאטרון",
+          "s7": "אופנה",
+          "s8": "אדריכלות",
+          "s9": "ספרות"
         }
       },
       "c2": {
@@ -40,9 +45,8 @@
         "title": "כלכלה ועסקים",
         "subCat": {
           "s1": "כלכלנים ונגידי בנקים",
-          "s2": "יזמים בנקאות",
-          "s3": "יזמים הייטק",
-          "s4": "יזמים אופנה"
+          "s2": "יזמים: בנקאות ושוק ההון",
+          "s3": "יזמים: הייטק"
         }
 
       },
@@ -63,10 +67,9 @@
       "c6": {
         "title": "מדע והגות",
         "subCat": {
-          "s1": "1בלה בלה",
-          "s2": "בלה בלה2",
-          "s3": "בלה בלה3",
-          "s4": "בלה בלה4"
+          "s1": "הוגי דעות",
+          "s2": "מדענים",
+          "s3": "משפטנים"
         }
       },
 
@@ -289,6 +292,78 @@
     },
     "page14": {
 
+    },
+    "filterCatg": {
+      "c1": {
+        "title": "ArtistsAndCreators",
+        "subCat": {
+          "s1": "VisualArts",
+          "s2": "ClassicalMusic",
+          "s3": "PopularMusic",
+          "s4": "StandupComedy",
+          "s5": "FilmAndTV",
+          "s6": "Theater",
+          "s7": "Fashion",
+          "s8": "Architecture",
+          "s9": "Literature"
+        }
+      },
+      "c2": {
+        "title": "Athletes",
+        "subCat": {
+
+        }
+      },
+      "c3": {
+        "title": "EconomistsAndBusinessEntrepreneurs",
+        "subCat": {
+          "s1": "EconomistsAndBankers",
+          "s2": "EntrepreneursBankingandCapitalMarket",
+          "s3": "EntrepreneursHighTech"
+        }
+
+      },
+      "c4": {
+        "title": "HolocaustHeroes",
+        "subCat": {
+
+        }
+      },
+
+      "c5": {
+        "title": "JournalistsAndMediaPersonalities",
+        "subCat": {
+
+        }
+      },
+
+      "c6": {
+        "title": "ScientistsAndPhilosophers",
+        "subCat": {
+          "s1": "Philosophers",
+          "s2": "Scientists",
+          "s3": "Lawyers"
+        }
+      },
+
+      "c7": {
+        "title": "Politicians",
+        "subCat": {
+
+        }
+      },
+      "c8": {
+        "title": "MilitaryLeaders",
+        "subCat": {
+
+        }
+      },
+      "c9": {
+        "title": "Others",
+        "subCat": {
+
+        }
+      }
     }
   },
 
@@ -309,60 +384,55 @@
       "egypt": "blah"
     },
     "occupations": {
-      "edu": "Work",
-      "career": "Education",
+      "edu": "Education",
+      "career": "Work",
       "politics": "Politic"
     },
     "categories": {
       "c1": {
-        "title": "Art",
+        "title": "Art and Creation",
         "subCat": {
-          "s1": "Visual Art",
-          "s2": "sub1 category2",
-          "s3": "sub1 category3",
-          "s4": "sub1 category4"
+          "s1": "Visual arts",
+          "s2": "Classic music",
+          "s3": "Pop music",
+          "s4": "Humor",
+          "s5": "Cinema and TV",
+          "s6": "Theater",
+          "s7": "Fashion",
+          "s8": "Architects",
+          "s9": "Literature"
         }
+
       },
       "c2": {
-        "title": "category2",
+        "title": "Sports",
         "subCat": {
-          "s1": "sub2 category1",
-          "s2": "sub2 category2",
-          "s3": "sub2 category3",
-          "s4": "sub2 category4"
         }
       },
       "c3": {
-        "title": "category2",
+        "title": "Economics and Business",
         "subCat": {
-          "s1": "sub3 category1",
-          "s2": "sub3 category2",
-          "s3": "sub3 category3",
-          "s4": "sub3 category4"
+          "s1": "Economists and Bankers",
+          "s2": "Entrepreneurs: Banking and Capital market",
+          "s3": "Entrepreneurs: High Tech"
         }
       },
       "c4": {
-        "title": "category3",
+        "title": "Holocaust Heroes",
         "subCat": {
-          "s1": "sub4 category1",
-          "s2": "sub4 category2",
-          "s3": "sub4 category3",
-          "s4": "sub4 category4"
+        
         }
       },
 
       "c5": {
-        "title": "category4",
+        "title": "Media",
         "subCat": {
-          "s1": "sub5 category1",
-          "s2": "sub5 category2",
-          "s3": "sub5 category3",
-          "s4": "sub5 category4"
+
         }
       },
 
       "c6": {
-        "title": "category5",
+        "title": "Science and philosophy",
         "subCat": {
           "s1": "sub6 category1",
           "s2": "sub6 category2",
@@ -372,30 +442,21 @@
       },
 
       "c7": {
-        "title": "category6",
+        "title": "Politics",
         "subCat": {
-          "s1": "sub7 category1",
-          "s2": "sub7 category2",
-          "s3": "sub7 category3",
-          "s4": "sub7 category4"
+
         }
       },
       "c8": {
-        "title": "category7",
+        "title": "Military",
         "subCat": {
-          "s1": "sub8 category1",
-          "s2": "sub8 category2",
-          "s3": "sub8 category3",
-          "s4": "sub8 category4"
+
         }
       },
       "c9": {
-        "title": "category8",
+        "title": "Influential Figures",
         "subCat": {
-          "s1": "sub9 category1",
-          "s2": "sub9 category2",
-          "s3": "sub9 category3",
-          "s4": "sub9 category4"
+
         }
       }
     },
@@ -597,6 +658,78 @@
       "sj": "Search jewish stars",
       "cj": "Search country",
       "gb": "Search trailblazing women"
+    },
+     "filterCatg": {
+      "c1": {
+        "title": "ArtistsAndCreators",
+        "subCat": {
+          "s1": "VisualArts",
+          "s2": "ClassicalMusic",
+          "s3": "PopularMusic",
+          "s4": "StandupComedy",
+          "s5": "FilmAndTV",
+          "s6": "Theater",
+          "s7": "Fashion",
+          "s8": "Architecture",
+          "s9": "Literature"
+        }
+      },
+      "c2": {
+        "title": "Athletes",
+        "subCat": {
+
+        }
+      },
+      "c3": {
+        "title": "EconomistsAndBusinessEntrepreneurs",
+        "subCat": {
+          "s1": "EconomistsAndBankers",
+          "s2": "EntrepreneursBankingandCapitalMarket",
+          "s3": "EntrepreneursHighTech"
+        }
+
+      },
+      "c4": {
+        "title": "HolocaustHeroes",
+        "subCat": {
+
+        }
+      },
+
+      "c5": {
+        "title": "JournalistsAndMediaPersonalities",
+        "subCat": {
+
+        }
+      },
+
+      "c6": {
+        "title": "ScientistsAndPhilosophers",
+        "subCat": {
+          "s1": "Philosophers",
+          "s2": "Scientists",
+          "s3": "Lawyers"
+        }
+      },
+
+      "c7": {
+        "title": "Politicians",
+        "subCat": {
+
+        }
+      },
+      "c8": {
+        "title": "MilitaryLeaders",
+        "subCat": {
+
+        }
+      },
+      "c9": {
+        "title": "Others",
+        "subCat": {
+
+        }
+      }
     }
   }
 }

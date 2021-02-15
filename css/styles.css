@@ -309,6 +309,7 @@ a {
     color: #C6C6C6;
     display: block;
     width: 100%;
+    line-height: 25px;
 }
 
     .pageSubWrapper .text:nth-of-type(1) {
@@ -392,7 +393,6 @@ a {
 .columnCont .colItem {
     display: block;
     text-align: center;
-    text-decoration: underline;
     line-height: 35px;
     letter-spacing: 0px;
     color: #C6C6C6;
@@ -537,7 +537,6 @@ a {
 ul .catgItem {
     display: block;
     text-align: right;
-    text-decoration: underline;
     line-height: 35px;
     margin-bottom: 10px;
     letter-spacing: 0px;
@@ -547,7 +546,6 @@ ul .catgItem {
 
 .catgItem .subCat {
     display: none;
-    text-decoration: underline;
     color: #4EA6FF;
     border-right: 25px solid transparent;
     cursor: pointer;
@@ -1020,7 +1018,6 @@ a{
     .columnCont .colItem {
         display: block;
         text-align: center;
-        text-decoration: underline;
         line-height: 35px;
         letter-spacing: 0px;
         color: #C6C6C6;
@@ -1162,7 +1159,6 @@ a{
     ul .catgItem {
         display: block;
         text-align: right;
-        text-decoration: underline;
         line-height: 35px;
         margin-bottom: 10px;
         letter-spacing: 0px;
@@ -1172,7 +1168,6 @@ a{
 
     .catgItem .subCat {
         display: none;
-        text-decoration: underline;
         color: #4EA6FF;
         border-right: 25px solid transparent;
         cursor: pointer;
@@ -1286,7 +1281,7 @@ a{
     .pageWrapper .sharingIcons {
         width: 100%;
         direction: rtl;
-        margin-top: 30px;
+        margin-top: 65px;
     }
 
     .sharingIcons .mailIcon {
@@ -1372,6 +1367,10 @@ a{
         color: #12FF9F;
     }
 
+    .category span:nth-child(n){
+        line-height:50px;
+    }
+
     .pageWrapper .pageSubCont {
         width: 100%;
     }
@@ -1381,6 +1380,7 @@ a{
         margin-left: auto;
         margin-right: auto;
         width: 90%;
+
     }
 
     .pageSubWrapper .text {
@@ -1390,6 +1390,7 @@ a{
         letter-spacing: 0px;
         color: #C6C6C6;
         display: block;
+        line-height:25px;
     }
 
         .pageSubWrapper .text:nth-of-type(1) {
@@ -1466,10 +1467,10 @@ a{
     .columnCont .colItem {
         display: block;
         text-align: center;
-        text-decoration: underline;
         line-height: 35px;
         letter-spacing: 0px;
         color: #C6C6C6;
+        font-size: 14px;
     }
 
     .table .splitLine {
@@ -1486,7 +1487,7 @@ a{
     }
 
     .pageSubWrapper .categoryCont {
-        margin-top: 80px;
+        margin-top: 30px;
         float: right;
         width: 100%;
         direction: rtl;
@@ -1505,7 +1506,7 @@ a{
         height: 140px;
         background: transparent url('../cut/Group 232@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         background-position: center;
     }
 
@@ -1515,7 +1516,7 @@ a{
         height: 140px;
         background: transparent url('../cut/Group 233@2x.png') 0% 0% no-repeat padding-box;
         background-size: contain;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         background-position: center;
     }
 
@@ -1570,7 +1571,9 @@ a{
         display: block;
         width: 100%;
         margin-bottom: 10px;
+        line-height:40px;
     }
+
     .personDetails .detailItm:nth-of-type(3){
         margin-bottom:25px;
     }
@@ -1604,7 +1607,6 @@ a{
     ul .catgItem {
         display: block;
         text-align: right;
-        text-decoration: underline;
         line-height: 35px;
         margin-bottom: 10px;
         letter-spacing: 0px;
@@ -1614,7 +1616,6 @@ a{
 
     .catgItem .subCat {
         display: none;
-        text-decoration: underline;
         color: #4EA6FF;
         border-right: 25px solid transparent;
         cursor:pointer;
@@ -1707,4 +1708,22 @@ a{
             margin-top: 65px;
             width: 100%;
         }
+        .colItem{
+            font-size:12px;
+        }
+        
     }
+
+@media only screen and (max-width: 375px) {
+    .colItem {
+        font-size: 12px;
+    }
+
+    .category span:nth-child(n) {
+        font-size: 14px !important;
+    }
+
+    .titleCont .mainTitle {
+        font-size: 18px;
+    }
+}

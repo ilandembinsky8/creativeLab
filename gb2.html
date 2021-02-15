@@ -135,10 +135,8 @@
            langIs = localStorage.getItem("langID");
            counter = 0;
            $('#col1, #col2').empty();
-            json = await getTrailWomen();
-           //json = await getPersonalities();
            console.log(json);
-           object = await getOccupation(json,searchValue);
+           object = await getOccupation(searchValue);
             for (var i in object) {
                  subObj = object[i].translations;
                 for (var j in subObj) {

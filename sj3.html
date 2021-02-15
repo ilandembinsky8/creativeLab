@@ -71,12 +71,12 @@
            //if (langIs.localeCompare("en")===0) {
            //    searchValue++;
            //}
-           json = await getPersonalities();
+           json = await getJewishStars();
            $('.fieldTxt').each(function (index, obj) {
                 $(obj).text("");
            });
            $('.text').text("");
-            var filtered = $(json.data).filter(function (i, n) {
+            var filtered = $(json).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
                     if (n.id === searchValue && n.translations[j].language === langIs) {
