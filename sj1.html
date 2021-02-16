@@ -110,7 +110,8 @@
                 var value = $('#' + idItm)[0].childNodes[0].nodeValue;
                 $('#catgTitle').addClass('mainCat');
                 $('#catgMain').removeClass('greenTitle');
-                $('#split').removeClass('invisible');
+                $('#split1').removeClass('invisible');
+                $('#split1').css('display','inline-block');
                 $('#catgSub1').html(value);
                 event.stopPropagation();
                 $('#' + idItm).children('.subCat').toggle();

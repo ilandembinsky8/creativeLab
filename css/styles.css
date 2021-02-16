@@ -788,7 +788,7 @@ a{
     }
 
         .header .headerWrapper {
-            width: 90%;
+            width: 98%;
             margin: 0px auto;
         }
 
@@ -809,7 +809,7 @@ a{
     }
 
     .headerCont .homeIcon {
-        float: right;
+        float: left;
         width: 42px;
         height: 42px;
         background-size: contain;
@@ -1235,7 +1235,7 @@ a{
     }
 
         .header .headerWrapper {
-            width: 90%;
+            width: 98%;
             margin: 0px auto;
         }
 
@@ -1256,7 +1256,7 @@ a{
     }
 
     .headerCont .homeIcon {
-        float: right;
+        float: left;
         width: 42px;
         height: 42px;
         background-size: contain;
@@ -1671,11 +1671,7 @@ a{
 @media only screen and (max-width: 800px) and (min-width: 641px) {
     .headerCont .titleCont {
         float: right;
-        width: 90%;
-    }
-
-    .headerCont .homeIcon {
-        float: none;
+        width: 85%;
     }
 
     .pageSubWrapper .searchCont {
@@ -1689,14 +1685,14 @@ a{
         width: 80%;
     }
 }
-@media only screen and (max-width: 469px) and (min-width: 375px) {
+@media only screen and (max-width: 470px) and (min-width: 375px) {
     .headerCont .titleCont {
         float: right;
         width: 75%;
     }
 
 }
-@media only screen and (max-width: 374px) and (min-width: 312px) {
+@media only screen and (max-width: 375px) and (min-width: 312px) {
     .headerCont .titleCont {
         float: right;
         width: 70%;

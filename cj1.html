@@ -141,7 +141,7 @@
                 for (j = 0; j < n.translations.length; j++) {
                     if (n.translations[j].language === langIs) {
                         var col = addToColumn();
-                        counter++;
+                        counter = counter + 1;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + n.id + '>' + n.translations[j].name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }

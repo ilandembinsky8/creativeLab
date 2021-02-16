@@ -80,12 +80,13 @@
             counter = 0;
              $('#col1, #col2').empty();
             for (var i in object) {
+                var idIs=object[i].id;
                 subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' +  idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -121,7 +122,9 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var item = JSON.parse(localStorage.getItem('my_item_back'));
+            console.log(`item is ${item}`);
             if (typeof item !== 'undefined' && item !== null) {
+                console.log('item back');
                 var main = item.main
                 var sub = item.sub;
                 catg = lang.categories[main];
@@ -135,7 +138,7 @@
                     findMatchesSub(subCatgFilter);
                 } else {
                     $('#split1').css("display", "inline-block");
-                    $('#split2').css("display", "none");
+                    $('#split2,#catgSub').css("display", "none");
                     $('#catgMain').addClass('greenTitle');
                     findMatchesCatg(catgFilter.title);
                 }
@@ -168,14 +171,16 @@
            console.log(object);
            var counter = 0;
            $('#col1, #col2').empty();
-           for (i = 0; i < 12; i++)
-            for (var i in object) {
+
+           for (var i in object) {
+               var idIs = object[i].id;
+               console.log(idIs);
                  subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                        counter++;
+                        counter = counter + 1;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -191,7 +196,8 @@
             var main = sessionStorage.getItem("main");
             var sub = sessionStorage.getItem("sub");
             var my_object = { "main": main, "sub": sub, "prData": prData}
-            sessionStorage.setItem('my_item', JSON.stringify(my_object)); 
+            sessionStorage.setItem('my_item', JSON.stringify(my_object));
+            console.log(prData);
             location.href = "sj3.html";
         }
 
@@ -199,13 +205,17 @@
             langIs = localStorage.getItem("langID");
             $('#col1, #col2').empty();
             object = await getCategory(searchValue);
+            console.log(object);
             counter = 0;
             for (var i in object) {
-                 subObj = object[i].translations;
+                console.log(object[i].id);
+                subObj = object[i].translations;
+                var idIs=object[i].id;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
+                        counter = counter + 1;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -222,9 +232,9 @@
 
             $('body').delegate('#catgMain', 'click', function () {
                 var main =  sessionStorage.getItem("main");
-                var my_object_ = { "main":main, "sub": "" }
-                sessionStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                location.href = "sj2.html";
+                var my_object_ = { "main": main, "sub": "" }
+                localStorage.setItem('my_item_back', JSON.stringify(my_object_));
+                fillColumns();
             });
 
         }

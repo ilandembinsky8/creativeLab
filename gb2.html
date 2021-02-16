@@ -83,13 +83,14 @@
             console.log(object);
             counter = 0;
              $('#col1, #col2').empty();
-            for (var i in object) {
+              for (var i in object) {
+                var idIs=object[i].id;
                 subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
-                        counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                       counter = counter + 1;
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' +idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -135,15 +136,15 @@
            langIs = localStorage.getItem("langID");
            counter = 0;
            $('#col1, #col2').empty();
-           console.log(json);
            object = await getOccupation(searchValue);
-            for (var i in object) {
+          for (var i in object) {
+              var idIs=object[i].id;
                  subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                        counter++;
+                      counter = counter + 1;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + object[i].id + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
