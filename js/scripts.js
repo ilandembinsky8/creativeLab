@@ -119,7 +119,6 @@ async function getPersonalities() {
         crossDomain: true,
         async: true,
         success: function (result) {
-            console.log(result);
             d.resolve(result);
         },
         error: function (jqXHR, status) {
@@ -234,12 +233,10 @@ async function getBirthYear(json, catIs) {
 
 async function getJewishStars() {
     var json = await getPersonalities();
-    console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
         if (str.indexOf("30") > -1) {
-            console.log("category:       "+ n.translations[0].category + "----------> sub:         " + n.translations[0].sub_category);
                 bool = true;
             }
         
@@ -250,7 +247,6 @@ async function getJewishStars() {
 
 async function getStarsTemp() {
     var json = await getPersonalities();
-    console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         bool = false;
         counter = 0;    

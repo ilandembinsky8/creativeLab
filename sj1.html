@@ -77,6 +77,19 @@
 
         }
 
+        function goToSub(idItm) {
+            var idPr = $('#' + idItm).parent().attr('id');
+            sessionStorage.setItem("main", idPr);
+            sessionStorage.setItem("sub", idItm);
+            location.href = "sj2.html";
+         }
+
+        function goToCatg(idPr) {
+             var idItm = "";
+             sessionStorage.setItem("main", idPr);
+             sessionStorage.setItem("sub", idItm);
+             location.href = "sj2.html";
+         }
 
         function loadData() {
             JsonLang = localStorage.getItem("lang");
@@ -85,6 +98,7 @@
             $('#catgTitle').text(lang.catgTitle);
             var categ = lang["categories"];
             counter = 0;
+
             for (var i in categ) {
                 subCount = 0;
                 counter++;
@@ -95,12 +109,12 @@
                 var sub = categ[i].subCat;
                 for (j in sub) {
                     subCount++;
-                    var elem = '<div id=' + 's' + subCount + '  class="subCat">' + sub[j] + '</div>';
+                    var elem = '<div id=' + 's' + counter + '_' + subCount + '  class="subCat" onclick="goToSub(this.id)">' + sub[j] + '</div>';
                     document.getElementById(currId).innerHTML += elem;
                 }
             }
         }
-
+     
 
         $(function () {
             pickCSS();
@@ -117,20 +131,20 @@
                 $('#' + idItm).children('.subCat').toggle();
             });
 
-            $('body').delegate('.subCat', 'click', function () {
-                var idItm = (this).id;
-                var idPr = $(this).parent().attr('id');
-                sessionStorage.setItem("main", idPr);
-                sessionStorage.setItem("sub", idItm);
-                location.href = "sj2.html";
-            });
-            $('body').delegate('.singleCat', 'click', function () {
-                var idItm = "";
-                var idPr = (this).id;
-                sessionStorage.setItem("main", idPr);
-                sessionStorage.setItem("sub", idItm);
-                location.href = "sj2.html";
-            });
+            //$('body').delegate('.subCat', 'click', function () {
+            //    var idItm = (this).id;
+            //    var idPr = $(this).parent().attr('id');
+            //    sessionStorage.setItem("main", idPr);
+            //    sessionStorage.setItem("sub", idItm);
+            //    location.href = "sj2.html";
+            //});
+            //$('body').delegate('.singleCat', 'click', function () {
+            //    var idItm = "";
+            //    var idPr = (this).id;
+            //    sessionStorage.setItem("main", idPr);
+            //    sessionStorage.setItem("sub", idItm);
+            //    location.href = "sj2.html";
+            //});
         });
 
     </script>
@@ -163,7 +177,7 @@
                             <li id="c1" class="catgItem">
 
                             </li>
-                            <li id="c2" class="catgItem singleCat">
+                            <li id="c2" class="catgItem singleCat" onclick="goToCatg('c2')">
 
 
                             </li>
@@ -171,11 +185,11 @@
 
 
                             </li>
-                            <li id="c4" class="catgItem singleCat">
+                            <li id="c4" class="catgItem singleCat" onclick="goToCatg('c4')">
 
 
                             </li>
-                            <li id="c5" class="catgItem singleCat">
+                            <li id="c5" class="catgItem singleCat" onclick="goToCatg('c5')">
 
 
                             </li>
@@ -183,15 +197,15 @@
 
 
                             </li>
-                            <li id="c7" class="catgItem singleCat">
+                            <li id="c7" class="catgItem singleCat" onclick="goToCatg('c7')">
 
 
                             </li>
-                            <li id="c8" class="catgItem singleCat">
+                            <li id="c8" class="catgItem singleCat" onclick="goToCatg('c8')">
 
 
                             </li>
-                            <li id="c9" class="catgItem singleCat">
+                            <li id="c9" class="catgItem singleCat" onclick="goToCatg('c9')">
 
 
                             </li>

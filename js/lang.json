@@ -24,15 +24,15 @@
       "c1": {
         "title": "אמנות ויצירה",
         "subCat": {
-          "s1": "אמנות חזותית",
-          "s2": "מוזיקה קלאסית",
-          "s3": "מוזיקה פופולרית",
-          "s4": "סטנד אפ",
-          "s5": "קולנוע וטלוויזיה",
-          "s6": "תיאטרון",
-          "s7": "אופנה",
-          "s8": "אדריכלות",
-          "s9": "ספרות"
+          "s1_1": "אמנות חזותית",
+          "s1_2": "מוזיקה קלאסית",
+          "s1_3": "מוזיקה פופולרית",
+          "s1_4": "סטנד אפ",
+          "s1_5": "קולנוע וטלוויזיה",
+          "s1_6": "תיאטרון",
+          "s1_7": "אופנה",
+          "s1_8": "אדריכלות",
+          "s1_9": "ספרות"
         }
       },
       "c2": {
@@ -44,9 +44,9 @@
       "c3": {
         "title": "כלכלה ועסקים",
         "subCat": {
-          "s1": "כלכלנים ונגידי בנקים",
-          "s2": "יזמים: בנקאות ושוק ההון",
-          "s3": "יזמים: הייטק"
+          "s3_1": "כלכלנים ונגידי בנקים",
+          "s3_2": "יזמים: בנקאות ושוק ההון",
+          "s3_3": "יזמים: הייטק"
         }
 
       },
@@ -67,9 +67,9 @@
       "c6": {
         "title": "מדע והגות",
         "subCat": {
-          "s1": "הוגי דעות",
-          "s2": "מדענים",
-          "s3": "משפטנים"
+          "s6_1": "הוגי דעות",
+          "s6_2": "מדענים",
+          "s6_3": "משפטנים"
         }
       },
 
@@ -119,15 +119,15 @@
       "c1": {
         "title": "ArtistsAndCreators",
         "subCat": {
-          "s1": "VisualArts",
-          "s2": "ClassicalMusic",
-          "s3": "PopularMusic",
-          "s4": "StandupComedy",
-          "s5": "FilmAndTV",
-          "s6": "Theater",
-          "s7": "Fashion",
-          "s8": "Architecture",
-          "s9": "Literature"
+          "s1_1": "VisualArts",
+          "s1_2": "ClassicalMusic",
+          "s1_3": "PopularMusic",
+          "s1_4": "StandupComedy",
+          "s1_5": "FilmAndTV",
+          "s1_6": "Theater",
+          "s_7": "Fashion",
+          "s_8": "Architecture",
+          "s_9": "Literature"
         }
       },
       "c2": {
@@ -139,9 +139,9 @@
       "c3": {
         "title": "EconomistsAndBusinessEntrepreneurs",
         "subCat": {
-          "s1": "EconomistsAndBankers",
-          "s2": "EntrepreneursBankingandCapitalMarket",
-          "s3": "EntrepreneursHighTech"
+          "s3_1": "EconomistsAndBankers",
+          "s3_2": "EntrepreneursBankingandCapitalMarket",
+          "s3_3": "EntrepreneursHighTech"
         }
 
       },
@@ -162,9 +162,9 @@
       "c6": {
         "title": "ScientistsAndPhilosophers",
         "subCat": {
-          "s1": "Philosophers",
-          "s2": "Scientists",
-          "s3": "Lawyers"
+          "s6_1": "Philosophers",
+          "s6_2": "Scientists",
+          "s6_3": "Lawyers"
         }
       },
 
@@ -210,15 +210,15 @@
       "c1": {
         "title": "Art and Creation",
         "subCat": {
-          "s1": "Visual arts",
-          "s2": "Classic music",
-          "s3": "Pop music",
-          "s4": "Humor",
-          "s5": "Cinema and TV",
-          "s6": "Theater",
-          "s7": "Fashion",
-          "s8": "Architects",
-          "s9": "Literature"
+          "s1_1": "Visual arts",
+          "s1_2": "Classic music",
+          "s1_3": "Pop music",
+          "s1_4": "Humor",
+          "s1_5": "Cinema and TV",
+          "s1_6": "Theater",
+          "s1_7": "Fashion",
+          "s1_8": "Architects",
+          "s1_9": "Literature"
         }
 
       },
@@ -230,9 +230,9 @@
       "c3": {
         "title": "Economics and Business",
         "subCat": {
-          "s1": "Economists and Bankers",
-          "s2": "Entrepreneurs: Banking and Capital market",
-          "s3": "Entrepreneurs: High Tech"
+          "s3_1": "Economists and Bankers",
+          "s3_2": "Entrepreneurs: Banking and Capital market",
+          "s3_3": "Entrepreneurs: High Tech"
         }
       },
       "c4": {
@@ -252,9 +252,9 @@
       "c6": {
         "title": "Science and philosophy",
         "subCat": {
-          "s1": "Philosophers",
-          "s2": "Scientists",
-          "s3": "Lawyers"
+          "s6_1": "Philosophers",
+          "s6_2": "Scientists",
+          "s6_3": "Lawyers"
         }
       },
 
@@ -302,15 +302,15 @@
       "c1": {
         "title": "ArtistsAndCreators",
         "subCat": {
-          "s1": "VisualArts",
-          "s2": "ClassicalMusic",
-          "s3": "PopularMusic",
-          "s4": "StandupComedy",
-          "s5": "FilmAndTV",
-          "s6": "Theater",   
-          "s7": "Fashion",   
-          "s8": "Architecture",
-          "s9": "Literature"
+          "s1_1": "VisualArts",
+          "s1_2": "ClassicalMusic",
+          "s1_3": "PopularMusic",
+          "s1_4": "StandupComedy",
+          "s1_5": "FilmAndTV",
+          "s1_6": "Theater",
+          "s1_7": "Fashion",
+          "s1_8": "Architecture",
+          "s1_9": "Literature"
         }
       },
       "c2": {
@@ -322,9 +322,9 @@
       "c3": {
         "title": "EconomistsAndBusinessEntrepreneurs",
         "subCat": {
-          "s1": "EconomistsAndBankers",
-          "s2": "EntrepreneursBankingandCapitalMarket", 
-          "s3": "EntrepreneursHighTech"               
+          "s3_1": "EconomistsAndBankers",
+          "s3_2": "EntrepreneursBankingandCapitalMarket", 
+          "s3_3": "EntrepreneursHighTech"               
         }
 
       },
@@ -345,9 +345,9 @@
       "c6": {
         "title": "ScientistsAndPhilosophers",
         "subCat": {
-          "s1": "Philosophers",
-          "s2": "Scientists",
-          "s3": "Lawyers"
+          "s6_1": "Philosophers",
+          "s6_2": "Scientists",
+          "s6_3": "Lawyers"
         }
       },
 

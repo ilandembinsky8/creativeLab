@@ -144,7 +144,8 @@
                 }
             } else {
                 var main =  sessionStorage.getItem("main");
-                var sub =  sessionStorage.getItem("sub");
+                var sub = sessionStorage.getItem("sub");
+                console.log(main + " --- " + sub);
                 catg = lang.categories[main];
                 catgFilter = lang.filterCatg[main];
                 $('#catgMain').html(catg.title);
@@ -174,7 +175,6 @@
 
            for (var i in object) {
                var idIs = object[i].id;
-               console.log(idIs);
                  subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
@@ -208,7 +208,6 @@
             console.log(object);
             counter = 0;
             for (var i in object) {
-                console.log(object[i].id);
                 subObj = object[i].translations;
                 var idIs=object[i].id;
                 for (var j in subObj) {
