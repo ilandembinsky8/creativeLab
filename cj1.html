@@ -160,8 +160,8 @@
                 b1 = b;
                  if (langIs.indexOf("he") > -1) {
                     a1 = a.translations[0].name;
-                    b1 = b.translations[0].name;
-                } else if (langIs.indexOf("en") > -1) {
+                     b1 = b.translations[0].name;
+                 } else if (langIs.indexOf("en") > -1 && a.translations.length > 1 && b.translations.length > 1) {
                      a1 = a.translations[1].name.toLowerCase();
                      b1 = b.translations[1].name.toLowerCase();
                 }
