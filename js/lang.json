@@ -28,7 +28,7 @@
           "s2": "מוזיקה קלאסית",
           "s3": "מוזיקה פופולרית",
           "s4": "סטנד אפ",
-          "s5": "קולנוע וטלןןיזיה",
+          "s5": "קולנוע וטלוויזיה",
           "s6": "תיאטרון",
           "s7": "אופנה",
           "s8": "אדריכלות",
@@ -98,185 +98,7 @@
       "country": "מדינה:",
       "occupation": "מקצוע:"
     },
-    "data": {
-      "p1": {
-        "id": 1,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "ג'ורג'",
-        "last_name": "בלייק",
-        "writer": "כותב",
-        "category": "אמנות",
-        "sub_category": "אמנות ויזואלית",
-        "occupation": "צייר",
-        "country": "הולנד",
-        "info": "טקסט ...טקסט...",
-        "video": null,
-        "language": "he"
-      },
-      "p2": {
-        "id": 2,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "ג'ורג'",
-        "last_name": "בלייק",
-        "writer": "כותב",
-        "category": "אמנות",
-        "sub_category": "אמנות חזותית",
-        "occupation": "צייר",
-        "country": "הולנד",
-        "info": "טקסט ...טקסט...",
-        "video": null,
-        "language": "he"
-      },
-      "p3": {
-        "id": 3,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "מארק",
-        "last_name": "בלייק",
-        "writer": "כותב",
-        "category": "אמנות",
-        "sub_category": "אמנות חזותית",
-        "occupation": "צייר",
-        "country": "הולנד",
-        "info": "טקסט ...טקסט...",
-        "video": null,
-        "language": "he"
-      }
-    },
-    "country": {
-      "c1": {
-        "id": 1,
-        "name": "אירן",
-        "info1": {
-          "title": "אירןאירן",
-          "txt": "אירן אירן אירן אירן אירן אירן"
-        },
-        "info2": {
-          "titl": "אירןאירן",
-          "txt": "אירן אירן אירן אירן"
-        },
-        "info3": {
-          "title": "אירןאירן",
-          "txt": "אירן אירן אירן אירן"
-        }
-      },
-      "c2": {
-        "id": 2,
-        "name": "מיצרים",
-        "info1": {
-          "title": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        },
-        "info2": {
-          "titl": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        },
-        "info3": {
-          "title": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        }
-      },
-      "c3": {
-        "id": 3,
-        "name": "אירן1",
-        "info1": {
-          "title": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        },
-        "info2": {
-          "title": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        },
-        "info3": {
-          "title": "מיצריםמיצרים",
-          "txt": "מיצרים מיצרים מיצרים מיצרים מיצרים"
-        }
-      }
-    },
-    "gbreaking": {
-      "gb1": {
-        "id": 1,
-        "first_name": "שםפ1",
-        "last_name": "שםמ1",
-        "birth_year": "1930",
-        "death_year": "1980",
-        "area": "פוליטיקה",
-        "info": "שםמ 1שם מ1ש םמ 1שםמ 1שם מ1שם מ1 שםמ 1שםמ שם מ1ש םמ1 שם מ1ש םמ1"
-      },
-      "gb2": {
-        "id": 2,
-        "first_name": "שםמ2",
-        "last_name": "שםפ2",
-        "birth_year": "1925",
-        "death_year": "2001",
-        "area": "השכלה",
-        "info": "שםמ2שם מ2שםמ 2שםמ2 שםמ 2ש םמ2ש םמ2שםמ 2שםמ2 שםמ2 שםמ 2שםמ2"
-      },
-      "gb3": {
-        "id": 3,
-        "first_name": "שםמ3",
-        "last_name": "שםפ3",
-        "birth_year": "1928",
-        "death_year": "1998",
-        "area": "עבודה",
-        "info": "שםמ3 שםמ 3שםמ3 שםמ3 שם 3שםמ3 שם מ3שם מ3שם מ3שםמ3 שםמ3"
-      }
-    },
-    "stars": {
-      "s1": {
-        "id": 1,
-        "name": "כוכבת1",
-        "country": "אלג'יריה",
-        "birth_year": "1918",
-        "death_year": "1999",
-        "info": "כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s2": {
-        "id": 2,
-        "name": "כוכבת2",
-        "country": "מרוקו",
-        "birth_year": "1922",
-        "death_year": "1997",
-        "info": "כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s3": {
-        "id": 3,
-        "name": "כוכבת3",
-        "country": "תימן",
-        "birth_year": "1945",
-        "death_year": "2010",
-        "info": "כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s4": {
-        "id": 4,
-        "name": "כוכבת4",
-        "country": "מיצרים",
-        "birth_year": "1950",
-        "death_year": "2019",
-        "info": "כוכבת4 כוכבת4 כוכבת4 כוכבת4 כוכבת4 כוכבת4 כוכבת4 ",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      }
-    },
+
     "page7": {
       "catg": {
         "edu": "השכלה",
@@ -370,7 +192,6 @@
   "EN": {
     "catgTitle": "Categories",
     "countries": "Countries",
-    "starsTitle": "Blah blah",
     "singer": "blah",
     "close": "close",
     "hdTitles": {
@@ -379,10 +200,7 @@
       "groundbreaking": "Trailblazing Women",
       "starsJour": "Star Track"
     },
-    "communities": {
-      "iran": "blah",
-      "egypt": "blah"
-    },
+ 
     "occupations": {
       "edu": "Education",
       "career": "Work",
@@ -434,10 +252,9 @@
       "c6": {
         "title": "Science and philosophy",
         "subCat": {
-          "s1": "sub6 category1",
-          "s2": "sub6 category2",
-          "s3": "sub6 category3",
-          "s4": "sub6 category4"
+          "s1": "Philosophers",
+          "s2": "Scientists",
+          "s3": "Lawyers"
         }
       },
 
@@ -463,189 +280,11 @@
 
 
     "page10": {
-      "years": "blah:",
-      "country": "blah:",
-      "occupation": "blah"
+      "years": "Years:",
+      "country": "Country:",
+      "occupation": "Occupation:"
     },
-    "data": {
-      "p1": {
-        "id": 1,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "blah1'",
-        "last_name": "blah2",
-        "writer": "blah",
-        "category": "blah",
-        "sub_category": "sub1 category2",
-        "occupation": "blah",
-        "country": "blah",
-        "info": "blah...blah",
-        "video": null,
-        "language": "he"
-      },
-      "p2": {
-        "id": 2,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "blah1",
-        "last_name": "blah1",
-        "writer": "blah1",
-        "category": "blah1",
-        "sub_category": "sub1 category1",
-        "occupation": "blah1",
-        "country": "blah1",
-        "info": "blah1 blah1 blah1 blah1 blah1",
-        "video": null,
-        "language": "he"
-      },
-      "p3": {
-        "id": 3,
-        "birth_year": 1922,
-        "death_year": 1989,
-        "personality_id": 1,
-        "first_name": "blah1",
-        "last_name": "blah1",
-        "writer": "blah1",
-        "category": "blah1",
-        "sub_category": "sub1 category2",
-        "occupation": "blah1",
-        "country": "blah1",
-        "info": "blah1",
-        "video": null,
-        "language": "he"
-      }
-    },
-    "country": {
-      "c1": {
-        "id": 1,
-        "name": "country1",
-        "info1": {
-          "title": "country1 country1",
-          "txt": "country1 country1 country1 country1 country1"
-        },
-        "info2": {
-          "titl": "country11 country11",
-          "txt": "country11 country11 country11 country11"
-        },
-        "info3": {
-          "title": "country111 country111",
-          "txt": "country111 country111 country111 country111"
-        }
-      },
-      "c2": {
-        "id": 2,
-        "name": "country2",
-        "info1": {
-          "title": "country2country2",
-          "txt": "country2  country2 country2 country2 country2"
-        },
-        "info2": {
-          "titl": "country2 country2",
-          "txt": "country2  country2 country2 country2 country2"
-        },
-        "info3": {
-          "title": "country2country22",
-          "txt": "country2  country2 country2 country2 country2"
-        }
-      },
-      "c3": {
-        "id": 3,
-        "name": "country3",
-        "info1": {
-          "title": "country3country3",
-          "txt": "country3 country3 country3 country3 country3"
-        },
-        "info2": {
-          "title": "country3country3",
-          "txt": "country3 country3 country3 country3 country3"
-        },
-        "info3": {
-          "title": "country3country3",
-          "txt": "country3 country3 country3 country3 country3"
-        }
-      }
-    },
-    "gbreaking": {
-      "gb1": {
-        "id": 1,
-        "first_name": "שםפ1",
-        "last_name": "שםמ1",
-        "birth_year": "1930",
-        "death_year": "1980",
-        "area": "פוליטיקה",
-        "info": "gb11 gb1 gb1 gb1 gb1 gb1 gb1 gb1"
-      },
-      "gb2": {
-        "id": 2,
-        "first_name": "שםמ2",
-        "last_name": "שםפ2",
-        "birth_year": "1925",
-        "death_year": "2001",
-        "area": "השכלה",
-        "info": "gb22 gb2 gb2 gb2 gb2 gb2 gb2"
-      },
-      "gb3": {
-        "id": 3,
-        "first_name": "שםמ3",
-        "last_name": "שםפ3",
-        "birth_year": "1928",
-        "death_year": "1998",
-        "area": "עבודה",
-        "info": "gb3 gb3 gb3 gb3 gb3 gb3 gb33"
-      }
-    },
-    "stars": {
-      "s1": {
-        "id": 1,
-        "name": "blah1",
-        "country": "אלג'יריה",
-        "birth_year": "1918",
-        "death_year": "1999",
-        "info": "כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1 כוכבת1",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s2": {
-        "id": 2,
-        "name": "blah2",
-        "country": "מרוקו",
-        "birth_year": "1922",
-        "death_year": "1997",
-        "info": "כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2 כוכבת2",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s3": {
-        "id": 3,
-        "name": "blah3",
-        "country": "Yemen",
-        "birth_year": "1945",
-        "death_year": "2010",
-        "info": "כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 כוכבת3 blah",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "כוכבת4"
-        }
-      },
-      "s4": {
-        "id": 4,
-        "name": "blah4",
-        "country": "Egypt",
-        "birth_year": "1950",
-        "death_year": "2019",
-        "info": "blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4 blah4",
-        "video": {
-          "url": "https://www.youtube.com/",
-          "name": "blah4"
-        }
-      }
-    },
+
     "page7": {
       "catg": {
         "edu": "Work",
@@ -668,8 +307,8 @@
           "s3": "PopularMusic",
           "s4": "StandupComedy",
           "s5": "FilmAndTV",
-          "s6": "Theater",
-          "s7": "Fashion",
+          "s6": "Theater",   
+          "s7": "Fashion",   
           "s8": "Architecture",
           "s9": "Literature"
         }
@@ -684,8 +323,8 @@
         "title": "EconomistsAndBusinessEntrepreneurs",
         "subCat": {
           "s1": "EconomistsAndBankers",
-          "s2": "EntrepreneursBankingandCapitalMarket",
-          "s3": "EntrepreneursHighTech"
+          "s2": "EntrepreneursBankingandCapitalMarket", 
+          "s3": "EntrepreneursHighTech"               
         }
 
       },

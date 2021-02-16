@@ -36,7 +36,6 @@ function pickCSS() {
         if (pickLang.localeCompare("he") === 0) {
             console.log("pick lang is :     "+pickLang);
             swapStyleSheet('css/styles.css');
-            $('#lang').css("background-image", "url('cut/Group 128.png')");
             localStorage.setItem("langID", "he");
             loadLang();
         } else if (pickLang.localeCompare("en") === 0) {
@@ -82,7 +81,7 @@ function loadLang() {
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
                     localStorage.setItem("langID", "en");
-                    $('#lang').css("background-image", "url('cut/Group 128 - eng.png')");
+                    $('#lang').css("background-image", "url('cut/Group 312.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
@@ -136,9 +135,9 @@ function changeIcons(num) {
         $('#career').css("background-image", "url('cut/Group 233.png')");
         $('#politics').css("background-image", "url('cut/Group 234.png')");
     } else {
-        $('#edu').css("background-image", "url('cut/Group 232 - eng.png')");
-        $('#career').css("background-image", "url('cut/Group 233 - eng.png')");
-        $('#politics').css("background-image", "url('cut/Group 234 - eng.png')");
+        $('#edu').css("background-image", "url('cut/Group 311.png')");
+        $('#career').css("background-image", "url('cut/Group 310.png')");
+        $('#politics').css("background-image", "url('cut/Group 309.png')");
     }
 }
 
