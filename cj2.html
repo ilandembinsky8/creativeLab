@@ -33,7 +33,9 @@
                 localStorage.setItem("langID", "he");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
-            loadAndFill();
+             $('#name').text('');
+             clearTxts('pageSubWrapper');
+             loadAndFill();
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);
@@ -64,15 +66,15 @@
         }
         function loadCountryInfo(res) {
             if (typeof res !== 'undefined' && res !== null) {
-                $('#catgSub1').text(res["name"]);
-                $('#catgSub1,#split1').css("display", "inline-block");
+                $('#name').text(res["name"]);
+                $('#name,#split1').css("display", "inline-block");
                 $('#txt1').text(res.timeline[0].info);
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
                 $('#titleTxt3').text(res.timeline[1].timeframe);
                 $('#txt3').text(res.timeline[1].info);
             } else {
-                $('#catgSub1').text("");            
+                $('#name').text("");            
                 $('#txt1').text("");   
                 $('#titleTxt2').text("");   
                 $('#txt2').text("");   
@@ -144,7 +146,7 @@
             <div class="category">
                 <span class="mainCat" id="catgMain" onclick="location.href = 'cj1.html';"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
-                <span class="subCat" id="catgSub1"></span>
+                <span class="subCat" id="name"></span>
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon" id="shareBtn"></span>

@@ -34,7 +34,9 @@
                 localStorage.setItem("langID", "he");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
-            loadAndFill();
+             $('#name').text('');
+             clearTxts('pageSubWrapper');
+             loadAndFill();
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);

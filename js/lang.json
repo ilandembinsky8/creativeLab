@@ -125,9 +125,9 @@
           "s1_4": "StandupComedy",
           "s1_5": "FilmAndTV",
           "s1_6": "Theater",
-          "s_7": "Fashion",
-          "s_8": "Architecture",
-          "s_9": "Literature"
+          "s1_7": "Fashion",
+          "s1_8": "Architecture",
+          "s1_9": "Literature"
         }
       },
       "c2": {
@@ -280,9 +280,9 @@
 
 
     "page10": {
-      "years": "Years:",
-      "country": "Country:",
-      "occupation": "Occupation:"
+      "years": "Years: ",
+      "country": "Country: ",
+      "occupation": "Occupation: "
     },
 
     "page7": {

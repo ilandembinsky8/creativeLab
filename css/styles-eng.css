@@ -161,9 +161,9 @@ body {
 
 .headerCont .langIcon {
     float: left;
-    width: 42px;
-    height: 42px;
-    background-size: contain;
+    width: 47px;
+    height: 47px;
+    background-size: cover;
     background-image: url('../cut/Group 128@2x.png');
     background-position: right center;
     background-repeat: no-repeat;
@@ -171,9 +171,9 @@ body {
 
 .headerCont .homeIcon {
     float: left;
-    width: 42px;
-    height: 42px;
-    background-size: contain;
+    width: 47px;
+    height: 47px;
+    background-size: cover;
     background-image: url('../cut/Group 156@2x.png');
     background-position: left center;
     background-repeat: no-repeat;
@@ -537,6 +537,7 @@ a {
 
 .fieldTxt {
     color: #E6E6E6;
+    text-indent: 7px;
 }
 
 .catgList {
@@ -586,6 +587,7 @@ ul .catgItem {
 .video .artistName {
     float: left;
     margin-bottom: 15px;
+    direction: ltr;
     text-align: left;
     letter-spacing: 0px;
     color: #C6C6C6;
@@ -801,9 +803,9 @@ a {
 
     .headerCont .langIcon {
         float: left;
-        width: 42px;
-        height: 42px;
-        background-size: contain;
+        width: 47px;
+        height: 47px;
+        background-size: cover;
         background-image: url('../cut/Group 128@2x.png');
         background-position: right;
         background-repeat: no-repeat;
@@ -811,9 +813,9 @@ a {
 
     .headerCont .homeIcon {
         float: right;
-        width: 42px;
-        height: 42px;
-        background-size: contain;
+        width: 47px;
+        height: 47px;
+        background-size: cover;
         background-image: url('../cut/Group 156@2x.png');
         background-position: left;
         background-repeat: no-repeat;
@@ -1250,9 +1252,9 @@ a {
 
     .headerCont .langIcon {
         float: left;
-        width: 42px;
-        height: 42px;
-        background-size: contain;
+        width: 47px;
+        height: 47px;
+        background-size: cover;
         background-image: url('../cut/Group 128@2x.png');
         background-position: right;
         background-repeat: no-repeat;
@@ -1260,9 +1262,9 @@ a {
 
     .headerCont .homeIcon {
         float: right;
-        width: 42px;
-        height: 42px;
-        background-size: contain;
+        width: 47px;
+        height: 47px;
+        background-size: cover;
         background-image: url('../cut/Group 156@2x.png');
         background-position: left;
         background-repeat: no-repeat;

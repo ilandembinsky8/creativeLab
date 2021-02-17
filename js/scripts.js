@@ -66,6 +66,11 @@ function pickLanguage() {
     }
 }
 
+function clearTxts(txtWrap) {
+    $("." + txtWrap).find("*").addBack().contents().filter(function () {
+        return this.nodeType === 3;
+    }).remove();
+}
 
 function loadLang() {
     var xmlhttp = new XMLHttpRequest();
@@ -160,19 +165,6 @@ async function getCountries() {
     return d.promise();
 }
 
-async function getCategoryTR2(json, category) {
-    // var json = await getPersonalities();
-    var filtered = $(json.data).filter(function (i, n) {
-        var bool = false;
-            if (n.id > 27) {
-                bool = true;
-            
-        }
-        return bool;
-    });
-    return filtered;
-}
-
 async function getCategory(category) {
     var json = await getJewishStars();
     var filtered = $(json).filter(function (i, n) {
@@ -237,6 +229,7 @@ async function getJewishStars() {
         var bool = false;
         str = n.ext_id.substring(0, 2);
         if (str.indexOf("30") > -1) {
+            console.log(`catg is ${n.translations[0].category} -------------> sub cat is ${n.translations[0].sub_category}`);
                 bool = true;
             }
         
@@ -251,7 +244,7 @@ async function getStarsTemp() {
         bool = false;
         counter = 0;    
         for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].id > 40 && n.translations[j].id < 45) {
+            if (n.translations[j].id > 40 && n.translations[j].id < 48) {
                 console.log(n.translations[j].first_name);
                 bool = true;
                 counter++;

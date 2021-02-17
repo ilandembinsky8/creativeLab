@@ -84,6 +84,7 @@
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             object = await getStarsTemp();
+            console.log(object);
             counter = 0;
             var s = "";
             for (var i in object) {
@@ -107,18 +108,17 @@
         }
 
         $(function () {
-            pickCSS();   
-             $('body').delegate('.starFrame', 'click', function () {
+            pickCSS();
+            $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
                 idNum = parseId(currId);
                 name = $('#imgTitle' + idNum).text();
                 var prData = "" + $('#imgTitle' + idNum).attr("data");
                 val = parseInt(prData, 10);
                 localStorage.setItem("prData", val)
-                location.href = "st2.html";
+                location.href = "st2.html";            
             });
         });
-
     </script>
 </head>
 <body>
