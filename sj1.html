@@ -130,7 +130,7 @@
                 event.stopPropagation();
                 $('#' + idItm).children('.subCat').toggle();
             });
-
+            localStorage.setItem('my_item_back', null);
             //$('body').delegate('.subCat', 'click', function () {
             //    var idItm = (this).id;
             //    var idPr = $(this).parent().attr('id');

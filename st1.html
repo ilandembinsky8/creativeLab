@@ -77,32 +77,6 @@
          
         }
 
-        //async function loadData() {
-        //    JsonLang = localStorage.getItem("lang");
-        //    lang = JSON.parse(JsonLang);
-        //    langIs = localStorage.getItem("langID");
-        //    $('#hdTitle').text(lang["hdTitles"]["starts"]);
-        //    $('#catgTitle').text(lang.starsTitle);
-        //    object = await getStarsTemp();
-        //    counter = 0;
-        //    for (var i in object) {
-        //        subObj = object[i].translations;
-        //        for (var j in subObj) {
-        //             counter++;
-        //            if (subObj[j]["language"].indexOf(langIs) > -1) {
-        //            //    $('#imgFrame' + counter).css("margin-top", "50px");
-        //                $('#imgTitle' + counter).css("display", "inline-block");
-        //                $('#imgTitle' + counter).text(subObj[j].first_name + ' ' + subObj[j].last_name);
-        //                $('#imgTitle' + counter).attr("data", object[i].id);
-        //            } else {
-        //                 $('#imgTitle' + counter).text("");
-        //                 $('#imgTitle' + counter).attr("data", "");
-        //            }
-        //        }
-        //    }
-        //}
-
-        
         async function loadData() {
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
