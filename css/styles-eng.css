@@ -499,7 +499,7 @@ a {
 
 .starFrame .frameTitle {
     width: 100%;
-    display:none;
+    display: inline-block;
     text-align: center;
     margin-top: 330px;
     font-family: 'Segoe UI';

@@ -77,6 +77,32 @@
          
         }
 
+        //async function loadData() {
+        //    JsonLang = localStorage.getItem("lang");
+        //    lang = JSON.parse(JsonLang);
+        //    langIs = localStorage.getItem("langID");
+        //    $('#hdTitle').text(lang["hdTitles"]["starts"]);
+        //    $('#catgTitle').text(lang.starsTitle);
+        //    object = await getStarsTemp();
+        //    counter = 0;
+        //    for (var i in object) {
+        //        subObj = object[i].translations;
+        //        for (var j in subObj) {
+        //             counter++;
+        //            if (subObj[j]["language"].indexOf(langIs) > -1) {
+        //            //    $('#imgFrame' + counter).css("margin-top", "50px");
+        //                $('#imgTitle' + counter).css("display", "inline-block");
+        //                $('#imgTitle' + counter).text(subObj[j].first_name + ' ' + subObj[j].last_name);
+        //                $('#imgTitle' + counter).attr("data", object[i].id);
+        //            } else {
+        //                 $('#imgTitle' + counter).text("");
+        //                 $('#imgTitle' + counter).attr("data", "");
+        //            }
+        //        }
+        //    }
+        //}
+
+        
         async function loadData() {
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
@@ -85,18 +111,22 @@
             $('#catgTitle').text(lang.starsTitle);
             object = await getStarsTemp();
             counter = 0;
+            var s = "";
             for (var i in object) {
                 subObj = object[i].translations;
-                for (var j in subObj) {''
-                     counter++;
+                var idIs = object[i].id;
+                for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                        $('#imgFrame' + counter).css("margin-top", "50px");
-                        $('#imgTitle' + counter).css("display", "inline-block");
-                        $('#imgTitle' + counter).text(subObj[j].first_name + ' ' + subObj[j].last_name);
-                        $('#imgTitle' + counter).attr("data", object[i].id);
-                    } else {
-                         $('#imgTitle' + counter).text("");
-                         $('#imgTitle' + counter).attr("data", "");
+                        counter++;
+                        if (counter % 2 !== 0) {
+                            s = s + '<div class="frameRow">';
+                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><span class="frameTitle" id=' + 'imgTitle' + counter + '  data=' +  idIs + '>'+ subObj[j].first_name + ' ' + subObj[j].last_name + '</span></div>';
+                            s = s + '<span style="border-left:10px solid transparent;"></span>';
+                        } else {
+                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><span class="frameTitle" id=' + 'imgTitle' + counter + '  data=' +  idIs + '>'+ subObj[j].first_name + ' ' + subObj[j].last_name + '</span></div>';
+                            s = s + '</div>';
+                        }
+                           document.getElementById('content').innerHTML = s;
                     }
                 }
             }
@@ -135,17 +165,8 @@
             </div>
 
             <div class="pageSubCont">
-                <div class="pageSubWrapper">
-                    <div class="frameRow">
-                        <div class="starFrame" id="imgFrame1"><span class="frameTitle" id="imgTitle1" data=""></span></div>
-                        <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame" id="imgFrame2"><span class="frameTitle" id="imgTitle2" data=""></span></div>
-                    </div>
-                    <div class="frameRow">
-                        <div class="starFrame" id="imgFrame3"><span class="frameTitle" id="imgTitle3" data=""></span></div>
-                        <span style="border-left:10px solid transparent;"></span>
-                        <div class="starFrame" id="imgFrame4"><span class="frameTitle" id="imgTitle4" data=""></span></div>
-                    </div>
+                <div class="pageSubWrapper" id="content">
+            
                 </div>
             </div>
         </div>
