@@ -121,7 +121,8 @@
             pickCSS();
             addModalbox();
             $('body').delegate('#catgMain', 'click', function () {
-                location.href = "cj1.html";
+                var rfid = getParameterByName("rfid");
+                location.href = "cj1.html?rfid=" + rfid;
             });
            
 

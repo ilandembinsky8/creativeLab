@@ -105,22 +105,23 @@
         }
 
         function breadCrumbs() {
+            var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "sj1.html";
+                location.href = "sj1.html?rfid=" + rfid;
             });
 
             $('body').delegate('#catgMain', 'click', function () {
                 var my_object = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": "" }
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                location.href = "sj2.html";
+                location.href = "sj2.html?rfid=" + rfid;
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
                 var my_object = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": my_object.sub }
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                location.href = "sj2.html";
+                location.href = "sj2.html?rfid=" + rfid;
 
             });
         }

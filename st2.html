@@ -113,7 +113,8 @@
             pickCSS();
             addModalbox();
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "st1.html";
+                var rfid = getParameterByName("rfid");
+                location.href = "st1.html?rfid="+rfid;
             });
 
         });
@@ -134,7 +135,7 @@
     <div class="pageCont" id="st2">
         <div class="pageWrapper">
             <div class="category">
-                <span class="mainCat" id="catgTitle" onclick="location.href = 'st1.html'"></span>
+                <span class="mainCat" id="catgTitle"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
                 <span class="greenTitle" id="name"></span>
             </div>

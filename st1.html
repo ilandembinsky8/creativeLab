@@ -116,7 +116,8 @@
                 var prData = "" + $('#imgTitle' + idNum).attr("data");
                 val = parseInt(prData, 10);
                 localStorage.setItem("prData", val)
-                location.href = "st2.html";            
+                var rfid = getParameterByName("rfid");
+                location.href = "st2.html?rfid="+rfid;            
             });
         });
     </script>

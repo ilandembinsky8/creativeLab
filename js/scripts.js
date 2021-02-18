@@ -114,6 +114,18 @@ function getToken() {
     return d.promise();
 }
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    var temp = '10007605ED';
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return temp;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+
 async function getPersonalities() {
     var d = $.Deferred();
     var token = await getToken();

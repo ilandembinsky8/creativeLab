@@ -119,7 +119,8 @@
         function goToCountry(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
             sessionStorage.setItem('country', prData); 
-            location.href = "cj2.html";
+            var rfid = getParameterByName("rfid");
+            location.href = "cj2.html?rfid=" + rfid;
         }
 
 

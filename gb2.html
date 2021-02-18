@@ -123,13 +123,14 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
             var subCatgIs = sessionStorage.getItem("sub");
+            var rfid = getParameterByName("rfid");
             console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             console.log(prData);
             var my_object = { "sub": subCatgIs, "prData": prData }
             sessionStorage.setItem('my_item', JSON.stringify(my_object));
-            location.href = "gb3.html";
+            location.href = "gb3.html?rfid=" + rfid;
         }
 
       async function loadDetails(searchValue){
@@ -157,8 +158,9 @@
         $(function () {
             pickCSS();
 
-          $('body').delegate('#catgTitle', 'click', function () {
-             location.href = "gb1.html";
+            $('body').delegate('#catgTitle', 'click', function () {
+                var rfid = getParameterByName("rfid");
+                location.href = "gb1.html?rfid=" + rfid;
          });
         });
     </script>

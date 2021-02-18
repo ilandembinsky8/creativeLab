@@ -197,8 +197,9 @@
             var sub = sessionStorage.getItem("sub");
             var my_object = { "main": main, "sub": sub, "prData": prData}
             sessionStorage.setItem('my_item', JSON.stringify(my_object));
+            var rfid = getParameterByName("rfid");
             console.log(prData);
-            location.href = "sj3.html";
+            location.href = "sj3.html?rfid=" + rfid;
         }
 
         async function findMatchesCatg(searchValue) {
@@ -225,8 +226,9 @@
         }
 
         function breadCrumbs() {
+            var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "sj1.html";
+                location.href = "sj1.html?rfid=" + rfid;
             });
 
             $('body').delegate('#catgMain', 'click', function () {

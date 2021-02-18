@@ -117,7 +117,8 @@
                 var my_object1 = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = my_object1.sub;
                 localStorage.setItem('sub', my_object_);
-                location.href = 'gb2.html';
+                var rfid = getParameterByName("rfid");
+                location.href = "gb2.html?rfid=" + rfid;
             });
         }
         $(function () {

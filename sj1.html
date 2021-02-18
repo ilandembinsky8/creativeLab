@@ -81,14 +81,16 @@
             var idPr = $('#' + idItm).parent().attr('id');
             sessionStorage.setItem("main", idPr);
             sessionStorage.setItem("sub", idItm);
-            location.href = "sj2.html";
+            var rfid = getParameterByName("rfid");
+            location.href = "sj2.html?rfid=" + rfid;
          }
 
         function goToCatg(idPr) {
              var idItm = "";
              sessionStorage.setItem("main", idPr);
-             sessionStorage.setItem("sub", idItm);
-             location.href = "sj2.html";
+            sessionStorage.setItem("sub", idItm);
+            var rfid = getParameterByName("rfid");
+             location.href = "sj2.html?rfid=" + rfid;
          }
 
         function loadData() {

@@ -10,7 +10,6 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-
           function pickCSS() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
@@ -88,7 +87,8 @@
         }
 
         function clickedItm(idNum) {
-          JsonLang = localStorage.getItem("lang");
+            JsonLang = localStorage.getItem("lang");
+            var rfid = getParameterByName("rfid");
             var lang = JSON.parse(JsonLang);
 
             var currId = idNum;
@@ -97,18 +97,18 @@
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
                 sessionStorage.setItem('sub', "edu");
-                    location.href = "gb2.html";
+                location.href = "gb2.html?rfid=" + rfid;
                         
             } else if (currId.localeCompare("career") === 0) {
                 subCat = currSec.career;
                 sessionStorage.setItem('sub',"career");
-                    location.href = "gb2.html";
+                location.href = "gb2.html?rfid=" + rfid;
                         
             } else if (currId.localeCompare("politics") === 0) {
                 subCat = currSec.politics;
                 sessionStorage.setItem('sub', "politics");
-                    location.href = "gb2.html";       
-                }
+                location.href = "gb2.html?rfid=" + rfid;       
+            }
         }
 
         $(function () {
