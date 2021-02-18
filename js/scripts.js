@@ -116,7 +116,7 @@ function getToken() {
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
-    var temp = '10007605ED';
+    var temp = '10007605ED';   // temp var -> to be removed after integration 
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(url);
