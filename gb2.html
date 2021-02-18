@@ -130,7 +130,7 @@
             console.log(prData);
             var my_object = { "sub": subCatgIs, "prData": prData }
             sessionStorage.setItem('my_item', JSON.stringify(my_object));
-            location.href = "gb3.html?rfid=" + rfid;
+            location.href = "gb3.html?rfid=" + rfid+ '&id=' + prData + "";
         }
 
       async function loadDetails(searchValue){

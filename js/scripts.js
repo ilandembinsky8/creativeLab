@@ -237,11 +237,13 @@ async function getBirthYear(json, catIs) {
 
 async function getJewishStars() {
     var json = await getPersonalities();
+    console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
-        if (str.indexOf("30") > -1) {
-            console.log(`catg is ${n.translations[0].category} -------------> sub cat is ${n.translations[0].sub_category}`);
+        if (str.indexOf("30") > -1 || n.id>-1) {
+            //console.log(`catg is ${n.translations[0].category} -------------> sub cat is ${n.translations[0].sub_category}`);
+            console.log(`img id=  ${n.image} ----> video id= ${n.translations[0].video} `);
                 bool = true;
             }
         

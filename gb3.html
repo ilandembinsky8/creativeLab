@@ -82,11 +82,7 @@
                         $('#txt1').text(n.translations[j].info);
                         bool = true;
                     }
-                    //} else {
-                    //    $('#name').text("");
-                    //    $('#titleTxt1').text("");
-                    //    $('#txt1').text("");
-                    //}
+
                 }
             return bool;
             });
@@ -105,7 +101,7 @@
             subCatg = lang["page7"]["catg"][my_object.sub];
             $('#catgMain').text(subCatg);
             $('#split1').css("display", "inline-block");
-            var num = my_object.prData;
+            var num = getParameterByName('id');
             console.log(num);
             val = parseInt(num, 10);
             console.log(val);

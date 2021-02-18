@@ -120,7 +120,7 @@
             var prData = "" + $('#' + idIs).attr("data");
             sessionStorage.setItem('country', prData); 
             var rfid = getParameterByName("rfid");
-            location.href = "cj2.html?rfid=" + rfid;
+            location.href = "cj2.html?rfid=" + rfid+ '&id=' + prData + "";;
         }
 
 

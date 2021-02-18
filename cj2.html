@@ -91,7 +91,7 @@
             $("#close").val(lang.close);
            // var prData = JSON.parse(localStorage.getItem('country'));
             var prData = window.sessionStorage.getItem('country');
-            var num = prData;
+            var num = getParameterByName('id');
             val = parseInt(num, 10);
             loadPRData(val);
             

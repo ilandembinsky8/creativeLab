@@ -104,7 +104,7 @@
             $('#catgTitle').text(lang.starsTitle);
             $("#close").val(lang.close);
             var prData = localStorage.getItem("prData");
-            prData = parseInt(prData, 10);
+            prData = getParameterByName('id');
             console.log(prData);
             findMatches(prData);
         }

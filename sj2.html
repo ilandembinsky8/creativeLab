@@ -199,7 +199,7 @@
             sessionStorage.setItem('my_item', JSON.stringify(my_object));
             var rfid = getParameterByName("rfid");
             console.log(prData);
-            location.href = "sj3.html?rfid=" + rfid;
+            location.href = "sj3.html?rfid=" + rfid + '&id=' + prData + "";
         }
 
         async function findMatchesCatg(searchValue) {

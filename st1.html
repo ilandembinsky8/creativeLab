@@ -117,7 +117,7 @@
                 val = parseInt(prData, 10);
                 localStorage.setItem("prData", val)
                 var rfid = getParameterByName("rfid");
-                location.href = "st2.html?rfid="+rfid;            
+                location.href = "st2.html?rfid="+rfid+ '&id=' + val + "";;            
             });
         });
     </script>

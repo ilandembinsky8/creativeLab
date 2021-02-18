@@ -145,7 +145,7 @@
             catg = lang.categories[main];
             $('#catgMain').html(catg.title);
             //$('#catgSub2,#split1,#split2,#split3').css("display", "inline-block");
-            var num = my_object.prData;
+            var num = getParameterByName('id');
             val = parseInt(num, 10);
             if (sub.localeCompare("") !==0) {
                 console.log("Here fulll")
