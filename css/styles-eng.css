@@ -338,6 +338,7 @@ a {
     }
 
 .textSubTitle {
+    direction: ltr;
     float: left;
     color: #12FF9F;
     display: table-row;

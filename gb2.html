@@ -105,7 +105,7 @@
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
-            var subCatgIs = sessionStorage.getItem("sub");
+            var subCatgIs = getParameterByName('cat');
             console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             subIs = lang["occupations"][subCatgIs];
@@ -122,15 +122,15 @@
         function getMoreInfo(idIs) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
-            var subCatgIs = sessionStorage.getItem("sub");
+            var subCatgIs = getParameterByName('cat');
             var rfid = getParameterByName("rfid");
             console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             console.log(prData);
-            var my_object = { "sub": subCatgIs, "prData": prData }
-            sessionStorage.setItem('my_item', JSON.stringify(my_object));
-            location.href = "gb3.html?rfid=" + rfid+ '&id=' + prData + "";
+          //  var my_object = { "sub": subCatgIs, "prData": prData }
+           // sessionStorage.setItem('my_item', JSON.stringify(my_object));
+            location.href = "gb3.html?rfid=" + rfid + '&id=' + prData + '&cat=' + subCatgIs + "";
         }
 
       async function loadDetails(searchValue){

@@ -79,18 +79,18 @@
 
         function goToSub(idItm) {
             var idPr = $('#' + idItm).parent().attr('id');
-            sessionStorage.setItem("main", idPr);
-            sessionStorage.setItem("sub", idItm);
+           // sessionStorage.setItem("main", idPr);
+           // sessionStorage.setItem("sub", idItm);
             var rfid = getParameterByName("rfid");
-            location.href = "sj2.html?rfid=" + rfid;
+            location.href = "sj2.html?rfid=" + rfid + '&cat=' + idPr + '&sub=' + idItm + "";
          }
 
         function goToCatg(idPr) {
              var idItm = "";
-             sessionStorage.setItem("main", idPr);
-            sessionStorage.setItem("sub", idItm);
+             //sessionStorage.setItem("main", idPr);
+           // sessionStorage.setItem("sub", idItm);
             var rfid = getParameterByName("rfid");
-             location.href = "sj2.html?rfid=" + rfid;
+             location.href = "sj2.html?rfid=" + rfid+ '&cat=' + idPr + '&sub=' + idItm + "";
          }
 
         function loadData() {

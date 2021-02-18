@@ -143,8 +143,8 @@
                     findMatchesCatg(catgFilter.title);
                 }
             } else {
-                var main =  sessionStorage.getItem("main");
-                var sub = sessionStorage.getItem("sub");
+                var main = getParameterByName('cat');
+                var sub = getParameterByName('sub');
                 console.log(main + " --- " + sub);
                 catg = lang.categories[main];
                 catgFilter = lang.filterCatg[main];
@@ -193,13 +193,13 @@
 
         function getMoreInfo(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
-            var main = sessionStorage.getItem("main");
-            var sub = sessionStorage.getItem("sub");
-            var my_object = { "main": main, "sub": sub, "prData": prData}
-            sessionStorage.setItem('my_item', JSON.stringify(my_object));
+            var main = getParameterByName('cat');
+            var sub = getParameterByName('sub');
+            //var my_object = { "main": main, "sub": sub, "prData": prData}
+            //sessionStorage.setItem('my_item', JSON.stringify(my_object));
             var rfid = getParameterByName("rfid");
             console.log(prData);
-            location.href = "sj3.html?rfid=" + rfid + '&id=' + prData + "";
+            location.href = "sj3.html?rfid=" + rfid + '&id=' + prData +'&cat=' + main +'&sub=' + sub + "";
         }
 
         async function findMatchesCatg(searchValue) {

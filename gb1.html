@@ -97,17 +97,17 @@
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
                 sessionStorage.setItem('sub', "edu");
-                location.href = "gb2.html?rfid=" + rfid;
+                location.href = "gb2.html?rfid=" + rfid + '&cat=edu' +"";
                         
             } else if (currId.localeCompare("career") === 0) {
                 subCat = currSec.career;
                 sessionStorage.setItem('sub',"career");
-                location.href = "gb2.html?rfid=" + rfid;
+                location.href = "gb2.html?rfid=" + rfid + '&cat=career' +"";
                         
             } else if (currId.localeCompare("politics") === 0) {
                 subCat = currSec.politics;
                 sessionStorage.setItem('sub', "politics");
-                location.href = "gb2.html?rfid=" + rfid;       
+                location.href = "gb2.html?rfid=" + rfid + '&cat=politics' +"";       
             }
         }
 

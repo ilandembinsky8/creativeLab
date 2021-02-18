@@ -337,6 +337,7 @@ a {
     }
 
 .textSubTitle {
+    direction: rtl;
     float: right;
     color: #12FF9F;
     display: table-row;
