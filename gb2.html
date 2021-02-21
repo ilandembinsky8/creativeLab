@@ -130,13 +130,14 @@
             console.log(prData);
           //  var my_object = { "sub": subCatgIs, "prData": prData }
            // sessionStorage.setItem('my_item', JSON.stringify(my_object));
-            location.href = "gb3.html?rfid=" + rfid + '&id=' + prData + '&cat=' + subCatgIs + "";
+            location.href = "gb3.html?rfid=" + rfid + '&id=' + prData + "";
         }
 
       async function loadDetails(searchValue){
            langIs = localStorage.getItem("langID");
            counter = 0;
            $('#col1, #col2').empty();
+           var x = await getTrailWomen();
            object = await getOccupation(searchValue);
           for (var i in object) {
               var idIs=object[i].id;

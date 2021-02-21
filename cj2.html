@@ -63,7 +63,7 @@
                 swapStyleSheet('css/styles.css');
                 loadLang();
             }
-        }
+        } 
         function loadCountryInfo(res) {
             if (typeof res !== 'undefined' && res !== null) {
                 $('#name').text(res["name"]);
@@ -72,10 +72,15 @@
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
                 $('#titleTxt3').text(res.timeline[1].timeframe);
-                $('#txt3').text(res.timeline[1].info);    //add method to create dynamic elements according to the timeline size and fill it with its content
-                for (i = 0; i < res.timeline.length; i++) {
+                $('#txt3').text(res.timeline[1].info);   
+                for (i = 1; i < res.timeline.length; i++) {
+                    j = i + 1;
                     console.log(res.timeline[i].timeframe);
-                    console.log(res.timeline[i].info);
+                    var s = '<div class="text">';
+                    s = s + '<div class="textSubTitle" id=' + 'titleTxt' + j + ' >' + res.timeline[i].timeframe + '</div>';
+                    s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';
+                    s = s + '</div>';
+                    document.getElementById('countryInfo').innerHTML += s;
                 }
             }
         }
@@ -152,12 +157,12 @@
             </div>
 
             <div class="pageSubCont">
-                <div class="pageSubWrapper">
+                <div class="pageSubWrapper" id="countryInfo">
                     <div class="text" id="txt1">
 
                     </div>
                     <div class="shapeCont"><div id="img" class="imageShape"></div></div>
-                    <div class="text">
+                    <!--<div class="text">
                         <div class="textSubTitle" id="titleTxt2"></div>
                         <div id="txt2" class="infoTxt">
 
@@ -168,7 +173,7 @@
                         <div id="txt3" class="infoTxt">
 
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
             </div>

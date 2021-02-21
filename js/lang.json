@@ -17,8 +17,8 @@
     },
     "occupations": {
       "edu": "Education",
-      "career": "Work",
-      "politics": "Politic"
+      "work": "Work",
+      "politic": "Politic"
     },
     "categories": {
       "c1": {
@@ -102,8 +102,8 @@
     "page7": {
       "catg": {
         "edu": "השכלה",
-        "career": "עבודה",
-        "politics": "פוליטיקה"
+        "work": "עבודה",
+        "politic": "פוליטיקה"
       }
     },
     "search": {
@@ -203,8 +203,8 @@
  
     "occupations": {
       "edu": "Education",
-      "career": "Work",
-      "politics": "Politic"
+      "work": "Work",
+      "politic": "Politic"
     },
     "categories": {
       "c1": {
@@ -287,9 +287,9 @@
 
     "page7": {
       "catg": {
-        "edu": "Work",
-        "career": "Education",
-        "politics": "Politic"
+        "edu": "Education",
+        "work": "Work",
+        "politic": "Politic"
       }
     },
     "search": {

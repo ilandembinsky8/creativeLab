@@ -84,6 +84,7 @@
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#catgTitle').text(lang.catgTitle);
+         
         }
 
         function clickedItm(idNum) {
@@ -101,18 +102,19 @@
                         
             } else if (currId.localeCompare("career") === 0) {
                 subCat = currSec.career;
-                sessionStorage.setItem('sub',"career");
-                location.href = "gb2.html?rfid=" + rfid + '&cat=career' +"";
+                sessionStorage.setItem('sub',"work");
+                location.href = "gb2.html?rfid=" + rfid + '&cat=work' +"";
                         
             } else if (currId.localeCompare("politics") === 0) {
                 subCat = currSec.politics;
                 sessionStorage.setItem('sub', "politics");
-                location.href = "gb2.html?rfid=" + rfid + '&cat=politics' +"";       
+                location.href = "gb2.html?rfid=" + rfid + '&cat=politic' +"";       
             }
         }
 
         $(function () {
             pickCSS();
+       
             $('#edu, #career, #politics').click(function () {
                 var x = this.id;
                 clickedItm(x);

@@ -10,6 +10,35 @@ function swapStyleSheet(sheet) {
     document.getElementById("pagestyle").setAttribute("href", sheet);
 }
 
+function getOccupationByValue(occup) {
+    var catIs = "";
+    if (occup.indexOf('Education')) {
+        catIs = 'edu';
+    } else if (occup.indexOf('Work')) {
+        catIs = 'work';
+    } else if (occup.indexOf('Politic')) {
+        catIs = 'politic';
+    }
+    return catIs;
+}
+
+async function getOccupationById(num) {
+    var numInt = parseInt(num, 10);
+    var json = await getTrailWomen();
+    var cat = "";
+    var filtered = $(json).filter(function (i, n) {
+        var bool = false;
+        if (n.id === numInt) {
+            cat = n.translations[0].occupation;
+            console.log(cat);
+            bool = true;
+        }
+        return bool;
+    });
+
+    return getOccupationByValue(cat);
+}
+
 function parseId(idString) {
     var num = '';
     var z = 0;
@@ -342,8 +371,8 @@ async function getTrailWomen() {
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         var str = n.ext_id.substring(0, 2);
-            if (str.indexOf("29") > -1) {
-                
+        if (str.indexOf("29") > -1) {
+            console.log(n.translations[0].occupation); 
                 bool = true;
             }
         

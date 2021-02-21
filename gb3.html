@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
-   
+
 
        function loadLang() {
         var xmlhttp = new XMLHttpRequest();
@@ -92,18 +92,17 @@
             });
          return filtered;
         }
-        function loadAndFill() {
+
+       async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             console.log(lang)
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
-           // var my_object = JSON.parse(sessionStorage.getItem('my_item'));
-            var my_object = getParameterByName('cat');
-            console.log(my_object)
+            var idNum = getParameterByName('id');
+            var occupIs = await getOccupationById(idNum);
             $('#catgTitle').text(lang.catgTitle);
             $("#close").val(lang.close);
-            console.log(my_object);
-            subCatg = lang["page7"]["catg"][my_object];
+            subCatg = lang["page7"]["catg"][occupIs];
             $('#catgMain').text(subCatg);
             $('#split1').css("display", "inline-block");
             var num = getParameterByName('id');
