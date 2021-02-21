@@ -162,6 +162,26 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+async function getImgDetails(imgId) {
+    var d = $.Deferred();
+    var token = await getToken();
+    // var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId+"";
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
+    console.log(url);
+    $.ajax({
+        url: url,
+        type: "GET",
+        crossDomain: true,
+        async: true,
+        success: function (result) {
+            console.log(`result image is: ${result}`);
+        },
+        error: function (jqXHR, status) {
+            console.log(status);
+        }
+    });
+    return d.promise();
+}
 
 async function getPersonalities() {
     var d = $.Deferred();

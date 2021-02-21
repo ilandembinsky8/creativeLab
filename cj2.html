@@ -64,15 +64,26 @@
                 loadLang();
             }
         } 
-        function loadCountryInfo(res) {
-            if (typeof res !== 'undefined' && res !== null) {
+        async function loadCountryInfo(searchValue) {
+            var langIs = localStorage.getItem('langID'); 
+            json = await getCountries();
+            json = json.data;
+            console.log(json);
+            var filtered = $(json).filter(function (i, n) {
+            var bool = false;
+            for (j = 0; j < n.translations.length; j++) {
+              if (n.id === searchValue && n.translations[j].language === langIs) {
+                res = n.translations[j];
+                console.log(`img id is: ${n.image.id}`);
+                getImgDetails(n.image.id);
                 $('#name').text(res["name"]);
                 $('#name,#split1').css("display", "inline-block");
                 $('#txt1').text(res.timeline[0].info);
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
                 $('#titleTxt3').text(res.timeline[1].timeframe);
-                $('#txt3').text(res.timeline[1].info);   
+                $('#txt3').text(res.timeline[1].info);
+           
                 for (i = 1; i < res.timeline.length; i++) {
                     j = i + 1;
                     console.log(res.timeline[i].timeframe);
@@ -81,9 +92,15 @@
                     s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';
                     s = s + '</div>';
                     document.getElementById('countryInfo').innerHTML += s;
-                }
-            }
+                    }
+                    bool = true;
+             }
+          }
+           return bool;
+          });
+         return filtered;
         }
+
 
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
@@ -93,28 +110,10 @@
             $("#close").val(lang.close);
             var num = getParameterByName('id');
             val = parseInt(num, 10);
-            loadPRData(val);
+            loadCountryInfo(val);
             
         }
 
-        function loadPRData(searchKey) {
-            getCountries().then(value => {
-                object = value["data"];
-                var langIs = localStorage.getItem('langID'); 
-                var result = object.find(obj => {
-                    return obj.id === searchKey;
-                })
-                subObj = getCountry(result["translations"], langIs);
-                loadCountryInfo(subObj);
-            });
-        }
-
-        function getCountry(object, langIs) {   
-            var result = object.find(obj => {
-                return obj.language.indexOf(langIs) !== -1
-            })
-            return result;
-        }
 
         function sendMail() {
             var currUrl = document.URL;
