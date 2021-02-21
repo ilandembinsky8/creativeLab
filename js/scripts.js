@@ -364,11 +364,10 @@ async function getStars() {
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
-            if (str.indexOf("80") > -1) {
-
+        if (str.indexOf("80") > -1) {
+            console.log(n.ext_id);
                 bool = true;
             }
-        
         return bool;
     });
     return filtered;

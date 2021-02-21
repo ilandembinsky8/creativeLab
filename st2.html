@@ -64,7 +64,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            var json = await getStarsTemp();
+            var json = await getStars();
             counter = 0;
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
@@ -73,12 +73,13 @@
                         bool = true;
                         $('#name, #split1').css("display", "inline-block");
                         $('#name').text(n.translations[j].first_name + ' ' + n.translations[j].last_name);
+                        $('#txt1').text(n.translations[j].info);
                         $('#country').text(n.translations[j].country + ", ");
                         if (n.birth_year && !n.death_year) {
                             if (langIs.indexOf('he') > -1) {
-                                $('#titleTxt1').text('נ.'+n.birth_year);
+                                $('#years').text('נ.'+n.birth_year);
                             } else {
-                                 $('#titleTxt1').text('b.'+n.birth_year);
+                                 $('#years').text('b.'+n.birth_year);
                             }
                         } else if (!n.birth_year && n.death_year) {
                             $('#years').text("" + " - " + n.death_year);
@@ -109,6 +110,7 @@
             $("#close").val(lang.close);
             var prData = localStorage.getItem("prData");
             prData = getParameterByName('id');
+            prData = parseInt(prData, 10);
             console.log(prData);
             findMatches(prData);
         }
