@@ -91,8 +91,6 @@
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#catgMain').text(lang.countries)
             $("#close").val(lang.close);
-           // var prData = JSON.parse(localStorage.getItem('country'));
-            var prData = window.sessionStorage.getItem('country');
             var num = getParameterByName('id');
             val = parseInt(num, 10);
             loadPRData(val);
@@ -118,6 +116,11 @@
             return result;
         }
 
+        function sendMail() {
+            var currUrl = document.URL;
+            var langIs = localStorage.getItem('langID');
+            mail(langIs, currUrl);
+        }
   
         $(function () {
             pickCSS();
@@ -153,7 +156,7 @@
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon" id="shareBtn"></span>
-                <span class="mailIcon" onclick="mail()"></span>
+                <span class="mailIcon" onclick="sendMail()"></span>
             </div>
 
             <div class="pageSubCont">
@@ -181,12 +184,12 @@
                 <div class="shareModalCont">
 
                     <div class='txtModal' id="share">
-                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
-                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url=''  class="fa fa-twitter"></a>
-                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
-                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
-                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
-                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' data-description='' class="fa fa-facebook"></a>
+                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url=''  data-description='' class="fa fa-twitter"></a>
+                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' data-description='' class="fa fa-linkedin"></a>
+                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' data-description='' class="fa fa-instagram"></a>
+                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' data-description='' class="fa fa-telegram"></a>
+                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' data-description='' class="fa fa-whatsapp"></a>
                     </div>
                     <input class="close" type="button" value="" style="margin-top:240px" id="close"/>
                 </div>

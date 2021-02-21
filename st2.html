@@ -112,6 +112,11 @@
             console.log(prData);
             findMatches(prData);
         }
+          function sendMail() {
+            var currUrl = document.URL;
+            var langIs = localStorage.getItem('langID');
+            mail(langIs, currUrl);
+        }
 
         $(function () {
             pickCSS();
@@ -145,7 +150,7 @@
             </div>
             <div class="sharingIcons">
                 <span class="shareIcon" id="shareBtn"></span>
-                <span class="mailIcon" onclick="mail()"></span>
+                <span class="mailIcon" onclick="sendMail()"></span>
             </div>
 
             <div class="pageSubCont">

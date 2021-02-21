@@ -2,8 +2,16 @@ function goHomePg() {
     location.href = 'https://rfid.anumuseum.org.il/?rfid=10007605ED';
 }
 
-function mail() {
-    window.location = "mailto:?subject=Anu - Museum of the jewish people";
+function mail(langIs, url) {
+    var subjectIs = '';
+    var bodyIs = url;
+    if (langIs.localeCompare("en") === 0) {
+        subjectIs = 'Anu - Museum of the jewish people';
+        window.location = "mailto:?subject=" + subjectIs+ "&body="+ bodyIs;
+    } else if (langIs.localeCompare("he") === 0) {
+        subjectIs = 'אנו – מוזיאון העם היהודי';
+        window.location = "mailto:?subject=" + subjectIs + "&body=" + bodyIs;
+    }
 }
 
 function swapStyleSheet(sheet) {
@@ -455,5 +463,6 @@ function addModalbox() {
 
     $('a', $('#share')).each(function () {
         $(this).attr('data-url', currUrl);
+        $(this).attr('data-description', '******************************************' + currUrl+'******************************************');
     });
 }
