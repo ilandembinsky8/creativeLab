@@ -20,11 +20,11 @@ function swapStyleSheet(sheet) {
 
 function getOccupationByValue(occup) {
     var catIs = "";
-    if (occup.indexOf('Education')) {
+    if (occup.localeCompare('Education') === 0) {
         catIs = 'edu';
-    } else if (occup.indexOf('Work')) {
+    } else if (occup.localeCompare('Work') === 0) {
         catIs = 'work';
-    } else if (occup.indexOf('Politic')) {
+    } else if (occup.localeCompare('Politic') === 0) {
         catIs = 'politic';
     }
     return catIs;

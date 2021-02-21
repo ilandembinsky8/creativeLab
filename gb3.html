@@ -100,6 +100,7 @@
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             var idNum = getParameterByName('id');
             var occupIs = await getOccupationById(idNum);
+            console.log(`occupation is: ${occupIs}`);
             $('#catgTitle').text(lang.catgTitle);
             $("#close").val(lang.close);
             subCatg = lang["page7"]["catg"][occupIs];
