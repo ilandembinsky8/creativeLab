@@ -72,14 +72,11 @@
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
                 $('#titleTxt3').text(res.timeline[1].timeframe);
-                $('#txt3').text(res.timeline[1].info);
-            } else {
-                $('#name').text("");            
-                $('#txt1').text("");   
-                $('#titleTxt2').text("");   
-                $('#txt2').text("");   
-                $('#titleTxt3').text("");   
-                $('#txt3').text("");   
+                $('#txt3').text(res.timeline[1].info);    //add method to create dynamic elements according to the timeline size and fill it with its content
+                for (i = 0; i < res.timeline.length; i++) {
+                    console.log(res.timeline[i].timeframe);
+                    console.log(res.timeline[i].info);
+                }
             }
         }
 

@@ -157,6 +157,56 @@ function changeIcons(num) {
     }
 }
 
+
+async function getCatById(num) {         //return catg name&key
+    var numInt = parseInt(num, 10);
+    var json = await getJewishStars();
+    var cat = "";
+    var filtered = $(json).filter(function (i, n) {
+        var bool = false;
+        if (n.id === numInt) {
+            cat = n.translations[0].category;
+            console.log(cat);
+            bool = true;
+        }
+        return bool;
+    });
+    return getCategoryKey(cat);
+}
+async function getSubCatById(num) {      //retutn subcat name
+    var numInt = parseInt(num, 10);
+    var json = await getJewishStars();
+    var subCat = "";
+    var filtered = $(json).filter(function (i, n) {
+        var bool = false;
+        if (n.id === numInt) {
+            subCat = n.translations[0].sub_category;
+            bool = true;
+        }
+        return bool;
+    });
+    return subCat;
+}
+
+function getSubCatKey(subcat, cat, json) {   //return sub cat key
+    jsonIs = json.filterCatg[cat];
+    return getKeyByValue(jsonIs["subCat"], subcat);
+}
+
+
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
+function getCategoryKey(catIs){
+    var catName = ['ArtistsAndCreators', 'Athletes', 'EconomistsAndBusinessEntrepreneurs', 'HolocaustHeroes', 'JournalistsAndMediaPersonalities', 'ScientistsAndPhilosophers', 'Politicians', 'MilitaryLeaders','Others'];
+    var catNum = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9'];
+    var numIs = catName.indexOf(catIs);
+    return catNum[numIs];
+}
+
+
 async function getCountries() {
     var d = $.Deferred();
     var token = await getToken();
@@ -243,7 +293,7 @@ async function getJewishStars() {
         str = n.ext_id.substring(0, 2);
         if (str.indexOf("30") > -1 || n.id>-1) {
             //console.log(`catg is ${n.translations[0].category} -------------> sub cat is ${n.translations[0].sub_category}`);
-            console.log(`img id=  ${n.image} ----> video id= ${n.translations[0].video} `);
+           // console.log(`img id=  ${n.image} ----> video id= ${n.translations[0].video} `);
                 bool = true;
             }
         

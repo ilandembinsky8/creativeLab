@@ -146,7 +146,7 @@
                 var main = getParameterByName('cat');
                 var sub = getParameterByName('sub');
                 console.log(main + " --- " + sub);
-                catg = lang.categories[main];
+                catg = lang.categories[main];     
                 catgFilter = lang.filterCatg[main];
                 $('#catgMain').html(catg.title);
                 if (sub.localeCompare("") !== 0) {
@@ -199,7 +199,7 @@
             //sessionStorage.setItem('my_item', JSON.stringify(my_object));
             var rfid = getParameterByName("rfid");
             console.log(prData);
-            location.href = "sj3.html?rfid=" + rfid + '&id=' + prData +'&cat=' + main +'&sub=' + sub + "";
+            location.href = "sj3.html?rfid=" + rfid + '&id=' + prData + "";
         }
 
         async function findMatchesCatg(searchValue) {

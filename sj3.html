@@ -12,10 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
-      
-        
         function loadLang() {
-        console.log("sj3 load again");
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -81,18 +78,20 @@
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
-                    if (n.id === searchValue && n.translations[j].language === langIs) {
-                        
+                    if (n.id === searchValue && n.translations[j].language === langIs) {                      
                           $('#name').text(n.translations[j].first_name + " " + n.translations[j].last_name);
-                         if (n.birth_year && !n.death_year) {
+                        if (n.birth_year && !n.death_year) {
+                            console.log('death null');
                             if (langIs.indexOf('he') > -1) {
-                                $('#titleTxt1').text('נ.'+n.birth_year);
+                                $('#yearFill').text('נ.'+n.birth_year);
                             } else {
-                                 $('#titleTxt1').text('b.'+n.birth_year);
+                                 $('#yearFill').text('b.'+n.birth_year);
                             }
-                        }else if (!n.birth_year && n.death_year) {
+                        } else if (!n.birth_year && n.death_year) {
+                            console.log('birth null');
                             $('#yearFill').text("" + " - " + n.death_year);
                         } else if (n.death_year && n.birth_year) {
+                            console.log('non is null');
                              $('#yearFill').text(n.birth_year + " - " + n.death_year);
                         }
                      
@@ -131,36 +130,43 @@
         }
 
 
-        function loadAndFill() {
-            
-            var my_object = JSON.parse(sessionStorage.getItem('my_item'));
+       async function loadAndFill() {
+            var num = getParameterByName('id');
+           var val = parseInt(num, 10);
+           console.log(val);
+           // var my_object = JSON.parse(sessionStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            var mainIs = await getCatById(val);
+            console.log(mainIs);
+            catg = lang.categories[mainIs];
+            console.log(catg);
+            $('#catgTitle').text(lang.catgTitle);
+            $('#catgMain').html(catg.title);
+            $('#name,#split1,#split2').css("display", "inline-block");
+            var subIs = await getSubCatById(val);
+            console.log(subIs);
+            var subCatIs = '';
+           if (subIs) {
+               subCatIs = getSubCatKey(subIs, mainIs, lang);
+               console.log(subCatIs);
+               $('#catgSub1').html(catg.subCat[subCatIs]);
+               $('#catgSub1,#split3').css("display", "inline-block");
+               var my_item = { "main": mainIs, "sub": subCatIs };
+               sessionStorage.setItem('my_item', JSON.stringify(my_item));
+           } else {
+               var my_item = { "main": mainIs, "sub": subCatIs };
+               sessionStorage.setItem('my_item', JSON.stringify(my_item));
+               $('#catgSub1,#split3').css("display", "none");
+               $('#name,#split1,#split2').css("display", "inline-block");
+           }
             console.log('lang json is:');
             console.log(lang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
-            $('#catgTitle').text(lang.catgTitle);
             $('#years').text(lang.page10.years+'  ');
             $('#country').text(lang.page10.country+'  ');
             $('#occupation').text(lang.page10.occupation+'  ');
             $("#close").val(lang.close);
-            var main = getParameterByName('cat');
-            var sub = getParameterByName('sub');
-            catg = lang.categories[main];
-            $('#catgMain').html(catg.title);
-            //$('#catgSub2,#split1,#split2,#split3').css("display", "inline-block");
-            var num = getParameterByName('id');
-            val = parseInt(num, 10);
-            if (sub.localeCompare("") !==0) {
-                console.log("Here fulll")
-                subCatg = catg["subCat"][sub];
-                $('#catgSub1').html(subCatg);
-                $('#catgSub1,#name,#split1,#split2,#split3').css("display", "inline-block");
-            } else {
-                console.log("full");
-                 $('#catgSub1,#split2').css("display", "none");
-                 $('#name,#split1,#split3').css("display", "inline-block");
-            }
             loadPRData(val);
           
         }
