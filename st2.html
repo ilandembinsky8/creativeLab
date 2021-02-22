@@ -87,7 +87,15 @@
                             $('#years').text(n.birth_year + " - " + n.death_year);
                         }
                         $('#txt1').text(n.translations[j].info);
+                         if (n.image) {
+                            console.log(`img id is: ${n.image.id}`);
+                             var objImg = getImgDetails(n.image.id);
+                           //  $('#img').html(https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/ + 'objImg.filename_disk'+);
+                         }
+
                         if (n.translations[j].video) {
+                            var objVideo = getVideoDetails(n.translations[j].video.id);
+                           // $('#video').html(https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/ + 'objVideo.filename_disk'+);
                             $('#videoTitle').text(lang.singer + ": " + n.translations[j].video);
                         } else {
                              $('#videoTitle').text(lang.singer + ": " );

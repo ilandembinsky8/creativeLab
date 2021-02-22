@@ -1,3 +1,4 @@
+var token; 
 function goHomePg() {
     location.href = 'https://rfid.anumuseum.org.il/?rfid=10007605ED';
 }
@@ -43,7 +44,6 @@ async function getOccupationById(num) {
         }
         return bool;
     });
-
     return getOccupationByValue(cat);
 }
 
@@ -145,6 +145,8 @@ function getToken() {
         { email: "rfid-app@bh.org.il", password: "sMM8V69JmQw!9!1" },
         function (data, status) {
             console.log(data.data.token);
+            headers = { 'Authorization': data.data.token };
+        
             d.resolve(data.data.token);
         }
     );
@@ -164,9 +166,13 @@ function getParameterByName(name, url) {
 
 async function getImgDetails(imgId) {
     var d = $.Deferred();
+    console.log(token);
     var token = await getToken();
-    // var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId+"";
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
+    localStorage.setItem('access_token', token);
+    var tokenTitle = 'access_token';
+    document.cookie = tokenTitle + "=" + token;
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId+"";
+    //var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
     console.log(url);
     $.ajax({
         url: url,
@@ -174,6 +180,11 @@ async function getImgDetails(imgId) {
         crossDomain: true,
         async: true,
         success: function (result) {
+            let headers = {};
+            if (token) {
+                
+                headers = { 'Authorization': token };
+            }
             console.log(`result image is: ${result}`);
         },
         error: function (jqXHR, status) {
@@ -183,9 +194,44 @@ async function getImgDetails(imgId) {
     return d.promise();
 }
 
+
+async function getVideoDetails(videoId) {
+    var d = $.Deferred();
+    console.log(token);
+    var token = await getToken();
+    localStorage.setItem('access_token', token);
+    var tokenTitle = 'access_token';
+    document.cookie = tokenTitle + "=" + token;
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + videoId + "";
+    //var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
+    console.log(url);
+    $.ajax({
+        url: url,
+        type: "GET",
+        crossDomain: true,
+        async: true,
+        success: function (result) {
+            let headers = {};
+            if (token) {
+
+                headers = { 'Authorization': token };
+            }
+            console.log(`result image is: ${result}`);
+        },
+        error: function (jqXHR, status) {
+            console.log(status);
+        }
+    });
+    return d.promise();
+}
+
+
 async function getPersonalities() {
     var d = $.Deferred();
     var token = await getToken();
+    //window.localStorage.setItem('access_token', token);
+    var tokenTitle = 'access_token';
+    //document.cookie = tokenTitle + "=" + token;
     var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token+"&limit=-1";
     $.ajax({
         url: url,
@@ -194,6 +240,11 @@ async function getPersonalities() {
         async: true,
         success: function (result) {
             d.resolve(result);
+            let headers = {};
+            if (token) {
+                headers = { 'Authorization': token };
+            }
+           //location.href = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3078";
         },
         error: function (jqXHR, status) {
             console.log(status);
@@ -221,7 +272,7 @@ async function getCatById(num) {         //return catg name&key
     var cat = "";
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
-        if (n.id === numInt) {
+        if (n.ext_id.localeCompare(num) === 0) {
             cat = n.translations[0].category;
             console.log(cat);
             bool = true;
@@ -236,7 +287,7 @@ async function getSubCatById(num) {      //retutn subcat name
     var subCat = "";
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
-        if (n.id === numInt) {
+        if (n.ext_id.localeCompare(num) === 0) {
             subCat = n.translations[0].sub_category;
             bool = true;
         }
@@ -274,7 +325,15 @@ async function getCountries() {
         crossDomain: true,
         async: true,
         success: function (result) {
+         
             console.log(result);
+            window.localStorage.setItem('access_token', token);
+            var tokenTitle = 'access_token';        
+            document.cookie = tokenTitle + "=" + token;
+            let headers = {};
+            if (token) {
+                headers = { 'Authorization': token };
+            }
             d.resolve(result);
         },
         error: function (jqXHR, status) {

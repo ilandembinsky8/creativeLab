@@ -660,6 +660,10 @@ a{
     float:left;
 
 }
+
+a::after {
+    display: table;
+}
     .fa:hover {
         opacity: 0.7;
     }
@@ -1696,6 +1700,21 @@ a{
         .invisible{
             display:none;
         }
+
+    .txtModal .fa:nth-of-type(n) {
+        display: table !important;
+    }
+
+    a:nth-child(n) {
+        display: table !important;
+        text-decoration: none;
+        float: left;
+    }
+
+    a::before {
+        content: "\A";
+        white-space: pre;
+    }
 }
 @media only screen and (max-width: 800px) and (min-width: 641px) {
     .headerCont .titleCont {
