@@ -94,7 +94,7 @@
                 subObj = object[i].translations;
                 var idstr = "";
                 if (object[i].ext_id) {
-                   var idstr = object[i].ext_id;
+                   idstr = object[i].ext_id;
                 }
                var idIs = idstr.substring(3);
                 for (var j in subObj) {
@@ -147,7 +147,7 @@
                 for (j = 0; j < n.translations.length; j++) {
                      var idstr = "";
                      if (n.ext_id) {
-                     var idstr = n.ext_id;
+                      idstr = n.ext_id;
                     }
                      var idIs = idstr.substring(3);
                     if (n.translations[j].language === langIs) {
