@@ -35,10 +35,14 @@
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                     localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "en");
+                     url = 'st1.html?lang=en';
+                     window.location.replace(url);   
                      pickCSS(); 
                 } else if (pickLang.localeCompare("en") === 0) {
                     localStorage.setItem("langID", "he");
+                    url = 'st1.html?lang=he';
+                     window.location.replace(url);  
                     pickCSS();
                 }
             } else {
@@ -115,13 +119,14 @@
             pickCSS();
             $('body').delegate('.starFrame', 'click', function () {
                 currId = this.id;
+                var langIs=localStorage.getItem("langID");
                 idNum = parseId(currId);
                 name = $('#imgTitle' + idNum).text();
                 var prData = "" + $('#imgTitle' + idNum).attr("data");
                 val = parseInt(prData, 10);
                 localStorage.setItem("prData", val)
                 var rfid = getParameterByName("rfid");
-                location.href = "st2.html?rfid="+rfid+ '&id=' + val + "";;            
+                location.href = "st2.html?id=" + val + '&lang=' + langIs +'&rfid=' + rfid + "";;            
             });
         });
     </script>

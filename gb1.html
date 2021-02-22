@@ -11,13 +11,15 @@
     <script>
 
           function pickCSS() {
-            var pickLang = localStorage.getItem("langID");
+              //var pickLang = localStorage.getItem("langID");
+              var pickLang = getParameterByName("lang");
+              console.log(pickLang);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
+                if (pickLang.localeCompare("he") === 0 || pickLang.localeCompare("heb") === 0) {
                     swapStyleSheet('css/styles.css');
                     localStorage.setItem("langID", "he");
                     loadLang();
-                } else if (pickLang.localeCompare("en") === 0) {
+                } else if (pickLang.localeCompare("en") === 0 || pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "en");
                     swapStyleSheet('css/styles-eng.css');
                     loadLang();
@@ -37,10 +39,14 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "en");
+                     url = 'gb1.html?lang=en';
+                     window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("en") === 0) {
                     localStorage.setItem("langID", "he");
+                     url = 'gb1.html?lang=he';
+                     window.location.replace(url);
                     pickCSS();
                   }
             } else {
@@ -91,30 +97,30 @@
             JsonLang = localStorage.getItem("lang");
             var rfid = getParameterByName("rfid");
             var lang = JSON.parse(JsonLang);
-
+            var langIs=localStorage.getItem("langID");
             var currId = idNum;
             var currSec = lang.page7.catg;
             var subCat = "";
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
                 sessionStorage.setItem('sub', "edu");
-                location.href = "gb2.html?rfid=" + rfid + '&cat=edu' +"";
+                location.href = "gb2.html?cat=edu" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
-            } else if (currId.localeCompare("career") === 0) {
+            } else if (currId.localeCompare("work") === 0) {
                 subCat = currSec.career;
                 sessionStorage.setItem('sub',"work");
-                location.href = "gb2.html?rfid=" + rfid + '&cat=work' +"";
+                   location.href = "gb2.html?cat=work" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
-            } else if (currId.localeCompare("politics") === 0) {
+            } else if (currId.localeCompare("politic") === 0) {
                 subCat = currSec.politics;
-                sessionStorage.setItem('sub', "politics");
-                location.href = "gb2.html?rfid=" + rfid + '&cat=politic' +"";       
+                sessionStorage.setItem('sub', "politic");
+                location.href = "gb2.html?cat=politic" + '&lang=' + langIs+ '&rfid=' + rfid + "";
             }
         }
 
         $(function () {
             pickCSS();      
-            $('#edu, #career, #politics').click(function () {
+            $('#edu, #work, #politic').click(function () {
                 var x = this.id;
                 clickedItm(x);
             });
@@ -145,8 +151,8 @@
                     <div class="categoryCont">
                         <div class="categoryWrap">
                             <span class="edu" id="edu"></span>
-                            <span class="career" id="career"></span>
-                            <span class="politics" id="politics"></span>
+                            <span class="career" id="work"></span>
+                            <span class="politics" id="politic"></span>
                          </div>
                       </div>
                     </div>

@@ -32,13 +32,12 @@ function getOccupationByValue(occup) {
     return catIs;
 }
 
-async function getOccupationById(num) {
-    var numInt = parseInt(num, 10);
+async function getOccupationById(numStr) {
     var json = await getTrailWomen();
     var cat = "";
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
-        if (n.id === numInt) {
+        if (n.ext_id.localeCompare(numStr) === 0) {
             cat = n.translations[0].occupation;
             console.log(cat);
             bool = true;
@@ -69,7 +68,8 @@ function getLangJSON(lang) {
 }
 
 function pickCSS() {
-    var pickLang = localStorage.getItem("langID");
+   // var pickLang = localStorage.getItem("langID");
+    var pickLang = getParameterByName("lang");
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
         if (pickLang.localeCompare("he") === 0) {
             console.log("pick lang is :     "+pickLang);
@@ -256,12 +256,12 @@ async function getPersonalities() {
 function changeIcons(num) {
     if (num === 0) {
         $('#edu').css("background-image", "url('cut/Group 232.png')");
-        $('#career').css("background-image", "url('cut/Group 233.png')");
-        $('#politics').css("background-image", "url('cut/Group 234.png')");
+        $('#work').css("background-image", "url('cut/Group 233.png')");
+        $('#politic').css("background-image", "url('cut/Group 234.png')");
     } else {
         $('#edu').css("background-image", "url('cut/Group 311.png')");
-        $('#career').css("background-image", "url('cut/Group 310.png')");
-        $('#politics').css("background-image", "url('cut/Group 309.png')");
+        $('#work').css("background-image", "url('cut/Group 310.png')");
+        $('#politic').css("background-image", "url('cut/Group 309.png')");
     }
 }
 
@@ -408,8 +408,6 @@ async function getJewishStars() {
         var bool = false;
         str = n.ext_id.substring(0, 2);
         if (str.indexOf("30") > -1 || n.id>-1) {
-            //console.log(`catg is ${n.translations[0].category} -------------> sub cat is ${n.translations[0].sub_category}`);
-           // console.log(`img id=  ${n.image} ----> video id= ${n.translations[0].video} `);
                 bool = true;
             }
         
@@ -418,25 +416,6 @@ async function getJewishStars() {
     return filtered;
 }
 
-async function getStarsTemp() {
-    var json = await getPersonalities();
-    var filtered = $(json.data).filter(function (i, n) {
-        bool = false;
-        counter = 0;    
-        for (j = 0; j < n.translations.length; j++) {
-            if (n.translations[j].id > 40 && n.translations[j].id < 48) {
-                console.log(n.translations[j].first_name);
-                bool = true;
-                counter++;
-                if (counter === 3) {
-                    return bool;
-                }
-            }
-        }
-        return bool;
-    });
-    return filtered;
-}
 
 async function getStars() {
     var json = await getPersonalities();
@@ -458,7 +437,6 @@ async function getTrailWomen() {
         var bool = false;
         var str = n.ext_id.substring(0, 2);
         if (str.indexOf("29") > -1) {
-            console.log(n.translations[0].occupation); 
                 bool = true;
             }
         
@@ -540,7 +518,6 @@ function addModalbox() {
     };
 
     $('a', $('#share')).each(function () {
-        $(this).attr('data-url', currUrl);
-        $(this).attr('data-description', '******************************************' + currUrl+'******************************************');
+        $(this).attr('data-url', currUrl);  
     });
 }

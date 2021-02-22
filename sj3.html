@@ -43,21 +43,21 @@
         }
 
   function pickLanguage() {
-            clearTXT('sj3');
-            var pickLang = localStorage.getItem("langID");
+          var pickLang = localStorage.getItem("langID");
+           var rfid = getParameterByName("rfid");
+           var id = getParameterByName("id");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    console.log("change lang to: en");
                     localStorage.setItem("langID", "en");
-                    x = localStorage.getItem("langID");
-                     console.log("lang is: "+x);
+                     url = "sj3.html?id=" + id + '&lang=en&rfid=' + rfid + "";
+                     window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("en") === 0) {
                     console.log("change lang to: he");
                     localStorage.setItem("langID", "he");
-                      x = localStorage.getItem("langID");
-                     console.log("lang is: "+x);
+                     url = "sj3.html?id=" + id + '&lang=he&rfid=' + rfid + "";
+                     window.location.replace(url);
                     pickCSS();
                   }
             } else {
@@ -108,23 +108,24 @@
         }
 
         function breadCrumbs() {
+            var langIs=localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "sj1.html?rfid=" + rfid;
+                location.href = "sj1.html?lang=" +langIs +'&rfid=' + rfid;
             });
 
             $('body').delegate('#catgMain', 'click', function () {
                 var my_object = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": "" }
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                location.href = "sj2.html?rfid=" + rfid;
+                location.href = "sj2.html?lang=" +langIs +'&rfid=' + rfid;
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
                 var my_object = JSON.parse(sessionStorage.getItem('my_item'));
                 var my_object_ = { "main": my_object.main, "sub": my_object.sub }
                 localStorage.setItem('my_item_back', JSON.stringify(my_object_));
-                location.href = "sj2.html?rfid=" + rfid;
+                location.href = "sj2.html?lang=" +langIs +'&rfid=' + rfid;
 
             });
         }
@@ -133,7 +134,6 @@
        async function loadAndFill() {
             var num = getParameterByName('id');
             var val = "30_"+num;
-
            console.log(val);
            // var my_object = JSON.parse(sessionStorage.getItem('my_item'));
             JsonLang = localStorage.getItem("lang");

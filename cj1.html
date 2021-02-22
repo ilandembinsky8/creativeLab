@@ -11,7 +11,8 @@
     <script>
 
         function pickCSS() {
-            var pickLang = localStorage.getItem("langID");
+            var pickLang = getParameterByName("lang");
+            //var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     pickLang = "en";
@@ -37,20 +38,22 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
+                    //swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    url = 'cj1.html?lang=en';
+                    window.location.replace(url);   
+                    pickCSS();
                 } else if (pickLang.localeCompare("en") === 0) {
                     pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
+                     url = 'cj1.html?lang=he';
+                     window.location.replace(url);                  
+                    pickCSS();
                 }
             } else {
                 pickLang = "he";
                 localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         }
 
@@ -124,8 +127,9 @@
         function goToCountry(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
             sessionStorage.setItem('country', prData); 
+             var langIs= localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
-            location.href = "cj2.html?rfid=" + rfid+ '&id=' + prData + "";;
+            location.href = "cj2.html?id=" + prData +'&lang='+ langIs+'&rfid=' + rfid+ "";
         }
 
 

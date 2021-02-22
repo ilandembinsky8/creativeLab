@@ -45,23 +45,27 @@
 
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
+            var id = getParameterByName("id");
+            var rfid = getParameterByName("rfid");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
-                    swapStyleSheet('css/styles-eng.css');
+                    pickLang = "en";                
                     localStorage.setItem("langID", "en");
-                    loadLang();
+                    url ="cj2.html?id=" + id +'&lang=en&rfid=' + rfid+ "";
+                    window.location.replace(url);   
+                    pickCSS();
                 } else if (pickLang.localeCompare("en") === 0) {
                     pickLang = "he";
                     localStorage.setItem("langID", "he");
-                    swapStyleSheet('css/styles.css');
-                    loadLang();
+                    url ="cj2.html?id=" + id +'&lang=he&rfid=' + rfid+ "";
+                    window.location.replace(url);                   
+                    pickCSS();
                 }
             } else {
                 pickLang = "he";
                 localStorage.setItem("langID", "he");
                 swapStyleSheet('css/styles.css');
-                loadLang();
+                pickCSS();
             }
         } 
         async function loadCountryInfo(searchValue) {

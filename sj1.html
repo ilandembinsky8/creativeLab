@@ -14,7 +14,8 @@
   
 
         function pickCSS() {
-            var pickLang = localStorage.getItem("langID");
+          //  var pickLang = localStorage.getItem("langID");
+             var pickLang = getParameterByName("lang");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     swapStyleSheet('css/styles.css');
@@ -37,11 +38,15 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "en");
-                    pickCSS();
+                     url = 'sj1.html?lang=en';
+                     window.location.replace(url);
+                     pickCSS();
 
                 } else if (pickLang.localeCompare("en") === 0) {
                     localStorage.setItem("langID", "he");
-                    pickCSS();
+                     url = 'sj1.html?lang=he';
+                     window.location.replace(url);
+                     pickCSS();
                 }
             } else {
                 localStorage.setItem("langID", "he");
@@ -79,18 +84,16 @@
 
         function goToSub(idItm) {
             var idPr = $('#' + idItm).parent().attr('id');
-           // sessionStorage.setItem("main", idPr);
-           // sessionStorage.setItem("sub", idItm);
             var rfid = getParameterByName("rfid");
-            location.href = "sj2.html?rfid=" + rfid + '&cat=' + idPr + '&sub=' + idItm + "";
+            var langIs=localStorage.getItem("langID");
+            location.href = "sj2.html?cat=" + idPr + '&sub=' + idItm  + '&lang=' + langIs +'&rfid=' + rfid + "";
          }
 
         function goToCatg(idPr) {
-             var idItm = "";
-             //sessionStorage.setItem("main", idPr);
-           // sessionStorage.setItem("sub", idItm);
+            var idItm = "";
             var rfid = getParameterByName("rfid");
-             location.href = "sj2.html?rfid=" + rfid+ '&cat=' + idPr + '&sub=' + idItm + "";
+            var langIs=localStorage.getItem("langID");
+            location.href = "sj2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs +'&rfid=' + rfid + "";
          }
 
         function loadData() {

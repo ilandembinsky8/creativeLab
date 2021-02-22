@@ -38,14 +38,22 @@
   }
 
       function pickLanguage() {
-            var pickLang = localStorage.getItem("langID");
+          var pickLang = localStorage.getItem("langID");
+          var rfid = getParameterByName("rfid");
+          var cat = getParameterByName("cat");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "en");
+                     url =  "gb2.html?cat="+cat + '&lang=en&rfid=' + rfid + "";
+                     window.location.replace(url);
+                 //   location.href = "gb2.html?cat="+cat + '&lang=en&rfid=' + rfid + "";
                     pickCSS();
 
                 } else if (pickLang.localeCompare("en") === 0) {
                     localStorage.setItem("langID", "he");
+                     url ="gb2.html?cat="+cat + '&lang=he&rfid=' + rfid + "";
+                     window.location.replace(url);
+                   // location.href = "gb2.html?cat="+cat + '&lang=he&rfid=' + rfid + "";
                     pickCSS();
                   }
             } else {
@@ -110,9 +118,8 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
             var subCatgIs = getParameterByName('cat');
-            console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
-            subIs = lang["occupations"][subCatgIs];
+            subIs = lang["occupations"][subCatgIs];           
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
             $('#catgMain').text(lang.catgTitle);
@@ -128,13 +135,14 @@
             var lang = JSON.parse(JsonLang); 
             var subCatgIs = getParameterByName('cat');
             var rfid = getParameterByName("rfid");
+            var langIs=localStorage.getItem("langID");
             console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             console.log(prData);
           //  var my_object = { "sub": subCatgIs, "prData": prData }
-           // sessionStorage.setItem('my_item', JSON.stringify(my_object));
-            location.href = "gb3.html?rfid=" + rfid + '&id=' + prData + "";
+            // sessionStorage.setItem('my_item', JSON.stringify(my_object));
+            location.href = "gb3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
         }
 
       async function loadDetails(searchValue){

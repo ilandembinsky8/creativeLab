@@ -44,13 +44,19 @@
 
         function pickLanguage() {
             var pickLang = localStorage.getItem("langID");
+             var id = getParameterByName("id");
+            var rfid = getParameterByName("rfid");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("he") === 0) {
                     localStorage.setItem("langID", "en");
-                    pickCSS();
+                     url ="st2.html?id=" + id +'&lang=en&rfid=' + rfid+ "";
+                     window.location.replace(url);   
+                     pickCSS();
 
                 } else if (pickLang.localeCompare("en") === 0) {
                     localStorage.setItem("langID", "he");
+                     url ="cj2.html?id=" + id +'&lang=he&rfid=' + rfid+ "";
+                     window.location.replace(url);   
                     pickCSS();
                   }
             } else {
@@ -133,7 +139,8 @@
             addModalbox();
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
-                location.href = "st1.html?rfid="+rfid;
+                var langIs=localStorage.getItem("langID");
+                location.href = "st1.html?lang="+langIs+'&rfid='+rfid+"";
             });
 
         });
