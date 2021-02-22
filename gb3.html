@@ -68,7 +68,7 @@
             var filtered = $(json).filter(function (i, n) {
             var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
-                    if (n.id === searchValue && n.translations[j].language === langIs) {
+                    if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
                         $('#name').text(n.translations[j].first_name + " " + n.translations[j].last_name);
                         $('#name,#split2').css("display", "inline-block");
                         $('#name').addClass('greenTitle');
@@ -108,7 +108,7 @@
             $('#split1').css("display", "inline-block");
             var num = getParameterByName('id');
             console.log(num);
-            val = parseInt(num, 10);
+            val = "29_" + num;
             console.log(val);
             loadPRData(val);
         }

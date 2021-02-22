@@ -72,7 +72,7 @@
             var filtered = $(json).filter(function (i, n) {
             var bool = false;
             for (j = 0; j < n.translations.length; j++) {
-              if (n.id === searchValue && n.translations[j].language === langIs) {
+              if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
                   res = n.translations[j];
                   if (n.image) {
                       console.log(`img id is: ${n.image.id}`);
@@ -114,7 +114,7 @@
             $('#catgMain').text(lang.countries)
             $("#close").val(lang.close);
             var num = getParameterByName('id');
-            val = parseInt(num, 10);
+            val = "30_" + num;
             loadCountryInfo(val);
             
         }

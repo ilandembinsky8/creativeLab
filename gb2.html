@@ -84,7 +84,11 @@
             counter = 0;
              $('#col1, #col2').empty();
               for (var i in object) {
-                var idIs=object[i].id;
+               var idstr = "";
+               if (object[i].ext_id) {
+                   var idstr = object[i].ext_id;
+               }
+                var idIs = idstr.substring(3);
                 subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
@@ -140,8 +144,11 @@
            var x = await getTrailWomen();
            object = await getOccupation(searchValue);
           for (var i in object) {
-              var idIs=object[i].id;
-                 subObj = object[i].translations;
+                if (object[i].ext_id) {
+                   var idstr = object[i].ext_id;
+                }
+                var idIs = idstr.substring(3);
+                subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                       counter = counter + 1;

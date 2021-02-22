@@ -69,7 +69,7 @@
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
-                    if (n.id === searchValue && n.translations[j].language === langIs) {
+                    if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
                         bool = true;
                         $('#name, #split1').css("display", "inline-block");
                         $('#name').text(n.translations[j].first_name + ' ' + n.translations[j].last_name);
@@ -118,7 +118,7 @@
             $("#close").val(lang.close);
             var prData = localStorage.getItem("prData");
             prData = getParameterByName('id');
-            prData = parseInt(prData, 10);
+            prData = "80_" + prData;
             console.log(prData);
             findMatches(prData);
         }
