@@ -92,11 +92,16 @@
              $('#col1, #col2').empty();
             for (var i in object) {
                 subObj = object[i].translations;
+                var idstr = "";
+                if (object[i].ext_id) {
+                   var idstr = object[i].ext_id;
+                }
+               var idIs = idstr.substring(3);
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                             var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + object[i].id + '>' + subObj[j].name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + subObj[j].name + '</span>';
                             document.getElementById(col).innerHTML += elem;
                         
                     }
@@ -140,10 +145,15 @@
             var filtered = $(sorted).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
+                     var idstr = "";
+                     if (n.ext_id) {
+                     var idstr = n.ext_id;
+                    }
+                     var idIs = idstr.substring(3);
                     if (n.translations[j].language === langIs) {
                         var col = addToColumn();
                         counter = counter + 1;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + n.id + '>' + n.translations[j].name + '</span>';
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + n.translations[j].name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }

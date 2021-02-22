@@ -89,7 +89,11 @@
             var s = "";
             for (var i in object) {
                 subObj = object[i].translations;
-                var idIs = object[i].id;
+                 var idstr = "";
+                 if (object[i].ext_id) {
+                   var idstr = object[i].ext_id;
+                 }
+                var idIs = idstr.substring(3);
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         counter++;

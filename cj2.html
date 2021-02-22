@@ -64,15 +64,31 @@
                 loadLang();
             }
         } 
-        function loadCountryInfo(res) {
-            if (typeof res !== 'undefined' && res !== null) {
+        async function loadCountryInfo(searchValue) {
+            var langIs = localStorage.getItem('langID'); 
+            json = await getCountries();
+            json = json.data;
+            console.log(json);
+            var filtered = $(json).filter(function (i, n) {
+            var bool = false;
+            for (j = 0; j < n.translations.length; j++) {
+              if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
+                  res = n.translations[j];
+                  if (n.image) {
+                      console.log(`img id is: ${n.image.id}`);
+                      var objImg = getImgDetails(n.image.id);
+                     //$('#img').html(https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/ + 'objImg.filename_disk'+);
+                  }
                 $('#name').text(res["name"]);
                 $('#name,#split1').css("display", "inline-block");
                 $('#txt1').text(res.timeline[0].info);
                 $('#titleTxt2').text(res.timeline[0].timeframe);
                 $('#txt2').text(res.timeline[0].info);
                 $('#titleTxt3').text(res.timeline[1].timeframe);
-                $('#txt3').text(res.timeline[1].info);   
+                  $('#txt3').text(res.timeline[1].info);
+                  var textShare = res.timeline[1].timeframe + "\n" +res.timeline[1].info;               
+                  $('#telegram, #whatsapp').attr('data-title', textShare);
+
                 for (i = 1; i < res.timeline.length; i++) {
                     j = i + 1;
                     console.log(res.timeline[i].timeframe);
@@ -81,9 +97,15 @@
                     s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';
                     s = s + '</div>';
                     document.getElementById('countryInfo').innerHTML += s;
-                }
-            }
+                    }
+                    bool = true;
+             }
+          }
+           return bool;
+          });
+         return filtered;
         }
+
 
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
@@ -92,29 +114,11 @@
             $('#catgMain').text(lang.countries)
             $("#close").val(lang.close);
             var num = getParameterByName('id');
-            val = parseInt(num, 10);
-            loadPRData(val);
+            val = "30_" + num;
+            loadCountryInfo(val);
             
         }
 
-        function loadPRData(searchKey) {
-            getCountries().then(value => {
-                object = value["data"];
-                var langIs = localStorage.getItem('langID'); 
-                var result = object.find(obj => {
-                    return obj.id === searchKey;
-                })
-                subObj = getCountry(result["translations"], langIs);
-                loadCountryInfo(subObj);
-            });
-        }
-
-        function getCountry(object, langIs) {   
-            var result = object.find(obj => {
-                return obj.language.indexOf(langIs) !== -1
-            })
-            return result;
-        }
 
         function sendMail() {
             var currUrl = document.URL;
@@ -184,12 +188,12 @@
                 <div class="shareModalCont">
 
                     <div class='txtModal' id="share">
-                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url=''  class="fa fa-facebook"></a>
-                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url=''   class="fa fa-twitter"></a>
-                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url=''  class="fa fa-linkedin"></a>
-                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
-                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url=''  class="fa fa-telegram"></a>
-                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url=''  class="fa fa-whatsapp"></a>
+                        <a id="facebook" data-sharer="facebook" data-title="Checkout SJ3!" data-url=''  class="fa fa-facebook"></a>
+                        <a id="twitter"  data-sharer="twitter" data-title="Checkout SJ3!" data-url=''   class="fa fa-twitter"></a>
+                        <a id="linkedin" data-sharer="linkedin" data-title="Checkout SJ3!" data-url=''  class="fa fa-linkedin"></a>
+                        <a id="instagram" data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
+                        <a id="telegram" data-sharer="telegram" data-title="Checkout SJ3!" data-url=''  class="fa fa-telegram"></a>
+                        <a id="whatsapp" data-sharer="whatsapp" data-title="Checkout SJ3!" data-url=''  class="fa fa-whatsapp"></a>
                     </div>
                     <input class="close" type="button" value="" style="margin-top:240px" id="close"/>
                 </div>
