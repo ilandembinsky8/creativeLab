@@ -1,4 +1,5 @@
 var token; 
+
 function goHomePg() {
     location.href = 'https://rfid.anumuseum.org.il/?rfid=10007605ED';
 }
@@ -226,13 +227,12 @@ async function getVideoDetails(videoId) {
 }
 
 
+
 async function getPersonalities() {
     var d = $.Deferred();
     var token = await getToken();
-    //window.localStorage.setItem('access_token', token);
     var tokenTitle = 'access_token';
-    //document.cookie = tokenTitle + "=" + token;
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token+"&limit=-1";
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/items/rfid_personalities?fields=*,translations.*&access_token=" + token + "&limit=-1";
     $.ajax({
         url: url,
         type: "GET",
