@@ -10,48 +10,36 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-          function pickCSS() {
-              //var pickLang = localStorage.getItem("langID");
-              var pickLang = getParameterByName("lang");
-              console.log(pickLang);
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0 || pickLang.localeCompare("heb") === 0) {
-                    swapStyleSheet('css/styles.css');
-                    localStorage.setItem("langID", "he");
-                    loadLang();
-                } else if (pickLang.localeCompare("en") === 0 || pickLang.localeCompare("eng") === 0) {
-                    localStorage.setItem("langID", "en");
-                    swapStyleSheet('css/styles-eng.css');
-                    loadLang();
-                }
+        function pickCSS() {
+            var pickLang = getParameterByName("lang");
+            if (getParameterByName("lang")) {
+               loadCSSLang(pickLang);   
             } else {
-                pickLang = "he";
-                localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                localStorage.setItem("langID", "heb");
+                loadCSSLang("heb");
             }
         }
 
-
-
      function pickLanguage() {
-            var pickLang = localStorage.getItem("langID");
+             var pickLang = getParameterByName("lang");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "en");
-                     url = 'gb1.html?lang=en';
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "eng");
+                     url = 'gb1.html?lang=eng';
                      window.location.replace(url);
                     pickCSS();
 
-                } else if (pickLang.localeCompare("en") === 0) {
-                    localStorage.setItem("langID", "he");
-                     url = 'gb1.html?lang=he';
+                } else if (pickLang.localeCompare("eng") === 0) {
+                    localStorage.setItem("langID", "heb");
+                     url = 'gb1.html?lang=heb';
                      window.location.replace(url);
                     pickCSS();
                   }
             } else {
-                localStorage.setItem("langID", "he");
-                pickCSS();
+                localStorage.setItem("langID", "heb");
+                  url = 'gb1.html?lang=heb';
+                  window.location.replace(url);
+                 pickCSS();
             }
         }
 
@@ -63,19 +51,19 @@
                    var pickLang = localStorage.getItem("langID");
                   
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                       if (pickLang.localeCompare("he") === 0) {
-                           localStorage.setItem("langID", "he");
+                       if (pickLang.localeCompare("heb") === 0) {
+                           localStorage.setItem("langID", "heb");
                            $('#lang').css("background-image", "url('cut/Group 128.png')");     
                            changeIcons(0);
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
-                           localStorage.setItem("langID", "en");
+                           localStorage.setItem("langID", "eng");
                            $('#lang').css("background-image", "url('cut/Group 312.png')");
                            changeIcons(1);
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {
-                       localStorage.setItem("langID", "he");
+                       localStorage.setItem("langID", "heb");
                        localStorage.setItem("lang", JSON.stringify(myObj.HE));
                    }
                    loadData();

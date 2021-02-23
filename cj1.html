@@ -10,49 +10,51 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-        function pickCSS() {
-            var pickLang = getParameterByName("lang");
-            //var pickLang = localStorage.getItem("langID");
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
+
+        function loadCSSLang(lang) {
+             if (lang.localeCompare("heb") === 0) {
                     swapStyleSheet('css/styles.css');
-                    localStorage.setItem("langID", "he");
+                    localStorage.setItem("langID", "heb");
                     loadLang();
-                } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
-                    localStorage.setItem("langID", "en");
+             } else if (lang.localeCompare("eng") === 0) {
+                 localStorage.setItem("langID", "eng");
                     swapStyleSheet('css/styles-eng.css');
                     loadLang();
-                }
+            }
+        }
+
+        function pickCSS() {
+            var pickLang = getParameterByName("lang");
+            if (getParameterByName("lang")) {
+               loadCSSLang(pickLang);
             } else {
-                pickLang = "he";
-                localStorage.setItem("langID", "he");
-                swapStyleSheet('css/styles.css');
-                loadLang();
+                localStorage.setItem("langID", "heb");
+                loadCSSLang("heb");
             }
         }
 
         function pickLanguage() {
-            var pickLang = localStorage.getItem("langID");
+            var pickLang = getParameterByName("lang");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    pickLang = "en";
+                if (pickLang.localeCompare("heb") === 0) {
+                    pickLang = "eng";
                     //swapStyleSheet('css/styles-eng.css');
-                    localStorage.setItem("langID", "en");
-                    url = 'cj1.html?lang=en';
+                    localStorage.setItem("langID", "eng");
+                    url = 'cj1.html?lang=eng';
                     window.location.replace(url);   
                     pickCSS();
-                } else if (pickLang.localeCompare("en") === 0) {
-                    pickLang = "he";
-                    localStorage.setItem("langID", "he");
-                     url = 'cj1.html?lang=he';
+                } else if (pickLang.localeCompare("eng") === 0) {
+                    pickLang = "heb";
+                    localStorage.setItem("langID", "heb");
+                     url = 'cj1.html?lang=heb';
                      window.location.replace(url);                  
                     pickCSS();
                 }
             } else {
-                pickLang = "he";
-                localStorage.setItem("langID", "he");
+                pickLang = "heb";
+                localStorage.setItem("langID", "heb");
+                url = 'cj1.html?lang=heb';
+                window.location.replace(url); 
                 pickCSS();
             }
         }
@@ -64,17 +66,17 @@
                    var myObj = JSON.parse(this.responseText);
                    var pickLang = localStorage.getItem("langID");
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                       if (pickLang.localeCompare("he") === 0) {
-                           localStorage.setItem("langID", "he");
+                       if (pickLang.localeCompare("heb") === 0) {
+                           localStorage.setItem("langID", "heb");
                             $('#lang').css("background-image", "url('cut/Group 128.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
                        } else {
-                           localStorage.setItem("langID", "en");
+                           localStorage.setItem("langID", "eng");
                             $('#lang').css("background-image", "url('cut/Group 312.png')");
                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
                        }
                    } else {
-                       localStorage.setItem("langID", "he");
+                       localStorage.setItem("langID", "heb");
                        localStorage.setItem("lang", JSON.stringify(myObj.HE));
                    }
                    loadData();
@@ -132,11 +134,10 @@
             location.href = "cj2.html?id=" + prData +'&lang='+ langIs+'&rfid=' + rfid+ "";
         }
 
-
         async function loadData() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            langIs = localStorage.getItem("langID");
+            var langIs = getLang();
             console.log(langIs);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#search').attr("placeholder", lang["search"]["cj"]);
@@ -173,10 +174,10 @@
             return function (a, b) {
                 a1 = a;
                 b1 = b;
-                 if (langIs.indexOf("he") > -1) {
+                 if (langIs.indexOf("heb") > -1) {
                     a1 = a.translations[0].name;
                      b1 = b.translations[0].name;
-                 } else if (langIs.indexOf("en") > -1 && a.translations.length > 1 && b.translations.length > 1) {
+                 } else if (langIs.indexOf("eng") > -1 && a.translations.length > 1 && b.translations.length > 1) {
                      a1 = a.translations[1].name.toLowerCase();
                      b1 = b.translations[1].name.toLowerCase();
                 }

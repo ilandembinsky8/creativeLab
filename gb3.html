@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,17 +21,17 @@
             var pickLang = localStorage.getItem("langID");
             console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {     
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "he");
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
-                    localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "eng");
                     $('#lang').css("background-image", "url('cut/Group 312.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
-                localStorage.setItem("langID", "he");
+                localStorage.setItem("langID", "heb");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
              $('#name').text('');
@@ -44,32 +44,33 @@
   }
 
        function pickLanguage() {
-           var pickLang = localStorage.getItem("langID");
+          var pickLang = getParameterByName("lang");
            var rfid = getParameterByName("rfid");
            var id = getParameterByName("id");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "en");
-                     url =  "gb3.html?id=" + id + '&lang=en&rfid=' + rfid + "";
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "eng");
+                     url =  "gb3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);
-                  //  location.href = "gb3.html?id=" + id + '&lang=en&rfid=' + rfid + "";
                     pickCSS();
 
-                } else if (pickLang.localeCompare("en") === 0) {
-                    localStorage.setItem("langID", "he");
-                     url =  "gb3.html?id=" + id + '&lang=he&rfid=' + rfid + "";
+                } else if (pickLang.localeCompare("eng") === 0) {
+                    localStorage.setItem("langID", "heb");
+                     url =  "gb3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
-                    //location.href = "gb3.html?id=" + id + '&lang=he&rfid=' + rfid + "";
                     pickCSS();
                   }
             } else {
-                localStorage.setItem("langID", "he");
-                pickCSS();
+                 localStorage.setItem("langID", "heb");
+                 url =  "gb3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                 window.location.replace(url);
+                 pickCSS();
             }
         }
 
        async function loadPRData(searchValue) {
-           langIs = localStorage.getItem("langID");
+           //langIs = localStorage.getItem("langID");
+            var langIs = getLang();
            console.log(langIs);
            json = await getTrailWomen();
            console.log(json);

@@ -17,17 +17,17 @@
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {            
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "he");
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
-                    localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "eng");
                     $('#lang').css("background-image", "url('cut/Group 312.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
-                localStorage.setItem("langID", "he");
+                localStorage.setItem("langID", "heb");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
             loadAndFill();
@@ -38,26 +38,26 @@
   }
 
       function pickLanguage() {
-          var pickLang = localStorage.getItem("langID");
+          var pickLang = getParameterByName("lang");
           var rfid = getParameterByName("rfid");
           var cat = getParameterByName("cat");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "en");
-                     url =  "gb2.html?cat="+cat + '&lang=en&rfid=' + rfid + "";
-                     window.location.replace(url);
-                 //   location.href = "gb2.html?cat="+cat + '&lang=en&rfid=' + rfid + "";
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "eng");
+                     url =  "gb2.html?cat="+cat + '&lang=eng&rfid=' + rfid + "";
+                     window.location.replace(url);               
                     pickCSS();
 
-                } else if (pickLang.localeCompare("en") === 0) {
-                    localStorage.setItem("langID", "he");
-                     url ="gb2.html?cat="+cat + '&lang=he&rfid=' + rfid + "";
+                } else if (pickLang.localeCompare("eng") === 0) {
+                    localStorage.setItem("langID", "heb");
+                     url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
-                   // location.href = "gb2.html?cat="+cat + '&lang=he&rfid=' + rfid + "";
                     pickCSS();
                   }
             } else {
-                localStorage.setItem("langID", "he");
+                localStorage.setItem("langID", "heb");
+                 url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
+                 window.location.replace(url);
                 pickCSS();
             }
         }
@@ -85,7 +85,8 @@
         }
 
           async function personSearch() {
-            var valueIs = $('#search').val();
+           var valueIs = $('#search').val();
+           var langIs = getLang();
             console.log(valueIs);
             var object = await searchPerson(valueIs);
             console.log(object);
@@ -146,7 +147,8 @@
         }
 
       async function loadDetails(searchValue){
-           langIs = localStorage.getItem("langID");
+          // langIs = localStorage.getItem("langID");
+           var langIs = getLang();
            counter = 0;
            $('#col1, #col2').empty();
            var x = await getTrailWomen();

@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +19,17 @@
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "he");
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
-                    localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "eng");
                     $('#lang').css("background-image", "url('cut/Group 312.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
-                localStorage.setItem("langID", "he");
+                localStorage.setItem("langID", "heb");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
              }
              $('#name').text('');
@@ -43,25 +43,27 @@
         }
 
         function pickLanguage() {
-            var pickLang = localStorage.getItem("langID");
+           var pickLang = getParameterByName("lang");
              var id = getParameterByName("id");
             var rfid = getParameterByName("rfid");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "en");
-                     url ="st2.html?id=" + id +'&lang=en&rfid=' + rfid+ "";
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "eng");
+                     url ="st2.html?id=" + id +'&lang=eng&rfid=' + rfid+ "";
                      window.location.replace(url);   
                      pickCSS();
 
-                } else if (pickLang.localeCompare("en") === 0) {
-                    localStorage.setItem("langID", "he");
-                     url ="cj2.html?id=" + id +'&lang=he&rfid=' + rfid+ "";
+                } else if (pickLang.localeCompare("eng") === 0) {
+                    localStorage.setItem("langID", "heb");
+                     url ="cj2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
                      window.location.replace(url);   
                     pickCSS();
                   }
             } else {
                 localStorage.setItem("langID", "he");
-                pickCSS();
+                 url ="cj2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
+                 window.location.replace(url);   
+                 pickCSS();
             }
         }
         
@@ -69,7 +71,8 @@
         async function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            langIs = localStorage.getItem("langID");
+           // langIs = localStorage.getItem("langID");
+             var langIs = getLang();
             var json = await getStars();
             counter = 0;
             var filtered = $(json).filter(function (i, n) {

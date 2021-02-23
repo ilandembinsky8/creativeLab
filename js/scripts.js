@@ -7,10 +7,10 @@ function goHomePg() {
 function mail(langIs, url) {
     var subjectIs = '';
     var bodyIs = url;
-    if (langIs.localeCompare("en") === 0) {
+    if (langIs.localeCompare("eng") === 0) {
         subjectIs = 'Anu - Museum of the jewish people';
         window.location = "mailto:?subject=" + subjectIs+ "&body="+ bodyIs;
-    } else if (langIs.localeCompare("he") === 0) {
+    } else if (langIs.localeCompare("heb") === 0) {
         subjectIs = 'אנו – מוזיאון העם היהודי';
         window.location = "mailto:?subject=" + subjectIs + "&body=" + bodyIs;
     }
@@ -67,39 +67,70 @@ function getLangJSON(lang) {
     });
 }
 
-function pickCSS() {
-   // var pickLang = localStorage.getItem("langID");
-    var pickLang = getParameterByName("lang");
-    if (typeof pickLang !== 'undefined' && pickLang !== null) {
-        if (pickLang.localeCompare("he") === 0) {
-            console.log("pick lang is :     "+pickLang);
-            swapStyleSheet('css/styles.css');
-            localStorage.setItem("langID", "he");
-            loadLang();
-        } else if (pickLang.localeCompare("en") === 0) {
-            localStorage.setItem("langID", "en");
-            swapStyleSheet('css/styles-eng.css');
-            loadLang();
-        }
+function getLang() {
+    var langIs = localStorage.getItem('langID');
+    if (langIs.localeCompare("eng") === 0) {
+        return "en";
     } else {
-        localStorage.setItem("langID", "he");
+        return "he";
+    }
+}
+
+function loadCSSLang(lang) {
+    if (lang.localeCompare("heb") === 0) {
         swapStyleSheet('css/styles.css');
+        localStorage.setItem("langID", "heb");
+        loadLang();
+    } else if (lang.localeCompare("eng") === 0) {
+        localStorage.setItem("langID", "eng");
+        swapStyleSheet('css/styles-eng.css');
         loadLang();
     }
 }
 
+function pickCSS() {
+    var pickLang = getParameterByName("lang");
+    if (pickLang) {
+        loadCSSLang(pickLang);
+    } else {
+        localStorage.setItem("langID", "heb");
+        loadCSSLang("heb");
+    }
+}
+
+//function pickCSS() {
+//   // var pickLang = localStorage.getItem("langID");
+//    var pickLang = getParameterByName("lang");
+//    if (typeof pickLang !== 'undefined' && pickLang !== null) {
+//        if (pickLang.localeCompare("he") === 0) {
+//            console.log("pick lang is :     "+pickLang);
+//            swapStyleSheet('css/styles.css');
+//            localStorage.setItem("langID", "he");
+//            loadLang();
+//        } else if (pickLang.localeCompare("en") === 0) {
+//            localStorage.setItem("langID", "en");
+//            swapStyleSheet('css/styles-eng.css');
+//            loadLang();
+//        }
+//    } else {
+//        localStorage.setItem("langID", "he");
+//        swapStyleSheet('css/styles.css');
+//        loadLang();
+//    }
+//}
+
 function pickLanguage() {
     var pickLang = localStorage.getItem("langID");
     if (typeof pickLang !== 'undefined' && pickLang !== null) {
-        if (pickLang.localeCompare("he") === 0) {
-            localStorage.setItem("langID", "en");
+        if (pickLang.localeCompare("heb") === 0) {
+            localStorage.setItem("langID", "eng");
             pickCSS();
-        } else if (pickLang.localeCompare("en") === 0) {
-            localStorage.setItem("langID", "he");
+        } else if (pickLang.localeCompare("eng") === 0) {
+            localStorage.setItem("langID", "heb");
             pickCSS();
         }
     } else {
-        localStorage.setItem("langID", "he");
+        localStorage.setItem("langID", "heb");
         pickCSS();
     }
 }
@@ -118,17 +149,17 @@ function loadLang() {
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 console.log('load lang, lang id is: ' + pickLang);
-                if (pickLang.localeCompare("he") === 0) {
-                    localStorage.setItem("langID", "he");
+                if (pickLang.localeCompare("heb") === 0) {
+                    localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.HE));
                 } else {
-                    localStorage.setItem("langID", "en");
+                    localStorage.setItem("langID", "eng");
                     $('#lang').css("background-image", "url('cut/Group 312.png')");
                     localStorage.setItem("lang", JSON.stringify(myObj.EN));
                 }
             } else {
-                localStorage.setItem("langID", "he");
+                localStorage.setItem("langID", "heb");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
             

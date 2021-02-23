@@ -192,6 +192,7 @@
   "EN": {
     "catgTitle": "Categories",
     "countries": "Countries",
+    "starsTitle": "Shining Stars",
     "singer": "blah",
     "close": "close",
     "hdTitles": {
@@ -200,7 +201,7 @@
       "groundbreaking": "Trailblazing Women",
       "starsJour": "Star Track"
     },
- 
+
     "occupations": {
       "edu": "Education",
       "work": "Work",
@@ -238,7 +239,7 @@
       "c4": {
         "title": "Holocaust Heroes",
         "subCat": {
-        
+
         }
       },
 
@@ -298,7 +299,7 @@
       "cj": "Search country",
       "gb": "Search trailblazing women"
     },
-     "filterCatg": {
+    "filterCatg": {
       "c1": {
         "title": "ArtistsAndCreators",
         "subCat": {
@@ -323,8 +324,8 @@
         "title": "EconomistsAndBusinessEntrepreneurs",
         "subCat": {
           "s3_1": "EconomistsAndBankers",
-          "s3_2": "EntrepreneursBankingandCapitalMarket", 
-          "s3_3": "EntrepreneursHighTech"               
+          "s3_2": "EntrepreneursBankingandCapitalMarket",
+          "s3_3": "EntrepreneursHighTech"
         }
 
       },
