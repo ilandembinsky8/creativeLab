@@ -118,16 +118,16 @@
             });
 
             $('body').delegate('#catgMain', 'click', function () {
-                var my_object = JSON.parse(sessionStorage.getItem('my_item'));
-                var cat = my_object.main;
+             //   var my_object = JSON.parse(sessionStorage.getItem('my_item'));
+                var cat = $('#catgMain').attr("data");
                 var sub = "";
                location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
-                var my_object = JSON.parse(sessionStorage.getItem('my_item'));
-                var cat = my_object.main;
-                var sub = my_object.sub;
+              //  var my_object = JSON.parse(sessionStorage.getItem('my_item'));
+                var cat = $('#catgMain').attr("data");
+                var sub = $('#catgSub1').attr("data");
                 location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
 
             });
@@ -156,11 +156,15 @@
                console.log(subCatIs);
                $('#catgSub1').html(catg.subCat[subCatIs]);
                $('#catgSub1,#split3').css("display", "inline-block");
-               var my_item = { "main": mainIs, "sub": subCatIs };
-               sessionStorage.setItem('my_item', JSON.stringify(my_item));
+              // var my_item = { "main": mainIs, "sub": subCatIs };
+               //sessionStorage.setItem('my_item', JSON.stringify(my_item));
+               $('#catgMain').attr("data", mainIs);
+               $('#catgSub1').attr("data",  subCatIs);
            } else {
-               var my_item = { "main": mainIs, "sub": subCatIs };
-               sessionStorage.setItem('my_item', JSON.stringify(my_item));
+             //var my_item = { "main": mainIs, "sub": subCatIs };
+               //sessionStorage.setItem('my_item', JSON.stringify(my_item));
+                $('#catgMain').attr("data", mainIs);
+               $('#catgSub1').attr("data", subIs);
                $('#catgSub1,#split3').css("display", "none");
                $('#name,#split1,#split2').css("display", "inline-block");
            }
@@ -204,9 +208,9 @@
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgMain"></span>
+                <span class="mainCat" id="catgMain" data=""></span>
                 <span class="split" id="split2">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgSub1"></span>
+                <span class="mainCat" id="catgSub1" data=""></span>
                 <span class="split" id="split3">&ensp;/&ensp;</span>
                 <span class="subCat" id="name"></span>
             </div>

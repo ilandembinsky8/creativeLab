@@ -95,12 +95,12 @@
                 location.href = "gb2.html?cat=edu" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
             } else if (currId.localeCompare("work") === 0) {
-                subCat = currSec.career;
+                subCat = currSec.work;
                 sessionStorage.setItem('sub',"work");
                    location.href = "gb2.html?cat=work" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
             } else if (currId.localeCompare("politic") === 0) {
-                subCat = currSec.politics;
+                subCat = currSec.politic;
                 sessionStorage.setItem('sub', "politic");
                 location.href = "gb2.html?cat=politic" + '&lang=' + langIs+ '&rfid=' + rfid + "";
             }

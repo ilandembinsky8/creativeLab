@@ -120,7 +120,8 @@
             var lang = JSON.parse(JsonLang); 
             var subCatgIs = getParameterByName('cat');
             subCatg = lang["page7"]["catg"][subCatgIs];
-            subIs = lang["occupations"][subCatgIs];           
+            subIs = lang["occupations"][subCatgIs];        
+            console.log(subIs);
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
             $('#catgMain').text(lang.catgTitle);
@@ -140,6 +141,7 @@
             console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
+            window.sessionStorage.setItem('cat', subCatgIs);
             console.log(prData);
           //  var my_object = { "sub": subCatgIs, "prData": prData }
             // sessionStorage.setItem('my_item', JSON.stringify(my_object));
@@ -201,7 +203,7 @@
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
-                <span class="greenTitle" id="catgSub1"></span>
+                <span class="greenTitle" id="catgSub1" data=""></span>
             </div>
 
             <div class="pageSubCont">

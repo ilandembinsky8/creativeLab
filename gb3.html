@@ -102,6 +102,13 @@
          return filtered;
         }
 
+        function getOccupKey() {
+            var occupIs = getOccupationById(idNum);
+            var subCatg = lang["page7"]["catg"][occupIs]; 
+            var occupKey = getKeyByValue(lang.page7.catg, subCatg);
+            return occupKey;
+        }
+
        async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -113,26 +120,27 @@
             console.log(`occupation is: ${occupIs}`);
             $('#catgTitle').text(lang.catgTitle);
             $("#close").val(lang.close);
-            subCatg = lang["page7"]["catg"][occupIs];
+            var subCatg = lang["page7"]["catg"][occupIs];        
             $('#catgMain').text(subCatg);
             $('#split1').css("display", "inline-block");
             var num = getParameterByName('id');
+            var occupKey = getKeyByValue(lang.page7.catg, subCatg);
+            $('#catgMain').attr("data", occupKey);
             console.log(num);
             val = "29_" + num;
             console.log(val);
             loadPRData(val);
         }
 
-        function breadCrumbs() {
-             var rfid = getParameterByName("rfid");
-            $('body').delegate('#catgMain', 'click', function () {
-                var my_object1 = JSON.parse(sessionStorage.getItem('my_item'));
-                var my_object_ = my_object1.sub;
-                localStorage.setItem('sub', my_object_);             
-                location.href = "gb2.html?rfid=" + rfid;
+       async function breadCrumbs() {
+            var rfid = getParameterByName("rfid");           
+            var langIs = localStorage.getItem("langID");
+           $('body').delegate('#catgMain', 'click', function () {
+               var cat =  $('#catgMain').attr("data");
+               location.href = "gb2.html?cat=" + cat + '&lang=' + langIs + '&rfid=' + rfid + "";
             });
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "gb1.html?rfid=" + rfid;
+                location.href = "gb1.html?lang=" +langIs +'&rfid=' + rfid;
             });
         }
 
@@ -167,7 +175,7 @@
             <div class="category">
                 <span class="mainCat" id="catgTitle"></span>
                 <span class="split" id="split1">&ensp;/&ensp;</span>
-                <span class="mainCat" id="catgMain"></span>
+                <span class="mainCat" id="catgMain" data=""></span>
                 <span class="split" id="split2">&ensp;/&ensp;</span>
                 <span class="subCat" id="name"></span>
             </div>
