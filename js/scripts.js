@@ -195,36 +195,81 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+async function getImgId(id) {
+    var langIs = getLang();
+    var json = await getStars();
+    counter = 0;
+    var idIs = 0;
+    var filtered = $(json).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (n.ext_id.localeCompare(id) === 0 && n.translations[j].language === langIs) {
+                if (n.image) {
+                    console.log(`img id is: ${n.image.id}`);
+                    bool = true;
+                    idIs = n.image.id;
+                }
+            }
+        }
+        return bool;
+    });
+    return idIs;
+}
 
-async function getImgDetails(imgId) {
+async function getImgDetails(id) {
     var d = $.Deferred();
-    console.log(token);
     var token = await getToken();
-    localStorage.setItem('access_token', token);
-    var tokenTitle = 'access_token';
-    document.cookie = tokenTitle + "=" + token;
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId+"";
-    //var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
-    console.log(url);
+   // var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "";
+  //  var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3078&access_token=" + token + "";
     $.ajax({
         url: url,
         type: "GET",
         crossDomain: true,
         async: true,
         success: function (result) {
-            let headers = {};
-            if (token) {
-                
-                headers = { 'Authorization': token };
-            }
-            console.log(`result image is: ${result}`);
+            d.resolve(result);
+
         },
+
         error: function (jqXHR, status) {
             console.log(status);
         }
     });
     return d.promise();
 }
+
+//async function getImgDetails(id) {
+//    var d = $.Deferred();
+//    await getPersonalities();
+//    var token = await getToken();
+//    console.log(token);
+//    var token = await getToken();
+//    localStorage.setItem('access_token', token);
+//    var tokenTitle = 'access_token';
+//    document.cookie = tokenTitle + "=" + token;
+//    var imgId = await getImgId(id);
+//    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3069&access_token=" + token + "&limit=-1";
+//    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
+//    $.ajax({
+//        url: url,
+//        type: "GET",
+//        crossDomain: true,
+//        async: true,
+//        success: function (result) {
+//            d.resolve(result);
+
+          
+//        },
+//        beforeSend: function (xhr) {
+//            xhr.setRequestHeader('Authorization', makeBaseAuth('rfid-app@bh.org.il', 'sMM8V69JmQw!9!1'));
+//        },
+//        error: function (jqXHR, status) {
+//            console.log(status);
+//        }
+//    });
+//    return d.promise();
+//}
 
 
 async function getVideoDetails(videoId) {
@@ -242,12 +287,7 @@ async function getVideoDetails(videoId) {
         type: "GET",
         crossDomain: true,
         async: true,
-        success: function (result) {
-            let headers = {};
-            if (token) {
-
-                headers = { 'Authorization': token };
-            }
+        success: function (result) {          
             console.log(`result image is: ${result}`);
         },
         error: function (jqXHR, status) {
@@ -271,11 +311,8 @@ async function getPersonalities() {
         async: true,
         success: function (result) {
             d.resolve(result);
-            let headers = {};
-            if (token) {
-                headers = { 'Authorization': token };
-            }
-           //location.href = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3078";
+           // location.href = "https://headless-cms.bh.org.il/beit-hatfutsot/items/80_1";
+            //location.href = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3078&access_token=" + token +"";
         },
         error: function (jqXHR, status) {
             console.log(status);
@@ -450,6 +487,7 @@ async function getJewishStars() {
 
 async function getStars() {
     var json = await getPersonalities();
+  //  var x = await getImgDetails('80_1');
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
