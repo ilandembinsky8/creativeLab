@@ -24,7 +24,6 @@
         }
 
         function pickCSS() {
-
             var pickLang = getParameterByName("lang");
             if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
                loadCSSLang(pickLang);
@@ -40,7 +39,6 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     pickLang = "eng";
-                    //swapStyleSheet('css/styles-eng.css');
                     localStorage.setItem("langID", "eng");
                     url = 'cj1.html?lang=eng';
                     window.location.replace(url);   
@@ -107,12 +105,11 @@
                             var col = addToColumn();
                         counter++;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + subObj[j].name + '</span>';
-                            document.getElementById(col).innerHTML += elem;
-                        
+                            document.getElementById(col).innerHTML += elem;                     
                     }
                 }
             }
-             var table = document.getElementById("col1");
+            var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
         }
@@ -166,7 +163,6 @@
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
         }
-
 
         function GetSortOrder() {
              langIs = localStorage.getItem("langID");

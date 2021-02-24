@@ -100,7 +100,6 @@
             $('#splitCol').css("height", height);
         }
 
-
         function loadAndFill(){
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -108,7 +107,7 @@
             $('#search').attr("placeholder", lang["search"]["sj"]);
             $('#catgTitle').text(lang.catgTitle);
             fillColumns();
-        }
+          }
 
         function addToColumn() {
             var c1 = document.getElementById("col1").childElementCount;

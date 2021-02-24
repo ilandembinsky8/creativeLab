@@ -11,37 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
-        function pickCSS() {
-          var id = getParameterByName("id");
-          var backLang = localStorage.getItem("langID_history");
-          var rfidIs = getParameterByName("rfid");
-         if (!backLang) {
-             var pickLang = getParameterByName("lang");
-         if (getParameterByName("lang")) {
-            loadCSSLang(pickLang);
-         } else {
-            loadCSSLang("heb");
-         }
-        } else {
-          const stateObj = { lang: backLang, rfid: rfidIs };
-          window.history.replaceState(stateObj, "", "cj2.html?id=" + id +'&lang=' + backLang + '&rfid=' + rfidIs + "");
-          localStorage.removeItem("langID_history");
-          loadCSSLang(backLang);
-    }
-}
+
+
         function loadCSSLang(lang) {
-    if (lang.localeCompare("heb") === 0) {
-        swapStyleSheet('css/styles.css');
-        localStorage.setItem("langID", "heb");
-        localStorage.setItem("langID_history", "heb");
-        loadLang();
-    } else if (lang.localeCompare("eng") === 0) {
-        localStorage.setItem("langID", "eng");
-         localStorage.setItem("langID_history", "eng");
-        swapStyleSheet('css/styles-eng.css');
-        loadLang();
+         if (lang.localeCompare("heb") === 0) {
+            swapStyleSheet('css/styles.css');
+            localStorage.setItem("langID", "heb");
+            localStorage.setItem("langID_history", "heb");
+            loadLang();
+         } else if (lang.localeCompare("eng") === 0) {
+           localStorage.setItem("langID", "eng");
+           localStorage.setItem("langID_history", "eng");
+           swapStyleSheet('css/styles-eng.css');
+         loadLang();
+        }
     }
-}
 
        function loadLang() {
         var xmlhttp = new XMLHttpRequest();
@@ -140,7 +124,6 @@
          return filtered;
         }
 
-
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
@@ -149,10 +132,8 @@
             $("#close").val(lang.close);
             var num = getParameterByName('id');
             val = "30_" + num;
-            loadCountryInfo(val);
-            
+            loadCountryInfo(val);         
         }
-
 
         function sendMail() {
             var currUrl = document.URL;
@@ -167,11 +148,9 @@
             $('body').delegate('#catgMain', 'click', function () {
                 var rfid = getParameterByName("rfid");
                 location.href = "cj1.html?lang=" + langIs + '&rfid=' + rfid+"";
-            });
-           
-
-           
+            });        
         });
+
     </script>
 </head>
 

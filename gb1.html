@@ -49,8 +49,7 @@
            xmlhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
                    var myObj = JSON.parse(this.responseText);
-                   var pickLang = localStorage.getItem("langID");
-                  
+                   var pickLang = localStorage.getItem("langID");                 
                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
                        if (pickLang.localeCompare("heb") === 0) {
                            localStorage.setItem("langID", "heb");
@@ -79,7 +78,6 @@
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#catgTitle').text(lang.catgTitle);
-         
         }
 
         function clickedItm(idNum) {

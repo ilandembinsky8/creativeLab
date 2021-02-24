@@ -46,23 +46,23 @@
                     localStorage.setItem("langID", "eng");
                      url =  "gb2.html?cat="+cat + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);               
-                    pickCSS();
+                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
                      url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
-                    pickCSS();
+                     pickCSS();
                   }
             } else {
-                localStorage.setItem("langID", "heb");
+                 localStorage.setItem("langID", "heb");
                  url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
                  window.location.replace(url);
-                pickCSS();
+                 pickCSS();
             }
         }
 
-           function parseId(idString) {
+          function parseId(idString) {
             
             var num = '';
             var z = 0;
@@ -72,7 +72,7 @@
             }
             z = parseInt(num);
             return z;
-        }
+         }
 
         function addToColumn() {
             var c1 = document.getElementById("col1").childElementCount;
@@ -102,8 +102,7 @@
                             var col = addToColumn();
                        counter = counter + 1;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' +idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
-                            document.getElementById(col).innerHTML += elem;
-                        
+                            document.getElementById(col).innerHTML += elem;                      
                     }
                 }
               }
@@ -169,10 +168,10 @@
 
         $(function () {
             pickCSS();
-
+              var langIs=localStorage.getItem("langID");
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
-                location.href = "gb1.html?rfid=" + rfid;
+                location.href = "gb1.html?lang=" + langIs + "&rfid=" + rfid +"";
          });
         });
     </script>
