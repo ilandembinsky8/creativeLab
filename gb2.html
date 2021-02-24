@@ -74,16 +74,6 @@
             return z;
          }
 
-        function addToColumn() {
-            var c1 = document.getElementById("col1").childElementCount;
-            var c2 = document.getElementById("col2").childElementCount;
-            if (c1 > c2) {
-                return 'col2';
-            } else {
-                return 'col1';
-            }
-        }
-
           async function personSearch() {
            var valueIs = $('#search').val();
            var langIs = getLang();

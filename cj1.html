@@ -11,21 +11,9 @@
     <script>
 
 
-        function loadCSSLang(lang) {
-             if (lang.localeCompare("heb") === 0) {
-                    swapStyleSheet('css/styles.css');
-                    localStorage.setItem("langID", "heb");
-                    loadLang();
-             } else if (lang.localeCompare("eng") === 0) {
-                 localStorage.setItem("langID", "eng");
-                    swapStyleSheet('css/styles-eng.css');
-                    loadLang();
-            }
-        }
-
         function pickCSS() {
             var pickLang = getParameterByName("lang");
-            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
                loadCSSLang(pickLang);
             } else {
                 url = 'cj1.html?lang=heb';
@@ -112,16 +100,6 @@
             var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
-        }
-
-         function addToColumn() {
-            var c1 = document.getElementById("col1").childElementCount;
-            var c2 = document.getElementById("col2").childElementCount;
-            if (c1 > c2) {
-                return 'col2';
-            } else {
-                return 'col1';
-            }
         }
 
         function goToCountry(idIs) {

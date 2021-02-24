@@ -207,14 +207,14 @@ async function getImgVideoId(id,videoImg,starCountry) {
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (n.ext_id.localeCompare(id) === 0 && n.translations[j].language === langIs) {
+            if (n.ext_id.localeCompare(id) === 0) {
                 if (videoImg === 0) {
                     if (n.image) {                 
                         bool = true;
                         idIs = n.image.id;
                     }
                 } else if (videoImg === 1) {
-                    if (n.translations[j].video) {
+                    if (n.translations[j].language === langIs && n.translations[j].video) {
                         bool = true;
                         idIs = n.translations[j].video;
                     }
@@ -525,6 +525,16 @@ function clearTXT(idElem) {
             e.nodeValue='';
         }
     });
+}
+
+function addToColumn() {
+    var c1 = document.getElementById("col1").childElementCount;
+    var c2 = document.getElementById("col2").childElementCount;
+    if (c1 > c2) {
+        return 'col2';
+    } else {
+        return 'col1';
+    }
 }
 
 function addModalbox() {

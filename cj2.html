@@ -13,20 +13,6 @@
     <script>
 
 
-        function loadCSSLang(lang) {
-         if (lang.localeCompare("heb") === 0) {
-            swapStyleSheet('css/styles.css');
-            localStorage.setItem("langID", "heb");
-            localStorage.setItem("langID_history", "heb");
-            loadLang();
-         } else if (lang.localeCompare("eng") === 0) {
-           localStorage.setItem("langID", "eng");
-           localStorage.setItem("langID_history", "eng");
-           swapStyleSheet('css/styles-eng.css');
-         loadLang();
-        }
-    }
-
        function loadLang() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
@@ -93,31 +79,34 @@
             var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk; 
             var filtered = $(json).filter(function (i, n) {
             var bool = false;
-            for (j = 0; j < n.translations.length; j++) {
-              if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
-                  res = n.translations[j];               
-                $('#img').css('background-image', 'url("' + imgUrl + '")');
-                $('#name').text(res["name"]);
-                $('#name,#split1').css("display", "inline-block");
-                $('#txt1').text(res.timeline[0].info);
-                $('#titleTxt2').text(res.timeline[0].timeframe);
-                $('#txt2').text(res.timeline[0].info);
-                $('#titleTxt3').text(res.timeline[1].timeframe);
-                  $('#txt3').text(res.timeline[1].info);
-                  var textShare = res.timeline[1].timeframe + "\n" +res.timeline[1].info;               
-                  $('#telegram, #whatsapp').attr('data-title', textShare);
+                for (j = 0; j < n.translations.length; j++) {
+                if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
+                    res = n.translations[j];
+                    $('#img').css('background-image', 'url("' + imgUrl + '")');
+                    $('#name').text(res["name"]);
+                    $('#name,#split1').css("display", "inline-block");
+                    $('#txt1').text(res.timeline[0].info);
+                    $('#titleTxt2').text(res.timeline[0].timeframe);
+                    $('#txt2').text(res.timeline[0].info);
+                    $('#titleTxt3').text(res.timeline[1].timeframe);
+                    $('#txt3').text(res.timeline[1].info);
+                    var textShare = res.timeline[1].timeframe + "\n" + res.timeline[1].info;
+                    $('#telegram, #whatsapp').attr('data-title', textShare);
 
-                for (i = 1; i < res.timeline.length; i++) {
-                    j = i + 1;
-                    
-                    var s = '<div class="text">';
-                    s = s + '<div class="textSubTitle" id=' + 'titleTxt' + j + ' >' + res.timeline[i].timeframe + '</div>';
-                    s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';
-                    s = s + '</div>';
-                    document.getElementById('countryInfo').innerHTML += s;
+                    for (i = 1; i < res.timeline.length; i++) {
+                        j = i + 1;
+                        var s = '<div class="text">';
+                        s = s + '<div class="textSubTitle" id=' + 'titleTxt' + j + ' >' + res.timeline[i].timeframe + '</div>';
+                        s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';
+                        s = s + '</div>';
+                        document.getElementById('countryInfo').innerHTML += s;
                     }
                     bool = true;
-             }
+                } else if (n.translations.length === 1 && (n.translations[j].language).localeCompare(langIs) !== 0) {
+                    var rfid = getParameterByName("rfid");
+                    var langs = localStorage.getItem('langID');
+                    location.href = "cj1.html?lang=" + langs + '&rfid=' + rfid+"";
+                }
           }
            return bool;
           });

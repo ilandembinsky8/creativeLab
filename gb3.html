@@ -98,12 +98,6 @@
          return filtered;
         }
 
-        function getOccupKey() {
-            var occupIs = getOccupationById(idNum);
-            var subCatg = lang["page7"]["catg"][occupIs]; 
-            var occupKey = getKeyByValue(lang.page7.catg, subCatg);
-            return occupKey;
-        }
 
        async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
