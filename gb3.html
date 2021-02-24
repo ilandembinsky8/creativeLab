@@ -19,7 +19,6 @@
         if (this.readyState === 4 && this.status === 200) {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
-            console.log(myObj);
             if (typeof pickLang !== 'undefined' && pickLang !== null) {     
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "heb");
@@ -69,11 +68,8 @@
         }
 
        async function loadPRData(searchValue) {
-           //langIs = localStorage.getItem("langID");
-            var langIs = getLang();
-           console.log(langIs);
+           var langIs = getLang();
            json = await getTrailWomen();
-           console.log(json);
             var filtered = $(json).filter(function (i, n) {
             var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
@@ -112,12 +108,10 @@
        async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            console.log(lang)
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             var idNum = getParameterByName('id');
             idNum = '29_' + idNum;
             var occupIs = await getOccupationById(idNum);
-            console.log(`occupation is: ${occupIs}`);
             $('#catgTitle').text(lang.catgTitle);
             $("#close").val(lang.close);
             var subCatg = lang["page7"]["catg"][occupIs];        
@@ -126,9 +120,7 @@
             var num = getParameterByName('id');
             var occupKey = getKeyByValue(lang.page7.catg, subCatg);
             $('#catgMain').attr("data", occupKey);
-            console.log(num);
             val = "29_" + num;
-            console.log(val);
             loadPRData(val);
         }
 

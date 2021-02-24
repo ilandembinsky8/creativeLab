@@ -10,13 +10,14 @@
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-           function pickCSS() {
+        function pickCSS() {
             var pickLang = getParameterByName("lang");
-            if (getParameterByName("lang")) {
-               loadCSSLang(pickLang);   
+            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+               loadCSSLang(pickLang);
             } else {
-                localStorage.setItem("langID", "heb");
-                loadCSSLang("heb");
+                url = 'st1.html?lang=heb';
+                window.location.replace(url); 
+                loadCSSLang('heb');
             }
         }
 
@@ -75,12 +76,10 @@
         async function loadData() {
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
-           // langIs = localStorage.getItem("langID");
              var langIs = getLang();
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             object = await getStars();
-            console.log(object);
             counter = 0;
             var s = "";
             for (var i in object) {

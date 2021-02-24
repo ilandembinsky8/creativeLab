@@ -50,7 +50,7 @@
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                console.log('load lang, lang id is: ' + pickLang);
+          
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
@@ -102,19 +102,16 @@
 
 
         async function loadCountryInfo(searchValue) {
-            //var langIs = localStorage.getItem('langID'); 
              var langIs = getLang();
             json = await getCountries();
             json = json.data;
-            console.log(json);
             var objImg = await getImgDetails(searchValue,'country');
             var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk; 
             var filtered = $(json).filter(function (i, n) {
             var bool = false;
             for (j = 0; j < n.translations.length; j++) {
               if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
-                  res = n.translations[j];
-                 
+                  res = n.translations[j];               
                 $('#img').css('background-image', 'url("' + imgUrl + '")');
                 $('#name').text(res["name"]);
                 $('#name,#split1').css("display", "inline-block");
@@ -128,7 +125,7 @@
 
                 for (i = 1; i < res.timeline.length; i++) {
                     j = i + 1;
-                    console.log(res.timeline[i].timeframe);
+                    
                     var s = '<div class="text">';
                     s = s + '<div class="textSubTitle" id=' + 'titleTxt' + j + ' >' + res.timeline[i].timeframe + '</div>';
                     s = s + '<div id=' + 'txt' + j + ' class="infoTxt">' + res.timeline[i].info + '</div>';

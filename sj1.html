@@ -11,16 +11,15 @@
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
-  
-
 
         function pickCSS() {
             var pickLang = getParameterByName("lang");
-            if (getParameterByName("lang")) {
-               loadCSSLang(pickLang);   
+            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+               loadCSSLang(pickLang);
             } else {
-                localStorage.setItem("langID", "heb");
-                loadCSSLang("heb");
+                url = 'sj1.html?lang=heb';
+                window.location.replace(url); 
+                loadCSSLang('heb');
             }
         }
 
@@ -116,7 +115,6 @@
 
         $(function () {
             pickCSS();
-            getJewishStars().then(value => console.log(value));
             $('body').delegate('.catgItem', 'click', function () {
                 var idItm = this.id;
                 var value = $('#' + idItm)[0].childNodes[0].nodeValue;

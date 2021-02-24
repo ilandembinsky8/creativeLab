@@ -87,9 +87,7 @@
           async function personSearch() {
            var valueIs = $('#search').val();
            var langIs = getLang();
-            console.log(valueIs);
             var object = await searchPerson(valueIs);
-            console.log(object);
             counter = 0;
              $('#col1, #col2').empty();
               for (var i in object) {
@@ -121,14 +119,12 @@
             var subCatgIs = getParameterByName('cat');
             subCatg = lang["page7"]["catg"][subCatgIs];
             subIs = lang["occupations"][subCatgIs];        
-            console.log(subIs);
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
             $('#catgMain').text(lang.catgTitle);
             $('#catgSub1').text(subCatg);
             $('#catgTitle').text(lang.catgTitle);
             $('#catgSub1,#split1').css("display", "inline-block");
-            console.log(`subCat is: ${subCatg}`);
             loadDetails(subIs);
         }
 
@@ -138,18 +134,13 @@
             var subCatgIs = getParameterByName('cat');
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
-            console.log(subCatgIs);
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             window.sessionStorage.setItem('cat', subCatgIs);
-            console.log(prData);
-          //  var my_object = { "sub": subCatgIs, "prData": prData }
-            // sessionStorage.setItem('my_item', JSON.stringify(my_object));
             location.href = "gb3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
         }
 
       async function loadDetails(searchValue){
-          // langIs = localStorage.getItem("langID");
            var langIs = getLang();
            counter = 0;
            $('#col1, #col2').empty();

@@ -353,12 +353,14 @@ a {
     float: right;
     width: 100%;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .shapeCont .imageShape {
     margin: 0px auto;
     width: 600px;
-    height: 350px;
+    height: 400px;
+    display:block;
 }
 
 .pageSubWrapper .searchCont {
@@ -595,11 +597,15 @@ ul .catgItem {
         /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
         /*border: 1px solid #707070;*/
     }
-video {
-    margin-left: auto;
-    margin-right: auto;
-    display: block
-}
+
+    video {
+       margin-left: auto;
+       margin-right: auto;
+       display: block;
+       width:80%;
+       height:100%
+    }
+
 .video .artistName {
     float: right;
     direction:rtl;
@@ -1005,7 +1011,8 @@ a::after {
     .shapeCont .imageShape {
         margin: 0px auto;
         width: 85%;
-        height: 300px;
+        height: 400px;
+        display:block;
     }
 
     .pageSubWrapper .searchCont {
@@ -1229,6 +1236,9 @@ a::after {
             /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
             /*border: 1px solid #707070;*/
         }
+    video {
+        width: 90%;
+    }
 
     .video .artistName {
         float: right;
@@ -1476,13 +1486,14 @@ a::after {
     .pageSubWrapper .shapeCont {
         float: right;
         width: 100%;
-        margin-bottom: 30px;
+
     }
 
     .shapeCont .imageShape {
         margin: 0px auto;
-        width: 90%;
-        height:240px;
+        width: 100%;
+        height:400px;
+        display:block;
     }
 
     .pageSubWrapper .searchCont {
@@ -1711,6 +1722,10 @@ a::after {
           display: block;
           padding-top:190px;
         }
+        
+    video {
+       width:100%;
+    }
 
         .invisible{
             display:none;

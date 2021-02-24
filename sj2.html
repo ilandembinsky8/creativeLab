@@ -76,16 +76,13 @@
         async function personSearh() {
             var valueIs = $('#search').val();
              var langIs = getLang();
-            console.log(valueIs);
             var object = await searchPerson(valueIs);
-            console.log(object);
             counter = 0;
              $('#col1, #col2').empty();
             for (var i in object) {
                  var idstr = "";
                if (object[i].ext_id) {
                     idstr = object[i].ext_id;
-                   console.log(`idstr is  ${idstr}  idstr is  ${typeof idstr}`);
                }
                var idIs = idstr.substring(3);
                 subObj = object[i].translations;
@@ -94,12 +91,10 @@
                             var col = addToColumn();
                         counter++;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' +  idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
-                            document.getElementById(col).innerHTML += elem;
-                        
+                            document.getElementById(col).innerHTML += elem;                     
                     }
                 }
             }
-
             var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
@@ -129,9 +124,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var item = JSON.parse(localStorage.getItem('my_item_back'));
-            console.log(`item is ${item}`);
             if (typeof item !== 'undefined' && item !== null) {
-                console.log('item back');
                 var main = getParameterByName('cat');
                 var sub = "";
                 if (item.sub) {
@@ -155,7 +148,6 @@
             } else {
                 var main = getParameterByName('cat');
                 var sub = getParameterByName('sub');
-                console.log(main + " --- " + sub);
                 catg = lang.categories[main];     
                 catgFilter = lang.filterCatg[main];
                 $('#catgMain').html(catg.title);
@@ -176,19 +168,15 @@
         }
 
        async function findMatchesSub(searchValue) {
-          //  langIs = localStorage.getItem("langID");
             var langIs = getLang();
            $('#col1, #col2').empty();
            object = await getSubCategory(searchValue);
-           console.log(object);
            var counter = 0;
            $('#col1, #col2').empty();
-
            for (var i in object) {
                var idstr = "";
                if (object[i].ext_id) {
                    idstr = object[i].ext_id;
-                   console.log(`idstr is  ${idstr}  idstr is  ${typeof idstr}`);
                }
                var idIs = idstr.substring(3);
                  subObj = object[i].translations;
@@ -209,22 +197,15 @@
 
         function getMoreInfo(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
-            var main = getParameterByName('cat');
-            var sub = getParameterByName('sub');
-            //var my_object = { "main": main, "sub": sub, "prData": prData}
-            //sessionStorage.setItem('my_item', JSON.stringify(my_object));
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
-            console.log(prData);
             location.href = "sj3.html?id=" + prData +'&lang='+langIs +'&rfid=' + rfid +  "";
         }
 
         async function findMatchesCatg(searchValue) {
-           // langIs = localStorage.getItem("langID");
              var langIs = getLang();
             $('#col1, #col2').empty();
             object = await getCategory(searchValue);
-            console.log(object);
             counter = 0;
             for (var i in object) {
                 subObj = object[i].translations;
@@ -253,7 +234,6 @@
             $('body').delegate('#catgTitle', 'click', function () {
                 location.href = "sj1.html?lang=" + langIs + '&rfid=' + rfid+"";
             });
-
             $('body').delegate('#catgMain', 'click', function () {
                 var cat = getParameterByName('cat');
                 var rfid = getParameterByName("rfid");
@@ -261,7 +241,6 @@
                 location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
                 fillColumns();
             });
-
         }
 
         $(function () {

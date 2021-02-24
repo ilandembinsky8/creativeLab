@@ -24,12 +24,14 @@
         }
 
         function pickCSS() {
+
             var pickLang = getParameterByName("lang");
-            if (getParameterByName("lang")) {
+            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
                loadCSSLang(pickLang);
             } else {
-                localStorage.setItem("langID", "heb");
-                loadCSSLang("heb");
+                url = 'cj1.html?lang=heb';
+                window.location.replace(url); 
+                loadCSSLang('heb');
             }
         }
 
@@ -90,9 +92,7 @@
 
         async function countrySearh() {
             var valueIs = $('#search').val();
-            console.log(valueIs);
             var object = await searchCountry(valueIs);
-            console.log(object);
             counter = 0;
              $('#col1, #col2').empty();
              for (var i in object) {
@@ -139,14 +139,12 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var langIs = getLang();
-            console.log(langIs);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#search').attr("placeholder", lang["search"]["cj"]);
             $('#catgMain').text(lang.countries);
             $('#col1, #col2').empty();
             json = await getCountries();
             const sorted = Object.values(json.data).sort(GetSortOrder());
-            console.log(json.data);
             counter = 0;
             var filtered = $(sorted).filter(function (i, n) {
                 var bool = false;

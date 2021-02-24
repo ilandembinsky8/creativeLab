@@ -148,7 +148,6 @@ function loadLang() {
             var myObj = JSON.parse(this.responseText);
             var pickLang = localStorage.getItem("langID");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                console.log('load lang, lang id is: ' + pickLang);
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "heb");
                     $('#lang').css("background-image", "url('cut/Group 128.png')");
@@ -176,9 +175,7 @@ function getToken() {
     $.post("https://headless-cms.bh.org.il/beit-hatfutsot/auth/authenticate",
         { email: "rfid-app@bh.org.il", password: "sMM8V69JmQw!9!1" },
         function (data, status) {
-            console.log(data.data.token);
-            headers = { 'Authorization': data.data.token };
-        
+            headers = { 'Authorization': data.data.token };       
             d.resolve(data.data.token);
         }
     );
@@ -212,14 +209,12 @@ async function getImgVideoId(id,videoImg,starCountry) {
         for (j = 0; j < n.translations.length; j++) {
             if (n.ext_id.localeCompare(id) === 0 && n.translations[j].language === langIs) {
                 if (videoImg === 0) {
-                    if (n.image) {
-                        console.log(`img id is: ${n.image.id}`);
+                    if (n.image) {                 
                         bool = true;
                         idIs = n.image.id;
                     }
                 } else if (videoImg === 1) {
                     if (n.translations[j].video) {
-                        console.log(`video id is: ${n.translations[j].video}`);
                         bool = true;
                         idIs = n.translations[j].video;
                     }
@@ -235,9 +230,7 @@ async function getImgDetails(id,starCountry) {
     var d = $.Deferred();
     var token = await getToken();
     var imgId = await getImgVideoId(id,0,starCountry);
-    console.log(imgId);
     var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "";
-    console.log(url);
     $.ajax({
         url: url,
         type: "GET",
@@ -260,7 +253,6 @@ async function getVideoDetails(id, starCountry) {
     var token = await getToken();
     var videoId = await getImgVideoId(id, 1, starCountry);
     var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + videoId + "";
-    console.log(url);
     $.ajax({
         url: url,
         type: "GET",
@@ -322,7 +314,6 @@ async function getCatById(num) {         //return catg name&key
         var bool = false;
         if (n.ext_id.localeCompare(num) === 0) {
             cat = n.translations[0].category;
-            console.log(cat);
             bool = true;
         }
         return bool;
@@ -451,7 +442,6 @@ async function getBirthYear(json, catIs) {
 
 async function getJewishStars() {
     var json = await getPersonalities();
-    console.log(json);
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
@@ -467,12 +457,10 @@ async function getJewishStars() {
 
 async function getStars() {
     var json = await getPersonalities();
-  //  var x = await getImgDetails('80_1');
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         str = n.ext_id.substring(0, 2);
         if (str.indexOf("80") > -1) {
-            console.log(n.ext_id);
                 bool = true;
             }
         return bool;
@@ -532,11 +520,6 @@ async function searchPerson(person) {
 
 
 function clearTXT(idElem) {
-    console.log("clearing txts" + idElem);
-    //$(function () {
-    //    $("#" + idElem).contents();
-    //    return this.nodeType === Node.TEXT_NODE;
-    //}).remove();
     $("*").each(function (i, e) {
         if (e.nodeType === Node.TEXT_NODE) {
             e.nodeValue='';

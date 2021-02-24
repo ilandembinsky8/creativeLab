@@ -12,11 +12,12 @@
 
         function pickCSS() {
             var pickLang = getParameterByName("lang");
-            if (getParameterByName("lang")) {
-               loadCSSLang(pickLang);   
+            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+               loadCSSLang(pickLang);
             } else {
-                localStorage.setItem("langID", "heb");
-                loadCSSLang("heb");
+                url = 'gb1.html?lang=heb';
+                window.location.replace(url); 
+                loadCSSLang('heb');
             }
         }
 
