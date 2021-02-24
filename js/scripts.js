@@ -195,19 +195,34 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-async function getImgId(id) {
+
+
+async function getImgVideoId(id,videoImg,starCountry) {
     var langIs = getLang();
-    var json = await getStars();
-    counter = 0;
+    var json = "";
+    if (starCountry.localeCompare('country') === 0) {
+        var jsonIs = await getCountries();
+        json = jsonIs.data;
+    } else if (starCountry.localeCompare('star') === 0) {
+        json = await getStars();
+    }
     var idIs = 0;
     var filtered = $(json).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
             if (n.ext_id.localeCompare(id) === 0 && n.translations[j].language === langIs) {
-                if (n.image) {
-                    console.log(`img id is: ${n.image.id}`);
-                    bool = true;
-                    idIs = n.image.id;
+                if (videoImg === 0) {
+                    if (n.image) {
+                        console.log(`img id is: ${n.image.id}`);
+                        bool = true;
+                        idIs = n.image.id;
+                    }
+                } else if (videoImg === 1) {
+                    if (n.translations[j].video) {
+                        console.log(`video id is: ${n.translations[j].video}`);
+                        bool = true;
+                        idIs = n.translations[j].video;
+                    }
                 }
             }
         }
@@ -216,20 +231,21 @@ async function getImgId(id) {
     return idIs;
 }
 
-async function getImgDetails(id) {
+async function getImgDetails(id,starCountry) {
     var d = $.Deferred();
     var token = await getToken();
-   // var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "";
-  //  var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
-    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3078&access_token=" + token + "";
+    var imgId = await getImgVideoId(id,0,starCountry);
+    console.log(imgId);
+    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "";
+    console.log(url);
     $.ajax({
         url: url,
         type: "GET",
         crossDomain: true,
         async: true,
+        data: {'access_token':token},
         success: function (result) {
             d.resolve(result);
-
         },
 
         error: function (jqXHR, status) {
@@ -239,56 +255,20 @@ async function getImgDetails(id) {
     return d.promise();
 }
 
-//async function getImgDetails(id) {
-//    var d = $.Deferred();
-//    await getPersonalities();
-//    var token = await getToken();
-//    console.log(token);
-//    var token = await getToken();
-//    localStorage.setItem('access_token', token);
-//    var tokenTitle = 'access_token';
-//    document.cookie = tokenTitle + "=" + token;
-//    var imgId = await getImgId(id);
-//    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/3069&access_token=" + token + "&limit=-1";
-//    var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
-//    $.ajax({
-//        url: url,
-//        type: "GET",
-//        crossDomain: true,
-//        async: true,
-//        success: function (result) {
-//            d.resolve(result);
-
-          
-//        },
-//        beforeSend: function (xhr) {
-//            xhr.setRequestHeader('Authorization', makeBaseAuth('rfid-app@bh.org.il', 'sMM8V69JmQw!9!1'));
-//        },
-//        error: function (jqXHR, status) {
-//            console.log(status);
-//        }
-//    });
-//    return d.promise();
-//}
-
-
-async function getVideoDetails(videoId) {
+async function getVideoDetails(id, starCountry) {
     var d = $.Deferred();
-    console.log(token);
     var token = await getToken();
-    localStorage.setItem('access_token', token);
-    var tokenTitle = 'access_token';
-    document.cookie = tokenTitle + "=" + token;
+    var videoId = await getImgVideoId(id, 1, starCountry);
     var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + videoId + "";
-    //var url = "https://headless-cms.bh.org.il/beit-hatfutsot/files/" + imgId + "&access_token=" + token + "";
     console.log(url);
     $.ajax({
         url: url,
         type: "GET",
         crossDomain: true,
         async: true,
+        data: { 'access_token': token },
         success: function (result) {          
-            console.log(`result image is: ${result}`);
+            d.resolve(result);
         },
         error: function (jqXHR, status) {
             console.log(status);

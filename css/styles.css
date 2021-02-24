@@ -580,11 +580,11 @@ ul .catgItem {
 
     .videoFrame .video {
         margin: 0px auto;
-        width: 750px;
-        height: 200px;
+        /*width: 750px;
+        height: 200px;*/
         max-width: 355px;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        border: 1px solid #707070;
+        /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
+        /*border: 1px solid #707070;*/
     }
 
 .video .artistName {
@@ -1207,11 +1207,11 @@ a::after {
 
         .videoFrame .video {
             margin: 0px auto;
-            width: 90%;
-            height: 200px;
+            /*width: 90%;
+            height: 200px;*/
             max-width: 355px;
-            background: #FFFFFF 0% 0% no-repeat padding-box;
-            border: 1px solid #707070;
+            /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
+            /*border: 1px solid #707070;*/
         }
 
     .video .artistName {
@@ -1680,11 +1680,11 @@ a::after {
 
         .videoFrame .video {
             margin: 0px auto;
-            width: 90%;
-            height: 200px;
+            /*width: 90%;*/
+            /*height: 200px;*/
             max-width: 355px;
-            background: #FFFFFF 0% 0% no-repeat padding-box;
-            border: 1px solid #707070;
+            /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
+            /*border: 1px solid #707070;*/
         }
 
         .video .artistName{

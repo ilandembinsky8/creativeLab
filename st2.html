@@ -71,16 +71,14 @@
         async function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            var x = await getImgDetails('80_1');
-           // langIs = localStorage.getItem("langID");
              var langIs = getLang();
             var json = await getStars();
             counter = 0;
-            var objImg = await getImgDetails(searchValue);
-             console.log(objImg);
-            console.log(objImg.data);
+            var objImg = await getImgDetails(searchValue,'star');
             var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk;
-            $('#img').css('background-image', 'url("' + imgUrl + '")');
+            var objVideo = await getVideoDetails(searchValue,'star');
+            var videoUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objVideo.data.filename_disk;
+            console.log(objVideo.data);  
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
@@ -101,25 +99,10 @@
                         } else if (n.death_year && n.birth_year) {
                             $('#years').text(n.birth_year + " - " + n.death_year);
                         }
+                         $("#videoCont").find("#video").attr("src", videoUrl);
+                        $('#img').css('background-image', 'url("' + imgUrl + '")');
                         $('#txt1').text(n.translations[j].info);
-                         //if (n.image) {
-                         //   console.log(`img id is: ${n.image.id}`);
-                         //    var objImg = getImgDetails(n.image.id);
-                         //    console.log(objImg);
-                         //    console.log(objImg.data);
-                         //    var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk;
-                         //    $('#img').css('background-image', 'url("' + imgUrl + '")');
-                         //  //  $('#img').html(https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/ + 'objImg.filename_disk'+);
-                         //}
-
-                        if (n.translations[j].video) {
-                          //  var objVideo = await getVideoDetails(n.translations[j].video.id);
-                           // $('#video').html(https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/ + 'objVideo.filename_disk'+);
-                            $('#videoTitle').text(lang.singer + ": " + n.translations[j].video);
-                        } else {
-                             $('#videoTitle').text(lang.singer + ": " );
-                        }
-                        
+                   
                     }
                    
                 }
@@ -197,7 +180,11 @@
                         </div>
                     </div>
                     <div class="videoFrame">
-                        <div class="video" id="video">
+                        <div class="video" id="videoCont">
+                            <video width="500" height="240" controls  src="" type="video/mp4" id="video">
+                                Your browser does not support the video tag.
+                            </video>
+
                             <p id="videoTitle" class="artistName"></p>
                         </div>
                     </div>

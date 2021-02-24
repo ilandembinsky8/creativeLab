@@ -95,7 +95,7 @@
             console.log(object);
             counter = 0;
              $('#col1, #col2').empty();
-            for (var i in object) {
+             for (var i in object) {
                 subObj = object[i].translations;
                 var idstr = "";
                 if (object[i].ext_id) {
@@ -126,6 +126,7 @@
                 return 'col1';
             }
         }
+
         function goToCountry(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
             sessionStorage.setItem('country', prData); 
