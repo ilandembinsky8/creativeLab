@@ -114,7 +114,10 @@ html {
 ::-webkit-scrollbar {
     width: 3px;
 }
-
+p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #272B38;
@@ -351,11 +354,8 @@ a {
 
 .shapeCont .imageShape {
     margin: 0px auto;
-    width: 750px;
-    max-width: 355px;
-    height: 485px;
-    background: #FCC05D 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
+    width: 600px;
+    height: 350px;
 }
 
 .pageSubWrapper .searchCont {
@@ -501,12 +501,18 @@ a {
     width: 100%;
     display: inline-block;
     text-align: center;
-    margin-top: 330px;
+    margin-top: 30px;
     font-family: 'Segoe UI';
     font-size: 17px;
     color: #000000;
 }
-
+.starFrame .starName {
+    color: #12FF9F;
+    font-family: 'Segoe UI';
+    font-size: 22px;
+    text-align: center;
+    direction: ltr;
+}
 .pageSubWrapper .personDetails {
     margin-top: 20px;
     width: 100%;
@@ -582,7 +588,11 @@ ul .catgItem {
         max-width: 355px;
         /*border: 1px solid #707070;*/
     }
-
+video {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
 .video .artistName {
     float: left;
     margin-bottom: 15px;
@@ -987,11 +997,8 @@ a {
 
     .shapeCont .imageShape {
         margin: 0px auto;
-        width: 90%;
-        max-width: 355px;
-        height: 485px;
-        background: #FCC05D 0% 0% no-repeat padding-box;
-        border: 1px solid #707070;
+        width: 85%;
+        height: 300px;
     }
 
     .pageSubWrapper .searchCont {
@@ -1129,12 +1136,18 @@ a {
         width: 100%;
         display: inline-block;
         text-align: center;
-        margin-top: 80px;
+        margin-top: 20px;
         font-family: 'Segoe UI';
         font-size: 17px;
         color: #000000;
     }
-
+    .starFrame .starName {
+        color: #12FF9F;
+        font-family: 'Segoe UI';
+        font-size: 18px;
+        text-align: center;
+        direction: ltr;
+    }
     .pageSubWrapper .personDetails {
         margin-top: 20px;
         width: 100%;
@@ -1459,10 +1472,7 @@ a {
     .shapeCont .imageShape {
         margin: 0px auto;
         width: 90%;
-        max-width: 355px;
-        height: 485px;
-        background: #FCC05D 0% 0% no-repeat padding-box;
-        border: 1px solid #707070;
+        height: 240px;
     }
 
     .pageSubWrapper .searchCont {
@@ -1597,12 +1607,18 @@ a {
         width: 100%;
         display: inline-block;
         text-align: center;
-        margin-top: 80px;
+        margin-top: 10px;
         font-family: 'Segoe UI';
         font-size: 15px;
         color: #000000;
     }
-
+    .starFrame .starName {
+        color: #12FF9F;
+        font-family: 'Segoe UI';
+        font-size: 15px;
+        text-align: center;
+        direction: ltr;
+    }
     .pageSubWrapper .personDetails {
         margin-top: 20px;
         width: 100%;

@@ -92,13 +92,16 @@
                 var idIs = idstr.substring(3);
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
+                         var searchValue = object[i].ext_id;
+                         var objImg = await getImgDetails(searchValue,'star');
+                        var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk;
                         counter++;
                         if (counter % 2 !== 0) {
                             s = s + '<div class="frameRow">';
-                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><span class="frameTitle" id=' + 'imgTitle' + counter + '  data=' +  idIs + '>'+ subObj[j].first_name + ' ' + subObj[j].last_name + '</span></div>';
+                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><img class="frameTitle" src="' + imgUrl + '"  id=' + 'imgTitle' + counter + '  data=' + idIs + '><p class="starName">' + subObj[j].first_name + ' ' + subObj[j].last_name + '</p></div>';
                             s = s + '<span style="border-left:10px solid transparent;"></span>';
                         } else {
-                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><span class="frameTitle" id=' + 'imgTitle' + counter + '  data=' +  idIs + '>'+ subObj[j].first_name + ' ' + subObj[j].last_name + '</span></div>';
+                            s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><img class="frameTitle" src="' + imgUrl + '" id=' + 'imgTitle' + counter + '  data=' +  idIs + '><p class="starName">'+ subObj[j].first_name + ' ' + subObj[j].last_name + '</p></div>';
                             s = s + '</div>';
                         }
                            document.getElementById('content').innerHTML = s;
