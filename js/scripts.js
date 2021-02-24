@@ -226,6 +226,12 @@ async function getImgVideoId(id,videoImg,starCountry) {
     return idIs;
 }
 
+function sendMail() {
+    var currUrl = document.URL;
+    var langIs = localStorage.getItem('langID');
+    mail(langIs, currUrl);
+}
+
 async function getImgDetails(id,starCountry) {
     var d = $.Deferred();
     var token = await getToken();
