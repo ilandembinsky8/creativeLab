@@ -628,7 +628,7 @@ ul .catgItem {
     position: fixed;
     z-index: 1;
     padding-top: 180px;
-    left: 0;
+    right: 0;
     top: 0;
     width: 100%;
     min-width: 100%;
@@ -648,16 +648,30 @@ ul .catgItem {
     opacity: 1;
 }
 
+
 .txtModal {
     margin-top: 55px;
-    float: left;
-    text-align: left;
-    border-right: 35px solid transparent;
+    float: right;
+    text-align: right;
+    width:100%;
 }
+    .txtModal ul {
+        white-space: nowrap;
+        width: 80%;
+        list-style-type: none;
+        margin: auto;
+        overflow-x: scroll;
+        padding-inline-start:0px;
+    }
+
+        .txtModal ul li {
+            white-space: nowrap;
+            display: inline-block;
+        }
 
 .close {
     float: left;
-    margin-top: 225px;
+    margin-top: 20px;
     margin-left: 35px;
     width: 85px;
     height: 45px;
@@ -678,7 +692,7 @@ ul .catgItem {
 }
 a{
     text-decoration:none;
-    float:left;
+    float:right;
 
 }
 
@@ -1717,30 +1731,42 @@ a::after {
         }
         
     video {
-       width:100%;
+       width: 100%;
     }
 
         .invisible{
             display:none;
         }
-
-    .txtModal .fa:nth-of-type(n) {
-        display: table !important;
+    .shareModalCont {
+        width: 90%;
+        height: 580px;
+    }
+    .modal {
+        padding-top: 20px;
     }
 
-    a:nth-child(n) {
-        display: table !important;
-        text-decoration: none;
-        float: left;
+    .txtModal {
+        margin-top: 5px;
+        width: auto;
+
     }
-    a::before {
-        content: "\A \A \A";
-        white-space: pre-line;
+    .txtModal ul {
+        display: block;
+        width: auto;
+        padding-right: 40px;
     }
-    .fa::before {
-        content: "\A \A \A";
-        white-space:pre-line;
+    .txtModal ul li {
+        display: block;
+        width: 100%;
     }
+    .close {
+        margin-top: 500px;
+    }
+
+    .fa {
+        margin: 10px 0px;
+    }
+
 }
 @media only screen and (max-width: 800px) and (min-width: 641px) {
     .headerCont .titleCont {
