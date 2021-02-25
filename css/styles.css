@@ -1268,10 +1268,11 @@ a::after {
     -webkit-scrollbar,
     -webkit-scrollbar-track {
         display: block !important;
+        -webkit-overflow-scrolling: touch
     }
 
     ::-webkit-scrollbar {
-        width: 12px;
+        width: 6px;
     }
 
     /* Track */
