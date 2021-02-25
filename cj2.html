@@ -13,35 +13,35 @@
     <script>
 
 
-       function loadLang() {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var myObj = JSON.parse(this.responseText);
-            var pickLang = localStorage.getItem("langID");
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
+  //     function loadLang() {
+  //      var xmlhttp = new XMLHttpRequest();
+  //      xmlhttp.onreadystatechange = function () {
+  //      if (this.readyState === 4 && this.status === 200) {
+  //          var myObj = JSON.parse(this.responseText);
+  //          var pickLang = localStorage.getItem("langID");
+  //          if (typeof pickLang !== 'undefined' && pickLang !== null) {
           
-                if (pickLang.localeCompare("heb") === 0) {
-                    localStorage.setItem("langID", "heb");
-                    $('#lang').css("background-image", "url('cut/Group 128.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                } else {
-                    localStorage.setItem("langID", "eng");
-                    $('#lang').css("background-image", "url('cut/Group 312.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
-                }
-            } else {
-                localStorage.setItem("langID", "heb");
-                localStorage.setItem("lang", JSON.stringify(myObj.HE));
-            }
-             $('#name').text('');
-             clearTxts('pageSubWrapper');
-             loadAndFill();
-        }
-    };
-    xmlhttp.open("GET", "js/lang.json", true);
-    xmlhttp.send();
-  }
+  //              if (pickLang.localeCompare("heb") === 0) {
+  //                  localStorage.setItem("langID", "heb");
+  //                  $('#lang').css("background-image", "url('cut/Group 128.png')");
+  //                  localStorage.setItem("lang", JSON.stringify(myObj.HE));
+  //              } else {
+  //                  localStorage.setItem("langID", "eng");
+  //                  $('#lang').css("background-image", "url('cut/Group 312.png')");
+  //                  localStorage.setItem("lang", JSON.stringify(myObj.EN));
+  //              }
+  //          } else {
+  //              localStorage.setItem("langID", "heb");
+  //              localStorage.setItem("lang", JSON.stringify(myObj.HE));
+  //          }
+  //           $('#name').text('');
+  //           clearTxts('pageSubWrapper');
+  //           loadAndFill();
+  //      }
+  //  };
+  //  xmlhttp.open("GET", "js/lang.json", true);
+  //  xmlhttp.send();
+  //}
 
 
         function pickLanguage() {
@@ -85,7 +85,7 @@
                         console.log(n.translations.length);
                         console.log(n.translations[j].language !== langIs);
                     res = n.translations[j];
-                    $('#img').css('background-image', 'url("' + imgUrl + '")');
+                    $('#img').attr('src',imgUrl);
                     $('#name').text(res["name"]);
                     $('#name,#split1').css("display", "inline-block");
                     $('#txt1').text(res.timeline[0].info);
@@ -95,7 +95,6 @@
                     $('#txt3').text(res.timeline[1].info);
                     var textShare = res.timeline[1].timeframe + "\n" + res.timeline[1].info;
                     $('#telegram, #whatsapp').attr('data-title', textShare);
-
                     for (i = 1; i < res.timeline.length; i++) {
                         j = i + 1;
                         var s = '<div class="text">';
@@ -110,13 +109,15 @@
                     var langs = localStorage.getItem('langID');
                    location.href = "cj1.html?lang=" + langs + '&rfid=' + rfid +"";
                 }
-          }
+            }
            return bool;
           });
          return filtered;
         }
 
         function loadAndFill() {
+            $('#name').text('');
+            clearTxts('pageSubWrapper');
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
@@ -169,19 +170,7 @@
                     <div class="text" id="txt1">
 
                     </div>
-                    <div class="shapeCont"><div id="img" class="imageShape"></div></div>
-                    <!--<div class="text">
-                        <div class="textSubTitle" id="titleTxt2"></div>
-                        <div id="txt2" class="infoTxt">
-
-                        </div>
-                    </div>
-                    <div class="text">
-                        <div class="textSubTitle" id="titleTxt3"></div>
-                        <div id="txt3" class="infoTxt">
-
-                        </div>
-                    </div>-->
+                    <div class="shapeCont"><img id="img" class="imageCountry" src=""></div>
 
                 </div>
             </div>

@@ -9,33 +9,6 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
-  
-       function loadLang() {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var myObj = JSON.parse(this.responseText);
-            var pickLang = localStorage.getItem("langID");
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {            
-                if (pickLang.localeCompare("heb") === 0) {
-                    localStorage.setItem("langID", "heb");
-                    $('#lang').css("background-image", "url('cut/Group 128.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                } else {
-                    localStorage.setItem("langID", "eng");
-                    $('#lang').css("background-image", "url('cut/Group 312.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
-                }
-            } else {
-                localStorage.setItem("langID", "heb");
-                localStorage.setItem("lang", JSON.stringify(myObj.HE));
-            }
-            loadAndFill();
-        }
-    };
-    xmlhttp.open("GET", "js/lang.json", true);
-    xmlhttp.send();
-  }
 
       function pickLanguage() {
           var pickLang = getParameterByName("lang");
@@ -62,17 +35,6 @@
             }
         }
 
-          function parseId(idString) {
-            
-            var num = '';
-            var z = 0;
-            for (i = 0; i < idString.length; i++) {
-                if ("" + parseInt(idString[i]) !== "NaN")
-                    num = num + idString[i];
-            }
-            z = parseInt(num);
-            return z;
-         }
 
           async function personSearch() {
            var valueIs = $('#search').val();

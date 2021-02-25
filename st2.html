@@ -12,36 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
-        function loadLang() {
-         var xmlhttp = new XMLHttpRequest();
-         xmlhttp.onreadystatechange = function () {
-         if (this.readyState === 4 && this.status === 200) {
-            var myObj = JSON.parse(this.responseText);
-            var pickLang = localStorage.getItem("langID");
-            if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                if (pickLang.localeCompare("heb") === 0) {
-                    localStorage.setItem("langID", "heb");
-                    $('#lang').css("background-image", "url('cut/Group 128.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                } else {
-                    localStorage.setItem("langID", "eng");
-                    $('#lang').css("background-image", "url('cut/Group 312.png')");
-                    localStorage.setItem("lang", JSON.stringify(myObj.EN));
-                }
-            } else {
-                localStorage.setItem("langID", "heb");
-                localStorage.setItem("lang", JSON.stringify(myObj.HE));
-             }
-             $('#name').text('');
-             clearTxts('pageSubWrapper');
-             loadAndFill();
-        }
-    };
-    xmlhttp.open("GET", "js/lang.json", true);
-    xmlhttp.send();
-
-        }
-
         function pickLanguage() {
            var pickLang = getParameterByName("lang");
              var id = getParameterByName("id");
@@ -111,6 +81,8 @@
         }
 
         function loadAndFill() {
+            $('#name').text('');
+            clearTxts('pageSubWrapper');
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
@@ -123,11 +95,7 @@
             findMatches(prData);
         }
 
-          function sendMail() {
-            var currUrl = document.URL;
-            var langIs = localStorage.getItem('langID');
-            mail(langIs, currUrl);
-        }
+
 
         $(function () {
             pickCSS();

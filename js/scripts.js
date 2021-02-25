@@ -161,7 +161,7 @@ function loadLang() {
                 localStorage.setItem("langID", "heb");
                 localStorage.setItem("lang", JSON.stringify(myObj.HE));
             }
-            
+            loadAndFill();
         }
     };
     xmlhttp.open("GET", "js/lang.json", true);
@@ -225,6 +225,28 @@ async function getImgVideoId(id,videoImg,starCountry) {
     });
     return idIs;
 }
+
+function GetSortOrder() {
+    langIs = localStorage.getItem("langID");
+    return function (a, b) {
+        a1 = a;
+        b1 = b;
+        if (langIs.indexOf("heb") > -1) {
+            a1 = a.translations[0].name;
+            b1 = b.translations[0].name;
+        } else if (langIs.indexOf("eng") > -1 && a.translations.length > 1 && b.translations.length > 1) {
+            a1 = a.translations[1].name.toLowerCase();
+            b1 = b.translations[1].name.toLowerCase();
+        }
+        if (a1 > b1) {
+            return 1;
+        } else if (a1 < b1) {
+            return -1;
+        }
+        return 0;
+    }
+}    
+
 
 function sendMail() {
     var currUrl = document.URL;
@@ -299,8 +321,9 @@ async function getPersonalities() {
     return d.promise();
 }
 
-function changeIcons(num) {
-    if (num === 0) {
+function changeIcons() {
+    var pickLang = localStorage.getItem("langID");       
+    if (pickLang.localeCompare("heb") === 0) {
         $('#edu').css("background-image", "url('cut/Group 232.png')");
         $('#work').css("background-image", "url('cut/Group 233.png')");
         $('#politic').css("background-image", "url('cut/Group 234.png')");
@@ -523,15 +546,6 @@ async function searchPerson(person) {
 
 }
 
-
-
-function clearTXT(idElem) {
-    $("*").each(function (i, e) {
-        if (e.nodeType === Node.TEXT_NODE) {
-            e.nodeValue='';
-        }
-    });
-}
 
 function addToColumn() {
     var c1 = document.getElementById("col1").childElementCount;

@@ -46,34 +46,6 @@
             }
         }
 
-        function loadLang() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var myObj = JSON.parse(this.responseText);
-                    var pickLang = localStorage.getItem("langID");
-                    if (typeof pickLang !== 'undefined' && pickLang !== null) {
-                        if (pickLang.localeCompare("heb") === 0) {
-                            localStorage.setItem("langID", "heb");
-                            $('#lang').css("background-image", "url('cut/Group 128.png')");
-                            localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                        } else {
-                            localStorage.setItem("langID", "eng");
-                            $('#lang').css("background-image", "url('cut/Group 312.png')");
-                            localStorage.setItem("lang", JSON.stringify(myObj.EN));
-                        }
-                    } else {
-                        localStorage.setItem("langID", "heb");
-                        localStorage.setItem("lang", JSON.stringify(myObj.HE));
-                    }
-                    loadData();
-                }
-            };
-            xmlhttp.open("GET", "js/lang.json", true);
-            xmlhttp.send();
-
-        }
-
         function goToSub(idItm) {
             var idPr = $('#' + idItm).parent().attr('id');
             var rfid = getParameterByName("rfid");
@@ -88,7 +60,7 @@
             location.href = "sj2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs +'&rfid=' + rfid + "";
          }
 
-        function loadData() {
+        function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);

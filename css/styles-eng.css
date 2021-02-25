@@ -359,7 +359,12 @@ a {
     height: 400px;
     display: block;
 }
-
+.shapeCont .imageCountry {
+    margin: 0px auto;
+    width: 562px;
+    height: 794px;
+    display: block;
+}
 .pageSubWrapper .searchCont {
     margin-top: 65px;
     width: 80%;
@@ -581,14 +586,12 @@ ul .catgItem {
 .videoFrame {
     float: left;
     width: 100%;
+    margin-top: 20px;
 }
 
     .videoFrame .video {
         margin: 0px auto;
-        /*width: 750px;
-        height: 200px;*/
-        max-width: 355px;
-        /*border: 1px solid #707070;*/
+
     }
     video {
        margin-left: auto;
@@ -1004,7 +1007,9 @@ a {
         height: 400px;
         display: block;
     }
-
+    .shapeCont .imageCountry {
+        width: 85%;
+    }
     .pageSubWrapper .searchCont {
         margin-top: 65px;
         margin-bottom: 0px;
@@ -1213,19 +1218,6 @@ a {
         cursor: pointer;
     }
 
-    .videoFrame {
-        float: left;
-        width: 100%;
-    }
-
-        .videoFrame .video {
-            margin: 0px auto;
-            /*width: 90%;
-            height: 200px;*/
-            max-width: 355px;
-            /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
-            /*border: 1px solid #707070;*/
-        }
 
     .video .artistName {
         float: left;
@@ -1483,6 +1475,10 @@ a {
         display:block;
     }
 
+    .shapeCont .imageCountry {
+        width: 100%;
+    }
+
     .pageSubWrapper .searchCont {
         margin-top: 65px;
         width: 60%;
@@ -1687,20 +1683,6 @@ a {
         border-left: 25px solid transparent;
         cursor: pointer;
     }
-
-    .videoFrame {
-        float: left;
-        width: 100%;
-    }
-
-        .videoFrame .video {
-            margin: 0px auto;
-            /*width: 90%;
-            height: 200px;*/
-            max-width: 355px;
-            /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
-            /*border: 1px solid #707070;*/
-        }
 
     .video .artistName {
         float: left;
