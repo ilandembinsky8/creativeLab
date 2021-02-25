@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -17,7 +17,7 @@
             if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
                loadCSSLang(pickLang);
             } else {
-                url = 'sj1.html?lang=heb';
+                url = 'jewStars1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
@@ -28,19 +28,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = 'sj1.html?lang=eng';
+                     url = 'jewStars1.html?lang=eng';
                      window.location.replace(url);
                      pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = 'sj1.html?lang=heb';
+                     url = 'jewStars1.html?lang=heb';
                      window.location.replace(url);
                      pickCSS();
                 }
             } else {
                 localStorage.setItem("langID", "heb");
-                 url = 'sj1.html?lang=heb';
+                 url = 'jewStars1.html?lang=heb';
                  window.location.replace(url);
                  pickCSS();
             }
@@ -50,19 +50,20 @@
             var idPr = $('#' + idItm).parent().attr('id');
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
-            location.href = "sj2.html?cat=" + idPr + '&sub=' + idItm  + '&lang=' + langIs +'&rfid=' + rfid + "";
+            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm  + '&lang=' + langIs +'&rfid=' + rfid + "";
          }
 
         function goToCatg(idPr) {
             var idItm = "";
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
-            location.href = "sj2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs +'&rfid=' + rfid + "";
+            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs +'&rfid=' + rfid + "";
          }
 
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            document.title = lang["Titles"]["starsJour"];    
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
             $('#catgTitle').text(lang.catgTitle);
             var categ = lang["categories"];

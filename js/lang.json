@@ -186,6 +186,12 @@
 
         }
       }
+    },
+    "Titles": {
+      "communities": "Countries",
+      "starts": "Shining Stars",
+      "groundbreaking": "Trailblazing Women",
+      "starsJour": "Star Track"
     }
   },
 
@@ -201,7 +207,12 @@
       "groundbreaking": "Trailblazing Women",
       "starsJour": "Star Track"
     },
-
+    "Titles": {
+      "communities": "Countries",
+      "starts": "Shining Stars",
+      "groundbreaking": "Trailblazing Women",
+      "starsJour": "Star Track"
+    },
     "occupations": {
       "edu": "Education",
       "work": "Work",

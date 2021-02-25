@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 2</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -17,19 +17,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url =  "gb2.html?cat="+cat + '&lang=eng&rfid=' + rfid + "";
+                     url =  "tbWomen2.html?cat="+cat + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);               
                      pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
+                     url ="tbWomen2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
                      pickCSS();
                   }
             } else {
                  localStorage.setItem("langID", "heb");
-                 url ="gb2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
+                 url ="tbWomen2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
                  window.location.replace(url);
                  pickCSS();
             }
@@ -69,7 +69,8 @@
             var lang = JSON.parse(JsonLang); 
             var subCatgIs = getParameterByName('cat');
             subCatg = lang["page7"]["catg"][subCatgIs];
-            subIs = lang["occupations"][subCatgIs];        
+            subIs = lang["occupations"][subCatgIs];    
+            document.title = lang["Titles"]["groundbreaking"];
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
             $('#catgMain').text(lang.catgTitle);
@@ -88,7 +89,7 @@
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             window.sessionStorage.setItem('cat', subCatgIs);
-            location.href = "gb3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
+            location.href = "tbWomen3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
         }
 
       async function loadDetails(searchValue){
@@ -123,7 +124,7 @@
               var langIs=localStorage.getItem("langID");
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
-                location.href = "gb1.html?lang=" + langIs + "&rfid=" + rfid +"";
+                location.href = "tbWomen1.html?lang=" + langIs + "&rfid=" + rfid +"";
          });
         });
     </script>

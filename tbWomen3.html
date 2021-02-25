@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 4</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -19,19 +19,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url =  "gb3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
+                     url =  "tbWomen3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url =  "gb3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                     url =  "tbWomen3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
                     pickCSS();
                   }
             } else {
                  localStorage.setItem("langID", "heb");
-                 url =  "gb3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                 url =  "tbWomen3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
                  window.location.replace(url);
                  pickCSS();
             }
@@ -74,6 +74,7 @@
              clearTxts('pageSubWrapper');
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            document.title = lang["Titles"]["groundbreaking"];
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             var idNum = getParameterByName('id');
             idNum = '29_' + idNum;
@@ -95,10 +96,10 @@
             var langIs = localStorage.getItem("langID");
            $('body').delegate('#catgMain', 'click', function () {
                var cat =  $('#catgMain').attr("data");
-               location.href = "gb2.html?cat=" + cat + '&lang=' + langIs + '&rfid=' + rfid + "";
+               location.href = "tbWomen2.html?cat=" + cat + '&lang=' + langIs + '&rfid=' + rfid + "";
             });
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "gb1.html?lang=" +langIs +'&rfid=' + rfid + "";
+                location.href = "tbWomen1.html?lang=" +langIs +'&rfid=' + rfid + "";
             });
         }
 
@@ -149,20 +150,15 @@
             </div>
             <div class="modal" id="shareModal">
                 <div class="shareModalCont">
-
                     <div class='txtModal' id="share">
-                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
-                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
-                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
-                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
-                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
-                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <ul>
+                            <li><a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a></li>
+                            <li><a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a></li>
+                            <li><a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a></li>
+                            <li><a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a></li>
+                            <li><a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a></li>
+                            <li><a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a></li>
+                        </ul>
                     </div>
                     <input class="close" type="button" value=""  id="close"/>
                 </div>

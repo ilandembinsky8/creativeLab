@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 5</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -19,19 +19,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=eng&rfid=' + rfid + "";
+                     url = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                    url = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=heb&rfid=' + rfid + "";
+                    url = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=heb&rfid=' + rfid + "";
                     window.location.replace(url);
                     pickCSS();
                   }
             } else {
                 localStorage.setItem("langID", "heb");
-                 url = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=heb&rfid=' + rfid + "";
+                 url = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=heb&rfid=' + rfid + "";
                  window.location.replace(url);
                  pickCSS();
             }
@@ -67,6 +67,7 @@
         function loadAndFill(){
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+             document.title = lang["Titles"]["starsJour"]; 
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
             $('#search').attr("placeholder", lang["search"]["sj"]);
             $('#catgTitle').text(lang.catgTitle);
@@ -152,7 +153,7 @@
             var prData = "" + $('#' + idIs).attr("data");
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
-            location.href = "sj3.html?id=" + prData +'&lang='+langIs +'&rfid=' + rfid +  "";
+            location.href = "jewStars3.html?id=" + prData +'&lang='+langIs +'&rfid=' + rfid +  "";
         }
 
         async function findMatchesCatg(searchValue) {
@@ -185,13 +186,13 @@
             var langIs = localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "sj1.html?lang=" + langIs + '&rfid=' + rfid+"";
+                location.href = "jewStars1.html?lang=" + langIs + '&rfid=' + rfid+"";
             });
             $('body').delegate('#catgMain', 'click', function () {
                 var cat = getParameterByName('cat');
                 var rfid = getParameterByName("rfid");
                 var sub = "";
-                location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
+                location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
                 fillColumns();
             });
         }

@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 9</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -15,7 +15,7 @@
             if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
                loadCSSLang(pickLang);
             } else {
-                url = 'st1.html?lang=heb';
+                url = 'stars1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
@@ -26,18 +26,18 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = 'st1.html?lang=eng';
+                     url = 'stars1.html?lang=eng';
                      window.location.replace(url);   
                      pickCSS(); 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                    url = 'st1.html?lang=heb';
+                    url = 'stars1.html?lang=heb';
                      window.location.replace(url);  
                     pickCSS();
                 }
             } else {
                 localStorage.setItem("langID", "heb");
-                  url = 'st1.html?lang=heb';
+                  url = 'stars1.html?lang=heb';
                  window.location.replace(url);  
                 pickCSS();
             }
@@ -47,7 +47,8 @@
         async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             lang = JSON.parse(JsonLang);
-             var langIs = getLang();
+            var langIs = getLang();
+            document.title = lang["Titles"]["starts"]; 
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             object = await getStars();
@@ -91,7 +92,7 @@
                 val = parseInt(prData, 10);
                 localStorage.setItem("prData", val)
                 var rfid = getParameterByName("rfid");
-                location.href = "st2.html?id=" + val + '&lang=' + langIs +'&rfid=' + rfid + "";;            
+                location.href = "stars2.html?id=" + val + '&lang=' + langIs +'&rfid=' + rfid + "";;            
             });
         });
     </script>

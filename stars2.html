@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 8</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -19,19 +19,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url ="st2.html?id=" + id +'&lang=eng&rfid=' + rfid+ "";
+                     url ="stars2.html?id=" + id +'&lang=eng&rfid=' + rfid+ "";
                      window.location.replace(url);   
                      pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url ="st2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
+                     url ="stars2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
                      window.location.replace(url);   
                     pickCSS();
                   }
             } else {
                 localStorage.setItem("langID", "he");
-                 url ="st2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
+                 url ="stars2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
                  window.location.replace(url);   
                  pickCSS();
             }
@@ -86,6 +86,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
+            document.title = lang["Titles"]["starts"]; 
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             $("#close").val(lang.close);
@@ -103,7 +104,7 @@
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
                 var langIs=localStorage.getItem("langID");
-                location.href = "st1.html?lang="+langIs+'&rfid='+rfid+"";
+                location.href = "stars1.html?lang="+langIs+'&rfid='+rfid+"";
             });
 
         });

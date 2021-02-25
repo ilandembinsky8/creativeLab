@@ -393,15 +393,7 @@ async function getCountries() {
         crossDomain: true,
         async: true,
         success: function (result) {
-         
-            console.log(result);
-            window.localStorage.setItem('access_token', token);
-            var tokenTitle = 'access_token';        
-            document.cookie = tokenTitle + "=" + token;
-            let headers = {};
-            if (token) {
-                headers = { 'Authorization': token };
-            }
+              
             d.resolve(result);
         },
         error: function (jqXHR, status) {

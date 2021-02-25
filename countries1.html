@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 2</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -16,7 +16,7 @@
             if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
                loadCSSLang(pickLang);
             } else {
-                url = 'cj1.html?lang=heb';
+                url = 'countries1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
@@ -28,20 +28,20 @@
                 if (pickLang.localeCompare("heb") === 0) {
                     pickLang = "eng";
                     localStorage.setItem("langID", "eng");
-                    url = 'cj1.html?lang=eng';
+                    url = 'countries1.html?lang=eng';
                     window.location.replace(url);   
                     pickCSS();
                 } else if (pickLang.localeCompare("eng") === 0) {
                     pickLang = "heb";
                     localStorage.setItem("langID", "heb");
-                     url = 'cj1.html?lang=heb';
+                     url = 'countries1.html?lang=heb';
                      window.location.replace(url);                  
                     pickCSS();
                 }
             } else {
                 pickLang = "heb";
                 localStorage.setItem("langID", "heb");
-                url = 'cj1.html?lang=heb';
+                url = 'countries1.html?lang=heb';
                 window.location.replace(url); 
                 pickCSS();
             }
@@ -78,20 +78,22 @@
             sessionStorage.setItem('country', prData); 
              var langIs= localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
-            location.href = "cj2.html?id=" + prData +'&lang='+ langIs+'&rfid=' + rfid+ "";
+            location.href = "countries2.html?id=" + prData +'&lang='+ langIs+'&rfid=' + rfid+ "";
         }
 
         async function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var langIs = getLang();
+            document.title = lang["Titles"]["communities"];
             $('#hdTitle').text(lang["hdTitles"]["communities"]);
             $('#search').attr("placeholder", lang["search"]["cj"]);
             $('#catgMain').text(lang.countries);
             $('#col1, #col2').empty();
             json = await getCountries();
             const sorted = Object.values(json.data).sort(GetSortOrder());
-            counter = 0;
+            var counter = 0,
+                counter2 = 0;
             var filtered = $(sorted).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
@@ -105,9 +107,11 @@
                         counter = counter + 1;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + n.translations[j].name + '</span>';
                         document.getElementById(col).innerHTML += elem;
+                  
                     }
                 }
             })
+            console.log(counter2)
             var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);

@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 4</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -20,19 +20,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = "sj3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
+                     url = "jewStars3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = "sj3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                     url = "jewStars3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
                     pickCSS();
                   }
             } else {
                 localStorage.setItem("langID", "heb");
-                url = "sj3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                url = "jewStars3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
                 window.location.replace(url);
                 pickCSS();
             }
@@ -79,19 +79,19 @@
             var langIs=localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "sj1.html?lang=" +langIs +'&rfid=' + rfid;
+                location.href = "jewStars1.html?lang=" +langIs +'&rfid=' + rfid;
             });
 
             $('body').delegate('#catgMain', 'click', function () {
                 var cat = $('#catgMain').attr("data");
                 var sub = "";
-               location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
+               location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
                 var cat = $('#catgMain').attr("data");
                 var sub = $('#catgSub1').attr("data");
-                location.href = "sj2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
+                location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
 
             });
         }
@@ -122,7 +122,8 @@
                $('#catgSub1').attr("data", subIs);
                $('#catgSub1,#split3').css("display", "none");
                $('#name,#split1,#split2').css("display", "inline-block");
-           }
+            }
+            document.title = lang["Titles"]["starsJour"]; 
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
             $('#years').text(lang.page10.years+'  ');
             $('#country').text(lang.page10.country+'  ');
@@ -183,12 +184,14 @@
                 <div class="shareModalCont">
 
                     <div class='txtModal' id="share">
-                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
-                        <a data-sharer="twitter"  data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
-                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
-                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
-                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
-                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                        <ul>
+                            <li><a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a></li>
+                            <li><a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a></li>
+                            <li><a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a></li>
+                            <li><a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a></li>
+                            <li><a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a></li>
+                            <li><a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a></li>
+                        </ul>
                     </div>
                     <input class="close" type="button" value=""  id="close" />
                 </div>

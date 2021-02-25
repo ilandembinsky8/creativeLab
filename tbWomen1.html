@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page 7</title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
@@ -15,7 +15,7 @@
             if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
                loadCSSLang(pickLang);
             } else {
-                url = 'gb1.html?lang=heb';
+                url = 'tbWomen1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
@@ -26,19 +26,19 @@
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = 'gb1.html?lang=eng';
+                     url = 'tbWomen1.html?lang=eng';
                      window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = 'gb1.html?lang=heb';
+                     url = 'tbWomen1.html?lang=heb';
                      window.location.replace(url);
                     pickCSS();
                   }
             } else {
                 localStorage.setItem("langID", "heb");
-                  url = 'gb1.html?lang=heb';
+                  url = 'tbWomen1.html?lang=heb';
                   window.location.replace(url);
                  pickCSS();
             }
@@ -48,6 +48,7 @@
             changeIcons();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
+            document.title = lang["Titles"]["groundbreaking"];
             $('#hdTitle').text(lang["hdTitles"]["groundbreaking"]);
             $('#catgTitle').text(lang.catgTitle);
         }
@@ -63,17 +64,17 @@
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
                 sessionStorage.setItem('sub', "edu");
-                location.href = "gb2.html?cat=edu" + '&lang=' + langIs+ '&rfid=' + rfid + "";
+                location.href = "tbWomen2.html?cat=edu" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
             } else if (currId.localeCompare("work") === 0) {
                 subCat = currSec.work;
                 sessionStorage.setItem('sub',"work");
-                   location.href = "gb2.html?cat=work" + '&lang=' + langIs+ '&rfid=' + rfid + "";
+                   location.href = "tbWomen2.html?cat=work" + '&lang=' + langIs+ '&rfid=' + rfid + "";
                         
             } else if (currId.localeCompare("politic") === 0) {
                 subCat = currSec.politic;
                 sessionStorage.setItem('sub', "politic");
-                location.href = "gb2.html?cat=politic" + '&lang=' + langIs+ '&rfid=' + rfid + "";
+                location.href = "tbWomen2.html?cat=politic" + '&lang=' + langIs+ '&rfid=' + rfid + "";
             }
         }
 
