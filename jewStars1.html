@@ -11,16 +11,16 @@
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
-
         function pickCSS() {
-            var pickLang = getParameterByName("lang");
-            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
-               loadCSSLang(pickLang);
-            } else {
+           var pickLang = getParameterByName("lang");
+           if (typeof pickLang === 'undefined' || pickLang === null) {
                 url = 'jewStars1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
+            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+               loadCSSLang(pickLang);
+            } 
         }
 
         function pickLanguage() {

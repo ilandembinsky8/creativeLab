@@ -6,13 +6,14 @@ function goHomePg() {
 
 function mail(langIs, url) {
     var subjectIs = '';
-    var bodyIs = url;
+    var bodyIs = '';
+    bodyIs = url;
     if (langIs.localeCompare("eng") === 0) {
         subjectIs = 'Anu - Museum of the jewish people';
-        window.location = "mailto:?subject=" + subjectIs+ "&body="+ bodyIs;
+        window.location = "mailto:?subject=" + subjectIs + "&body=" + encodeURIComponent(bodyIs);
     } else if (langIs.localeCompare("heb") === 0) {
         subjectIs = 'אנו – מוזיאון העם היהודי';
-        window.location = "mailto:?subject=" + subjectIs + "&body=" + bodyIs;
+        window.location = "mailto:?subject=" + subjectIs + "&body=" + encodeURIComponent(bodyIs);
     }
 }
 
@@ -247,12 +248,13 @@ function GetSortOrder() {
             return -1;
         }
         return 0;
-    }
+    };
 }    
 
 
 function sendMail() {
     var currUrl = document.URL;
+    console.log(currUrl);
     var langIs = localStorage.getItem('langID');
     mail(langIs, currUrl);
 }

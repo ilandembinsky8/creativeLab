@@ -13,13 +13,14 @@
 
         function pickCSS() {
             var pickLang = getParameterByName("lang");
-            if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
-               loadCSSLang(pickLang);
-            } else {
+            if (typeof pickLang === 'undefined' || pickLang === null) {
                 url = 'countries1.html?lang=heb';
                 window.location.replace(url); 
                 loadCSSLang('heb');
             }
+            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+               loadCSSLang(pickLang);
+            } 
         }
 
         function pickLanguage() {
