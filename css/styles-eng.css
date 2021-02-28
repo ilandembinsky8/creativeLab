@@ -359,6 +359,13 @@ a {
     height: 400px;
     display: block;
 }
+.shapeCont .imageStar {
+    margin: 0px auto;
+    width: 600px;
+    height: 400px;
+    display: block;
+}
+
 .shapeCont .imageCountry {
     margin: 0px auto;
     width: 562px;
@@ -495,7 +502,6 @@ a {
     display: inline-block;
     width: 45%;
     height: 380px;
-    background: #FCC05D 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
 }
 
@@ -1016,12 +1022,15 @@ a {
 
     .shapeCont .imageShape {
         margin: 0px auto;
-        width: 85%;
+        width: 600px;
         height: 400px;
         display: block;
     }
     .shapeCont .imageCountry {
-        width: 85%;
+        margin: 0px auto;
+        width: 562px;
+        height: 794px;
+        display: block;
     }
     .pageSubWrapper .searchCont {
         margin-top: 65px;
@@ -1145,7 +1154,6 @@ a {
         display: inline-block;
         width: 45%;
         height: 125px;
-        background: #FCC05D 0% 0% no-repeat padding-box;
         border: 1px solid #707070;
     }
 
@@ -1489,8 +1497,14 @@ a {
         display:block;
     }
 
+    .shapeCont .imageStar {
+        width: 100%;
+        height: 100%;
+    }
+
     .shapeCont .imageCountry {
         width: 100%;
+        height: 100%;
     }
 
     .pageSubWrapper .searchCont {
@@ -1612,7 +1626,6 @@ a {
         display: inline-block;
         width: 45%;
         height: 125px;
-        background: #FCC05D 0% 0% no-repeat padding-box;
         border: 1px solid #707070;
     }
 
