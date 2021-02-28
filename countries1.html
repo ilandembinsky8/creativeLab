@@ -49,6 +49,7 @@
 
         async function countrySearh() {
             var valueIs = $('#search').val();
+             var langIs = getLang();
             var object = await searchCountry(valueIs);
             counter = 0;
              $('#col1, #col2').empty();

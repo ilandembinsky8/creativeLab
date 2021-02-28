@@ -37,10 +37,9 @@
             }
         }
         
-        async function personSearh() {
-            var valueIs = $('#search').val();
-             var langIs = getLang();
-            var object = await searchPerson(valueIs);
+        async function personSearh(valueIs, cat, subCat) {
+            var langIs = getLang();
+            var object = await searchPerson(valueIs,cat,subCat);
             counter = 0;
              $('#col1, #col2').empty();
             for (var i in object) {
@@ -121,6 +120,22 @@
             }
         }
 
+        function getCatSubcatSearch() {
+            var valueIs = $('#search').val();
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var main = getParameterByName('cat');
+            var sub = getParameterByName('sub');
+            var subCatgFilter = '';
+            var catgFilter = lang.filterCatg[main];
+                if (sub.localeCompare("") !== 0) {
+                    subCatgFilter = catgFilter["subCat"][sub];      
+            }
+
+            personSearh(valueIs, catgFilter.title, subCatgFilter);
+        }
+
+
        async function findMatchesSub(searchValue) {
             var langIs = getLang();
            $('#col1, #col2').empty();
@@ -142,7 +157,8 @@
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
-               }
+           }
+           console.log(object);
             var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
@@ -177,6 +193,7 @@
                     }
                 }
             }
+              console.log(object);
             var table = document.getElementById("col1");
             height=table.offsetHeight +30;
             $('#splitCol').css("height", height);
@@ -228,7 +245,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו"  onchange="personSearh()"/></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו"  onchange="getCatSubcatSearch()"/></div>
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">

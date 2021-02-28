@@ -188,7 +188,10 @@ function getParameterByName(name, url) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(url);
-    if (!results) return temp;
+    if (name.localeCompare('rfid') === 0) {
+        if (!results) return temp;
+    }
+    if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
@@ -523,13 +526,17 @@ async function searchCountry(country) {
     return filtered;
 }
 
-async function searchPerson(person) {
+async function searchPerson(person,cat, subCat) {
     var json = await getPersonalities();
     var filtered = $(json.data).filter(function (i, n) {
         var bool = false;
         for (j = 0; j < n.translations.length; j++) {
-            if (countOccurences(n.translations[j].first_name, person) > 0 || countOccurences(n.translations[j].last_name,person) > 0) {
-                bool = true;
+            if (countOccurences(n.translations[j].first_name, person) > 0 || countOccurences(n.translations[j].last_name, person) > 0) {
+                if (n.translations[j].category.localeCompare(cat) === 0 && n.translations[j].sub_category.localeCompare(subCat) === 0) {
+
+                    bool = true;
+                }
+               
             }
         }
         return bool;
@@ -538,6 +545,22 @@ async function searchPerson(person) {
 
 }
 
+async function searchPersonOcc(person, occ) {
+    var json = await getPersonalities();
+    var filtered = $(json.data).filter(function (i, n) {
+        var bool = false;
+        for (j = 0; j < n.translations.length; j++) {
+            if (countOccurences(n.translations[j].first_name, person) > 0 || countOccurences(n.translations[j].last_name, person) > 0) {
+                if (n.translations[j].occupation.localeCompare(occ) === 0) {
+                    bool = true;
+                }
+
+            }
+        }
+        return bool;
+    });
+    return filtered;
+}
 
 function addToColumn() {
     var c1 = document.getElementById("col1").childElementCount;

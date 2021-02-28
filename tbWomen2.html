@@ -13,33 +13,33 @@
       function pickLanguage() {
           var pickLang = getParameterByName("lang");
           var rfid = getParameterByName("rfid");
-          var cat = getParameterByName("cat");
+          var cat = getParameterByName("occ");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url =  "tbWomen2.html?cat="+cat + '&lang=eng&rfid=' + rfid + "";
+                     url =  "tbWomen2.html?occ="+cat + '&lang=eng&rfid=' + rfid + "";
                      window.location.replace(url);               
                      pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url ="tbWomen2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
+                     url ="tbWomen2.html?occ="+cat + '&lang=heb&rfid=' + rfid + "";
                      window.location.replace(url);
                      pickCSS();
                   }
             } else {
                  localStorage.setItem("langID", "heb");
-                 url ="tbWomen2.html?cat="+cat + '&lang=heb&rfid=' + rfid + "";
+                 url ="tbWomen2.html?occ="+cat + '&lang=heb&rfid=' + rfid + "";
                  window.location.replace(url);
                  pickCSS();
             }
         }
 
 
-          async function personSearch() {
+          async function personOccSearch(valueIs, occ) {
            var valueIs = $('#search').val();
            var langIs = getLang();
-            var object = await searchPerson(valueIs);
+            var object = await searchPersonOcc(valueIs, occ);
             counter = 0;
              $('#col1, #col2').empty();
               for (var i in object) {
@@ -67,7 +67,7 @@
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
-            var subCatgIs = getParameterByName('cat');
+            var subCatgIs = getParameterByName('occ');
             subCatg = lang["page7"]["catg"][subCatgIs];
             subIs = lang["occupations"][subCatgIs];    
             document.title = lang["Titles"]["trailblazing"];
@@ -83,15 +83,22 @@
         function getMoreInfo(idIs) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang); 
-            var subCatgIs = getParameterByName('cat');
+            var subCatgIs = getParameterByName('occ');
             var rfid = getParameterByName("rfid");
             var langIs=localStorage.getItem("langID");
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
-            window.sessionStorage.setItem('cat', subCatgIs);
+            window.sessionStorage.setItem('occ', subCatgIs);
             location.href = "tbWomen3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
         }
-
+         function getOccSearch() {
+            var valueIs = $('#search').val();
+            JsonLang = localStorage.getItem("lang");
+            var lang = JSON.parse(JsonLang);
+            var occ = getParameterByName('occ');
+            occIs = lang["occupations"][occ]; 
+            personOccSearch(valueIs, occIs);
+        }
       async function loadDetails(searchValue){
            var langIs = getLang();
            counter = 0;
@@ -151,7 +158,7 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" onchange="personSearch()" /></div>
+                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו שם" onchange="getOccSearch()" /></div>
                     <div class="table">
                         <div class="fstCol">
                             <div class="columnCont" id="col1">
