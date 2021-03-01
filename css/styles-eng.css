@@ -1267,6 +1267,8 @@ a {
 
     body {
         font-size: 18px;
+        overflow: hidden;
+        touch-action: none;
     }
 
 
