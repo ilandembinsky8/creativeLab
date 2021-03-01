@@ -106,6 +106,8 @@
                 var langIs=localStorage.getItem("langID");
                 location.href = "stars1.html?lang="+langIs+'&rfid='+rfid+"";
             });
+            var mediaQueryList = window.matchMedia('(max-width: 640px)');
+            mediaQueryList.addListener(faIcons);
         });
 
     </script>
@@ -166,7 +168,7 @@
                         <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
                         <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
                     </div>
-                    <input class="close" type="button" value=""  id="close" />
+                    <div class="closeBtnCont"><input class="close" type="button" value="" id="close" /></div>
                 </div>
             </div>
         </div>

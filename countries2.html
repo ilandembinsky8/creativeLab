@@ -106,6 +106,8 @@
                 var rfid = getParameterByName("rfid");
                 location.href = "countries1.html?lang=" + langIs + '&rfid=' + rfid+"";
             });        
+            var mediaQueryList = window.matchMedia('(max-width: 640px)');
+            mediaQueryList.addListener(faIcons);
         });
 
     </script>
@@ -156,7 +158,8 @@
                             <li><a id="whatsapp" data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a></li>                                               
                         </ul>
                     </div>
-                    <input class="close" type="button" value="" id="close"/>
+                    <div class="closeBtnCont"><input class="close" type="button" value="" id="close" /></div>
+                  
                 </div>
             </div>
         </div>

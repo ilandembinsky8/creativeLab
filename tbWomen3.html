@@ -108,7 +108,8 @@
             pickCSS();
             addModalbox();
             breadCrumbs();
-          
+            var mediaQueryList = window.matchMedia('(max-width: 640px)');
+            mediaQueryList.addListener(faIcons);
         });
 
     </script>
@@ -160,7 +161,7 @@
                             <li><a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a></li>
                         </ul>
                     </div>
-                    <input class="close" type="button" value=""  id="close"/>
+                    <div class="closeBtnCont"><input class="close" type="button" value="" id="close" /></div>
                 </div>
             </div>
         </div>

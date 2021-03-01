@@ -600,3 +600,12 @@ function addModalbox() {
         $(this).attr('data-url', currUrl);  
     });
 }
+
+function faIcons(e) {
+    if (e.matches) {
+        $('#telegram, #whatsapp, #facebook,#linkedin,#twitter, #instagram').addClass('fa-2x');
+
+    } else {
+        $('#telegram, #whatsapp, #facebook,#linkedin,#twitter, #instagram').removeClass('fa-2x');
+    }
+}

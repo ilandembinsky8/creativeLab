@@ -665,24 +665,29 @@ ul .catgItem {
             white-space: nowrap;
             display: inline-block;
         }
-
-.close {
-    float: right;
-    margin-top: 20px;
-    margin-right: 35px;
-    width: 85px;
-    height: 45px;
-    background: #12FF9F 0% 0% no-repeat padding-box;
-    border-radius: 22px;
-    opacity: 1;
-    font-size: 18px;
-    color: #FFFFFF;
+.closeBtnCont {
+    float: left;
+    width: 100%;
+    margin-top: 35px;
 }
 
+    .closeBtnCont .close {
+        float: left;
+        margin-left: 35px;
+        width: 85px;
+        height: 45px;
+        background: #12FF9F 0% 0% no-repeat padding-box;
+        border-radius: 22px;
+        opacity: 1;
+        font-size: 18px;
+        color: #FFFFFF;
+    }
+
 .fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 30px;
+    padding: 25px;
+    font-size: 1.5em !important;
+    width: 35%;
+    height: 35%;
     text-align: center;
     text-decoration: none;
     margin: 5px 20px;
@@ -1257,6 +1262,22 @@ a {
     .invisible {
         display: none;
     }
+
+    .shareModalCont {
+        margin: 0px auto;
+        width: 640px;
+        height: 300px;
+        background: #272B38 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 15px #00000029;
+        border-radius: 18px;
+        opacity: 1;
+    }
+
+    .fa {
+        padding: 20px;
+        font-size: 1em !important;
+        margin: 5px 10px !important;
+    }
 }
 
 
@@ -1731,7 +1752,7 @@ a {
 
     .shareModalCont {
         width: 90%;
-        height: 580px;
+        height: 700px;
     }
 
     .modal {
@@ -1745,8 +1766,8 @@ a {
 
         .txtModal ul {
             display: block;
-            width:auto;
-            padding-left:40px;
+            width: auto;
+            padding-right: 40px;
         }
 
             .txtModal ul li {
@@ -1754,14 +1775,17 @@ a {
                 width: 100%;
             }
 
-    .close {
-        margin-top: 500px;
+    .closeBtnCont {
+        margin-top: 0px;
     }
 
     .fa {
-        margin: 10px 0px;
+        padding: 20px !important;
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 2em !important;
+        margin: 10px 0px !important;
     }
-
 
 }
 
