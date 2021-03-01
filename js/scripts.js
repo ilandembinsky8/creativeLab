@@ -69,6 +69,8 @@ function customNiceScroll() {
             cursorcolor: '#12FF9F',
             cursorborderradius: 0,
             autohidemode: true,
+            touchbehavior: true,
+            grabcursorenabled: true,
             horizrailenabled: false
         });
     }
