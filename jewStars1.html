@@ -5,65 +5,66 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title></title>
+    <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
 
     <script>
         function pickCSS() {
-           var pickLang = getParameterByName("lang");
-           if (typeof pickLang === 'undefined' || pickLang === null) {
+            var pickLang = getParameterByName("lang");
+            if (typeof pickLang === 'undefined' || pickLang === null) {
                 url = 'jewStars1.html?lang=heb';
-                window.location.replace(url); 
+                window.location.replace(url);
                 loadCSSLang('heb');
             }
-            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
-               loadCSSLang(pickLang);
-            } 
+            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
+                loadCSSLang(pickLang);
+            }
         }
 
         function pickLanguage() {
-          var pickLang = getParameterByName("lang");
+            var pickLang = getParameterByName("lang");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = 'jewStars1.html?lang=eng';
-                     window.location.replace(url);
-                     pickCSS();
+                    url = 'jewStars1.html?lang=eng';
+                    window.location.replace(url);
+                    pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = 'jewStars1.html?lang=heb';
-                     window.location.replace(url);
-                     pickCSS();
+                    url = 'jewStars1.html?lang=heb';
+                    window.location.replace(url);
+                    pickCSS();
                 }
             } else {
                 localStorage.setItem("langID", "heb");
-                 url = 'jewStars1.html?lang=heb';
-                 window.location.replace(url);
-                 pickCSS();
+                url = 'jewStars1.html?lang=heb';
+                window.location.replace(url);
+                pickCSS();
             }
         }
 
         function goToSub(idItm) {
             var idPr = $('#' + idItm).parent().attr('id');
             var rfid = getParameterByName("rfid");
-            var langIs=localStorage.getItem("langID");
-            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm  + '&lang=' + langIs +'&rfid=' + rfid + "";
-         }
+            var langIs = localStorage.getItem("langID");
+            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs + '&rfid=' + rfid + "";
+        }
 
         function goToCatg(idPr) {
             var idItm = "";
             var rfid = getParameterByName("rfid");
-            var langIs=localStorage.getItem("langID");
-            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs +'&rfid=' + rfid + "";
-         }
+            var langIs = localStorage.getItem("langID");
+            location.href = "jewStars2.html?cat=" + idPr + '&sub=' + idItm + '&lang=' + langIs + '&rfid=' + rfid + "";
+        }
 
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-            document.title = lang["Titles"]["starsJour"];    
+            document.title = lang["Titles"]["starsJour"];
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
             $('#catgTitle').text(lang.catgTitle);
             var categ = lang["categories"];
@@ -84,23 +85,24 @@
                 }
             }
         }
-     
+
 
         $(function () {
             pickCSS();
+            customNiceScroll();
             $('body').delegate('.catgItem', 'click', function () {
                 var idItm = this.id;
                 var value = $('#' + idItm)[0].childNodes[0].nodeValue;
                 $('#catgTitle').addClass('mainCat');
                 $('#catgMain').removeClass('greenTitle');
                 $('#split1').removeClass('invisible');
-                $('#split1').css('display','inline-block');
+                $('#split1').css('display', 'inline-block');
                 $('#catgSub1').html(value);
                 event.stopPropagation();
                 $('#' + idItm).children('.subCat').toggle();
             });
             localStorage.setItem('my_item_back', null);
-      
+         
         });
 
     </script>

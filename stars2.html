@@ -8,45 +8,46 @@
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
         function pickLanguage() {
-           var pickLang = getParameterByName("lang");
-             var id = getParameterByName("id");
+            var pickLang = getParameterByName("lang");
+            var id = getParameterByName("id");
             var rfid = getParameterByName("rfid");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url ="stars2.html?id=" + id +'&lang=eng&rfid=' + rfid+ "";
-                     window.location.replace(url);   
-                     pickCSS();
+                    url = "stars2.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
+                    window.location.replace(url);
+                    pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url ="stars2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
-                     window.location.replace(url);   
+                    url = "stars2.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                    window.location.replace(url);
                     pickCSS();
-                  }
+                }
             } else {
                 localStorage.setItem("langID", "he");
-                 url ="stars2.html?id=" + id +'&lang=heb&rfid=' + rfid+ "";
-                 window.location.replace(url);   
-                 pickCSS();
+                url = "stars2.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                window.location.replace(url);
+                pickCSS();
             }
         }
-        
+
 
         async function findMatches(searchValue) {
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
-             var langIs = getLang();
+            var langIs = getLang();
             var json = await getStars();
             counter = 0;
-            var objImg = await getImgDetails(searchValue,'star');
+            var objImg = await getImgDetails(searchValue, 'star');
             var imgUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objImg.data.filename_disk;
-            var objVideo = await getVideoDetails(searchValue,'star');
+            var objVideo = await getVideoDetails(searchValue, 'star');
             var videoUrl = 'https://headless-cms.bh.org.il/uploads/beit-hatfutsot/originals/' + objVideo.data.filename_disk;
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
@@ -59,25 +60,25 @@
                         $('#country').text(n.translations[j].country + ", ");
                         if (n.birth_year && !n.death_year) {
                             if (langIs.indexOf('he') > -1) {
-                                $('#years').text('נ.'+n.birth_year);
+                                $('#years').text('נ.' + n.birth_year);
                             } else {
-                                 $('#years').text('b.'+n.birth_year);
+                                $('#years').text('b.' + n.birth_year);
                             }
                         } else if (!n.birth_year && n.death_year) {
                             $('#years').text("" + " - " + n.death_year);
                         } else if (n.death_year && n.birth_year) {
                             $('#years').text(n.birth_year + " - " + n.death_year);
                         }
-                         $("#videoCont").find("#video").attr("src", videoUrl);
-                        $('#img').attr('src',imgUrl);
+                        $("#videoCont").find("#video").attr("src", videoUrl);
+                        $('#img').attr('src', imgUrl);
                         $('#txt1').text(n.translations[j].info);
-                   
+
                     }
-                   
+
                 }
-                 return bool;
+                return bool;
             });
-             return filtered;
+            return filtered;
         }
 
         function loadAndFill() {
@@ -86,7 +87,7 @@
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             langIs = localStorage.getItem("langID");
-            document.title = lang["Titles"]["starts"]; 
+            document.title = lang["Titles"]["starts"];
             $('#hdTitle').text(lang["hdTitles"]["starts"]);
             $('#catgTitle').text(lang.starsTitle);
             $("#close").val(lang.close);
@@ -103,11 +104,12 @@
             addModalbox();
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
-                var langIs=localStorage.getItem("langID");
-                location.href = "stars1.html?lang="+langIs+'&rfid='+rfid+"";
+                var langIs = localStorage.getItem("langID");
+                location.href = "stars1.html?lang=" + langIs + '&rfid=' + rfid + "";
             });
             var mediaQueryList = window.matchMedia('(max-width: 640px)');
             mediaQueryList.addListener(faIcons);
+            customNiceScroll();
         });
 
     </script>

@@ -7,69 +7,70 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
-      function pickLanguage() {
-          var pickLang = getParameterByName("lang");
-          var rfid = getParameterByName("rfid");
-          var cat = getParameterByName("occ");
+        function pickLanguage() {
+            var pickLang = getParameterByName("lang");
+            var rfid = getParameterByName("rfid");
+            var cat = getParameterByName("occ");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url =  "tbWomen2.html?occ="+cat + '&lang=eng&rfid=' + rfid + "";
-                     window.location.replace(url);               
-                     pickCSS();
+                    url = "tbWomen2.html?occ=" + cat + '&lang=eng&rfid=' + rfid + "";
+                    window.location.replace(url);
+                    pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url ="tbWomen2.html?occ="+cat + '&lang=heb&rfid=' + rfid + "";
-                     window.location.replace(url);
-                     pickCSS();
-                  }
+                    url = "tbWomen2.html?occ=" + cat + '&lang=heb&rfid=' + rfid + "";
+                    window.location.replace(url);
+                    pickCSS();
+                }
             } else {
-                 localStorage.setItem("langID", "heb");
-                 url ="tbWomen2.html?occ="+cat + '&lang=heb&rfid=' + rfid + "";
-                 window.location.replace(url);
-                 pickCSS();
+                localStorage.setItem("langID", "heb");
+                url = "tbWomen2.html?occ=" + cat + '&lang=heb&rfid=' + rfid + "";
+                window.location.replace(url);
+                pickCSS();
             }
         }
 
 
-          async function personOccSearch(valueIs, occ) {
-           var valueIs = $('#search').val();
-           var langIs = getLang();
+        async function personOccSearch(valueIs, occ) {
+            var valueIs = $('#search').val();
+            var langIs = getLang();
             var object = await searchPersonOcc(valueIs, occ);
             counter = 0;
-             $('#col1, #col2').empty();
-              for (var i in object) {
-               var idstr = "";
-               if (object[i].ext_id) {
-                   idstr = object[i].ext_id;
-               }
+            $('#col1, #col2').empty();
+            for (var i in object) {
+                var idstr = "";
+                if (object[i].ext_id) {
+                    idstr = object[i].ext_id;
+                }
                 var idIs = idstr.substring(3);
                 subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                            var col = addToColumn();
-                       counter = counter + 1;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' +idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
-                            document.getElementById(col).innerHTML += elem;                      
+                        var col = addToColumn();
+                        counter = counter + 1;
+                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        document.getElementById(col).innerHTML += elem;
                     }
                 }
-              }
+            }
             var table = document.getElementById("col1");
-            height=table.offsetHeight +30;
+            height = table.offsetHeight + 30;
             $('#splitCol').css("height", height);
         }
 
 
         function loadAndFill() {
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang); 
+            var lang = JSON.parse(JsonLang);
             var subCatgIs = getParameterByName('occ');
             subCatg = lang["page7"]["catg"][subCatgIs];
-            subIs = lang["occupations"][subCatgIs];    
+            subIs = lang["occupations"][subCatgIs];
             document.title = lang["Titles"]["trailblazing"];
             $('#hdTitle').text(lang["hdTitles"]["trailblazing"]);
             $('#search').attr("placeholder", lang["search"]["gb"]);
@@ -82,31 +83,31 @@
 
         function getMoreInfo(idIs) {
             JsonLang = localStorage.getItem("lang");
-            var lang = JSON.parse(JsonLang); 
+            var lang = JSON.parse(JsonLang);
             var subCatgIs = getParameterByName('occ');
             var rfid = getParameterByName("rfid");
-            var langIs=localStorage.getItem("langID");
+            var langIs = localStorage.getItem("langID");
             subCatg = lang["page7"]["catg"][subCatgIs];
             var prData = "" + $('#' + idIs).attr("data");
             window.sessionStorage.setItem('occ', subCatgIs);
-            location.href = "tbWomen3.html?id=" + prData + '&lang='+langIs + '&rfid=' + rfid + "";
+            location.href = "tbWomen3.html?id=" + prData + '&lang=' + langIs + '&rfid=' + rfid + "";
         }
-         function getOccSearch() {
+        function getOccSearch() {
             var valueIs = $('#search').val();
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var occ = getParameterByName('occ');
-            occIs = lang["occupations"][occ]; 
+            occIs = lang["occupations"][occ];
             personOccSearch(valueIs, occIs);
         }
-      async function loadDetails(searchValue){
-           var langIs = getLang();
-           counter = 0;
-           $('#col1, #col2').empty();
-           var x = await getTrailWomen();
-           object = await getOccupation(searchValue);
-          for (var i in object) {
-               var idstr = "";
+        async function loadDetails(searchValue) {
+            var langIs = getLang();
+            counter = 0;
+            $('#col1, #col2').empty();
+            var x = await getTrailWomen();
+            object = await getOccupation(searchValue);
+            for (var i in object) {
+                var idstr = "";
                 if (object[i].ext_id) {
                     idstr = object[i].ext_id;
                 }
@@ -114,25 +115,26 @@
                 subObj = object[i].translations;
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                      counter = counter + 1;
+                        counter = counter + 1;
                         var col = addToColumn();
                         var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)" class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
-          }
+            }
             var table = document.getElementById("col1");
-            height=table.offsetHeight +30;
+            height = table.offsetHeight + 30;
             $('#splitCol').css("height", height);
         }
 
         $(function () {
             pickCSS();
-              var langIs=localStorage.getItem("langID");
+            customNiceScroll();
+            var langIs = localStorage.getItem("langID");
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
-                location.href = "tbWomen1.html?lang=" + langIs + "&rfid=" + rfid +"";
-         });
+                location.href = "tbWomen1.html?lang=" + langIs + "&rfid=" + rfid + "";
+            });
         });
     </script>
 </head>

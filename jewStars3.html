@@ -8,28 +8,29 @@
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
 
-  function pickLanguage() {
-        var pickLang = getParameterByName("lang");
-           var rfid = getParameterByName("rfid");
-           var id = getParameterByName("id");
+        function pickLanguage() {
+            var pickLang = getParameterByName("lang");
+            var rfid = getParameterByName("rfid");
+            var id = getParameterByName("id");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = "jewStars3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
-                     window.location.replace(url);
+                    url = "jewStars3.html?id=" + id + '&lang=eng&rfid=' + rfid + "";
+                    window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = "jewStars3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
-                     window.location.replace(url);
+                    url = "jewStars3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
+                    window.location.replace(url);
                     pickCSS();
-                  }
+                }
             } else {
                 localStorage.setItem("langID", "heb");
                 url = "jewStars3.html?id=" + id + '&lang=heb&rfid=' + rfid + "";
@@ -40,58 +41,58 @@
 
 
 
-       async function loadPRData(searchValue) {
+        async function loadPRData(searchValue) {
             var langIs = getLang();
-           json = await getJewishStars();
-           $('.fieldTxt').each(function (index, obj) {
+            json = await getJewishStars();
+            $('.fieldTxt').each(function (index, obj) {
                 $(obj).text("");
-           });
-           $('.text').text("");
+            });
+            $('.text').text("");
             var filtered = $(json).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
-                    if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {                      
-                          $('#name').text(n.translations[j].first_name + " " + n.translations[j].last_name);
+                    if (n.ext_id.localeCompare(searchValue) === 0 && n.translations[j].language === langIs) {
+                        $('#name').text(n.translations[j].first_name + " " + n.translations[j].last_name);
                         if (n.birth_year && !n.death_year) {
                             if (langIs.indexOf('he') > -1) {
-                                $('#yearFill').text('נ.'+n.birth_year);
+                                $('#yearFill').text('נ.' + n.birth_year);
                             } else {
-                                 $('#yearFill').text('b.'+n.birth_year);
+                                $('#yearFill').text('b.' + n.birth_year);
                             }
                         } else if (!n.birth_year && n.death_year) {
                             $('#yearFill').text("" + " - " + n.death_year);
                         } else if (n.death_year && n.birth_year) {
-                             $('#yearFill').text(n.birth_year + " - " + n.death_year);
-                        }                   
-                         $('#countryFill').text(n.translations[j].country);
-                         $('#occupFill').text(n.translations[j].occupation);
-                         $('#txt1').text(n.translations[j].info);
+                            $('#yearFill').text(n.birth_year + " - " + n.death_year);
+                        }
+                        $('#countryFill').text(n.translations[j].country);
+                        $('#occupFill').text(n.translations[j].occupation);
+                        $('#txt1').text(n.translations[j].info);
 
-                bool = true;
-                 }
+                        bool = true;
+                    }
                 }
-            return bool;
+                return bool;
             });
-         return filtered;
+            return filtered;
         }
 
         function breadCrumbs() {
-            var langIs=localStorage.getItem("langID");
+            var langIs = localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
             $('body').delegate('#catgTitle', 'click', function () {
-                location.href = "jewStars1.html?lang=" +langIs +'&rfid=' + rfid;
+                location.href = "jewStars1.html?lang=" + langIs + '&rfid=' + rfid;
             });
 
             $('body').delegate('#catgMain', 'click', function () {
                 var cat = $('#catgMain').attr("data");
                 var sub = "";
-               location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
+                location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs + '&rfid=' + rfid + "";
             });
 
             $('body').delegate('#catgSub1', 'click', function () {
                 var cat = $('#catgMain').attr("data");
                 var sub = $('#catgSub1').attr("data");
-                location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs +'&rfid=' + rfid + "";
+                location.href = "jewStars2.html?cat=" + cat + '&sub=' + sub + '&lang=' + langIs + '&rfid=' + rfid + "";
 
             });
         }
@@ -101,7 +102,7 @@
             $('#name').text('');
             clearTxts('pageSubWrapper');
             var num = getParameterByName('id');
-            var val = "30_"+num;
+            var val = "30_" + num;
             JsonLang = localStorage.getItem("lang");
             var lang = JSON.parse(JsonLang);
             var mainIs = await getCatById(val);
@@ -111,26 +112,26 @@
             $('#name,#split1,#split2').css("display", "inline-block");
             var subIs = await getSubCatById(val);
             var subCatIs = '';
-           if (subIs) {
-               subCatIs = getSubCatKey(subIs, mainIs, lang);
-               $('#catgSub1').html(catg.subCat[subCatIs]);
-               $('#catgSub1,#split3').css("display", "inline-block");
-               $('#catgMain').attr("data", mainIs);
-               $('#catgSub1').attr("data",  subCatIs);
-           } else {
-               $('#catgMain').attr("data", mainIs);
-               $('#catgSub1').attr("data", subIs);
-               $('#catgSub1,#split3').css("display", "none");
-               $('#name,#split1,#split2').css("display", "inline-block");
+            if (subIs) {
+                subCatIs = getSubCatKey(subIs, mainIs, lang);
+                $('#catgSub1').html(catg.subCat[subCatIs]);
+                $('#catgSub1,#split3').css("display", "inline-block");
+                $('#catgMain').attr("data", mainIs);
+                $('#catgSub1').attr("data", subCatIs);
+            } else {
+                $('#catgMain').attr("data", mainIs);
+                $('#catgSub1').attr("data", subIs);
+                $('#catgSub1,#split3').css("display", "none");
+                $('#name,#split1,#split2').css("display", "inline-block");
             }
-            document.title = lang["Titles"]["starsJour"]; 
+            document.title = lang["Titles"]["starsJour"];
             $('#hdTitle').text(lang["hdTitles"]["starsJour"]);
-            $('#years').text(lang.page10.years+'  ');
-            $('#country').text(lang.page10.country+'  ');
-            $('#occupation').text(lang.page10.occupation+'  ');
+            $('#years').text(lang.page10.years + '  ');
+            $('#country').text(lang.page10.country + '  ');
+            $('#occupation').text(lang.page10.occupation + '  ');
             $("#close").val(lang.close);
             loadPRData(val);
-          
+
         }
 
 
@@ -140,6 +141,7 @@
             breadCrumbs();
             var mediaQueryList = window.matchMedia('(max-width: 640px)');
             mediaQueryList.addListener(faIcons);
+            customNiceScroll();
         });
     </script>
 </head>

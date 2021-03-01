@@ -7,6 +7,7 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
@@ -14,34 +15,34 @@
             var pickLang = getParameterByName("lang");
             if (typeof pickLang === 'undefined' || pickLang === null) {
                 url = 'tbWomen1.html?lang=heb';
-                window.location.replace(url); 
+                window.location.replace(url);
                 loadCSSLang('heb');
             }
-            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
+            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
                 loadCSSLang(pickLang);
-            } 
+            }
         }
 
-     function pickLanguage() {
-             var pickLang = getParameterByName("lang");
+        function pickLanguage() {
+            var pickLang = getParameterByName("lang");
             if (typeof pickLang !== 'undefined' && pickLang !== null) {
                 if (pickLang.localeCompare("heb") === 0) {
                     localStorage.setItem("langID", "eng");
-                     url = 'tbWomen1.html?lang=eng';
-                     window.location.replace(url);
+                    url = 'tbWomen1.html?lang=eng';
+                    window.location.replace(url);
                     pickCSS();
 
                 } else if (pickLang.localeCompare("eng") === 0) {
                     localStorage.setItem("langID", "heb");
-                     url = 'tbWomen1.html?lang=heb';
-                     window.location.replace(url);
+                    url = 'tbWomen1.html?lang=heb';
+                    window.location.replace(url);
                     pickCSS();
-                  }
+                }
             } else {
                 localStorage.setItem("langID", "heb");
-                  url = 'tbWomen1.html?lang=heb';
-                  window.location.replace(url);
-                 pickCSS();
+                url = 'tbWomen1.html?lang=heb';
+                window.location.replace(url);
+                pickCSS();
             }
         }
 
@@ -58,29 +59,30 @@
             JsonLang = localStorage.getItem("lang");
             var rfid = getParameterByName("rfid");
             var lang = JSON.parse(JsonLang);
-            var langIs=localStorage.getItem("langID");
+            var langIs = localStorage.getItem("langID");
             var currId = idNum;
             var currSec = lang.page7.catg;
             var subCat = "";
             if (currId.localeCompare("edu") === 0) {
                 subCat = currSec.edu;
                 sessionStorage.setItem('sub', "edu");
-                location.href = "tbWomen2.html?occ=edu" + '&lang=' + langIs+ '&rfid=' + rfid + "";
-                        
+                location.href = "tbWomen2.html?occ=edu" + '&lang=' + langIs + '&rfid=' + rfid + "";
+
             } else if (currId.localeCompare("work") === 0) {
                 subCat = currSec.work;
-                sessionStorage.setItem('sub',"work");
-                   location.href = "tbWomen2.html?occ=work" + '&lang=' + langIs+ '&rfid=' + rfid + "";
-                        
+                sessionStorage.setItem('sub', "work");
+                location.href = "tbWomen2.html?occ=work" + '&lang=' + langIs + '&rfid=' + rfid + "";
+
             } else if (currId.localeCompare("politic") === 0) {
                 subCat = currSec.politic;
                 sessionStorage.setItem('sub', "politic");
-                location.href = "tbWomen2.html?occ=politic" + '&lang=' + langIs+ '&rfid=' + rfid + "";
+                location.href = "tbWomen2.html?occ=politic" + '&lang=' + langIs + '&rfid=' + rfid + "";
             }
         }
 
         $(function () {
-            pickCSS();      
+            pickCSS();
+            customNiceScroll();
             $('#edu, #work, #politic').click(function () {
                 var x = this.id;
                 clickedItm(x);

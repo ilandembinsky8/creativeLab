@@ -7,6 +7,7 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
@@ -15,12 +16,12 @@
             var pickLang = getParameterByName("lang");
             if (typeof pickLang === 'undefined' || pickLang === null) {
                 url = 'countries1.html?lang=heb';
-                window.location.replace(url); 
+                window.location.replace(url);
                 loadCSSLang('heb');
             }
-            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0){
-               loadCSSLang(pickLang);
-            } 
+            else if (pickLang.localeCompare("heb") === 0 || pickLang.localeCompare("eng") === 0) {
+                loadCSSLang(pickLang);
+            }
         }
 
         function pickLanguage() {
@@ -30,57 +31,57 @@
                     pickLang = "eng";
                     localStorage.setItem("langID", "eng");
                     url = 'countries1.html?lang=eng';
-                    window.location.replace(url);   
+                    window.location.replace(url);
                     pickCSS();
                 } else if (pickLang.localeCompare("eng") === 0) {
                     pickLang = "heb";
                     localStorage.setItem("langID", "heb");
-                     url = 'countries1.html?lang=heb';
-                     window.location.replace(url);                  
+                    url = 'countries1.html?lang=heb';
+                    window.location.replace(url);
                     pickCSS();
                 }
             } else {
                 pickLang = "heb";
                 localStorage.setItem("langID", "heb");
                 url = 'countries1.html?lang=heb';
-                window.location.replace(url); 
+                window.location.replace(url);
                 pickCSS();
             }
         }
 
         async function countrySearh() {
             var valueIs = $('#search').val();
-             var langIs = getLang();
+            var langIs = getLang();
             var object = await searchCountry(valueIs);
             counter = 0;
-             $('#col1, #col2').empty();
-             for (var i in object) {
+            $('#col1, #col2').empty();
+            for (var i in object) {
                 subObj = object[i].translations;
                 var idstr = "";
                 if (object[i].ext_id) {
-                   idstr = object[i].ext_id;
+                    idstr = object[i].ext_id;
                 }
-               var idIs = idstr.substring(3);
+                var idIs = idstr.substring(3);
                 for (var j in subObj) {
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
-                            var col = addToColumn();
+                        var col = addToColumn();
                         counter++;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + subObj[j].name + '</span>';
-                            document.getElementById(col).innerHTML += elem;                     
+                        document.getElementById(col).innerHTML += elem;
                     }
                 }
             }
             var table = document.getElementById("col1");
-            height=table.offsetHeight +30;
+            height = table.offsetHeight + 30;
             $('#splitCol').css("height", height);
         }
 
         function goToCountry(idIs) {
             var prData = "" + $('#' + idIs).attr("data");
-            sessionStorage.setItem('country', prData); 
-             var langIs= localStorage.getItem("langID");
+            sessionStorage.setItem('country', prData);
+            var langIs = localStorage.getItem("langID");
             var rfid = getParameterByName("rfid");
-            location.href = "countries2.html?id=" + prData +'&lang='+ langIs+'&rfid=' + rfid+ "";
+            location.href = "countries2.html?id=" + prData + '&lang=' + langIs + '&rfid=' + rfid + "";
         }
 
         async function loadAndFill() {
@@ -99,29 +100,30 @@
             var filtered = $(sorted).filter(function (i, n) {
                 var bool = false;
                 for (j = 0; j < n.translations.length; j++) {
-                     var idstr = "";
-                     if (n.ext_id) {
-                      idstr = n.ext_id;
+                    var idstr = "";
+                    if (n.ext_id) {
+                        idstr = n.ext_id;
                     }
-                     var idIs = idstr.substring(3);
+                    var idIs = idstr.substring(3);
                     if (n.translations[j].language === langIs) {
                         var col = addToColumn();
                         counter = counter + 1;
                         var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + n.translations[j].name + '</span>';
                         document.getElementById(col).innerHTML += elem;
-                  
+
                     }
                 }
             })
             console.log(counter2)
             var table = document.getElementById("col1");
-            height=table.offsetHeight +30;
+            height = table.offsetHeight + 30;
             $('#splitCol').css("height", height);
         }
 
-   
+
         $(function () {
             pickCSS();
+            customNiceScroll();
         });
 
     </script>

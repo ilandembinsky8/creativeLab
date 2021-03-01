@@ -59,6 +59,21 @@ function parseId(idString) {
     return z;
 }
 
+function customNiceScroll() {
+    if (jQuery().niceScroll) {
+        $("body").niceScroll({
+            scrollspeed: 70,
+            mousescrollstep: 38,
+            cursorwidth: 5,
+            cursorborder: 0,
+            cursorcolor: '#12FF9F',
+            cursorborderradius: 0,
+            autohidemode: true,
+            horizrailenabled: false
+        });
+    }
+}
+
 function getLangJSON(lang) {
     $.getJSON('js/lang.json', function (response) {
         localStorage.clear();
