@@ -170,6 +170,7 @@ body {
 }
 
 .titleCont .mainTitle {
+    cursor: pointer;
     text-align: center;
     margin: 0px auto;
     font-family: Heebo-Medium;
