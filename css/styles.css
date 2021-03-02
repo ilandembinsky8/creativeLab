@@ -121,6 +121,7 @@ p {
 }
 
 body {
+    overflow:scroll;
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -1277,6 +1278,7 @@ a::after {
 @media only screen and (max-width: 640px) {
 
     body {
+        overflow: scroll;
         font-size: 18px;
         overflow: hidden;
         touch-action: none;
