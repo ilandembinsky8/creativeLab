@@ -101,7 +101,9 @@
 
         $(function () {
             pickCSS();
-           // customNiceScroll();
+            customNiceScroll();
+             document.body.style.setProperty("-webkit-transform", "rotate(-90deg)", null);
+            document.body.style.setProperty("-webkit-transform", "rotate(360deg)", null);
            // addModalbox();
             //var langIs = localStorage.getItem('langID');
             //$('body').delegate('#catgMain', 'click', function () {
