@@ -106,6 +106,7 @@
     url('fonts/heebo-v9-hebrew-900.ttf') format('truetype'), /* Safari, Android, iOS */
     url('fonts/heebo-v9-hebrew-900.svg#Heebo') format('svg'); /* Legacy iOS */
 }
+
 * {
     outline: none;
 }
@@ -1280,8 +1281,6 @@ a::after {
     body {
         overflow: scroll;
         font-size: 18px;
-        overflow: hidden;
-        touch-action: none;
     }
 
 

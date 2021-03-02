@@ -9,7 +9,8 @@
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>-->
     <script>
 
         function pickLanguage() {
@@ -101,12 +102,12 @@
         $(function () {
             pickCSS();
             customNiceScroll();
-            addModalbox();
-            var langIs = localStorage.getItem('langID');
-            $('body').delegate('#catgMain', 'click', function () {
-                var rfid = getParameterByName("rfid");
-                location.href = "countries1.html?lang=" + langIs + '&rfid=' + rfid + "";
-            });
+           // addModalbox();
+            //var langIs = localStorage.getItem('langID');
+            //$('body').delegate('#catgMain', 'click', function () {
+            //    var rfid = getParameterByName("rfid");
+            //    location.href = "countries1.html?lang=" + langIs + '&rfid=' + rfid + "";
+            //});
             // var mediaQueryList = window.matchMedia('(max-width: 640px)');
             //   mediaQueryList.addListener(faIcons);
         });
