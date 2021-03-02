@@ -620,6 +620,8 @@ function addModalbox() {
 
 function faIcons(e) {
     if (e.matches) {
+        document.body.style.setProperty("-webkit-transform", "rotate(-90deg)", null);
+        document.body.style.setProperty("-webkit-transform", "rotate(360deg)", null);
         $('#telegram, #whatsapp, #facebook,#linkedin,#twitter, #instagram').addClass('fa-2x');
 
     } else {
