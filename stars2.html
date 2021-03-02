@@ -7,10 +7,9 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
     <script>
 
         function pickLanguage() {
@@ -101,17 +100,14 @@
 
         $(function () {
             pickCSS();
-          //  customNiceScroll();
-            document.body.style.setProperty("-webkit-transform", "rotate(-90deg)", null);
-            document.body.style.setProperty("-webkit-transform", "rotate(360deg)", null);
-            //addModalbox();
-            //$('body').delegate('#catgTitle', 'click', function () {
-            //    var rfid = getParameterByName("rfid");
-            //    var langIs = localStorage.getItem("langID");
-            //    location.href = "stars1.html?lang=" + langIs + '&rfid=' + rfid + "";
-            //});
-            var mediaQueryList = window.matchMedia('(max-width: 640px)');
-            mediaQueryList.addListener(faIcons);
+
+            addModalbox();
+            $('body').delegate('#catgTitle', 'click', function () {
+                var rfid = getParameterByName("rfid");
+                var langIs = localStorage.getItem("langID");
+                location.href = "stars1.html?lang=" + langIs + '&rfid=' + rfid + "";
+            });
+
 
         });
 

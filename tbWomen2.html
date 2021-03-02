@@ -7,7 +7,6 @@
     <title></title>
     <link id="pagestyle" rel="stylesheet" href="css/styles.css" type="text/css" />
     <script src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="js/jquery.nicescroll.min.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
     <script>
 
@@ -129,7 +128,6 @@
 
         $(function () {
             pickCSS();
-            customNiceScroll();
             var langIs = localStorage.getItem("langID");
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
