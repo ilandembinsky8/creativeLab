@@ -101,15 +101,16 @@
 
         $(function () {
             pickCSS();
+            customNiceScroll();
             addModalbox();
             $('body').delegate('#catgTitle', 'click', function () {
                 var rfid = getParameterByName("rfid");
                 var langIs = localStorage.getItem("langID");
                 location.href = "stars1.html?lang=" + langIs + '&rfid=' + rfid + "";
             });
-            var mediaQueryList = window.matchMedia('(max-width: 640px)');
-            mediaQueryList.addListener(faIcons);
-            customNiceScroll();
+            //var mediaQueryList = window.matchMedia('(max-width: 640px)');
+            //mediaQueryList.addListener(faIcons);
+          
         });
 
     </script>
@@ -142,8 +143,8 @@
                     <div class="shapeCont"><img id="img" class="imageStar"></div>
                     <div class="text">
                         <div class="textSubTitle" style="color: #C6C6C6;" id="titleTxt1">
-                        <span id="country"></span>
-                        <span id="years"></span>
+                            <span id="country"></span>
+                            <span id="years"></span>
                         </div>
                         <div id="txt1">
 
@@ -151,7 +152,7 @@
                     </div>
                     <div class="videoFrame">
                         <div class="video" id="videoCont">
-                            <video width="500" height="340" controls  src="" type="video/mp4" id="video">
+                            <video width="500" height="340" controls src="" type="video/mp4" id="video">
                                 Your browser does not support the video tag.
                             </video>
 
@@ -162,15 +163,19 @@
             </div>
             <div class="modal" id="shareModal">
                 <div class="shareModalCont">
+
                     <div class='txtModal' id="share">
-                        <a data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a>
-                        <a data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a>
-                        <a data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a>
-                        <a data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a>
-                        <a data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a>
-                        <a data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a>
+                        <ul>
+                            <li><a id="facebook" data-sharer="facebook" data-title="Checkout SJ3!" data-url='' class="fa fa-facebook"></a></li>
+                            <li><a id="twitter" data-sharer="twitter" data-title="Checkout SJ3!" data-url='' class="fa fa-twitter"></a></li>
+                            <li><a id="linkedin" data-sharer="linkedin" data-title="Checkout SJ3!" data-url='' class="fa fa-linkedin"></a></li>
+                            <li><a id="instagram" data-sharer="instagram" data-title="Checkout SJ3!" data-url='' class="fa fa-instagram"></a></li>
+                            <li><a id="telegram" data-sharer="telegram" data-title="Checkout SJ3!" data-url='' class="fa fa-telegram"></a></li>
+                            <li><a id="whatsapp" data-sharer="whatsapp" data-title="Checkout SJ3!" data-url='' class="fa fa-whatsapp"></a></li>
+                        </ul>
                     </div>
                     <div class="closeBtnCont"><input class="close" type="button" value="" id="close" /></div>
+
                 </div>
             </div>
         </div>
