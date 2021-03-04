@@ -419,7 +419,7 @@ a {
 .searchCont input[placeholder] {
     margin-right: auto;
     margin-left: auto;
-    padding-right: 10px;
+    text-indent: 10px;
     text-align: right;
     direction: rtl;
     color: #979797;
@@ -427,40 +427,55 @@ a {
 
 
 .pageSubWrapper .table {
-    width: 80%;
-    margin: 0px auto;
+    width: 100%;
+    display: -ms-flexbox;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
 }
 
 
 .table .fstCol {
-    float: right;
-    width: 45%;
+    -ms-flex: 50%; /* IE10 */
+    flex: 0 1 auto;
+    margin: 10px;
 }
 
 .fstCol .columnCont, .sndCol .columnCont {
     margin: 0px auto;
+    display: block;
 }
 
 .columnCont .colItem {
     display: block;
+    width:200px;
+    box-sizing:border-box;
     text-align: center;
     line-height: 35px;
     letter-spacing: 0px;
     color: #C6C6C6;
+    margin: 0px auto;
+    box-sizing: border-box;
     cursor: pointer;
 }
-
+a{
+    text-decoration:none;
+}
 .table .splitLine {
     float: right;
     height: 700px;
     margin-right: 20px;
+    margin-left: 20px;
     width: 0px;
-    border-right: 2px solid #707070;
+    border-left: 2px solid #707070;
 }
 
 .table .sndCol {
-    float: right;
-    width: 45%;
+    -ms-flex: 50%; /* IE10 */
+    flex: 0 1 auto;
+    margin: 10px;
 }
 
 .pageSubWrapper .categoryCont {
@@ -1086,31 +1101,22 @@ G10
     }
 
     .searchCont input[placeholder] {
-        padding-right: 10px;
+        
         text-align: right;
         color: #979797;
     }
 
     .pageSubWrapper .table {
-        margin-top: 35px;
+        width: 100%;
         margin-right: auto;
         margin-left: auto;
-        width: 100%;
-    }
-
-    .table .fstCol {
-        float: right;
-        width: 40%;
-    }
-
-    .fstCol .columnCont, .sndCol .columnCont {
-        margin: 0px auto;
     }
 
     .columnCont .colItem {
         display: block;
         text-align: center;
         line-height: 35px;
+        margin: 0px auto;
         letter-spacing: 0px;
         color: #C6C6C6;
         cursor:pointer;
@@ -1119,15 +1125,13 @@ G10
     .table .splitLine {
         float: right;
         height: 700px;
-        margin-right: 40px;
+        margin-right: 15px;
+        margin-left: 15px;
         width: 0px;
-        border-right: 2px solid #707070;
+        border-left: 2px solid #707070;
     }
 
-    .table .sndCol {
-        float: left;
-        width: 40%;
-    }
+
 
     .pageSubWrapper .categoryCont {
         margin-top: 80px;
@@ -1584,7 +1588,6 @@ G10
     }
 
     .searchCont input[placeholder] {
-        padding-right: 10px;
         text-align: right;
         color: #979797;
     }
@@ -1596,10 +1599,6 @@ G10
         margin-left: auto;
     }
 
-    .table .fstCol {
-        float: right;
-        width: 40%;
-    }
 
     .fstCol .columnCont, .sndCol .columnCont {
         margin: 0px auto;
@@ -1607,6 +1606,7 @@ G10
 
     .columnCont .colItem {
         display: block;
+        width: 100px;
         text-align: center;
         line-height: 35px;
         letter-spacing: 0px;
@@ -1617,15 +1617,13 @@ G10
     .table .splitLine {
         float: right;
         height: 700px;
-        margin-right: 40px;
+        margin-right: 15px;
+        margin-left: 15px;
         width: 0px;
-        border-right: 2px solid #707070;
+        border-left: 2px solid #707070;
     }
 
-    .table .sndCol {
-        float: left;
-        width: 40%;
-    }
+ 
 
     .pageSubWrapper .categoryCont {
         margin-top: 30px;
@@ -1817,6 +1815,28 @@ G10
         height: 35px !important;
         font-size: 2em !important;
         margin: 10px 0px!important;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 800px) {
+    .header .headerWrapper {
+        width: 785px;
+    }
+    .pageCont .pageWrapper {
+        width: 785px;
+    }
+
+    .pageSubCont .pageSubWrapper {
+        width: 785px;
+    }
+    .pageSubWrapper .searchCont {
+        width: 70%;
+    }
+    .pageSubWrapper .table {
+        width: 70%;
+        margin-right:auto;
+        margin-left:auto;
     }
 
 }

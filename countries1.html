@@ -65,7 +65,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + subObj[j].name + '</span>';
+                        var elem = '<div id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + subObj[j].name + '</div>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -107,7 +107,7 @@
                     if (n.translations[j].language === langIs) {
                         var col = addToColumn();
                         counter = counter + 1;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + n.translations[j].name + '</span>';
+                        var elem = '<div id=' + 'itm' + counter + ' class="colItem" onclick="goToCountry(this.id)"  data=' + idIs + '>' + n.translations[j].name + '</div>';
                         document.getElementById(col).innerHTML += elem;
 
                     }
@@ -149,8 +149,9 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו קהילה" onchange="countrySearh()"/></div>
-                   
+                    <div class="searchCont">
+                        <input name="search" id="search" type="text" class="searchSec" placeholder="חפשו קהילה" onchange="countrySearh()" />
+
                         <div class="table" id="table">
                             <div class="fstCol">
                                 <div class="columnCont" id="col1">
@@ -164,6 +165,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
             </div>

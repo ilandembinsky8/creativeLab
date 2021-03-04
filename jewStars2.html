@@ -53,7 +53,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         var col = addToColumn();
                         counter++;
-                        var elem = '<span id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<div id=' + 'itm' + counter + ' class="colItem"  onclick="getMoreInfo(this.id)"  data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</div>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -153,7 +153,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         counter = counter + 1;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<div id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</div>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -188,7 +188,7 @@
                     if (subObj[j]["language"].indexOf(langIs) > -1) {
                         counter = counter + 1;
                         var col = addToColumn();
-                        var elem = '<span id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</span>';
+                        var elem = '<div id=' + 'itm' + counter + ' onclick="getMoreInfo(this.id)"  class="colItem" data=' + idIs + '>' + subObj[j].first_name + " " + subObj[j].last_name + '</div>';
                         document.getElementById(col).innerHTML += elem;
                     }
                 }
@@ -245,17 +245,19 @@
 
             <div class="pageSubCont">
                 <div class="pageSubWrapper">
-                    <div class="searchCont"><input name="search" id="search" type="text" class="searchSec" placeholder="חפשו"  onchange="getCatSubcatSearch()"/></div>
-                    <div class="table">
-                        <div class="fstCol">
-                            <div class="columnCont" id="col1">
-                               
+                    <div class="searchCont">
+                        <input name="search" id="search" type="text" class="searchSec" placeholder="חפשו" onchange="getCatSubcatSearch()" />
+                        <div class="table">
+                            <div class="fstCol">
+                                <div class="columnCont" id="col1">
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="splitLine" id="splitCol"></div>
-                        <div class="sndCol">
-                            <div class="columnCont" id="col2">
-                            
+                            <div class="splitLine" id="splitCol"></div>
+                            <div class="sndCol">
+                                <div class="columnCont" id="col2">
+
+                                </div>
                             </div>
                         </div>
                     </div>
