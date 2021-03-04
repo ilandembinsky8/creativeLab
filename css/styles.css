@@ -1811,9 +1811,9 @@ G10
     }
     .fa {
         padding: 20px !important;
-        width: 35px !important;
-        height: 35px !important;
-        font-size: 2em !important;
+        width: 15px !important;
+        height: 15px !important;
+        font-size: 0.9em !important;
         margin: 10px 0px!important;
     }
 
