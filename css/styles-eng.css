@@ -1829,6 +1829,10 @@ a {
         margin-left: auto;
     }
 
+    .categoryWrap .edu, .categoryWrap .career, .categoryWrap .politics {
+        width: 30%;
+    }
+
 }
 
 @media only screen and (max-width: 640px) and (min-width: 470px) {

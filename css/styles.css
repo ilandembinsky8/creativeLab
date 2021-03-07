@@ -1822,13 +1822,19 @@ G10
     .pageSubCont .pageSubWrapper {
         width: 785px;
     }
+
     .pageSubWrapper .searchCont {
         width: 70%;
     }
+
     .pageSubWrapper .table {
         width: 70%;
         margin-right:auto;
         margin-left:auto;
+    }
+
+    .categoryWrap .edu, .categoryWrap .career, .categoryWrap .politics {
+        width: 30%;
     }
 
 }
