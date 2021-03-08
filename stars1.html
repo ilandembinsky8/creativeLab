@@ -71,7 +71,7 @@
                         if (counter % 2 !== 0) {
                             s = s + '<div class="frameRow">';
                             s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><img class="frameTitle" src="' + imgUrl + '"  id=' + 'imgTitle' + counter + '  data=' + idIs + '><p class="starName">' + subObj[j].first_name + ' ' + subObj[j].last_name + '</p></div>';
-                            s = s + '<span style="border-left:10px solid transparent;"></span>';
+                            s = s + '<span style="border-left:20px solid transparent;"></span>';
                         } else {
                             s = s + '<div class="starFrame" id=' + 'imgFrame' + counter + '><img class="frameTitle" src="' + imgUrl + '" id=' + 'imgTitle' + counter + '  data=' + idIs + '><p class="starName">' + subObj[j].first_name + ' ' + subObj[j].last_name + '</p></div>';
                             s = s + '</div>';
@@ -117,8 +117,10 @@
             </div>
 
             <div class="pageSubCont">
-                <div class="pageSubWrapper" id="content" >
+                <div class="pageSubWrapper">
+                    <div class="starsCont" id="content">
 
+                    </div>
                 </div>
             </div>
         </div>

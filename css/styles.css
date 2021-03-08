@@ -326,8 +326,9 @@ a {
 }
 
 .pageWrapper .pageSubCont {
-    float:right;
+    float: right;
     width: 100%;
+    direction: rtl;
 }
 
 .pageSubCont .pageSubWrapper {
@@ -522,11 +523,15 @@ a{
 }
 
 .pageSubWrapper .frameRow {
-
-    float: right;
+    margin-right:auto;
+    margin-left:auto;
     width: 90%;
-    display: block;
     margin-top: 20px;
+}
+
+.starsCont{
+    width: 800px; 
+    margin: 0px auto;
 }
 
 .frameRow .starFrame {
@@ -1174,9 +1179,13 @@ G10
         background-size: contain;
         background-position: center;
     }
-
+    .starsCont {
+        width: 600px;
+        margin: 0px auto;
+    }
     .pageSubWrapper .frameRow {
-        float: right;
+        margin-right: auto;
+        margin-left: auto;
         width: 90%;
         display: block;
         margin-top: 20px;
@@ -1506,6 +1515,7 @@ G10
 
     .pageWrapper .pageSubCont {
         width: 100%;
+
     }
 
     .pageSubCont .pageSubWrapper {
@@ -1662,13 +1672,16 @@ G10
         background-size: contain;
         background-position: center;
     }
- 
 
-    .pageSubWrapper .frameRow {
-        float: right;
+    .starsCont {
         width: 90%;
-        display: block;
+        margin: 0px auto;
+    }
+    .pageSubWrapper .frameRow {
+        width: 90%;
         margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .frameRow .starFrame {

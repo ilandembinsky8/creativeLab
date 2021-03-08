@@ -512,11 +512,14 @@ a {
     background-size: contain;
     background-position: center;
 }
-
+.starsCont {
+    width: 800px;
+    margin: 0px auto;
+}
 .pageSubWrapper .frameRow {
-    float: left;
+    margin-right: auto;
+    margin-left: auto;
     width: 100%;
-    display: block;
     margin-top: 20px;
 }
 
@@ -1165,12 +1168,15 @@ a {
     }
 
     .pageSubWrapper .frameRow {
-        float: left;
+        margin-right: auto;
+        margin-left: auto;
         width: 100%;
-        display: block;
         margin-top: 20px;
     }
-
+    .starsCont {
+        width: 600px;
+        margin: 0px auto;
+    }
     .frameRow .starFrame {
         cursor: pointer;
         display: inline-block;
@@ -1649,10 +1655,15 @@ a {
     }
 
     .pageSubWrapper .frameRow {
-        float: left;
+        margin-right: auto;
+        margin-left: auto;
         width: 100%;
-        display: block;
         margin-top: 20px;
+    }
+
+    .starsCont {
+        width: 90%;
+        margin: 0px auto;
     }
 
     .frameRow .starFrame {
