@@ -521,9 +521,12 @@ a {
 }
 
 .frameRow .starFrame {
+    direction: ltr;
     cursor: pointer;
     display: inline-block;
-    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 350px;
     height: 380px;
     border: 1px solid #707070;
 }
@@ -1171,7 +1174,7 @@ a {
     .frameRow .starFrame {
         cursor: pointer;
         display: inline-block;
-        width: 45%;
+        width: 250px;
         height: 125px;
         border: 1px solid #707070;
     }
@@ -1654,7 +1657,7 @@ a {
 
     .frameRow .starFrame {
         display: inline-block;
-        width: 45%;
+        width: 150px;
         height: 125px;
         border: 1px solid #707070;
     }

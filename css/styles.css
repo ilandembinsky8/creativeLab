@@ -522,6 +522,7 @@ a{
 }
 
 .pageSubWrapper .frameRow {
+    direction:rtl;
     float: right;
     width: 100%;
     display: block;
@@ -531,7 +532,9 @@ a{
 .frameRow .starFrame {
     cursor: pointer;
     display: inline-block;
-    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 350px;
     height: 380px;
     /*background: #FCC05D 0% 0% no-repeat padding-box;
     border: 1px solid #707070;*/
@@ -1182,7 +1185,7 @@ G10
     .frameRow .starFrame {
         cursor:pointer;
         display: inline-block;
-        width: 45%;
+        width: 250px;
         height: 125px;
 
     }
@@ -1670,7 +1673,7 @@ G10
 
     .frameRow .starFrame {
         display: inline-block;
-        width: 45%;
+        width: 150px;
         height: 125px;
 
     }
@@ -1826,7 +1829,7 @@ G10
     .pageSubWrapper .searchCont {
         width: 70%;
     }
-
+    
     .pageSubWrapper .table {
         width: 70%;
         margin-right:auto;
@@ -1838,6 +1841,8 @@ G10
     }
 
 }
+
+
 @media only screen and (max-width: 800px) and (min-width: 641px) {
     .headerCont .titleCont {
         float: right;
