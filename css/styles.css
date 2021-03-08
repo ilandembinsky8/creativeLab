@@ -522,9 +522,9 @@ a{
 }
 
 .pageSubWrapper .frameRow {
-    direction:rtl;
+
     float: right;
-    width: 100%;
+    width: 90%;
     display: block;
     margin-top: 20px;
 }
@@ -1177,7 +1177,7 @@ G10
 
     .pageSubWrapper .frameRow {
         float: right;
-        width: 100%;
+        width: 90%;
         display: block;
         margin-top: 20px;
     }
@@ -1666,7 +1666,7 @@ G10
 
     .pageSubWrapper .frameRow {
         float: right;
-        width: 100%;
+        width: 90%;
         display: block;
         margin-top: 20px;
     }

@@ -107,7 +107,9 @@
                 var langIs = localStorage.getItem("langID");
                 location.href = "stars1.html?lang=" + langIs + '&rfid=' + rfid + "";
             });
-
+            $('body').delegate('#name', 'click', function () {
+                $('#st2').css('font-size', '150%');
+            });
 
         });
 

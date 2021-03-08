@@ -521,7 +521,7 @@ a {
 }
 
 .frameRow .starFrame {
-    direction: ltr;
+
     cursor: pointer;
     display: inline-block;
     margin-right: auto;
