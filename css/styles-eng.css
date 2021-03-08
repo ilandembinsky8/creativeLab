@@ -1667,8 +1667,8 @@ a {
 
     .frameRow .starFrame {
         display: inline-block;
-        width: 150px;
-        height: 125px;
+        width: 45%;
+        height: auto;
         border: 1px solid #707070;
     }
 
