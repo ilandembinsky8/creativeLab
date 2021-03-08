@@ -1193,8 +1193,8 @@ G10
     .frameRow .starFrame {
         cursor:pointer;
         display: inline-block;
-        width: 250px;
-        height: 125px;
+        width: 45%;
+        height: auto;
 
     }
 

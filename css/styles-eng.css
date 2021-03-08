@@ -373,7 +373,7 @@ a {
 .shapeCont .imageStar {
     margin: 0px auto;
     width: 600px;
-    height: 400px;
+    /*height: 400px;*/
     display: block;
 }
 
@@ -514,6 +514,7 @@ a {
 .starsCont {
     width: 800px;
     margin: 0px auto;
+    display:block;
 }
 .pageSubWrapper .frameRow {
     margin-right: auto;
@@ -523,7 +524,6 @@ a {
 }
 
 .frameRow .starFrame {
-
     cursor: pointer;
     display: inline-block;
     margin-right: auto;
@@ -1179,8 +1179,8 @@ a {
     .frameRow .starFrame {
         cursor: pointer;
         display: inline-block;
-        width: 250px;
-        height: 125px;
+        width: 45%;
+        height: auto;
         border: 1px solid #707070;
     }
 
@@ -1543,7 +1543,7 @@ a {
 
     .shapeCont .imageStar {
         width: 100%;
-        height: 100%;
+  
     }
 
     .shapeCont .imageCountry {
