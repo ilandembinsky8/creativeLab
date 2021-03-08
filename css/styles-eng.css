@@ -259,7 +259,6 @@ a {
 }
 
 .categoryST {
-    width: 91%;
     margin-top: 15px;
     text-align: left;
     line-height: 27px;
@@ -956,7 +955,7 @@ a {
     }
 
     .categoryST {
-        width: 88%;
+      
         margin-top: 15px;
         text-align: left;
         line-height: 27px;
@@ -1438,7 +1437,7 @@ a {
     }
 
     .categoryST {
-        width: 89%;
+      
         margin-top: 15px;
         text-align: left;
         line-height: 27px;

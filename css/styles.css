@@ -260,7 +260,6 @@ a {
     background-repeat: no-repeat;
 }
 .categoryST {
-    width: 91%;
     margin-top: 15px;
     text-align: right;
     line-height: 27px;
@@ -971,7 +970,7 @@ G10
     }
 
     .categoryST {
-        width: 88%;
+       
         margin-top: 15px;
         text-align: right;
         line-height: 27px;
@@ -1450,7 +1449,7 @@ G10
     }
 
     .categoryST {
-        width: 89%;
+        
         margin-top: 15px;
         text-align: right;
         line-height: 27px;
