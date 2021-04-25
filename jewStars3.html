@@ -106,6 +106,7 @@
             var lang = JSON.parse(JsonLang);
             var mainIs = await getCatById(val);
             catg = lang.categories[mainIs];
+            console.log(catg);
             $('#catgTitle').text(lang.catgTitle);
             $('#catgMain').html(catg.title);
             $('#name,#split1,#split2').css("display", "inline-block");

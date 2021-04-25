@@ -27,26 +27,29 @@
           "s1_1": "אמנות חזותית",
           "s1_2": "מוזיקה קלאסית",
           "s1_3": "מוזיקה פופולרית",
-          "s1_4": "סטנד אפ",
+          "s1_4": "הומור",
           "s1_5": "קולנוע וטלוויזיה",
           "s1_6": "תיאטרון",
           "s1_7": "אופנה",
           "s1_8": "אדריכלות",
-          "s1_9": "ספרות"
+          "s1_9": "ספרות ושירה"
         }
       },
       "c2": {
-        "title": "ספורט",
+        "title": "ספורט ומשחקים",
         "subCat": {
-
+          "s2_1": "ספורטאים",
+          "s2_2": "אלופי משחק"
         }
       },
       "c3": {
         "title": "כלכלה ועסקים",
         "subCat": {
-          "s3_1": "כלכלנים ונגידי בנקים",
-          "s3_2": "יזמים: בנקאות ושוק ההון",
-          "s3_3": "יזמים: הייטק"
+          "s3_1": "כלכלנים ובנקאים",
+          "s3_2": "יזמי בנקאות ושוק ההון",
+          "s3_3": "יזמי הייטק",
+          "s3_4": "יזמי מסחר",
+          "s3_5": "יזמי תעשייה"
         }
 
       },
@@ -58,7 +61,7 @@
       },
 
       "c5": {
-        "title": "תקשורת",
+        "title": "עיתונות ותקשורת",
         "subCat": {
 
         }
@@ -67,7 +70,7 @@
       "c6": {
         "title": "מדע והגות",
         "subCat": {
-          "s6_1": "הוגי דעות",
+          "s6_1": "הוגים",
           "s6_2": "מדענים",
           "s6_3": "משפטנים"
         }
@@ -127,13 +130,14 @@
           "s1_6": "Theater",
           "s1_7": "Fashion",
           "s1_8": "Architecture",
-          "s1_9": "Literature"
+          "s1_9": "AuthorsAndPoets"
         }
       },
       "c2": {
-        "title": "Athletes",
+        "title": "AthletesAndPlayers",
         "subCat": {
-
+          "s2_1": "Athletes",
+          "s2_2": "GameChampions"
         }
       },
       "c3": {
@@ -141,7 +145,10 @@
         "subCat": {
           "s3_1": "EconomistsAndBankers",
           "s3_2": "EntrepreneursBankingandCapitalMarket",
-          "s3_3": "EntrepreneursHighTech"
+          "s3_3": "EntrepreneursHighTech",
+          "s3_4": "EntrepreneursCommerce",
+          "s3_5": "EntrepreneursIndustry"
+
         }
 
       },
@@ -223,28 +230,32 @@
         "title": "Art and Creation",
         "subCat": {
           "s1_1": "Visual arts",
-          "s1_2": "Classic music",
-          "s1_3": "Pop music",
+          "s1_2": "Classical music",
+          "s1_3": "Popular music",
           "s1_4": "Humor",
-          "s1_5": "Cinema and TV",
+          "s1_5": "Film and TV",
           "s1_6": "Theater",
           "s1_7": "Fashion",
-          "s1_8": "Architects",
-          "s1_9": "Literature"
+          "s1_8": "Architecture",
+          "s1_9": "Authors & Poets"
         }
 
       },
       "c2": {
-        "title": "Sports",
+        "title": "Athletes & Players",
         "subCat": {
+          "s2_1": "Athletes",
+          "s2_2": "Game Champions"
         }
       },
       "c3": {
         "title": "Economics and Business",
         "subCat": {
           "s3_1": "Economists and Bankers",
-          "s3_2": "Entrepreneurs: Banking and Capital market",
-          "s3_3": "Entrepreneurs: High Tech"
+          "s3_2": "Banking Entrepreneurs ",
+          "s3_3": "Technological Entrepreneurs",
+          "s3_4": "Commercial Entrepreneurs",
+          "s3_5": "Industrial Entrepreneurs"
         }
       },
       "c4": {
@@ -322,13 +333,14 @@
           "s1_6": "Theater",
           "s1_7": "Fashion",
           "s1_8": "Architecture",
-          "s1_9": "Literature"
+          "s1_9": "AuthorsAndPoets"
         }
       },
       "c2": {
-        "title": "Athletes",
+        "title": "AthletesAndPlayers",
         "subCat": {
-
+          "s2_1": "Athletes",
+          "s2_2": "GameChampions"
         }
       },
       "c3": {
@@ -336,7 +348,9 @@
         "subCat": {
           "s3_1": "EconomistsAndBankers",
           "s3_2": "EntrepreneursBankingandCapitalMarket",
-          "s3_3": "EntrepreneursHighTech"
+          "s3_3": "EntrepreneursHighTech",
+          "s3_4": "EntrepreneursCommerce",
+          "s3_5": "EntrepreneursIndustry"
         }
 
       },

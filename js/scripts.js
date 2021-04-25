@@ -369,6 +369,7 @@ async function getCatById(num) {         //return catg name&key
         }
         return bool;
     });
+    console.log(cat);
     return getCategoryKey(cat);
 }
 async function getSubCatById(num) {      //retutn subcat name
@@ -398,7 +399,7 @@ function getKeyByValue(object, value) {
 }
 
 function getCategoryKey(catIs){
-    var catName = ['ArtistsAndCreators', 'Athletes', 'EconomistsAndBusinessEntrepreneurs', 'HolocaustHeroes', 'JournalistsAndMediaPersonalities', 'ScientistsAndPhilosophers', 'Politicians', 'MilitaryLeaders','Others'];
+    var catName = ['ArtistsAndCreators', 'AthletesAndPlayers', 'EconomistsAndBusinessEntrepreneurs', 'HolocaustHeroes', 'JournalistsAndMediaPersonalities', 'ScientistsAndPhilosophers', 'Politicians', 'MilitaryLeaders','Others'];
     var catNum = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9'];
     var numIs = catName.indexOf(catIs);
     return catNum[numIs];
