@@ -369,7 +369,6 @@ async function getCatById(num) {         //return catg name&key
         }
         return bool;
     });
-    console.log(cat);
     return getCategoryKey(cat);
 }
 async function getSubCatById(num) {      //retutn subcat name
